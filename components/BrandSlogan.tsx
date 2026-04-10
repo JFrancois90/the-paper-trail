@@ -30,7 +30,7 @@ export default function BrandSlogan({ size = 'lg', theme = 'dark' }: BrandSlogan
       Taking{' '}
       <span style={{ position: 'relative', display: 'inline-block', color: COLORS.claimRed }}>
         politics
-        {/* Hand-drawn strikethrough SVG */}
+        {/* Hand-drawn white strikethrough: editor crossing something out */}
         <svg
           viewBox="0 0 120 12"
           preserveAspectRatio="none"
@@ -41,23 +41,23 @@ export default function BrandSlogan({ size = 'lg', theme = 'dark' }: BrandSlogan
             top: '45%',
             width: '104%',
             height: '0.15em',
-            transform: 'rotate(-1.5deg)',
+            transform: 'rotate(-2deg)',
             overflow: 'visible',
           }}
         >
           <path
             d="M2 7 C 15 4, 30 9, 45 6 S 70 3, 85 7 S 105 4, 118 6"
             fill="none"
-            stroke={COLORS.claimRed}
-            strokeWidth="2.5"
+            stroke={theme === 'dark' ? '#fff' : COLORS.navy}
+            strokeWidth="3"
             strokeLinecap="round"
-            opacity="0.7"
+            opacity="0.8"
           />
         </svg>
       </span>
       <br />
       out of{' '}
-      <span className="highlight" style={{ color: theme === 'dark' ? '#fff' : COLORS.navy }}>
+      <span style={{ color: baseColor, fontWeight: 700 }}>
         politics
       </span>
     </span>

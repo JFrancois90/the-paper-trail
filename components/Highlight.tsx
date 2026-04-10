@@ -6,10 +6,9 @@ export default function Highlight({ children }: HighlightProps) {
   return (
     <span
       style={{
-        background: 'rgba(253, 243, 222, 0.8)',
+        background: 'linear-gradient(to bottom, transparent 60%, rgba(250,199,117,0.45) 60%)',
         fontWeight: 600,
-        borderRadius: 2,
-        padding: '1px 2px',
+        padding: '0 2px',
       }}
     >
       {children}

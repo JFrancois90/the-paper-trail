@@ -79,19 +79,16 @@ export default function RootLayout({
                 .nav-logo { height: 40px; }
               }
               .highlight {
-                background: linear-gradient(to bottom, transparent 40%, rgba(253,224,130,0.4) 40%, rgba(253,224,130,0.4) 90%, transparent 90%);
-                padding: 0 4px;
-                margin: 0 -4px;
+                background: linear-gradient(to bottom, transparent 60%, rgba(250,199,117,0.45) 60%);
+                padding: 0 2px;
               }
               .highlight-red {
-                background: linear-gradient(to bottom, transparent 40%, rgba(252,234,233,0.6) 40%, rgba(252,234,233,0.6) 90%, transparent 90%);
-                padding: 0 4px;
-                margin: 0 -4px;
+                background: linear-gradient(to bottom, transparent 60%, rgba(181,48,42,0.18) 60%);
+                padding: 0 2px;
               }
               .highlight-green {
-                background: linear-gradient(to bottom, transparent 40%, rgba(230,245,237,0.6) 40%, rgba(230,245,237,0.6) 90%, transparent 90%);
-                padding: 0 4px;
-                margin: 0 -4px;
+                background: linear-gradient(to bottom, transparent 60%, rgba(26,107,66,0.18) 60%);
+                padding: 0 2px;
               }
               @media (prefers-reduced-motion: reduce) {
                 *, *::before, *::after {

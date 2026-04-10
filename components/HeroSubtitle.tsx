@@ -17,16 +17,17 @@ interface Line {
   pauseAfter: number;
 }
 
+// "wrong" starts at index 29 in "Sometimes those numbers are wrong."
 const DESKTOP_LINES: Line[] = [
   { text: 'Politicians use numbers to win.', color: 'rgba(255,255,255,0.85)', fontSize: '28px', fontWeight: 400, speed: 50, pauseAfter: 500 },
-  { text: 'Sometimes those numbers are wrong.', color: '#fac75a', fontSize: '28px', fontWeight: 400, speed: 50, pauseAfter: 500 },
-  { text: 'We check them.', color: '#fff', fontSize: '36px', fontWeight: 700, speed: 70, pauseAfter: 1000, highlightRange: [3, 14], highlightColor: 'rgba(253,224,130,0.4)' },
+  { text: 'Sometimes those numbers are wrong.', color: 'rgba(255,255,255,0.85)', fontSize: '28px', fontWeight: 400, speed: 50, pauseAfter: 500, highlightRange: [29, 34], highlightColor: 'rgba(250,199,117,0.45)' },
+  { text: 'We check them.', color: '#fff', fontSize: '36px', fontWeight: 700, speed: 70, pauseAfter: 1000, highlightRange: [3, 14], highlightColor: 'rgba(250,199,117,0.45)' },
 ];
 
 const MOBILE_LINES: Line[] = [
   { text: 'Politicians use numbers to win.', color: 'rgba(255,255,255,0.85)', fontSize: '22px', fontWeight: 400, speed: 40, pauseAfter: 500 },
-  { text: 'Sometimes those numbers are wrong.', color: '#fac75a', fontSize: '22px', fontWeight: 400, speed: 40, pauseAfter: 500 },
-  { text: 'We check them.', color: '#fff', fontSize: '26px', fontWeight: 700, speed: 60, pauseAfter: 1000, highlightRange: [3, 14], highlightColor: 'rgba(253,224,130,0.4)' },
+  { text: 'Sometimes those numbers are wrong.', color: 'rgba(255,255,255,0.85)', fontSize: '22px', fontWeight: 400, speed: 40, pauseAfter: 500, highlightRange: [29, 34], highlightColor: 'rgba(250,199,117,0.45)' },
+  { text: 'We check them.', color: '#fff', fontSize: '26px', fontWeight: 700, speed: 60, pauseAfter: 1000, highlightRange: [3, 14], highlightColor: 'rgba(250,199,117,0.45)' },
 ];
 
 export default function HeroSubtitle({ isMobile = false }: HeroSubtitleProps) {
@@ -151,20 +152,10 @@ export default function HeroSubtitle({ isMobile = false }: HeroSubtitleProps) {
             color: 'rgba(255,255,255,0.5)',
             textDecoration: 'none',
             display: 'block',
-            marginBottom: 6,
           }}
         >
-          Remember the <span className="highlight" style={{ color: 'rgba(255,255,255,0.8)' }}>&pound;350m bus</span>?
+          Remember the <span className="highlight">&pound;350m</span> bus? So do we.
         </a>
-        <span
-          style={{
-            fontFamily: 'var(--font-sans), sans-serif',
-            fontSize: isMobile ? 16 : 17,
-            color: 'rgba(255,255,255,0.5)',
-          }}
-        >
-          So do we.
-        </span>
       </div>
     </div>
   );
@@ -186,9 +177,8 @@ function renderChars(line: Line, visibleChars: number) {
       <span
         key="h"
         style={{
-          background: `linear-gradient(to bottom, transparent 40%, ${line.highlightColor} 40%, ${line.highlightColor} 90%, transparent 90%)`,
-          padding: '0 4px',
-          margin: '0 -4px',
+          background: `linear-gradient(to bottom, transparent 60%, ${line.highlightColor} 60%)`,
+          padding: '0 2px',
         }}
       >
         {highlighted}
