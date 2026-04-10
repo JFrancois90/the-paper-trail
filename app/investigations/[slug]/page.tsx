@@ -14,6 +14,7 @@ import ScrollReveal from '@/components/ScrollReveal';
 import HighlightedText from '@/components/HighlightedText';
 import CorrectionBox from '@/components/CorrectionBox';
 import RebuttalBox from '@/components/RebuttalBox';
+import StudentDebtExtras from '@/components/StudentDebtExtras';
 import { HIGHLIGHT_PHRASES } from '@/lib/highlights';
 import InvestigationPageBars from './InvestigationPageBars';
 import InvestigationPageChain from './InvestigationPageChain';
@@ -183,6 +184,13 @@ export default async function InvestigationPage({ params }: PageProps) {
             <ImpactBox impact={inv.impact} />
           </div>
         </ScrollReveal>
+
+        {/* Investigation-specific extras */}
+        {inv.slug === 'student-debt-claim' && (
+          <ScrollReveal>
+            <StudentDebtExtras />
+          </ScrollReveal>
+        )}
 
         {/* Questions */}
         <ScrollReveal>

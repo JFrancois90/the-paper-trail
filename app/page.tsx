@@ -696,6 +696,14 @@ export default function Home() {
                   slug: '350bn-tax-evasion',
                   correction: false,
                 },
+                {
+                  multiplier: '\u00a313.6k',
+                  label: 'above max possible',
+                  claim: 'I left university in 2019 with \u00a349,600 of debt',
+                  oneLiner: 'Max possible for 2 years at Nottingham: ~\u00a336,000. Claimed: \u00a349,600.',
+                  slug: 'student-debt-claim',
+                  correction: false,
+                },
               ].map((inv, i) => (
                 <ScrollReveal key={inv.slug} anim="fadeUp" delay={i * 0.12}>
                   <Link
