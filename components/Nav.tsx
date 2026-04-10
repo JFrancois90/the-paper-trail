@@ -58,9 +58,9 @@ export default function Nav({ forceDark }: NavProps) {
 
   const labelStyle: React.CSSProperties = {
     fontFamily: 'var(--font-sans), sans-serif',
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: 500,
-    letterSpacing: '0.02em',
+    letterSpacing: '0.01em',
     color: textMuted,
     textDecoration: 'none',
     padding: '4px 0',
@@ -87,19 +87,19 @@ export default function Nav({ forceDark }: NavProps) {
     >
       <div
         style={{
-          maxWidth: 1000,
+          maxWidth: 1200,
           margin: '0 auto',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          height: 64,
+          height: 72,
         }}
       >
         <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
           <img src={logo} alt="The Paper Trail" className="nav-logo" />
         </Link>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 36 }}>
           <Link href="/" style={labelStyle}>Home</Link>
           <Link href="/how-it-works" style={labelStyle}>What we do</Link>
           <Link href="/about" style={labelStyle}>What we are fighting for</Link>
@@ -107,11 +107,11 @@ export default function Nav({ forceDark }: NavProps) {
             href="#subscribe"
             style={{
               fontFamily: 'var(--font-sans), sans-serif',
-              fontSize: 13,
+              fontSize: 14,
               fontWeight: 500,
-              letterSpacing: '0.02em',
+              letterSpacing: '0.01em',
               textDecoration: 'none',
-              padding: '8px 20px',
+              padding: '10px 24px',
               borderRadius: 6,
               border: `1.5px solid ${dark ? textColor : '#1b2a4a'}`,
               color: textColor,

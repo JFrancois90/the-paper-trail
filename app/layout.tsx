@@ -47,7 +47,18 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               *, *::before, *::after { box-sizing: border-box; }
+              html { scroll-snap-type: y mandatory; overflow-y: scroll; }
               body { margin: 0; padding: 0; }
+              .snap-section {
+                min-height: 100vh;
+                scroll-snap-align: start;
+                display: flex;
+                align-items: center;
+              }
+              @media (max-width: 640px) {
+                html { scroll-snap-type: none; }
+                .snap-section { min-height: auto; scroll-snap-align: none; }
+              }
               .skip-link {
                 position: absolute;
                 left: -9999px;
@@ -74,7 +85,7 @@ export default function RootLayout({
                 outline: 2px solid #2358a3;
                 outline-offset: 2px;
               }
-              .nav-logo { height: 44px; }
+              .nav-logo { height: 48px; }
               @media (max-width: 640px) {
                 .nav-logo { height: 34px; }
               }

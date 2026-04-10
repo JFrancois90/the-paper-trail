@@ -50,6 +50,7 @@ export default function Home() {
       <main id="main-content" style={{ overflowX: 'hidden' }}>
         {/* ─── SECTION 1: HERO ─── */}
         <section
+          className="snap-section"
           data-nav-theme="dark"
           style={{
             minHeight: '100vh',
@@ -61,7 +62,7 @@ export default function Home() {
             position: 'relative',
           }}
         >
-          <div style={{ maxWidth: 1000, margin: '0 auto', width: '100%' }}>
+          <div style={{ maxWidth: 1200, margin: '0 auto', width: '100%' }}>
             <h1
               style={{
                 margin: '0 0 40px',
@@ -105,6 +106,7 @@ export default function Home() {
 
         {/* ─── SECTION 2: THE PROBLEM ─── */}
         <section
+          className="snap-section"
           data-nav-theme="light"
           style={{
             minHeight: '100vh',
@@ -112,109 +114,103 @@ export default function Home() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '80px 8vw',
+            padding: '60px 8vw',
           }}
         >
-          <div style={{ maxWidth: 800, margin: '0 auto', textAlign: 'center' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 24, marginBottom: 48 }}>
-              <ScrollReveal anim="scaleReveal" delay={0}>
-                <p
-                  style={{
-                    fontFamily: H,
-                    fontSize: 'clamp(24px, 4vw, 40px)',
-                    fontWeight: 700,
-                    color: COLORS.navy,
-                    margin: 0,
-                    lineHeight: 1.2,
-                    letterSpacing: '-0.02em',
-                  }}
-                >
-                  <span className="highlight-red">&pound;350 million</span> on a bus.
-                </p>
-              </ScrollReveal>
-
-              <ScrollReveal anim="scaleReveal" delay={0.15}>
-                <p
-                  style={{
-                    fontFamily: H,
-                    fontSize: 'clamp(24px, 4vw, 40px)',
-                    fontWeight: 700,
-                    color: COLORS.navy,
-                    margin: 0,
-                    lineHeight: 1.2,
-                    letterSpacing: '-0.02em',
-                  }}
-                >
-                  <span className="highlight-red">&pound;7.1 billion</span> missing from a policy.
-                </p>
-              </ScrollReveal>
-
-              <ScrollReveal anim="scaleReveal" delay={0.3}>
-                <p
-                  style={{
-                    fontFamily: H,
-                    fontSize: 'clamp(24px, 4vw, 40px)',
-                    fontWeight: 700,
-                    color: COLORS.navy,
-                    margin: 0,
-                    lineHeight: 1.2,
-                    letterSpacing: '-0.02em',
-                  }}
-                >
-                  A <span className="highlight-red">48&times;</span> exaggeration in Parliament.
-                </p>
-              </ScrollReveal>
+          <div style={{ maxWidth: 1100, margin: '0 auto', textAlign: 'center' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginBottom: 40 }}>
+              {[
+                { text: <><span className="highlight-red">&pound;350 million</span> on a bus.</>, delay: 0 },
+                { text: <><span className="highlight-red">&pound;7.1 billion</span> missing from a policy.</>, delay: 0.12 },
+                { text: <>A <span className="highlight-red">48&times;</span> exaggeration in Parliament.</>, delay: 0.24 },
+              ].map((item, i) => (
+                <ScrollReveal key={i} anim="scaleReveal" delay={item.delay}>
+                  <p
+                    style={{
+                      fontFamily: H,
+                      fontSize: 'clamp(32px, 4.5vw, 56px)',
+                      fontWeight: 700,
+                      color: COLORS.navy,
+                      margin: 0,
+                      lineHeight: 1.15,
+                      letterSpacing: '-0.03em',
+                    }}
+                  >
+                    {item.text}
+                  </p>
+                </ScrollReveal>
+              ))}
             </div>
 
-            <ScrollReveal anim="fadeUp" delay={0.5}>
+            <ScrollReveal anim="fadeUp" delay={0.4}>
               <p
                 style={{
                   fontFamily: B,
                   fontSize: 'clamp(16px, 2vw, 20px)',
                   color: COLORS.muted,
                   lineHeight: 1.6,
-                  margin: '0 0 20px',
-                  maxWidth: 560,
-                  marginLeft: 'auto',
-                  marginRight: 'auto',
+                  margin: '0 0 40px',
                 }}
               >
                 These aren&apos;t opinions. They&apos;re numbers. And they&apos;re wrong.
               </p>
             </ScrollReveal>
 
-            <ScrollReveal anim="fadeUp" delay={0.65}>
-              <p
-                style={{
-                  fontFamily: B,
-                  fontSize: 'clamp(15px, 1.8vw, 18px)',
-                  color: COLORS.muted,
-                  lineHeight: 1.6,
-                  margin: 0,
-                  maxWidth: 560,
-                  marginLeft: 'auto',
-                  marginRight: 'auto',
-                }}
-              >
-                Remember, we learnt 1+1=2.{' '}
-                <span className="highlight">When did that equation change?</span>
-              </p>
+            {/* Visual 1+1=2 equation */}
+            <ScrollReveal anim="scaleReveal" delay={0.55}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                  <span style={{ fontFamily: H, fontSize: 'clamp(48px, 5vw, 72px)', fontWeight: 700, color: COLORS.navy, letterSpacing: '-0.03em' }}>
+                    1 + 1 = 2
+                  </span>
+                  <span style={{ fontSize: 'clamp(32px, 4vw, 48px)', color: COLORS.sourceGreen }}>&#10003;</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 16, position: 'relative' }}>
+                  <span style={{ fontFamily: H, fontSize: 'clamp(48px, 5vw, 72px)', fontWeight: 700, color: COLORS.claimRed, letterSpacing: '-0.03em', opacity: 0.7 }}>
+                    1 + 1 = 3
+                  </span>
+                  <span style={{ fontSize: 'clamp(32px, 4vw, 48px)', color: COLORS.claimRed }}>&#10007;</span>
+                  {/* Strikethrough line */}
+                  <svg
+                    viewBox="0 0 200 8"
+                    preserveAspectRatio="none"
+                    style={{
+                      position: 'absolute',
+                      left: 0,
+                      top: '50%',
+                      width: '85%',
+                      height: '4px',
+                      transform: 'rotate(-1.5deg)',
+                    }}
+                  >
+                    <path
+                      d="M2 4 C 30 2, 60 6, 100 3 S 160 5, 198 4"
+                      fill="none"
+                      stroke={COLORS.claimRed}
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      opacity="0.5"
+                    />
+                  </svg>
+                </div>
+              </div>
             </ScrollReveal>
           </div>
         </section>
 
         {/* ─── SECTION 3: WHAT WE DO ─── */}
         <section
+          className="snap-section"
           data-nav-theme="light"
           style={{
             minHeight: '100vh',
             background: COLORS.paper,
             display: 'flex',
             alignItems: 'center',
-            padding: '80px 8vw',
+            padding: '60px 8vw',
           }}
         >
-          <div style={{ maxWidth: 900, margin: '0 auto', width: '100%' }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%' }}>
             <ScrollReveal anim="fadeUp">
               <p
                 style={{
@@ -231,7 +227,7 @@ export default function Home() {
               </p>
             </ScrollReveal>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
               {[
                 {
                   num: '01',
@@ -286,8 +282,8 @@ export default function Home() {
                       borderRadius: 14,
                       padding: 28,
                       display: 'flex',
-                      gap: 24,
-                      alignItems: 'center',
+                      flexDirection: 'column',
+                      gap: 16,
                       transition: 'transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s cubic-bezier(0.22,1,0.36,1)',
                       cursor: 'default',
                     }}
@@ -302,31 +298,29 @@ export default function Home() {
                   >
                     <div style={{ flexShrink: 0 }}>{step.icon}</div>
                     <div>
-                      <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, marginBottom: 6 }}>
-                        <span
-                          style={{
-                            fontFamily: H,
-                            fontSize: 32,
-                            fontWeight: 700,
-                            color: COLORS.navyLight,
-                            letterSpacing: '-0.03em',
-                            lineHeight: 1,
-                          }}
-                        >
-                          {step.num}
-                        </span>
-                        <h3
-                          style={{
-                            fontFamily: H,
-                            fontSize: 20,
-                            fontWeight: 700,
-                            color: COLORS.navy,
-                            margin: 0,
-                          }}
-                        >
-                          {step.title}
-                        </h3>
-                      </div>
+                      <span
+                        style={{
+                          fontFamily: H,
+                          fontSize: 60,
+                          fontWeight: 700,
+                          color: COLORS.navyLight,
+                          letterSpacing: '-0.03em',
+                          lineHeight: 1,
+                        }}
+                      >
+                        {step.num}
+                      </span>
+                      <h3
+                        style={{
+                          fontFamily: H,
+                          fontSize: 22,
+                          fontWeight: 700,
+                          color: COLORS.navy,
+                          margin: 0,
+                        }}
+                      >
+                        {step.title}
+                      </h3>
                       <p
                         style={{
                           fontFamily: B,
@@ -348,16 +342,17 @@ export default function Home() {
 
         {/* ─── SECTION 4: FEATURED INVESTIGATION (RAILTRACK) ─── */}
         <section
+          className="snap-section"
           data-nav-theme="light"
           style={{
             minHeight: '100vh',
             background: COLORS.paper,
             display: 'flex',
             alignItems: 'center',
-            padding: '80px 8vw',
+            padding: '60px 8vw',
           }}
         >
-          <div style={{ maxWidth: 900, margin: '0 auto', width: '100%' }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%' }}>
             <ScrollReveal anim="fadeUp">
               <p
                 style={{
@@ -518,13 +513,14 @@ export default function Home() {
 
         {/* ─── SECTION 5: CARELESS WHISPERS ─── */}
         <section
+          className="snap-section"
           data-nav-theme="dark"
           style={{
             minHeight: '100vh',
             background: COLORS.navy,
             display: 'flex',
             alignItems: 'center',
-            padding: '80px 8vw',
+            padding: '60px 8vw',
           }}
         >
           <div style={{ maxWidth: 600, margin: '0 auto', width: '100%' }}>
@@ -640,13 +636,17 @@ export default function Home() {
 
         {/* ─── SECTION 6: MORE INVESTIGATIONS ─── */}
         <section
+          className="snap-section"
           data-nav-theme="light"
           style={{
+            minHeight: '100vh',
             background: COLORS.paper,
-            padding: '80px 8vw',
+            display: 'flex',
+            alignItems: 'center',
+            padding: '60px 8vw',
           }}
         >
-          <div style={{ maxWidth: 900, margin: '0 auto' }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%' }}>
             <ScrollReveal anim="fadeUp">
               <p
                 style={{
@@ -756,14 +756,19 @@ export default function Home() {
 
         {/* ─── SECTION 7: THE MISSION ─── */}
         <section
+          className="snap-section"
           data-nav-theme="light"
           style={{
+            minHeight: '100vh',
             background: COLORS.paper,
-            padding: '100px 8vw',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '60px 8vw',
             textAlign: 'center',
           }}
         >
-          <div style={{ maxWidth: 700, margin: '0 auto' }}>
+          <div style={{ maxWidth: 800, margin: '0 auto' }}>
             <ScrollReveal anim="scaleReveal">
               <p
                 style={{
@@ -839,12 +844,17 @@ export default function Home() {
 
         {/* ─── SECTION 8: SUBSCRIBE ─── */}
         <section
+          className="snap-section"
           id="subscribe"
           data-nav-theme="dark"
           aria-label="Subscribe"
           style={{
+            minHeight: '100vh',
             background: COLORS.navy,
-            padding: '80px 8vw',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '60px 8vw',
             position: 'relative',
             overflow: 'hidden',
           }}
