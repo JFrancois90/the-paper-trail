@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Sora, Outfit } from 'next/font/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/next';
+import PreviewGate from '@/components/PreviewGate';
 
 const sora = Sora({
   subsets: ['latin'],
@@ -127,7 +128,9 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>
-        {children}
+        <PreviewGate>
+          {children}
+        </PreviewGate>
         <SpeedInsights />
         <Analytics />
       </body>
