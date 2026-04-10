@@ -8,7 +8,7 @@ interface BrandSloganProps {
 const sizes = {
   sm: { fontSize: 'clamp(16px, 2vw, 18px)', lineHeight: 1.3 },
   md: { fontSize: 'clamp(24px, 3.5vw, 32px)', lineHeight: 1.15 },
-  lg: { fontSize: 'clamp(40px, 6vw, 72px)', lineHeight: 1.08 },
+  lg: { fontSize: 'clamp(36px, 5.5vw, 64px)', lineHeight: 1.08 },
 };
 
 export default function BrandSlogan({ size = 'lg', theme = 'dark' }: BrandSloganProps) {

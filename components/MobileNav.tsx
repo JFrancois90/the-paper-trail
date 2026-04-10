@@ -154,9 +154,9 @@ export default function MobileNav({ dark = true }: MobileNavProps) {
           {/* Menu items */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8, flex: 1 }}>
             {[
-              { href: '/', label: 'Investigations' },
-              { href: '/how-it-works', label: 'How it works' },
-              { href: '/about', label: 'About' },
+              { href: '/', label: 'Home' },
+              { href: '/how-it-works', label: 'What we do' },
+              { href: '/about', label: 'What we are fighting for' },
             ].map((item) => (
               <Link
                 key={item.href}

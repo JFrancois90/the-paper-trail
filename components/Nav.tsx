@@ -47,20 +47,20 @@ export default function Nav({ forceDark }: NavProps) {
   }, [forceDark]);
 
   const textColor = dark ? '#fff' : '#1b2a4a';
-  const textMuted = dark ? 'rgba(255,255,255,0.6)' : '#525560';
+  const textMuted = dark ? 'rgba(255,255,255,0.6)' : '#5a5d66';
   const logo = dark ? '/logo-dark.png' : '/logo-nav.png';
   const bg = dark
-    ? scrolled ? 'rgba(27,42,74,0.95)' : 'transparent'
-    : scrolled ? 'rgba(245,244,240,0.92)' : 'transparent';
+    ? scrolled ? 'rgba(27,42,74,0.97)' : 'rgba(27,42,74,0.8)'
+    : '#ffffff';
   const blur = scrolled ? 'blur(14px)' : 'none';
-  const shadow = scrolled && !dark ? '0 1px 8px rgba(27,42,74,0.06)' : 'none';
+  const shadow = scrolled ? '0 2px 12px rgba(0,0,0,0.04)' : 'none';
+  const borderBottom = dark ? 'none' : '1px solid rgba(27,42,74,0.08)';
 
   const labelStyle: React.CSSProperties = {
     fontFamily: 'var(--font-sans), sans-serif',
-    fontSize: 10,
-    fontWeight: 600,
-    textTransform: 'uppercase',
-    letterSpacing: '0.12em',
+    fontSize: 13,
+    fontWeight: 500,
+    letterSpacing: '0.02em',
     color: textMuted,
     textDecoration: 'none',
     padding: '4px 0',
@@ -77,11 +77,12 @@ export default function Nav({ forceDark }: NavProps) {
         right: 0,
         zIndex: 100,
         padding: '0 8vw',
-        transition: 'background 0.4s ease, box-shadow 0.4s ease',
+        transition: 'background 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease',
         background: bg,
         backdropFilter: blur,
         WebkitBackdropFilter: blur,
         boxShadow: shadow,
+        borderBottom: borderBottom,
       }}
     >
       <div
@@ -98,21 +99,21 @@ export default function Nav({ forceDark }: NavProps) {
           <img src={logo} alt="The Paper Trail" className="nav-logo" />
         </Link>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
-          <Link href="/how-it-works" style={labelStyle}>How it works</Link>
-          <Link href="/about" style={labelStyle}>About</Link>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
+          <Link href="/" style={labelStyle}>Home</Link>
+          <Link href="/how-it-works" style={labelStyle}>What we do</Link>
+          <Link href="/about" style={labelStyle}>What we are fighting for</Link>
           <Link
             href="#subscribe"
             style={{
               fontFamily: 'var(--font-sans), sans-serif',
-              fontSize: 10,
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '0.12em',
+              fontSize: 13,
+              fontWeight: 500,
+              letterSpacing: '0.02em',
               textDecoration: 'none',
-              padding: '7px 16px',
+              padding: '8px 20px',
               borderRadius: 6,
-              border: `1.5px solid ${textColor}`,
+              border: `1.5px solid ${dark ? textColor : '#1b2a4a'}`,
               color: textColor,
               background: 'transparent',
               transition: 'all 0.3s ease',

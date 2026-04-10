@@ -17,17 +17,17 @@ interface Line {
   pauseAfter: number;
 }
 
-// "wrong" starts at index 29 in "Sometimes those numbers are wrong."
+// "dead wrong" starts at index 29 in "Sometimes those numbers are dead wrong."
 const DESKTOP_LINES: Line[] = [
-  { text: 'Politicians use numbers to win.', color: 'rgba(255,255,255,0.85)', fontSize: '28px', fontWeight: 400, speed: 50, pauseAfter: 500 },
-  { text: 'Sometimes those numbers are wrong.', color: 'rgba(255,255,255,0.85)', fontSize: '28px', fontWeight: 400, speed: 50, pauseAfter: 500, highlightRange: [29, 34], highlightColor: 'rgba(250,199,117,0.45)' },
-  { text: 'We check them.', color: '#fff', fontSize: '36px', fontWeight: 700, speed: 70, pauseAfter: 1000, highlightRange: [3, 14], highlightColor: 'rgba(250,199,117,0.45)' },
+  { text: 'Politicians use numbers to win.', color: 'rgba(255,255,255,0.85)', fontSize: '24px', fontWeight: 400, speed: 50, pauseAfter: 400 },
+  { text: 'Sometimes those numbers are dead wrong.', color: 'rgba(255,255,255,0.85)', fontSize: '24px', fontWeight: 400, speed: 50, pauseAfter: 400, highlightRange: [29, 39], highlightColor: 'rgba(196,138,10,0.35)' },
+  { text: 'We check them.', color: '#fff', fontSize: '32px', fontWeight: 700, speed: 70, pauseAfter: 1000, highlightRange: [3, 14], highlightColor: 'rgba(196,138,10,0.35)' },
 ];
 
 const MOBILE_LINES: Line[] = [
   { text: 'Politicians use numbers to win.', color: 'rgba(255,255,255,0.85)', fontSize: '22px', fontWeight: 400, speed: 40, pauseAfter: 500 },
-  { text: 'Sometimes those numbers are wrong.', color: 'rgba(255,255,255,0.85)', fontSize: '22px', fontWeight: 400, speed: 40, pauseAfter: 500, highlightRange: [29, 34], highlightColor: 'rgba(250,199,117,0.45)' },
-  { text: 'We check them.', color: '#fff', fontSize: '26px', fontWeight: 700, speed: 60, pauseAfter: 1000, highlightRange: [3, 14], highlightColor: 'rgba(250,199,117,0.45)' },
+  { text: 'Sometimes those numbers are dead wrong.', color: 'rgba(255,255,255,0.85)', fontSize: '22px', fontWeight: 400, speed: 40, pauseAfter: 500, highlightRange: [29, 39], highlightColor: 'rgba(196,138,10,0.35)' },
+  { text: 'We check them.', color: '#fff', fontSize: '26px', fontWeight: 700, speed: 60, pauseAfter: 1000, highlightRange: [3, 14], highlightColor: 'rgba(196,138,10,0.35)' },
 ];
 
 export default function HeroSubtitle({ isMobile = false }: HeroSubtitleProps) {
@@ -90,7 +90,7 @@ export default function HeroSubtitle({ isMobile = false }: HeroSubtitleProps) {
   }, [lineIndex, showBus]);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
       <style>{`
         @keyframes cursorBlink {
           0%, 100% { opacity: 1; }

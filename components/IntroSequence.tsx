@@ -221,7 +221,8 @@ export default function IntroSequence({ onComplete, isMobile = false }: IntroSeq
                 animation: 'fadeIn 0.5s ease',
               }}
             >
-              Three politicians. One table. None of them checked the number.
+              Four politicians. One table. 280 days in a year.<br />
+              Not one of them noticed.
             </p>
           )}
 
@@ -249,7 +250,7 @@ export default function IntroSequence({ onComplete, isMobile = false }: IntroSeq
               onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(27,42,74,0.06)'; }}
               onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
             >
-              See what we found &rarr;
+              Show me the numbers &rarr;
             </button>
           )}
         </div>

@@ -44,10 +44,10 @@ export default function Footer() {
         </div>
         <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
           <Link href="/how-it-works" style={linkStyle}>
-            How it works
+            What we do
           </Link>
           <Link href="/about" style={linkStyle}>
-            About
+            What we are fighting for
           </Link>
         </div>
       </div>

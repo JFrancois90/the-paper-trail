@@ -74,21 +74,24 @@ export default function RootLayout({
                 outline: 2px solid #2358a3;
                 outline-offset: 2px;
               }
-              .nav-logo { height: 48px; }
+              .nav-logo { height: 44px; }
               @media (max-width: 640px) {
-                .nav-logo { height: 40px; }
+                .nav-logo { height: 34px; }
               }
               .highlight {
-                background: linear-gradient(to bottom, transparent 60%, rgba(250,199,117,0.45) 60%);
-                padding: 0 2px;
+                background: linear-gradient(to bottom, transparent 65%, rgba(196,138,10,0.35) 65%);
+                padding: 0 3px;
+                border-radius: 2px;
               }
               .highlight-red {
-                background: linear-gradient(to bottom, transparent 60%, rgba(181,48,42,0.18) 60%);
-                padding: 0 2px;
+                background: linear-gradient(to bottom, transparent 65%, rgba(181,48,42,0.2) 65%);
+                padding: 0 3px;
+                border-radius: 2px;
               }
               .highlight-green {
-                background: linear-gradient(to bottom, transparent 60%, rgba(26,107,66,0.18) 60%);
-                padding: 0 2px;
+                background: linear-gradient(to bottom, transparent 65%, rgba(26,107,66,0.2) 65%);
+                padding: 0 3px;
+                border-radius: 2px;
               }
               @media (prefers-reduced-motion: reduce) {
                 *, *::before, *::after {
@@ -104,7 +107,7 @@ export default function RootLayout({
       <body
         style={{
           fontFamily: 'var(--font-sans), sans-serif',
-          backgroundColor: '#f5f4f0',
+          backgroundColor: '#f0efe8',
           color: '#0f1117',
           WebkitFontSmoothing: 'antialiased',
           MozOsxFontSmoothing: 'grayscale',
