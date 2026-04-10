@@ -17,18 +17,29 @@ interface WhisperChainProps {
 export default function WhisperChain({ chain, note, expanded }: WhisperChainProps) {
   return (
     <div>
-      <div
-        style={{
-          fontFamily: 'var(--font-sans), sans-serif',
-          fontSize: 9,
-          fontWeight: 600,
-          textTransform: 'uppercase',
-          letterSpacing: '0.1em',
-          color: COLORS.chainBlue,
-          marginBottom: 12,
-        }}
-      >
-        The citation chain
+      <div style={{ marginBottom: 12 }}>
+        <div
+          style={{
+            fontFamily: 'var(--font-sans), sans-serif',
+            fontSize: 9,
+            fontWeight: 600,
+            textTransform: 'uppercase',
+            letterSpacing: '0.1em',
+            color: COLORS.chainBlue,
+            marginBottom: 3,
+          }}
+        >
+          Careless whispers
+        </div>
+        <div
+          style={{
+            fontFamily: 'var(--font-sans), sans-serif',
+            fontSize: 12,
+            color: COLORS.ink40,
+          }}
+        >
+          How the claim spread from source to &lsquo;established fact&rsquo;
+        </div>
       </div>
 
       {/* Scrollable chain container */}

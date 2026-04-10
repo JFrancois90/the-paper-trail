@@ -32,16 +32,12 @@ export default function Footer() {
           gap: 16,
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-          <span
-            style={{
-              fontFamily: 'var(--font-serif), serif',
-              fontSize: 16,
-              color: COLORS.ink40,
-            }}
-          >
-            The Paper Trail
-          </span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <img
+            src="/logo-dark.png"
+            alt="The Paper Trail"
+            style={{ height: 28 }}
+          />
           <span style={{ fontSize: 12, color: COLORS.ink20 }}>
             &copy; {new Date().getFullYear()}
           </span>

@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { COLORS } from '@/lib/constants';
 import type { Investigation } from '@/data/investigations';
-import PartyPill from './PartyPill';
 import MultiplierBadge from './MultiplierBadge';
 import SaidVsSource from './SaidVsSource';
 import PlainEnglishBox from './PlainEnglishBox';
@@ -11,6 +10,7 @@ import AnimatedBar from './AnimatedBar';
 import WhisperChain from './WhisperChain';
 import ImpactBox from './ImpactBox';
 import QuestionsBlock from './QuestionsBlock';
+import CorrectionBox from './CorrectionBox';
 
 interface InvestigationCardProps {
   investigation: Investigation;
@@ -64,7 +64,6 @@ export default function InvestigationCard({ investigation }: InvestigationCardPr
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <MultiplierBadge multiplier={inv.multiplier} label={inv.multiplierLabel} />
-            <PartyPill party={inv.party} />
           </div>
           <span
             style={{
@@ -95,7 +94,12 @@ export default function InvestigationCard({ investigation }: InvestigationCardPr
 
       {/* Said vs source (always visible) */}
       <div style={{ padding: '0 24px 20px' }}>
-        <SaidVsSource said={inv.said} source={inv.source} />
+        <SaidVsSource
+          saidQuote={inv.saidQuote}
+          sourceLabel={inv.sourceLabel}
+          sourceImage={inv.sourceImage}
+          sourceOneLiner={inv.sourceOneLiner}
+        />
       </div>
 
       {/* Expandable content */}
@@ -125,6 +129,7 @@ export default function InvestigationCard({ investigation }: InvestigationCardPr
           )}
           <ImpactBox impact={inv.impact} />
           <QuestionsBlock questions={inv.questions} />
+          {inv.correction && <CorrectionBox text={inv.correction} />}
         </div>
       </div>
 

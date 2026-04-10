@@ -25,6 +25,13 @@ export default function AboutPage() {
       >
         {/* Hero */}
         <ScrollReveal>
+          <div style={{ marginBottom: 20 }}>
+            <img
+              src="/logo-nav.png"
+              alt="The Paper Trail"
+              style={{ height: 56 }}
+            />
+          </div>
           <p style={labelStyle}>About</p>
           <h1
             style={{

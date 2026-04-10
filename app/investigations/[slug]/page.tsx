@@ -5,13 +5,15 @@ import { COLORS } from '@/lib/constants';
 import { investigations } from '@/data/investigations';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
-import PartyPill from '@/components/PartyPill';
 import MultiplierBadge from '@/components/MultiplierBadge';
 import SaidVsSource from '@/components/SaidVsSource';
 import PlainEnglishBox from '@/components/PlainEnglishBox';
 import ImpactBox from '@/components/ImpactBox';
 import QuestionsBlock from '@/components/QuestionsBlock';
 import ScrollReveal from '@/components/ScrollReveal';
+import HighlightedText from '@/components/HighlightedText';
+import CorrectionBox from '@/components/CorrectionBox';
+import { HIGHLIGHT_PHRASES } from '@/lib/highlights';
 import InvestigationPageBars from './InvestigationPageBars';
 import InvestigationPageChain from './InvestigationPageChain';
 
@@ -91,7 +93,6 @@ export default async function InvestigationPage({ params }: PageProps) {
           <div style={{ marginBottom: 32 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14, flexWrap: 'wrap' }}>
               <MultiplierBadge multiplier={inv.multiplier} label={inv.multiplierLabel} />
-              <PartyPill party={inv.party} />
               <span
                 style={{
                   fontFamily: 'var(--font-sans), sans-serif',
@@ -121,7 +122,18 @@ export default async function InvestigationPage({ params }: PageProps) {
         {/* Said vs Source (full width) */}
         <ScrollReveal>
           <div style={{ marginBottom: 28 }}>
-            <SaidVsSource said={inv.said} source={inv.source} />
+            <SaidVsSource
+              saidQuote={inv.saidQuote}
+              sourceLabel={inv.sourceLabel}
+              sourceImage={inv.sourceImage}
+              sourceOneLiner={inv.sourceOneLiner}
+              sourceFallback={
+                <HighlightedText
+                  text={inv.source}
+                  phrases={HIGHLIGHT_PHRASES[inv.slug] || []}
+                />
+              }
+            />
           </div>
         </ScrollReveal>
 
@@ -186,6 +198,15 @@ export default async function InvestigationPage({ params }: PageProps) {
           </div>
         </ScrollReveal>
 
+        {/* Correction box */}
+        {inv.correction && (
+          <ScrollReveal>
+            <div style={{ marginBottom: 48 }}>
+              <CorrectionBox text={inv.correction} />
+            </div>
+          </ScrollReveal>
+        )}
+
         {/* Related investigations */}
         {related.length > 0 && (
           <section aria-label="Related investigations" style={{ marginBottom: 48 }}>
@@ -222,7 +243,6 @@ export default async function InvestigationPage({ params }: PageProps) {
                   <div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
                       <MultiplierBadge multiplier={r.multiplier} label={r.multiplierLabel} />
-                      <PartyPill party={r.party} />
                     </div>
                     <span
                       style={{

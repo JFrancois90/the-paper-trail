@@ -44,6 +44,11 @@ export default function SubscribeCTA() {
       />
 
       <div style={{ maxWidth: 520, margin: '0 auto', textAlign: 'center', position: 'relative' }}>
+        <img
+          src="/logo-dark.png"
+          alt="The Paper Trail"
+          style={{ height: 24, marginBottom: 16, opacity: 0.7 }}
+        />
         <h2
           style={{
             fontFamily: 'var(--font-serif), serif',

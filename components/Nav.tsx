@@ -59,19 +59,13 @@ export default function Nav() {
             textDecoration: 'none',
             display: 'flex',
             alignItems: 'center',
-            gap: 8,
           }}
         >
-          <span
-            style={{
-              fontFamily: 'var(--font-serif), serif',
-              fontSize: 20,
-              color: COLORS.navy,
-              letterSpacing: '-0.02em',
-            }}
-          >
-            The Paper Trail
-          </span>
+          <img
+            src="/logo-nav.png"
+            alt="The Paper Trail"
+            className="nav-logo"
+          />
         </Link>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>

@@ -1,5 +1,3 @@
-import { COLORS } from '@/lib/constants';
-
 interface HighlightProps {
   children: React.ReactNode;
 }
@@ -8,9 +6,10 @@ export default function Highlight({ children }: HighlightProps) {
   return (
     <span
       style={{
-        background: `linear-gradient(transparent 55%, rgba(27,42,74,0.08) 55%)`,
+        background: 'rgba(253, 243, 222, 0.8)',
         fontWeight: 600,
-        color: COLORS.ink,
+        borderRadius: 2,
+        padding: '1px 2px',
       }}
     >
       {children}
