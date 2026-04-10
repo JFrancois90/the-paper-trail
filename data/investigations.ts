@@ -67,7 +67,7 @@ export const investigations: Investigation[] = [
       'If the true cost was \u00a37.6bn, does water nationalisation still add up under your current projections?',
       'Four outlets cited each other without checking the original source. What responsibility do MPs have when their claims get republished unchecked?',
     ],
-    multiplier: '15\u00d7',
+    multiplier: '15×',
     multiplierLabel: 'cost understated',
   },
   {
@@ -97,7 +97,7 @@ export const investigations: Investigation[] = [
       'Will you issue a correction to the Chancellor and to the public?',
       'What checks exist to make sure the claims in your public letters match the sources you cite?',
     ],
-    multiplier: '\u221212%',
+    multiplier: '−12%',
     multiplierLabel: 'actual trend',
   },
   {
@@ -167,7 +167,7 @@ export const investigations: Investigation[] = [
       'If the actual tax evasion figure is \u00a35.5bn, how does that change the cost-benefit case for your proposed enforcement spending?',
       'Why wasn\u2019t the HMRC official figure used as the primary source?',
     ],
-    multiplier: '48\u00d7',
+    multiplier: '48×',
     multiplierLabel: 'figure inflated',
   },
 ];

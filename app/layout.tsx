@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
-import { Instrument_Serif, Outfit } from 'next/font/google';
+import { Sora, Outfit } from 'next/font/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/next';
 
-const instrumentSerif = Instrument_Serif({
-  weight: '400',
+const sora = Sora({
   subsets: ['latin'],
-  variable: '--font-serif',
+  variable: '--font-heading',
   display: 'swap',
+  weight: ['400', '600', '700'],
 });
 
 const outfit = Outfit({
@@ -41,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${instrumentSerif.variable} ${outfit.variable}`}>
+    <html lang="en" className={`${sora.variable} ${outfit.variable}`}>
       <head>
         <style
           dangerouslySetInnerHTML={{
@@ -74,9 +74,24 @@ export default function RootLayout({
                 outline: 2px solid #2358a3;
                 outline-offset: 2px;
               }
-              .nav-logo { height: 32px; }
+              .nav-logo { height: 48px; }
               @media (max-width: 640px) {
-                .nav-logo { height: 26px; }
+                .nav-logo { height: 40px; }
+              }
+              .highlight {
+                background: linear-gradient(to bottom, transparent 40%, rgba(253,224,130,0.4) 40%, rgba(253,224,130,0.4) 90%, transparent 90%);
+                padding: 0 4px;
+                margin: 0 -4px;
+              }
+              .highlight-red {
+                background: linear-gradient(to bottom, transparent 40%, rgba(252,234,233,0.6) 40%, rgba(252,234,233,0.6) 90%, transparent 90%);
+                padding: 0 4px;
+                margin: 0 -4px;
+              }
+              .highlight-green {
+                background: linear-gradient(to bottom, transparent 40%, rgba(230,245,237,0.6) 40%, rgba(230,245,237,0.6) 90%, transparent 90%);
+                padding: 0 4px;
+                margin: 0 -4px;
               }
               @media (prefers-reduced-motion: reduce) {
                 *, *::before, *::after {
