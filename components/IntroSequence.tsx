@@ -118,7 +118,7 @@ export default function IntroSequence({ onComplete, isMobile = false }: IntroSeq
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: isMobile ? '0 20px' : '0 8vw',
+        padding: isMobile ? '0 28px' : '0 8vw',
         overflow: 'hidden',
       }}
       onClick={screen === 1 ? goToScreen2 : undefined}

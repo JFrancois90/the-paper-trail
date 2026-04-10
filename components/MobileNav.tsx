@@ -27,7 +27,7 @@ export default function MobileNav({ dark = true }: MobileNavProps) {
   const textColor = dark && !scrolled ? '#fff' : COLORS.navy;
   const bg = scrolled
     ? dark ? 'rgba(27,42,74,0.95)' : 'rgba(245,244,240,0.92)'
-    : 'transparent';
+    : dark ? 'rgba(27,42,74,0.85)' : 'transparent';
   const logo = dark && !scrolled ? '/logo-dark.png' : '/logo-nav.png';
 
   return (

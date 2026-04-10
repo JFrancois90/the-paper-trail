@@ -127,8 +127,8 @@ function SnapSection({
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
-        padding: '24px 20px',
+        justifyContent: 'flex-start',
+        padding: '64px 20px 24px',
         boxSizing: 'border-box',
         overflow: 'hidden',
         background: bg,
@@ -520,29 +520,51 @@ export default function MobileHomepage() {
                 {inv.who} &middot; {inv.date}
               </p>
 
-              {/* CTA */}
-              <button
-                onClick={() => setActiveStory(inv)}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 6,
-                  fontFamily: B,
-                  fontSize: 14,
-                  fontWeight: 600,
-                  color: COLORS.chainBlue,
-                  background: `${COLORS.chainBlue}10`,
-                  border: 'none',
-                  borderRadius: 8,
-                  padding: '10px 18px',
-                  cursor: 'pointer',
-                  WebkitTapHighlightColor: 'transparent',
-                  alignSelf: 'flex-start',
-                }}
-                aria-label={`Read investigation: ${inv.claim}`}
-              >
-                Tap to see the story &rarr;
-              </button>
+              {/* CTAs */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8, alignSelf: 'stretch' }}>
+                <button
+                  onClick={() => setActiveStory(inv)}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 6,
+                    fontFamily: B,
+                    fontSize: 14,
+                    fontWeight: 600,
+                    color: COLORS.chainBlue,
+                    background: `${COLORS.chainBlue}10`,
+                    border: 'none',
+                    borderRadius: 8,
+                    padding: '10px 18px',
+                    cursor: 'pointer',
+                    WebkitTapHighlightColor: 'transparent',
+                  }}
+                  aria-label={`Read investigation: ${inv.claim}`}
+                >
+                  Tap to see the story &rarr;
+                </button>
+                <Link
+                  href={`/investigations/${inv.slug}`}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 6,
+                    fontFamily: B,
+                    fontSize: 14,
+                    fontWeight: 600,
+                    color: COLORS.navy,
+                    background: 'transparent',
+                    border: `1.5px solid rgba(27,42,74,0.15)`,
+                    borderRadius: 8,
+                    padding: '10px 18px',
+                    textDecoration: 'none',
+                  }}
+                >
+                  View full investigation &rarr;
+                </Link>
+              </div>
             </div>
           </SnapSection>
         ))}
