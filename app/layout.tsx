@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Instrument_Serif, Outfit } from 'next/font/google';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/next';
 
 const instrumentSerif = Instrument_Serif({
   weight: '400',
@@ -90,6 +92,8 @@ export default function RootLayout({
           Skip to content
         </a>
         {children}
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
