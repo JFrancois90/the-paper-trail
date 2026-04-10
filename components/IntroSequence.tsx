@@ -191,17 +191,32 @@ export default function IntroSequence({ onComplete, isMobile = false }: IntroSeq
             animation: 'fadeIn 0.6s ease',
           }}
         >
+          {/* Caption above image */}
+          <p
+            style={{
+              fontFamily: 'var(--font-sans), sans-serif',
+              fontSize: 15,
+              lineHeight: 1.5,
+              color: COLORS.muted,
+              margin: '0 0 16px',
+            }}
+          >
+            Political parties debating how many days off workers should get per year.
+            The numbers seem low, but nobody can quite work out why.
+          </p>
+
+          {/* Image */}
           <div
             style={{
               borderRadius: 12,
               overflow: 'hidden',
               border: '1px solid rgba(27,42,74,0.08)',
-              marginBottom: 20,
+              marginBottom: 16,
             }}
           >
             <img
               src="/images/280-days-meme.png"
-              alt="Three politicians debating policy based on 280 days in a year"
+              alt="Political parties debating days off using a 280-day year"
               style={{
                 width: '100%',
                 height: 'auto',
@@ -210,18 +225,19 @@ export default function IntroSequence({ onComplete, isMobile = false }: IntroSeq
             />
           </div>
 
+          {/* Kicker below image */}
           {showMemeText && (
             <p
               style={{
                 fontFamily: 'var(--font-sans), sans-serif',
                 fontSize: 16,
+                fontWeight: 600,
                 lineHeight: 1.5,
                 color: COLORS.navy,
                 margin: '0 0 24px',
                 animation: 'fadeIn 0.5s ease',
               }}
             >
-              Three politicians arguing how many days off you deserve.<br />
               None of them noticed the year is 85 days short.
             </p>
           )}
