@@ -16,6 +16,7 @@ import CorrectionBox from '@/components/CorrectionBox';
 import RebuttalBox from '@/components/RebuttalBox';
 import StudentDebtExtras from '@/components/StudentDebtExtras';
 import ReformTaxExtras from '@/components/ReformTaxExtras';
+import RailtrackExtras from '@/components/RailtrackExtras';
 import { HIGHLIGHT_PHRASES } from '@/lib/highlights';
 import InvestigationPageBars from './InvestigationPageBars';
 import InvestigationPageChain from './InvestigationPageChain';
@@ -187,6 +188,11 @@ export default async function InvestigationPage({ params }: PageProps) {
         </ScrollReveal>
 
         {/* Investigation-specific extras */}
+        {inv.slug === 'railtrack-500m' && (
+          <ScrollReveal>
+            <RailtrackExtras />
+          </ScrollReveal>
+        )}
         {inv.slug === 'student-debt-claim' && (
           <ScrollReveal>
             <StudentDebtExtras />
