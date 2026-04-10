@@ -40,4 +40,5 @@ export const PARTY_COLORS: Record<string, { bg: string; text: string; border: st
   Reform: { bg: '#00acc114', text: '#006064', border: '#00acc122' },
   'Lib Dem': { bg: '#f9a82514', text: '#8a5a00', border: '#f9a82522' },
   'Cross-party': { bg: '#5c6bc014', text: '#283593', border: '#5c6bc022' },
+  Media: { bg: '#6b6b6b14', text: '#4a4a4a', border: '#6b6b6b22' },
 };

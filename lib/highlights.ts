@@ -5,4 +5,5 @@ export const HIGHLIGHT_PHRASES: Record<string, string[]> = {
   'cgt-lowest-g7': ['0%', '24%'],
   '350bn-tax-evasion': ['\u00a35.5bn', '\u00a3350bn', '48 times'],
   'student-debt-claim': ['\u00a336,000', '\u00a349,600', '4.3%', '\u00a313,600'],
+  'reform-tax-canary': ['\u00a31,486', '\u00a37,430', '20%'],
 };

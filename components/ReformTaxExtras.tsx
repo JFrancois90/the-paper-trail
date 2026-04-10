@@ -1,0 +1,136 @@
+import { COLORS } from '@/lib/constants';
+
+const B = 'var(--font-sans), sans-serif';
+const H = 'var(--font-heading), sans-serif';
+
+export default function ReformTaxExtras() {
+  return (
+    <>
+      {/* How tax bands work */}
+      <div style={{ background: '#fff', borderRadius: 14, border: '1px solid rgba(27,42,74,0.06)', padding: '24px 28px', marginBottom: 28 }}>
+        <p style={{ fontFamily: B, fontSize: 10, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: '0 0 16px' }}>
+          How tax bands actually work
+        </p>
+        <div style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: COLORS.muted }}>
+          <p style={{ margin: '0 0 12px' }}>You don&apos;t pay one rate on all your income. You pay different rates on different slices.</p>
+          <p style={{ margin: '0 0 8px', fontWeight: 600, color: COLORS.navy }}>Current system:</p>
+          <p style={{ margin: '0 0 4px' }}>First &pound;12,570: <strong>0%</strong> (your personal allowance, you keep all of it)</p>
+          <p style={{ margin: '0 0 4px' }}>&pound;12,571 to &pound;50,270: <strong>20%</strong> (basic rate)</p>
+          <p style={{ margin: '0 0 12px' }}>&pound;50,271 to &pound;125,140: <strong>40%</strong> (higher rate)</p>
+          <p style={{ margin: '0 0 8px', fontWeight: 600, color: COLORS.navy }}>Reform proposed raising the personal allowance to &pound;20,000.</p>
+          <p style={{ margin: '0 0 4px' }}>That means an extra &pound;7,430 of income becomes tax-free.</p>
+          <p style={{ margin: '0 0 4px' }}>That &pound;7,430 was previously taxed at 20%.</p>
+          <p style={{ margin: '0 0 4px' }}>20% of &pound;7,430 = <strong>&pound;1,486</strong>.</p>
+          <p style={{ margin: '0 0 4px' }}>Everyone earning above &pound;20,000 saves exactly &pound;1,486.</p>
+          <p style={{ margin: 0 }}>The 40% band is completely untouched.</p>
+        </div>
+      </div>
+
+      {/* Tax tables */}
+      <div style={{ background: '#fff', borderRadius: 14, border: '1px solid rgba(27,42,74,0.06)', padding: '24px 28px', marginBottom: 28 }}>
+        <p style={{ fontFamily: B, fontSize: 10, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: '0 0 16px' }}>
+          The proof
+        </p>
+
+        {/* Current system */}
+        <p style={{ fontFamily: B, fontSize: 13, fontWeight: 600, color: COLORS.navy, margin: '0 0 8px' }}>Current system:</p>
+        <TaxTable
+          rows={[
+            { band: 'Personal allowance (up to \u00a312,570)', rate: '0%', i15: '\u00a30', i30: '\u00a30', i60: '\u00a30' },
+            { band: 'Basic rate (\u00a312,571-\u00a350,270)', rate: '20%', i15: '\u00a3486', i30: '\u00a33,486', i60: '\u00a37,540' },
+            { band: 'Higher rate (\u00a350,271+)', rate: '40%', i15: '\u00a30', i30: '\u00a30', i60: '\u00a33,892' },
+          ]}
+          totals={{ i15: '\u00a3486', i30: '\u00a33,486', i60: '\u00a311,431' }}
+        />
+
+        <div style={{ height: 20 }} />
+
+        {/* Proposed system */}
+        <p style={{ fontFamily: B, fontSize: 13, fontWeight: 600, color: COLORS.navy, margin: '0 0 8px' }}>Proposed (\u00a320K personal allowance):</p>
+        <TaxTable
+          rows={[
+            { band: 'Personal allowance (up to \u00a320,000)', rate: '0%', i15: '\u00a30', i30: '\u00a30', i60: '\u00a30' },
+            { band: 'Basic rate (\u00a320,001-\u00a350,270)', rate: '20%', i15: '\u00a30', i30: '\u00a32,000', i60: '\u00a36,054' },
+            { band: 'Higher rate (\u00a350,271+)', rate: '40%', i15: '\u00a30', i30: '\u00a30', i60: '\u00a33,892' },
+          ]}
+          totals={{ i15: '\u00a30', i30: '\u00a32,000', i60: '\u00a39,945' }}
+          savings={{ i15: '\u00a3486', i30: '\u00a31,486', i60: '\u00a31,486' }}
+        />
+      </div>
+
+      {/* Outreach */}
+      <div style={{ background: '#fff', borderRadius: 14, border: '1px solid rgba(27,42,74,0.06)', padding: '24px 28px', marginBottom: 28 }}>
+        <p style={{ fontFamily: B, fontSize: 10, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: '0 0 12px' }}>
+          Our outreach
+        </p>
+        <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, margin: '0 0 8px' }}>
+          We raised this directly with The Canary via Instagram DM on 26 February 2026.
+        </p>
+        <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, margin: '0 0 8px' }}>
+          We provided full workings showing both earners save the same amount.
+        </p>
+        <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, margin: 0 }}>
+          No response was received. The original post remains live and uncorrected.
+        </p>
+      </div>
+    </>
+  );
+}
+
+function TaxTable({
+  rows,
+  totals,
+  savings,
+}: {
+  rows: Array<{ band: string; rate: string; i15: string; i30: string; i60: string }>;
+  totals: { i15: string; i30: string; i60: string };
+  savings?: { i15: string; i30: string; i60: string };
+}) {
+  const B = 'var(--font-sans), sans-serif';
+  const th: React.CSSProperties = { fontFamily: B, fontSize: 11, fontWeight: 600, color: COLORS.navy, padding: '8px 6px', textAlign: 'right', borderBottom: '1px solid rgba(27,42,74,0.08)' };
+  const td: React.CSSProperties = { fontFamily: B, fontSize: 13, color: COLORS.muted, padding: '8px 6px', textAlign: 'right', borderBottom: '1px solid rgba(27,42,74,0.04)' };
+  const tdLabel: React.CSSProperties = { ...td, textAlign: 'left', fontSize: 12 };
+
+  return (
+    <div style={{ overflowX: 'auto' }}>
+      <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 500 }}>
+        <thead>
+          <tr>
+            <th style={{ ...th, textAlign: 'left' }}>Band</th>
+            <th style={th}>Rate</th>
+            <th style={th}>\u00a315K</th>
+            <th style={th}>\u00a330K</th>
+            <th style={th}>\u00a360K</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r, i) => (
+            <tr key={i}>
+              <td style={tdLabel}>{r.band}</td>
+              <td style={td}>{r.rate}</td>
+              <td style={td}>{r.i15}</td>
+              <td style={td}>{r.i30}</td>
+              <td style={td}>{r.i60}</td>
+            </tr>
+          ))}
+          <tr>
+            <td style={{ ...tdLabel, fontWeight: 700, color: COLORS.navy }}>Total tax</td>
+            <td style={td}></td>
+            <td style={{ ...td, fontWeight: 700, color: COLORS.navy }}>{totals.i15}</td>
+            <td style={{ ...td, fontWeight: 700, color: COLORS.navy }}>{totals.i30}</td>
+            <td style={{ ...td, fontWeight: 700, color: COLORS.navy }}>{totals.i60}</td>
+          </tr>
+          {savings && (
+            <tr>
+              <td style={{ ...tdLabel, fontWeight: 700, color: COLORS.sourceGreen }}>Saving</td>
+              <td style={td}></td>
+              <td style={{ ...td, fontWeight: 700, color: COLORS.sourceGreen }}>{savings.i15}</td>
+              <td style={{ ...td, fontWeight: 700, color: COLORS.sourceGreen }}>{savings.i30}</td>
+              <td style={{ ...td, fontWeight: 700, color: COLORS.sourceGreen }}>{savings.i60}</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+    </div>
+  );
+}

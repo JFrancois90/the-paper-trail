@@ -157,43 +157,55 @@ export default function Home() {
               </p>
             </ScrollReveal>
 
-            {/* Visual 1+1=2 equation */}
-            <ScrollReveal anim="scaleReveal" delay={0.55}>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                  <span style={{ fontFamily: H, fontSize: 'clamp(48px, 5vw, 72px)', fontWeight: 700, color: COLORS.navy, letterSpacing: '-0.03em' }}>
-                    1 + 1 = 2
-                  </span>
-                  <span style={{ fontSize: 'clamp(32px, 4vw, 48px)', color: COLORS.sourceGreen }}>&#10003;</span>
+            {/* Three-act equation */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 32, marginTop: 20 }}>
+              {/* Act 1 */}
+              <ScrollReveal anim="scaleReveal" delay={0.5}>
+                <div style={{ textAlign: 'center' }}>
+                  <p style={{ fontFamily: B, fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: '0 0 8px' }}>What we were taught</p>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
+                    <span style={{ fontFamily: H, fontSize: 'clamp(40px, 4.5vw, 56px)', fontWeight: 700, color: COLORS.navy, letterSpacing: '-0.03em' }}>1 + 1 = 2</span>
+                    <span style={{ fontSize: 'clamp(28px, 3vw, 40px)', color: COLORS.sourceGreen }}>&#10003;</span>
+                  </div>
+                  <p style={{ fontFamily: B, fontSize: 14, color: COLORS.lightMuted, margin: '6px 0 0' }}>The basics. Everyone agrees.</p>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 16, position: 'relative' }}>
-                  <span style={{ fontFamily: H, fontSize: 'clamp(48px, 5vw, 72px)', fontWeight: 700, color: COLORS.claimRed, letterSpacing: '-0.03em', opacity: 0.7 }}>
-                    1 + 1 = 3
-                  </span>
-                  <span style={{ fontSize: 'clamp(32px, 4vw, 48px)', color: COLORS.claimRed }}>&#10007;</span>
-                  {/* Strikethrough line */}
-                  <svg
-                    viewBox="0 0 200 8"
-                    preserveAspectRatio="none"
-                    style={{
-                      position: 'absolute',
-                      left: 0,
-                      top: '50%',
-                      width: '85%',
-                      height: '4px',
-                      transform: 'rotate(-1.5deg)',
-                    }}
-                  >
-                    <path
-                      d="M2 4 C 30 2, 60 6, 100 3 S 160 5, 198 4"
-                      fill="none"
-                      stroke={COLORS.claimRed}
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      opacity="0.5"
-                    />
-                  </svg>
+              </ScrollReveal>
+
+              {/* Act 2 */}
+              <ScrollReveal anim="scaleReveal" delay={0.65}>
+                <div style={{ textAlign: 'center' }}>
+                  <p style={{ fontFamily: B, fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: '0 0 8px' }}>What we were taught to look out for</p>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
+                    <span style={{ fontFamily: H, fontSize: 'clamp(40px, 4.5vw, 56px)', fontWeight: 700, color: COLORS.navy, letterSpacing: '-0.03em' }}>
+                      1 + 1 = <span style={{ color: COLORS.claimRed }}>3</span>
+                    </span>
+                    <span style={{ fontSize: 'clamp(28px, 3vw, 40px)', color: COLORS.claimRed }}>&#10007;</span>
+                  </div>
+                  <p style={{ fontFamily: B, fontSize: 14, color: COLORS.lightMuted, margin: '6px 0 0' }}>The old problem. Twisting the answer.</p>
                 </div>
+              </ScrollReveal>
+
+              {/* Act 3 */}
+              <ScrollReveal anim="scaleReveal" delay={0.8}>
+                <div style={{ textAlign: 'center' }}>
+                  <p style={{ fontFamily: B, fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: '0 0 8px' }}>What we actually need to find</p>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
+                    <span style={{ fontFamily: H, fontSize: 'clamp(40px, 4.5vw, 56px)', fontWeight: 700, color: COLORS.navy, letterSpacing: '-0.03em' }}>
+                      <span style={{ color: COLORS.claimRed, textDecoration: 'underline', textDecorationColor: 'rgba(181,48,42,0.3)', textUnderlineOffset: '4px' }}>5</span> + 1 = 2
+                    </span>
+                    <span style={{ fontSize: 'clamp(28px, 3vw, 40px)', color: COLORS.claimRed }}>&#10007;</span>
+                  </div>
+                  <p style={{ fontFamily: B, fontSize: 14, color: COLORS.muted, margin: '6px 0 0' }}>The inputs are wrong. The answer looks familiar, so nobody checks.</p>
+                </div>
+              </ScrollReveal>
+            </div>
+
+            <ScrollReveal anim="fadeUp" delay={0.95}>
+              <div style={{ marginTop: 32, maxWidth: 480, marginLeft: 'auto', marginRight: 'auto' }}>
+                <p style={{ fontFamily: B, fontSize: 15, lineHeight: 1.65, color: COLORS.muted, margin: '0 0 4px' }}>Forget the statistics. Forget the politics.</p>
+                <p style={{ fontFamily: B, fontSize: 15, lineHeight: 1.65, color: COLORS.muted, margin: '0 0 4px' }}><span className="highlight">Check the base data.</span></p>
+                <p style={{ fontFamily: B, fontSize: 15, lineHeight: 1.65, color: COLORS.muted, margin: '0 0 4px' }}>Fix that, and the rest follows.</p>
+                <p style={{ fontFamily: B, fontSize: 15, lineHeight: 1.65, color: COLORS.muted, margin: 0 }}>Get it wrong, and it&apos;s a butterfly effect of errors.</p>
               </div>
             </ScrollReveal>
           </div>
@@ -689,19 +701,19 @@ export default function Home() {
                   correction: true,
                 },
                 {
-                  multiplier: '48\u00d7',
-                  label: 'figure inflated',
-                  claim: '\u00a3350 billion is lost to tax evasion each year',
-                  oneLiner: 'HMRC official figure: \u00a35.5bn. Not \u00a3350bn.',
-                  slug: '350bn-tax-evasion',
-                  correction: false,
-                },
-                {
                   multiplier: '\u00a313.6k',
                   label: 'above max possible',
                   claim: 'I left university in 2019 with \u00a349,600 of debt',
                   oneLiner: 'Max possible for 2 years at Nottingham: ~\u00a336,000. Claimed: \u00a349,600.',
                   slug: 'student-debt-claim',
+                  correction: false,
+                },
+                {
+                  multiplier: '=',
+                  label: 'same saving',
+                  claim: 'Reform\u2019s tax cuts help the richest people more than the poorest',
+                  oneLiner: '\u00a330K earner saves \u00a31,486. \u00a360K earner saves \u00a31,486. The same.',
+                  slug: 'reform-tax-canary',
                   correction: false,
                 },
               ].map((inv, i) => (
@@ -772,6 +784,22 @@ export default function Home() {
                 </ScrollReveal>
               ))}
             </div>
+            <ScrollReveal anim="fadeUp" delay={0.5}>
+              <Link
+                href="/careless-whispers"
+                style={{
+                  fontFamily: B,
+                  fontSize: 14,
+                  fontWeight: 600,
+                  color: COLORS.chainBlue,
+                  textDecoration: 'none',
+                  display: 'block',
+                  marginTop: 24,
+                }}
+              >
+                See our careless whispers: how claims degrade through citation chains &rarr;
+              </Link>
+            </ScrollReveal>
           </div>
         </section>
 
@@ -1031,6 +1059,45 @@ export default function Home() {
           </div>
         </footer>
       </main>
+      <ReturnToTop />
     </>
+  );
+}
+
+function ReturnToTop() {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > window.innerHeight);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  if (!visible) return null;
+
+  return (
+    <button
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      aria-label="Return to top"
+      style={{
+        position: 'fixed',
+        bottom: 24,
+        right: 24,
+        width: 44,
+        height: 44,
+        borderRadius: '50%',
+        background: 'rgba(27,42,74,0.9)',
+        border: 'none',
+        cursor: 'pointer',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        boxShadow: '0 4px 12px rgba(27,42,74,0.2)',
+        zIndex: 80,
+      }}
+    >
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M4 10l4-4 4 4" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </button>
   );
 }

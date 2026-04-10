@@ -101,6 +101,7 @@ export default function Nav({ forceDark }: NavProps) {
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 36 }}>
           <Link href="/" style={labelStyle}>Home</Link>
+          <Link href="/careless-whispers" style={labelStyle}>Careless whispers</Link>
           <Link href="/how-it-works" style={labelStyle}>What we do</Link>
           <Link href="/about" style={labelStyle}>What we are fighting for</Link>
           <Link

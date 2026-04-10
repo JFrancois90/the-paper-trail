@@ -15,6 +15,7 @@ import HighlightedText from '@/components/HighlightedText';
 import CorrectionBox from '@/components/CorrectionBox';
 import RebuttalBox from '@/components/RebuttalBox';
 import StudentDebtExtras from '@/components/StudentDebtExtras';
+import ReformTaxExtras from '@/components/ReformTaxExtras';
 import { HIGHLIGHT_PHRASES } from '@/lib/highlights';
 import InvestigationPageBars from './InvestigationPageBars';
 import InvestigationPageChain from './InvestigationPageChain';
@@ -189,6 +190,11 @@ export default async function InvestigationPage({ params }: PageProps) {
         {inv.slug === 'student-debt-claim' && (
           <ScrollReveal>
             <StudentDebtExtras />
+          </ScrollReveal>
+        )}
+        {inv.slug === 'reform-tax-canary' && (
+          <ScrollReveal>
+            <ReformTaxExtras />
           </ScrollReveal>
         )}
 
