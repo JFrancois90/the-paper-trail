@@ -16,6 +16,7 @@ import ScrollReveal from '@/components/ScrollReveal';
 import HighlightedText from '@/components/HighlightedText';
 import CorrectionBox from '@/components/CorrectionBox';
 import RebuttalBox from '@/components/RebuttalBox';
+import StatusBadge from '@/components/StatusBadge';
 import StudentDebtExtras from '@/components/StudentDebtExtras';
 import ReformTaxExtras from '@/components/ReformTaxExtras';
 import RailtrackExtras from '@/components/RailtrackExtras';
@@ -135,6 +136,15 @@ export default async function InvestigationPage({ params }: PageProps) {
           <div style={{ marginBottom: 32 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14, flexWrap: 'wrap' }}>
               <MultiplierBadge multiplier={inv.multiplier} label={inv.multiplierLabel} />
+              {inv.rebuttalStatus && (
+                <StatusBadge
+                  status={inv.rebuttalStatus.status}
+                  correction={inv.correction}
+                  invited={inv.rebuttalStatus.invited}
+                  dateInvited={inv.rebuttalStatus.dateInvited}
+                  responseText={inv.rebuttalStatus.responseText}
+                />
+              )}
               <span
                 style={{
                   fontFamily: 'var(--font-sans), sans-serif',

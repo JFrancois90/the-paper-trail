@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import MultiplierBadge from '@/components/MultiplierBadge';
+import StatusBadge from '@/components/StatusBadge';
 import ScrollReveal from '@/components/ScrollReveal';
 import SourceDocsNotice from '@/components/SourceDocsNotice';
 import { COLORS } from '@/lib/constants';
@@ -133,24 +134,35 @@ export default function CampaignsPage() {
                   height: '100%',
                 }}
               >
-                {/* Subject tag */}
-                <span
-                  style={{
-                    display: 'inline-block',
-                    fontFamily: B,
-                    fontSize: 12,
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.08em',
-                    color: COLORS.amber,
-                    background: COLORS.amberLight,
-                    padding: '4px 10px',
-                    borderRadius: 12,
-                    marginBottom: 12,
-                  }}
-                >
-                  {inv.subject}
-                </span>
+                {/* Subject tag + status badge */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', marginBottom: 12 }}>
+                  <span
+                    style={{
+                      display: 'inline-block',
+                      fontFamily: B,
+                      fontSize: 12,
+                      fontWeight: 600,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.08em',
+                      color: COLORS.amber,
+                      background: COLORS.amberLight,
+                      padding: '4px 10px',
+                      borderRadius: 12,
+                    }}
+                  >
+                    {inv.subject}
+                  </span>
+                  {inv.rebuttalStatus && (
+                    <StatusBadge
+                      status={inv.rebuttalStatus.status}
+                      correction={inv.correction}
+                      invited={inv.rebuttalStatus.invited}
+                      dateInvited={inv.rebuttalStatus.dateInvited}
+                      responseText={inv.rebuttalStatus.responseText}
+                      compact
+                    />
+                  )}
+                </div>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
                   <MultiplierBadge multiplier={inv.multiplier} label={inv.multiplierLabel} />
