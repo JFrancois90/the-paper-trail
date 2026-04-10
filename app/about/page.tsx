@@ -4,6 +4,7 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import ScrollReveal from '@/components/ScrollReveal';
 import Highlight from '@/components/Highlight';
+import MemeIllustration from '@/components/MemeIllustration';
 
 export const metadata: Metadata = {
   title: 'About | The Paper Trail',
@@ -75,6 +76,9 @@ export default function AboutPage() {
               So we started checking. Not opinions. Not policies. Just the numbers, against the
               sources politicians themselves say those numbers come from.
             </p>
+
+            {/* 280 days meme */}
+            <MemeIllustration />
           </div>
         </ScrollReveal>
 
