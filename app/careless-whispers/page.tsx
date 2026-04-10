@@ -235,7 +235,7 @@ export default function CarelessWhispersPage() {
             <button
               onClick={() => {
                 if (navigator.share) {
-                  navigator.share({ title: 'Careless Whispers', text: 'How \u00a35.5bn became \u00a3350bn through a chain of citations.', url: 'https://thepapertrail.uk/careless-whispers' });
+                  navigator.share({ title: 'Careless Whispers', text: 'How £5.5bn became £350bn through a chain of citations.', url: 'https://thepapertrail.uk/careless-whispers' });
                 } else {
                   navigator.clipboard?.writeText('https://thepapertrail.uk/careless-whispers');
                 }

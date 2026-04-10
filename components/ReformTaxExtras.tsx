@@ -36,25 +36,25 @@ export default function ReformTaxExtras() {
         <p style={{ fontFamily: B, fontSize: 13, fontWeight: 600, color: COLORS.navy, margin: '0 0 8px' }}>Current system:</p>
         <TaxTable
           rows={[
-            { band: 'Personal allowance (up to \u00a312,570)', rate: '0%', i15: '\u00a30', i30: '\u00a30', i60: '\u00a30' },
-            { band: 'Basic rate (\u00a312,571-\u00a350,270)', rate: '20%', i15: '\u00a3486', i30: '\u00a33,486', i60: '\u00a37,540' },
-            { band: 'Higher rate (\u00a350,271+)', rate: '40%', i15: '\u00a30', i30: '\u00a30', i60: '\u00a33,892' },
+            { band: 'Personal allowance (up to £12,570)', rate: '0%', i15: '£0', i30: '£0', i60: '£0' },
+            { band: 'Basic rate (£12,571-£50,270)', rate: '20%', i15: '£486', i30: '£3,486', i60: '£7,540' },
+            { band: 'Higher rate (£50,271+)', rate: '40%', i15: '£0', i30: '£0', i60: '£3,892' },
           ]}
-          totals={{ i15: '\u00a3486', i30: '\u00a33,486', i60: '\u00a311,431' }}
+          totals={{ i15: '£486', i30: '£3,486', i60: '£11,431' }}
         />
 
         <div style={{ height: 20 }} />
 
         {/* Proposed system */}
-        <p style={{ fontFamily: B, fontSize: 13, fontWeight: 600, color: COLORS.navy, margin: '0 0 8px' }}>Proposed (\u00a320K personal allowance):</p>
+        <p style={{ fontFamily: B, fontSize: 13, fontWeight: 600, color: COLORS.navy, margin: '0 0 8px' }}>Proposed (£20K personal allowance):</p>
         <TaxTable
           rows={[
-            { band: 'Personal allowance (up to \u00a320,000)', rate: '0%', i15: '\u00a30', i30: '\u00a30', i60: '\u00a30' },
-            { band: 'Basic rate (\u00a320,001-\u00a350,270)', rate: '20%', i15: '\u00a30', i30: '\u00a32,000', i60: '\u00a36,054' },
-            { band: 'Higher rate (\u00a350,271+)', rate: '40%', i15: '\u00a30', i30: '\u00a30', i60: '\u00a33,892' },
+            { band: 'Personal allowance (up to £20,000)', rate: '0%', i15: '£0', i30: '£0', i60: '£0' },
+            { band: 'Basic rate (£20,001-£50,270)', rate: '20%', i15: '£0', i30: '£2,000', i60: '£6,054' },
+            { band: 'Higher rate (£50,271+)', rate: '40%', i15: '£0', i30: '£0', i60: '£3,892' },
           ]}
-          totals={{ i15: '\u00a30', i30: '\u00a32,000', i60: '\u00a39,945' }}
-          savings={{ i15: '\u00a3486', i30: '\u00a31,486', i60: '\u00a31,486' }}
+          totals={{ i15: '£0', i30: '£2,000', i60: '£9,945' }}
+          savings={{ i15: '£486', i30: '£1,486', i60: '£1,486' }}
         />
       </div>
 
@@ -98,9 +98,9 @@ function TaxTable({
           <tr>
             <th style={{ ...th, textAlign: 'left' }}>Band</th>
             <th style={th}>Rate</th>
-            <th style={th}>\u00a315K</th>
-            <th style={th}>\u00a330K</th>
-            <th style={th}>\u00a360K</th>
+            <th style={th}>£15K</th>
+            <th style={th}>£30K</th>
+            <th style={th}>£60K</th>
           </tr>
         </thead>
         <tbody>

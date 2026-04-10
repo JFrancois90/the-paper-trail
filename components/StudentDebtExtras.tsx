@@ -71,9 +71,9 @@ export default function StudentDebtExtras() {
         <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: B, fontSize: 14 }}>
           <tbody>
             {[
-              { label: 'Tuition fee loan', calc: '\u00a39,250 per year \u00d7 2 years', amount: '\u00a318,500' },
-              { label: 'Maintenance loan (living costs, at-home rate)', calc: '~\u00a37,500 per year \u00d7 2 years', amount: '~\u00a315,000' },
-              { label: 'Interest accrued during study', calc: '', amount: '~\u00a32,500' },
+              { label: 'Tuition fee loan', calc: '£9,250 per year × 2 years', amount: '£18,500' },
+              { label: 'Maintenance loan (living costs, at-home rate)', calc: '~£7,500 per year × 2 years', amount: '~£15,000' },
+              { label: 'Interest accrued during study', calc: '', amount: '~£2,500' },
             ].map((row, i) => (
               <tr key={i} style={{ borderBottom: '1px solid rgba(27,42,74,0.06)' }}>
                 <td style={{ padding: '10px 0', color: COLORS.muted }}>{row.label}</td>
@@ -84,17 +84,17 @@ export default function StudentDebtExtras() {
             <tr style={{ borderBottom: '1px solid rgba(27,42,74,0.06)' }}>
               <td style={{ padding: '12px 0', fontWeight: 700, color: COLORS.sourceGreen }}>Total maximum possible</td>
               <td></td>
-              <td style={{ padding: '12px 0', textAlign: 'right', fontWeight: 700, fontSize: 16, color: COLORS.sourceGreen }}>~\u00a336,000</td>
+              <td style={{ padding: '12px 0', textAlign: 'right', fontWeight: 700, fontSize: 16, color: COLORS.sourceGreen }}>~£36,000</td>
             </tr>
             <tr style={{ borderBottom: '1px solid rgba(27,42,74,0.06)' }}>
               <td style={{ padding: '12px 0', fontWeight: 700, color: COLORS.claimRed }}>Claimed amount</td>
               <td></td>
-              <td style={{ padding: '12px 0', textAlign: 'right', fontWeight: 700, fontSize: 16, color: COLORS.claimRed }}>\u00a349,600</td>
+              <td style={{ padding: '12px 0', textAlign: 'right', fontWeight: 700, fontSize: 16, color: COLORS.claimRed }}>£49,600</td>
             </tr>
             <tr>
               <td style={{ padding: '12px 0', fontWeight: 700, color: COLORS.navy }}>Unexplained difference</td>
               <td></td>
-              <td style={{ padding: '12px 0', textAlign: 'right', fontWeight: 700, fontSize: 16, color: COLORS.navy }}>~\u00a313,600</td>
+              <td style={{ padding: '12px 0', textAlign: 'right', fontWeight: 700, fontSize: 16, color: COLORS.navy }}>~£13,600</td>
             </tr>
           </tbody>
         </table>

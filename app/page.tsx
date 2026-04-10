@@ -524,6 +524,116 @@ export default function Home() {
           `}</style>
         </section>
 
+        {/* ─── SECTION 4B: FEATURED — WHITTOME ─── */}
+        <section
+          className="snap-section"
+          data-nav-theme="light"
+          style={{ minHeight: '100vh', background: COLORS.paper, display: 'flex', alignItems: 'center', padding: '60px 8vw' }}
+        >
+          <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%' }}>
+            <ScrollReveal anim="fadeUp">
+              <p style={{ fontFamily: B, fontSize: 10, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: COLORS.lightMuted, marginBottom: 16 }}>
+                Featured investigation
+              </p>
+              <p style={{ fontFamily: H, fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 400, color: COLORS.ink, lineHeight: 1.4, margin: '0 0 6px' }}>
+                &ldquo;I left university in 2019 with <span className="highlight-red">£49,600</span> of debt&rdquo;
+              </p>
+              <p style={{ fontFamily: B, fontSize: 13, color: COLORS.lightMuted, margin: '0 0 40px' }}>
+                Nadia Whittome MP, 2025
+              </p>
+            </ScrollReveal>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 16, alignItems: 'center', marginBottom: 40 }}>
+              <ScrollReveal anim="fadeUp" delay={0.1}>
+                <div style={{ background: COLORS.claimRedLight, borderRadius: 14, padding: '32px 24px', textAlign: 'center' }}>
+                  <p style={{ fontFamily: H, fontSize: 'clamp(40px, 5vw, 64px)', fontWeight: 700, color: COLORS.claimRed, margin: '0 0 8px', letterSpacing: '-0.03em', lineHeight: 1 }}>£49,600</p>
+                  <p style={{ fontFamily: B, fontSize: 14, color: COLORS.claimRedDark, margin: 0 }}>Claimed debt</p>
+                </div>
+              </ScrollReveal>
+              <ScrollReveal anim="scaleReveal" delay={0.25}>
+                <div style={{ width: 56, height: 56, borderRadius: '50%', background: COLORS.navy, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <span style={{ fontFamily: H, fontSize: 14, fontWeight: 700, color: '#fff' }}>£13.6k</span>
+                </div>
+              </ScrollReveal>
+              <ScrollReveal anim="fadeUp" delay={0.15}>
+                <div style={{ background: COLORS.sourceGreenLight, borderRadius: 14, padding: '32px 24px', textAlign: 'center' }}>
+                  <p style={{ fontFamily: H, fontSize: 'clamp(40px, 5vw, 64px)', fontWeight: 700, color: COLORS.sourceGreen, margin: '0 0 8px', letterSpacing: '-0.03em', lineHeight: 1 }}>~£36k</p>
+                  <p style={{ fontFamily: B, fontSize: 14, color: COLORS.sourceGreenDark, margin: 0 }}>Max possible for 2 years</p>
+                </div>
+              </ScrollReveal>
+            </div>
+
+            <ScrollReveal anim="fadeUp" delay={0.3}>
+              <div style={{ background: '#fff', border: '1px solid rgba(27,42,74,0.06)', borderRadius: 14, padding: '20px 24px', marginBottom: 24 }}>
+                <p style={{ fontFamily: B, fontSize: 10, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: '0 0 8px' }}>In plain english</p>
+                <p style={{ fontFamily: B, fontSize: 16, lineHeight: 1.6, color: COLORS.ink, margin: 0 }}>
+                  It&apos;s like claiming your shopping bill was £150 when the receipt adds up to £100. The numbers need to match the basket.
+                </p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal anim="fadeUp" delay={0.35}>
+              <Link href="/investigations/student-debt-claim" style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: COLORS.chainBlue, textDecoration: 'none' }}>
+                See the full trail &rarr;
+              </Link>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* ─── SECTION 4C: FEATURED — CANARY/REFORM ─── */}
+        <section
+          className="snap-section"
+          data-nav-theme="light"
+          style={{ minHeight: '100vh', background: COLORS.paper, display: 'flex', alignItems: 'center', padding: '60px 8vw' }}
+        >
+          <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%' }}>
+            <ScrollReveal anim="fadeUp">
+              <p style={{ fontFamily: B, fontSize: 10, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: COLORS.lightMuted, marginBottom: 16 }}>
+                Featured investigation
+              </p>
+              <p style={{ fontFamily: H, fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 400, color: COLORS.ink, lineHeight: 1.4, margin: '0 0 6px' }}>
+                &ldquo;Reform&apos;s tax cuts help the <span className="highlight-red">richest people</span> more than the poorest&rdquo;
+              </p>
+              <p style={{ fontFamily: B, fontSize: 13, color: COLORS.lightMuted, margin: '0 0 40px' }}>
+                The Canary UK, Feb 2026
+              </p>
+            </ScrollReveal>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 16, alignItems: 'center', marginBottom: 40 }}>
+              <ScrollReveal anim="fadeUp" delay={0.1}>
+                <div style={{ background: COLORS.claimRedLight, borderRadius: 14, padding: '32px 24px', textAlign: 'center' }}>
+                  <p style={{ fontFamily: H, fontSize: 'clamp(24px, 3vw, 32px)', fontWeight: 700, color: COLORS.claimRed, margin: '0 0 8px', lineHeight: 1.2 }}>Richest benefit more</p>
+                  <p style={{ fontFamily: B, fontSize: 14, color: COLORS.claimRedDark, margin: 0 }}>What they claimed</p>
+                </div>
+              </ScrollReveal>
+              <ScrollReveal anim="scaleReveal" delay={0.25}>
+                <div style={{ width: 56, height: 56, borderRadius: '50%', background: COLORS.navy, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <span style={{ fontFamily: H, fontSize: 22, fontWeight: 700, color: '#fff' }}>=</span>
+                </div>
+              </ScrollReveal>
+              <ScrollReveal anim="fadeUp" delay={0.15}>
+                <div style={{ background: COLORS.sourceGreenLight, borderRadius: 14, padding: '32px 24px', textAlign: 'center' }}>
+                  <p style={{ fontFamily: H, fontSize: 'clamp(24px, 3vw, 32px)', fontWeight: 700, color: COLORS.sourceGreen, margin: '0 0 8px', lineHeight: 1.2 }}>£1,486 = £1,486</p>
+                  <p style={{ fontFamily: B, fontSize: 14, color: COLORS.sourceGreenDark, margin: 0 }}>Both earners save the same</p>
+                </div>
+              </ScrollReveal>
+            </div>
+
+            <ScrollReveal anim="fadeUp" delay={0.3}>
+              <div style={{ background: '#fff', border: '1px solid rgba(27,42,74,0.06)', borderRadius: 14, padding: '20px 24px', marginBottom: 24 }}>
+                <p style={{ fontFamily: B, fontSize: 10, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: '0 0 8px' }}>In plain english</p>
+                <p style={{ fontFamily: B, fontSize: 16, lineHeight: 1.6, color: COLORS.ink, margin: 0 }}>
+                  It&apos;s like saying a 10% off voucher at Tesco benefits rich shoppers more. It doesn&apos;t. Everyone gets the same percentage off.
+                </p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal anim="fadeUp" delay={0.35}>
+              <Link href="/investigations/reform-tax-canary" style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: COLORS.chainBlue, textDecoration: 'none' }}>
+                See the full trail &rarr;
+              </Link>
+            </ScrollReveal>
+          </div>
+        </section>
+
         {/* ─── SECTION 5: CARELESS WHISPERS ─── */}
         <section
           className="snap-section"
