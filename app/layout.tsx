@@ -59,7 +59,7 @@ export default function RootLayout({
                 align-items: center;
                 justify-content: center;
               }
-              @media (max-width: 480px) {
+              @media (max-width: 768px) {
                 html { scroll-snap-type: none; scroll-behavior: auto; }
                 .snap-section { min-height: auto; scroll-snap-align: none; display: block; }
               }
@@ -90,7 +90,7 @@ export default function RootLayout({
                 outline-offset: 2px;
               }
               .nav-logo { height: 56px; }
-              @media (max-width: 480px) {
+              @media (max-width: 768px) {
                 .nav-logo { height: 38px; }
               }
               .highlight {

@@ -7,6 +7,8 @@ export default function ScrollToTop() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    // Hide on mobile — MobileHomepage has its own scroll-to-top
+    if (window.innerWidth <= 768) return;
     const onScroll = () => setVisible(window.scrollY > 400);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);

@@ -14,8 +14,14 @@ import type { Investigation } from '@/data/investigations';
 const H = 'var(--font-heading), sans-serif';
 const B = 'var(--font-sans), sans-serif';
 
-/* ───── Swipe carousel ───── */
-function SwipeCarousel({ children, cardWidth = 280, gap = 12 }: { children: React.ReactNode[]; cardWidth?: number; gap?: number }) {
+/* ───── Full-width swipe carousel with dot indicators ───── */
+function FullWidthCarousel({
+  children,
+  dotColor = COLORS.navy,
+}: {
+  children: React.ReactNode[];
+  dotColor?: string;
+}) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const count = children.length;
@@ -23,25 +29,15 @@ function SwipeCarousel({ children, cardWidth = 280, gap = 12 }: { children: Reac
   const handleScroll = useCallback(() => {
     const el = scrollRef.current;
     if (!el) return;
-    const scrollLeft = el.scrollLeft;
-    const step = cardWidth + gap;
-    const idx = Math.round(scrollLeft / step);
+    const idx = Math.round(el.scrollLeft / el.clientWidth);
     setActiveIndex(Math.min(Math.max(idx, 0), count - 1));
-  }, [cardWidth, gap, count]);
+  }, [count]);
 
-  /* Snap the last card to centre */
-  useEffect(() => {
+  const scrollTo = (idx: number) => {
     const el = scrollRef.current;
     if (!el) return;
-    const resizeObs = new ResizeObserver(() => {
-      // Set right padding so last card can centre-align when scrolled to
-      const viewW = el.clientWidth;
-      const rightPad = Math.max((viewW - cardWidth) / 2, 16);
-      el.style.paddingRight = `${rightPad}px`;
-    });
-    resizeObs.observe(el);
-    return () => resizeObs.disconnect();
-  }, [cardWidth]);
+    el.scrollTo({ left: idx * el.clientWidth, behavior: 'smooth' });
+  };
 
   return (
     <div>
@@ -50,43 +46,47 @@ function SwipeCarousel({ children, cardWidth = 280, gap = 12 }: { children: Reac
         onScroll={handleScroll}
         style={{
           display: 'flex',
-          gap,
           overflowX: 'auto',
           scrollSnapType: 'x mandatory',
           WebkitOverflowScrolling: 'touch',
-          paddingLeft: 16,
-          paddingBottom: 8,
-          msOverflowStyle: 'none',
           scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
         }}
       >
-        <style>{`
-          .swipe-carousel::-webkit-scrollbar { display: none; }
-        `}</style>
+        <style>{`.fwc::-webkit-scrollbar { display: none; }`}</style>
         {children.map((child, i) => (
           <div
             key={i}
+            className="fwc"
             style={{
-              flex: `0 0 ${cardWidth}px`,
+              flex: '0 0 100%',
               scrollSnapAlign: 'center',
+              padding: '0 20px',
+              boxSizing: 'border-box',
             }}
           >
             {child}
           </div>
         ))}
       </div>
-
-      {/* Dot indicators */}
-      <div style={{ display: 'flex', justifyContent: 'center', gap: 6, marginTop: 10 }}>
+      {/* Dot indicators — tappable */}
+      <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginTop: 14 }}>
         {Array.from({ length: count }).map((_, i) => (
-          <span
+          <button
             key={i}
+            onClick={() => scrollTo(i)}
+            aria-label={`Go to card ${i + 1}`}
             style={{
-              width: activeIndex === i ? 16 : 6,
-              height: 6,
-              borderRadius: 3,
-              background: activeIndex === i ? COLORS.navy : 'rgba(27,42,74,0.15)',
+              width: activeIndex === i ? 20 : 8,
+              height: 8,
+              borderRadius: 4,
+              background: activeIndex === i ? dotColor : `${dotColor}25`,
+              border: 'none',
+              padding: 0,
+              cursor: 'pointer',
               transition: 'all 0.25s ease',
+              minWidth: 0,
+              minHeight: 0,
             }}
           />
         ))}
@@ -109,20 +109,41 @@ const STEPS = [
   { num: '03', title: 'We compare', desc: 'We put what they said next to what the source shows. Side by side.' },
 ];
 
+/* ───── Snap section wrapper ───── */
+function SnapSection({
+  children,
+  bg = COLORS.paper,
+  style,
+}: {
+  children: React.ReactNode;
+  bg?: string;
+  style?: React.CSSProperties;
+}) {
+  return (
+    <section
+      style={{
+        scrollSnapAlign: 'start',
+        scrollSnapStop: 'always',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        padding: '24px 20px',
+        boxSizing: 'border-box',
+        overflow: 'hidden',
+        background: bg,
+        ...style,
+      }}
+    >
+      {children}
+    </section>
+  );
+}
+
 export default function MobileHomepage() {
   const [activeStory, setActiveStory] = useState<Investigation | null>(null);
-  const [showSubscribePill, setShowSubscribePill] = useState(false);
-  const [showBackToTop, setShowBackToTop] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY;
-      setShowSubscribePill(y > window.innerHeight * 0.7);
-      setShowBackToTop(y > window.innerHeight);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  const mainRef = useRef<HTMLDivElement>(null);
+  const filteredInvestigations = investigations.filter((inv) => inv.slug !== '350bn-tax-evasion');
 
   if (activeStory) {
     return <InvestigationStory investigation={activeStory} onClose={() => setActiveStory(null)} />;
@@ -131,327 +152,670 @@ export default function MobileHomepage() {
   return (
     <>
       <MobileNav />
-      <main id="main-content">
-        {/* Hero */}
-        <section
-          style={{
-            minHeight: '70vh',
-            background: COLORS.navy,
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            padding: '60px 24px 40px',
-          }}
-        >
+
+      {/* Main snap container */}
+      <div
+        ref={mainRef}
+        id="main-content"
+        style={{
+          scrollSnapType: 'y mandatory',
+          overflowY: 'scroll',
+          height: '100vh',
+          WebkitOverflowScrolling: 'touch',
+          scrollBehavior: 'smooth',
+        }}
+      >
+        {/* ═══ SECTION 1: HERO ═══ */}
+        <SnapSection bg={COLORS.navy}>
           <h1 style={{ margin: '0 0 28px' }}>
             <BrandSlogan size="md" theme="dark" />
           </h1>
           <HeroSubtitle isMobile />
-        </section>
+          <div style={{ marginTop: 24 }}>
+            <SourceDocsNotice />
+          </div>
+        </SnapSection>
 
-        {/* Source docs notice */}
-        <div style={{ padding: '20px 16px 0' }}>
-          <SourceDocsNotice />
-        </div>
-
-        {/* Equations — swipeable cards */}
-        <section style={{ padding: '24px 0 16px' }}>
-          <p style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: COLORS.navy, margin: '0 0 12px', padding: '0 16px', textAlign: 'center' }}>
+        {/* ═══ SECTION 2: THE PROBLEM — Equations ═══ */}
+        <SnapSection>
+          <p
+            style={{
+              fontFamily: B,
+              fontSize: 16,
+              fontWeight: 600,
+              color: COLORS.navy,
+              margin: '0 0 20px',
+              textAlign: 'center',
+              lineHeight: 1.5,
+            }}
+          >
             These aren&rsquo;t opinions. They&rsquo;re numbers. And they&rsquo;re wrong.
           </p>
-          <SwipeCarousel cardWidth={260} gap={12}>
+
+          <FullWidthCarousel>
             {EQUATION_CARDS.map((card, i) => (
-              <div key={i} style={{ background: '#fff', border: '1px solid rgba(27,42,74,0.10)', borderRadius: 12, padding: '24px 16px', textAlign: 'center', minHeight: 170, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <p style={{ fontFamily: B, fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: COLORS.muted, margin: '0 0 8px' }}>{card.label}</p>
+              <div
+                key={i}
+                style={{
+                  background: '#fff',
+                  border: '1px solid rgba(27,42,74,0.10)',
+                  borderRadius: 16,
+                  padding: '32px 24px',
+                  textAlign: 'center',
+                  minHeight: 200,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                }}
+              >
+                <p
+                  style={{
+                    fontFamily: B,
+                    fontSize: 14,
+                    fontWeight: 600,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.08em',
+                    color: COLORS.muted,
+                    margin: '0 0 12px',
+                  }}
+                >
+                  {card.label}
+                </p>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-                  <span style={{ fontFamily: H, fontSize: 36, fontWeight: 700, color: COLORS.navy, letterSpacing: '-0.03em' }}>
+                  <span
+                    style={{
+                      fontFamily: H,
+                      fontSize: 40,
+                      fontWeight: 700,
+                      color: COLORS.navy,
+                      letterSpacing: '-0.03em',
+                    }}
+                  >
                     {card.eqRedPrefix && <span style={{ color: COLORS.claimRed }}>{card.eqRedPrefix}</span>}
                     {card.eq}
                     {card.eqRed && <span style={{ color: COLORS.claimRed }}>{card.eqRed}</span>}
                   </span>
-                  <span style={{ fontSize: 26, color: card.iconColor }}>{card.icon}</span>
+                  <span style={{ fontSize: 28, color: card.iconColor }}>{card.icon}</span>
                 </div>
-                <p style={{ fontFamily: B, fontSize: 14, color: COLORS.navy, margin: '8px 0 0' }}>{card.caption}</p>
+                <p style={{ fontFamily: B, fontSize: 16, color: COLORS.navy, margin: '12px 0 0', lineHeight: 1.5 }}>
+                  {card.caption}
+                </p>
               </div>
             ))}
-          </SwipeCarousel>
-          <p style={{ fontFamily: B, fontSize: 15, lineHeight: 1.65, color: COLORS.navy, margin: '16px 16px 0', textAlign: 'center' }}>
-            Forget the statistics. Forget the politics. <span className="highlight">Check the base data.</span>
-          </p>
-        </section>
+          </FullWidthCarousel>
 
-        {/* What we do — swipeable cards */}
-        <section style={{ padding: '16px 0 24px' }}>
-          <h2 style={{ fontFamily: H, fontSize: 22, fontWeight: 700, color: COLORS.navy, margin: '0 0 4px', padding: '0 16px' }}>What we do</h2>
-          <p style={{ fontFamily: B, fontSize: 15, color: COLORS.muted, margin: '0 0 14px', padding: '0 16px' }}>
+          <p
+            style={{
+              fontFamily: B,
+              fontSize: 16,
+              lineHeight: 1.65,
+              color: COLORS.navy,
+              margin: '20px 0 0',
+              textAlign: 'center',
+            }}
+          >
+            Forget the statistics. Forget the politics.{' '}
+            <span className="highlight">Check the base data.</span>
+          </p>
+        </SnapSection>
+
+        {/* ═══ SECTION 3: WHAT WE DO ═══ */}
+        <SnapSection>
+          <h2
+            style={{
+              fontFamily: H,
+              fontSize: 28,
+              fontWeight: 700,
+              color: COLORS.navy,
+              margin: '0 0 8px',
+            }}
+          >
+            What we do
+          </h2>
+          <p
+            style={{
+              fontFamily: B,
+              fontSize: 16,
+              color: COLORS.muted,
+              margin: '0 0 24px',
+              lineHeight: 1.5,
+            }}
+          >
             We are just checking what people quote is correct. It is that simple.
           </p>
-          <SwipeCarousel cardWidth={270} gap={12}>
+
+          <FullWidthCarousel>
             {STEPS.map((step) => (
-              <div key={step.num} style={{ background: '#fff', border: '1px solid rgba(27,42,74,0.10)', borderRadius: 12, padding: '24px 20px', minHeight: 150, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <span style={{ fontFamily: H, fontSize: 36, fontWeight: 700, color: COLORS.navyLight, letterSpacing: '-0.03em', lineHeight: 1, marginBottom: 8 }}>{step.num}</span>
-                <p style={{ fontFamily: H, fontSize: 17, fontWeight: 700, color: COLORS.navy, margin: '0 0 4px' }}>{step.title}</p>
-                <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.5, color: COLORS.muted, margin: 0 }}>{step.desc}</p>
-              </div>
-            ))}
-          </SwipeCarousel>
-        </section>
-
-        {/* Featured: Railtrack */}
-        <section style={{ padding: '16px 16px 24px' }}>
-          <div style={{ background: '#fae9b0', borderRadius: 8, padding: '10px 14px', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 6 }}>
-            <span style={{ fontSize: 14 }}>&#x1F4E2;</span>
-            <p style={{ fontFamily: B, fontSize: 13, color: COLORS.navy, margin: 0 }}>We support public accountability for nationalisation costs.</p>
-          </div>
-          <p style={{ fontFamily: H, fontSize: 18, fontWeight: 400, color: COLORS.ink, lineHeight: 1.4, margin: '0 0 16px' }}>
-            &ldquo;Labour nationalised Railtrack, paying just <span className="highlight-red">&pound;500 million</span>&rdquo;
-          </p>
-          <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
-            <div style={{ flex: 1, background: COLORS.claimRedLight, borderRadius: 10, padding: '16px 12px', textAlign: 'center' }}>
-              <p style={{ fontFamily: H, fontSize: 28, fontWeight: 700, color: COLORS.claimRed, margin: '0 0 4px', letterSpacing: '-0.03em' }}>&pound;500m</p>
-              <p style={{ fontFamily: B, fontSize: 12, color: COLORS.claimRedDark, margin: 0 }}>What they said</p>
-            </div>
-            <div style={{ flex: 1, background: COLORS.sourceGreenLight, borderRadius: 10, padding: '16px 12px', textAlign: 'center' }}>
-              <p style={{ fontFamily: H, fontSize: 28, fontWeight: 700, color: COLORS.sourceGreen, margin: '0 0 4px', letterSpacing: '-0.03em' }}>&pound;7.6bn</p>
-              <p style={{ fontFamily: B, fontSize: 12, color: COLORS.sourceGreenDark, margin: 0 }}>What it cost</p>
-            </div>
-          </div>
-          <Link href="/investigations/railtrack-500m" style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: COLORS.chainBlue, textDecoration: 'none' }}>
-            See the full trail &rarr;
-          </Link>
-        </section>
-
-        {/* Investigation feed */}
-        <section style={{ padding: '16px 16px 0' }}>
-          <h2 style={{ fontFamily: H, fontSize: 22, fontWeight: 700, color: COLORS.navy, margin: '0 0 16px' }}>
-            All investigations
-          </h2>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            {investigations.filter((inv) => inv.slug !== '350bn-tax-evasion').map((inv, i) => (
-              <div key={inv.id}>
-                <button
-                  onClick={() => setActiveStory(inv)}
+              <div
+                key={step.num}
+                style={{
+                  background: '#fff',
+                  border: '1px solid rgba(27,42,74,0.10)',
+                  borderRadius: 16,
+                  padding: '32px 24px',
+                  minHeight: 200,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                }}
+              >
+                <span
                   style={{
-                    display: 'block',
-                    width: '100%',
-                    background: '#fff',
-                    border: '1px solid rgba(27,42,74,0.08)',
-                    borderRadius: 14,
-                    padding: '20px 20px 16px',
-                    textAlign: 'left',
-                    cursor: 'pointer',
-                    WebkitTapHighlightColor: 'transparent',
+                    fontFamily: H,
+                    fontSize: 40,
+                    fontWeight: 700,
+                    color: COLORS.navyLight,
+                    letterSpacing: '-0.03em',
+                    lineHeight: 1,
+                    marginBottom: 12,
                   }}
-                  aria-label={`Read investigation: ${inv.claim}`}
                 >
-                  {/* Badge row */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 12 }}>
-                    <span
-                      style={{
-                        fontFamily: H,
-                        fontSize: 18,
-                        fontWeight: 700,
-                        color: inv.multiplier === 'False' ? COLORS.claimRed : COLORS.navy,
-                        letterSpacing: '-0.02em',
-                      }}
-                    >
-                      {inv.multiplier}
-                    </span>
-                    <span
-                      style={{
-                        fontFamily: B,
-                        fontSize: 12,
-                        fontWeight: 600,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.1em',
-                        color: COLORS.ink40,
-                      }}
-                    >
-                      {inv.multiplierLabel}
-                    </span>
-                  </div>
-
-                  {/* Claim */}
-                  <p
-                    style={{
-                      fontFamily: B,
-                      fontSize: 17,
-                      lineHeight: 1.35,
-                      color: COLORS.ink,
-                      margin: '0 0 12px',
-                    }}
-                  >
-                    &ldquo;{inv.claim}&rdquo;
-                  </p>
-
-                  {/* Who + date */}
-                  <p style={{ fontFamily: B, fontSize: 13, color: COLORS.ink40, margin: '0 0 12px' }}>
-                    {inv.who} &middot; {inv.date}
-                  </p>
-
-                  {/* CTA */}
-                  <p
-                    style={{
-                      fontFamily: B,
-                      fontSize: 12,
-                      fontWeight: 600,
-                      color: COLORS.chainBlue,
-                      margin: 0,
-                    }}
-                  >
-                    Tap to see the story &rarr;
-                  </p>
-                </button>
-
-                {/* Bridge text */}
-                {i === 1 && (
-                  <div style={{ padding: '24px 8px', textAlign: 'center' }}>
-                    <p style={{ fontFamily: B, fontSize: 15, lineHeight: 1.6, color: COLORS.ink40, margin: 0 }}>
-                      When public figures get their numbers wrong, the people who need help most{' '}
-                      <span className="highlight">pay the price</span>.
-                    </p>
-                  </div>
-                )}
+                  {step.num}
+                </span>
+                <p
+                  style={{
+                    fontFamily: H,
+                    fontSize: 22,
+                    fontWeight: 700,
+                    color: COLORS.navy,
+                    margin: '0 0 8px',
+                  }}
+                >
+                  {step.title}
+                </p>
+                <p
+                  style={{
+                    fontFamily: B,
+                    fontSize: 16,
+                    lineHeight: 1.5,
+                    color: COLORS.muted,
+                    margin: 0,
+                  }}
+                >
+                  {step.desc}
+                </p>
               </div>
             ))}
-          </div>
-        </section>
+          </FullWidthCarousel>
+        </SnapSection>
 
-        {/* Subscribe */}
-        <section
-          id="subscribe"
-          style={{
-            background: COLORS.navy,
-            margin: '32px 16px 0',
-            borderRadius: 16,
-            padding: '40px 24px',
-            textAlign: 'center',
-          }}
-        >
-          <p style={{ fontFamily: B, fontSize: 18, color: 'rgba(255,255,255,0.85)', margin: '0 0 8px', lineHeight: 1.5 }}>
-            We publish <span className="highlight">when it matters</span>. Not before.
-          </p>
-          <p style={{ fontFamily: B, fontSize: 14, color: 'rgba(255,255,255,0.45)', margin: '0 0 24px', lineHeight: 1.6 }}>
-            No clickbait. Just the numbers, when they need checking.
-          </p>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              const input = e.currentTarget.querySelector('input') as HTMLInputElement;
-              if (input?.value) {
-                window.open(`https://thepapertrailuk.substack.com/subscribe?email=${encodeURIComponent(input.value)}`, '_blank');
-              }
+        {/* ═══ SECTION 4: RAILTRACK INVESTIGATION ═══ */}
+        <SnapSection>
+          {/* Position banner — compact */}
+          <div
+            style={{
+              background: '#fae9b0',
+              borderRadius: 10,
+              padding: '10px 14px',
+              marginBottom: 20,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
             }}
-            style={{ display: 'flex', flexDirection: 'column', gap: 10 }}
           >
-            <input
-              type="email"
-              placeholder="Your email"
-              aria-label="Email address"
+            <span style={{ fontSize: 16, flexShrink: 0 }}>&#x1F4E2;</span>
+            <p style={{ fontFamily: B, fontSize: 14, color: COLORS.navy, margin: 0, lineHeight: 1.4 }}>
+              We support public accountability for nationalisation costs.
+            </p>
+          </div>
+
+          <p
+            style={{
+              fontFamily: H,
+              fontSize: 22,
+              fontWeight: 400,
+              color: COLORS.ink,
+              lineHeight: 1.4,
+              margin: '0 0 24px',
+            }}
+          >
+            &ldquo;Labour nationalised Railtrack, paying just{' '}
+            <span className="highlight-red">&pound;500 million</span>&rdquo;
+          </p>
+
+          {/* Said vs Source — SWIPE CARDS */}
+          <FullWidthCarousel dotColor={COLORS.claimRed}>
+            {[
+              <div
+                key="said"
+                style={{
+                  background: COLORS.claimRedLight,
+                  borderRadius: 16,
+                  padding: '32px 24px',
+                  textAlign: 'center',
+                  minHeight: 200,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <p
+                  style={{
+                    fontFamily: H,
+                    fontSize: 36,
+                    fontWeight: 700,
+                    color: COLORS.claimRed,
+                    margin: '0 0 8px',
+                    letterSpacing: '-0.03em',
+                  }}
+                >
+                  &pound;500m
+                </p>
+                <p style={{ fontFamily: B, fontSize: 16, color: COLORS.claimRedDark, margin: 0 }}>
+                  What they said
+                </p>
+              </div>,
+              <div
+                key="reality"
+                style={{
+                  background: COLORS.sourceGreenLight,
+                  borderRadius: 16,
+                  padding: '32px 24px',
+                  textAlign: 'center',
+                  minHeight: 200,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <p
+                  style={{
+                    fontFamily: H,
+                    fontSize: 36,
+                    fontWeight: 700,
+                    color: COLORS.sourceGreen,
+                    margin: '0 0 8px',
+                    letterSpacing: '-0.03em',
+                  }}
+                >
+                  &pound;7.6bn
+                </p>
+                <p style={{ fontFamily: B, fontSize: 16, color: COLORS.sourceGreenDark, margin: 0 }}>
+                  What it cost
+                </p>
+              </div>,
+            ]}
+          </FullWidthCarousel>
+
+          <div style={{ marginTop: 20, textAlign: 'center' }}>
+            <Link
+              href="/investigations/railtrack-500m"
               style={{
-                padding: '12px 16px',
-                borderRadius: 8,
-                border: '1px solid rgba(255,255,255,0.15)',
-                background: 'rgba(255,255,255,0.08)',
-                color: '#fff',
                 fontFamily: B,
-                fontSize: 14,
-                outline: 'none',
-                minHeight: 44,
-              }}
-            />
-            <button
-              type="submit"
-              style={{
-                padding: '12px',
-                borderRadius: 8,
-                border: 'none',
-                background: '#fff',
-                color: COLORS.navy,
-                fontFamily: B,
-                fontSize: 13,
+                fontSize: 16,
                 fontWeight: 600,
-                cursor: 'pointer',
-                minHeight: 44,
+                color: COLORS.chainBlue,
+                textDecoration: 'none',
               }}
             >
-              Subscribe
-            </button>
-          </form>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 12 }}>
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#FF6719', display: 'inline-block' }} />
-            <span style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'rgba(255,255,255,0.35)' }}>
-              Also on Substack
-            </span>
+              See the full trail &rarr;
+            </Link>
           </div>
-        </section>
+        </SnapSection>
 
-        {/* Footer spacer */}
-        <div style={{ height: 80 }} />
-      </main>
+        {/* ═══ SECTION 5+: EACH INVESTIGATION = ITS OWN SNAP SECTION ═══ */}
+        {filteredInvestigations.map((inv) => (
+          <SnapSection key={inv.id}>
+            <div
+              style={{
+                background: '#fff',
+                border: '1px solid rgba(27,42,74,0.08)',
+                borderRadius: 16,
+                padding: '28px 24px',
+                textAlign: 'left',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                minHeight: 320,
+              }}
+            >
+              {/* Stat badge — large and prominent */}
+              <div style={{ marginBottom: 16 }}>
+                <span
+                  style={{
+                    fontFamily: H,
+                    fontSize: 36,
+                    fontWeight: 700,
+                    color: inv.multiplier === 'False' ? COLORS.claimRed : COLORS.navy,
+                    letterSpacing: '-0.03em',
+                    lineHeight: 1,
+                  }}
+                >
+                  {inv.multiplier}
+                </span>
+                <p
+                  style={{
+                    fontFamily: B,
+                    fontSize: 14,
+                    fontWeight: 600,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.1em',
+                    color: COLORS.ink40,
+                    margin: '4px 0 0',
+                  }}
+                >
+                  {inv.multiplierLabel}
+                </p>
+              </div>
 
-      {/* Floating subscribe pill */}
-      <div
-        style={{
-          position: 'fixed',
-          bottom: 20,
-          left: '50%',
-          transform: 'translateX(-50%)',
-          zIndex: 90,
-          opacity: showSubscribePill ? 1 : 0,
-          pointerEvents: showSubscribePill ? 'auto' : 'none',
-          transition: 'opacity 0.3s ease',
-        }}
-      >
-        <a
-          href="#subscribe"
-          style={{
-            fontFamily: B,
-            fontSize: 12,
-            fontWeight: 600,
-            textTransform: 'uppercase',
-            letterSpacing: '0.08em',
-            color: '#fff',
-            background: COLORS.navy,
-            textDecoration: 'none',
-            padding: '10px 24px',
-            borderRadius: 20,
-            boxShadow: '0 4px 16px rgba(27,42,74,0.25)',
-            display: 'block',
-          }}
-        >
-          Subscribe
-        </a>
+              {/* Claim quote */}
+              <p
+                style={{
+                  fontFamily: 'Georgia, "Times New Roman", serif',
+                  fontSize: 22,
+                  lineHeight: 1.4,
+                  color: COLORS.ink,
+                  margin: '0 0 16px',
+                }}
+              >
+                &ldquo;{inv.claim}&rdquo;
+              </p>
+
+              {/* Attribution */}
+              <p style={{ fontFamily: B, fontSize: 14, color: COLORS.ink40, margin: '0 0 20px' }}>
+                {inv.who} &middot; {inv.date}
+              </p>
+
+              {/* CTA */}
+              <button
+                onClick={() => setActiveStory(inv)}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 6,
+                  fontFamily: B,
+                  fontSize: 14,
+                  fontWeight: 600,
+                  color: COLORS.chainBlue,
+                  background: `${COLORS.chainBlue}10`,
+                  border: 'none',
+                  borderRadius: 8,
+                  padding: '10px 18px',
+                  cursor: 'pointer',
+                  WebkitTapHighlightColor: 'transparent',
+                  alignSelf: 'flex-start',
+                }}
+                aria-label={`Read investigation: ${inv.claim}`}
+              >
+                Tap to see the story &rarr;
+              </button>
+            </div>
+          </SnapSection>
+        ))}
+
+        {/* ═══ MISSION / ABOUT ═══ */}
+        <SnapSection bg={COLORS.navy} style={{ textAlign: 'center' }}>
+          <h2
+            style={{
+              fontFamily: H,
+              fontSize: 28,
+              fontWeight: 700,
+              color: '#fff',
+              margin: '0 0 20px',
+            }}
+          >
+            Our mission
+          </h2>
+          <p
+            style={{
+              fontFamily: B,
+              fontSize: 16,
+              lineHeight: 1.65,
+              color: 'rgba(255,255,255,0.7)',
+              margin: '0 0 16px',
+              maxWidth: 360,
+              marginLeft: 'auto',
+              marginRight: 'auto',
+            }}
+          >
+            We read the sources that politicians cite. If their numbers match, we say so. If they
+            don&rsquo;t, we show you. No sides. No spin. Just the maths.
+          </p>
+          <Link
+            href="/about"
+            style={{
+              fontFamily: B,
+              fontSize: 14,
+              fontWeight: 600,
+              color: COLORS.amber,
+              textDecoration: 'none',
+            }}
+          >
+            Learn more about us &rarr;
+          </Link>
+        </SnapSection>
+
+        {/* ═══ SUBSCRIBE ═══ */}
+        <SnapSection bg={COLORS.navy} style={{ paddingBottom: 100, textAlign: 'center' }}>
+          <div id="subscribe">
+            <p
+              style={{
+                fontFamily: B,
+                fontSize: 22,
+                color: 'rgba(255,255,255,0.85)',
+                margin: '0 0 8px',
+                lineHeight: 1.5,
+              }}
+            >
+              We publish <span className="highlight">when it matters</span>. Not before.
+            </p>
+            <p
+              style={{
+                fontFamily: B,
+                fontSize: 16,
+                color: 'rgba(255,255,255,0.45)',
+                margin: '0 0 28px',
+                lineHeight: 1.6,
+              }}
+            >
+              No clickbait. Just the numbers, when they need checking.
+            </p>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                const input = e.currentTarget.querySelector('input') as HTMLInputElement;
+                if (input?.value) {
+                  window.open(
+                    `https://thepapertrailuk.substack.com/subscribe?email=${encodeURIComponent(input.value)}`,
+                    '_blank',
+                  );
+                }
+              }}
+              style={{ display: 'flex', flexDirection: 'column', gap: 12 }}
+            >
+              <input
+                type="email"
+                placeholder="Your email"
+                aria-label="Email address"
+                style={{
+                  padding: '14px 18px',
+                  borderRadius: 10,
+                  border: '1px solid rgba(255,255,255,0.15)',
+                  background: 'rgba(255,255,255,0.08)',
+                  color: '#fff',
+                  fontFamily: B,
+                  fontSize: 16,
+                  outline: 'none',
+                  minHeight: 48,
+                }}
+              />
+              <button
+                type="submit"
+                style={{
+                  padding: '14px',
+                  borderRadius: 10,
+                  border: 'none',
+                  background: '#fff',
+                  color: COLORS.navy,
+                  fontFamily: B,
+                  fontSize: 16,
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  minHeight: 48,
+                }}
+              >
+                Subscribe
+              </button>
+            </form>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 6,
+                marginTop: 16,
+              }}
+            >
+              <span
+                style={{
+                  width: 6,
+                  height: 6,
+                  borderRadius: '50%',
+                  background: '#FF6719',
+                  display: 'inline-block',
+                }}
+              />
+              <span
+                style={{
+                  fontFamily: B,
+                  fontSize: 14,
+                  fontWeight: 600,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.1em',
+                  color: 'rgba(255,255,255,0.35)',
+                }}
+              >
+                Also on Substack
+              </span>
+            </div>
+          </div>
+        </SnapSection>
       </div>
 
-      {/* Back to top */}
-      {showBackToTop && (
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          aria-label="Back to top"
-          style={{
-            position: 'fixed',
-            bottom: 20,
-            right: 16,
-            zIndex: 90,
-            width: 40,
-            height: 40,
-            borderRadius: '50%',
-            background: COLORS.navy,
-            border: 'none',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            boxShadow: '0 4px 12px rgba(27,42,74,0.2)',
-          }}
-        >
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3 8l4-4 4 4" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
-      )}
+      {/* ═══ FIXED SUBSCRIBE BAR ═══ */}
+      <FixedSubscribeBar containerRef={mainRef} />
+
+      {/* ═══ SCROLL TO TOP ═══ */}
+      <FixedScrollToTop containerRef={mainRef} />
+
+      <style>{`
+        div::-webkit-scrollbar { display: none; }
+      `}</style>
     </>
+  );
+}
+
+/* ───── Fixed subscribe bar ───── */
+function FixedSubscribeBar({ containerRef }: { containerRef: React.RefObject<HTMLDivElement | null> }) {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      setVisible(el.scrollTop > el.clientHeight * 0.7);
+    };
+    el.addEventListener('scroll', onScroll, { passive: true });
+    return () => el.removeEventListener('scroll', onScroll);
+  }, [containerRef]);
+
+  return (
+    <div
+      style={{
+        position: 'fixed',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        padding: '12px 20px',
+        background: 'rgba(255, 255, 255, 0.95)',
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)',
+        zIndex: 100,
+        borderTop: '1px solid rgba(0, 0, 0, 0.1)',
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'translateY(0)' : 'translateY(100%)',
+        transition: 'opacity 0.3s ease, transform 0.3s ease',
+        pointerEvents: visible ? 'auto' : 'none',
+      }}
+    >
+      <a
+        href="#subscribe"
+        onClick={(e) => {
+          e.preventDefault();
+          const el = document.getElementById('subscribe');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }}
+        style={{
+          display: 'block',
+          width: '100%',
+          padding: '12px',
+          borderRadius: 10,
+          background: COLORS.navy,
+          color: '#fff',
+          fontFamily: 'var(--font-sans), sans-serif',
+          fontSize: 14,
+          fontWeight: 600,
+          textAlign: 'center',
+          textDecoration: 'none',
+          letterSpacing: '0.04em',
+          textTransform: 'uppercase',
+        }}
+      >
+        Subscribe for updates
+      </a>
+    </div>
+  );
+}
+
+/* ───── Fixed scroll to top ───── */
+function FixedScrollToTop({ containerRef }: { containerRef: React.RefObject<HTMLDivElement | null> }) {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      setVisible(el.scrollTop > el.clientHeight);
+    };
+    el.addEventListener('scroll', onScroll, { passive: true });
+    return () => el.removeEventListener('scroll', onScroll);
+  }, [containerRef]);
+
+  return (
+    <button
+      onClick={() => {
+        const el = containerRef.current;
+        if (el) el.scrollTo({ top: 0, behavior: 'smooth' });
+      }}
+      aria-label="Back to top"
+      style={{
+        position: 'fixed',
+        bottom: 72,
+        right: 20,
+        zIndex: 101,
+        width: 40,
+        height: 40,
+        borderRadius: '50%',
+        background: COLORS.navy,
+        border: 'none',
+        cursor: 'pointer',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        boxShadow: '0 4px 12px rgba(27,42,74,0.2)',
+        backdropFilter: 'blur(6px)',
+        WebkitBackdropFilter: 'blur(6px)',
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'translateY(0)' : 'translateY(12px)',
+        transition: 'opacity 0.3s ease, transform 0.3s ease',
+        pointerEvents: visible ? 'auto' : 'none',
+      }}
+    >
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M3 8l4-4 4 4" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </button>
   );
 }
