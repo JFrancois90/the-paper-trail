@@ -13,6 +13,7 @@ import QuestionsBlock from '@/components/QuestionsBlock';
 import ScrollReveal from '@/components/ScrollReveal';
 import HighlightedText from '@/components/HighlightedText';
 import CorrectionBox from '@/components/CorrectionBox';
+import RebuttalBox from '@/components/RebuttalBox';
 import { HIGHLIGHT_PHRASES } from '@/lib/highlights';
 import InvestigationPageBars from './InvestigationPageBars';
 import InvestigationPageChain from './InvestigationPageChain';
@@ -203,6 +204,20 @@ export default async function InvestigationPage({ params }: PageProps) {
           <ScrollReveal>
             <div style={{ marginBottom: 48 }}>
               <CorrectionBox text={inv.correction} />
+            </div>
+          </ScrollReveal>
+        )}
+
+        {/* Rebuttal invitation */}
+        {inv.rebuttalStatus && (
+          <ScrollReveal>
+            <div style={{ marginBottom: 48 }}>
+              <RebuttalBox
+                invited={inv.rebuttalStatus.invited}
+                dateInvited={inv.rebuttalStatus.dateInvited}
+                status={inv.rebuttalStatus.status}
+                responseText={inv.rebuttalStatus.responseText}
+              />
             </div>
           </ScrollReveal>
         )}

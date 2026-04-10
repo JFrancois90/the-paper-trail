@@ -104,21 +104,37 @@ export default function Nav({ forceDark }: NavProps) {
           <Link href="/how-it-works" style={labelStyle}>What we do</Link>
           <Link href="/about" style={labelStyle}>What we are fighting for</Link>
           <Link
+            href="/support"
+            style={{
+              fontFamily: 'var(--font-sans), sans-serif',
+              fontSize: 13,
+              fontWeight: 500,
+              textDecoration: 'none',
+              padding: '8px 18px',
+              borderRadius: 6,
+              border: `1.5px solid ${dark ? 'rgba(255,255,255,0.3)' : '#1b2a4a'}`,
+              color: dark ? 'rgba(255,255,255,0.7)' : '#1b2a4a',
+              background: 'transparent',
+              transition: 'all 0.3s ease',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            Support us
+          </Link>
+          <Link
             href="#subscribe"
             style={{
               fontFamily: 'var(--font-sans), sans-serif',
-              fontSize: 14,
-              fontWeight: 500,
-              letterSpacing: '0.01em',
+              fontSize: 13,
+              fontWeight: 600,
               textDecoration: 'none',
-              padding: '10px 24px',
+              padding: '8px 18px',
               borderRadius: 6,
-              border: `1.5px solid ${dark ? textColor : '#1b2a4a'}`,
-              color: textColor,
-              background: 'transparent',
+              border: 'none',
+              color: dark ? '#1b2a4a' : '#fff',
+              background: dark ? '#fff' : '#1b2a4a',
               transition: 'all 0.3s ease',
-              minHeight: 44,
-              minWidth: 44,
               display: 'flex',
               alignItems: 'center',
             }}

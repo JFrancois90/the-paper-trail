@@ -8,6 +8,7 @@ import IntroSequence from '@/components/IntroSequence';
 import MobileHomepage from '@/components/mobile/MobileHomepage';
 import BrandSlogan from '@/components/BrandSlogan';
 import HeroSubtitle from '@/components/HeroSubtitle';
+import SubmissionForm from '@/components/SubmissionForm';
 import useIsMobile from '@/lib/useIsMobile';
 import { COLORS } from '@/lib/constants';
 
@@ -710,22 +711,23 @@ export default function Home() {
                       height: '100%',
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-3px)';
-                      e.currentTarget.style.boxShadow = '0 8px 28px rgba(27,42,74,0.08)';
+                      e.currentTarget.style.transform = 'translateY(-6px) scale(1.02)';
+                      e.currentTarget.style.boxShadow = '0 12px 36px rgba(27,42,74,0.12)';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.transform = 'translateY(0) scale(1)';
                       e.currentTarget.style.boxShadow = 'none';
                     }}
                   >
                     <p
                       style={{
                         fontFamily: H,
-                        fontSize: 28,
+                        fontSize: 48,
                         fontWeight: 700,
-                        color: inv.multiplier === 'False' ? COLORS.claimRed : COLORS.navy,
+                        color: COLORS.claimRed,
                         margin: '0 0 4px',
-                        letterSpacing: '-0.02em',
+                        letterSpacing: '-0.03em',
+                        lineHeight: 1,
                       }}
                     >
                       {inv.multiplier}
@@ -736,17 +738,28 @@ export default function Home() {
                     <p style={{ fontFamily: B, fontSize: 15, lineHeight: 1.4, color: COLORS.ink, margin: '0 0 10px' }}>
                       &ldquo;{inv.claim}&rdquo;
                     </p>
-                    <p style={{ fontFamily: B, fontSize: 13, lineHeight: 1.5, color: COLORS.sourceGreen, fontWeight: 600, margin: '0 0 12px' }}>
-                      {inv.oneLiner}
+                    <p style={{ fontFamily: B, fontSize: 13, lineHeight: 1.5, fontWeight: 600, margin: '0 0 12px' }}>
+                      <span className="highlight-green">{inv.oneLiner}</span>
                     </p>
                     {inv.correction && (
-                      <p style={{ fontFamily: B, fontSize: 11, color: COLORS.sourceGreen, margin: '0 0 8px' }}>
+                      <p style={{ fontFamily: B, fontSize: 11, color: COLORS.sourceGreen, margin: '0 0 12px' }}>
                         &#10003; Corrected Dec 2025
                       </p>
                     )}
-                    <p style={{ fontFamily: B, fontSize: 13, fontWeight: 600, color: COLORS.chainBlue, margin: 0 }}>
+                    <span
+                      style={{
+                        display: 'inline-block',
+                        fontFamily: B,
+                        fontSize: 13,
+                        fontWeight: 600,
+                        color: '#fff',
+                        background: COLORS.navy,
+                        padding: '8px 18px',
+                        borderRadius: 8,
+                      }}
+                    >
                       Read more &rarr;
-                    </p>
+                    </span>
                   </Link>
                 </ScrollReveal>
               ))}
@@ -865,12 +878,15 @@ export default function Home() {
 
           <div style={{ maxWidth: 520, margin: '0 auto', textAlign: 'center', position: 'relative' }}>
             <ScrollReveal anim="fadeUp">
-              <img src="/logo-dark.png" alt="The Paper Trail" style={{ height: 36, marginBottom: 24, opacity: 0.7 }} />
-              <p style={{ fontFamily: B, fontSize: 18, color: 'rgba(255,255,255,0.85)', margin: '0 0 8px', lineHeight: 1.5 }}>
-                Politicians cite sources. We read them.
+              <img src="/logo-dark.png" alt="The Paper Trail" style={{ height: 40, marginBottom: 24, opacity: 0.7 }} />
+              <p style={{ fontFamily: B, fontSize: 20, color: 'rgba(255,255,255,0.85)', margin: '0 0 8px', lineHeight: 1.5 }}>
+                We publish <span className="highlight">when it matters</span>. Not before.
               </p>
-              <p style={{ fontFamily: B, fontSize: 16, color: 'rgba(255,255,255,0.5)', margin: '0 0 32px', lineHeight: 1.5 }}>
-                <span className="highlight">You&apos;d be surprised how often they don&apos;t match.</span>
+              <p style={{ fontFamily: B, fontSize: 15, color: 'rgba(255,255,255,0.45)', margin: '0 0 8px', lineHeight: 1.6 }}>
+                No clickbait. No material pumping. Just the numbers, when they need checking.
+              </p>
+              <p style={{ fontFamily: B, fontSize: 15, color: 'rgba(255,255,255,0.45)', margin: '0 0 32px', lineHeight: 1.6 }}>
+                We give you the questions to ask your politicians.
               </p>
             </ScrollReveal>
 
@@ -933,25 +949,76 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ─── SUBMISSION FORM ─── */}
+        <section
+          className="snap-section"
+          data-nav-theme="light"
+          style={{
+            minHeight: '100vh',
+            background: COLORS.paper,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '60px 8vw',
+          }}
+        >
+          <SubmissionForm />
+        </section>
+
         {/* ─── FOOTER ─── */}
         <footer
           style={{
             background: COLORS.paper,
             borderTop: '1px solid rgba(27,42,74,0.06)',
-            padding: '40px 8vw',
+            padding: '48px 8vw',
           }}
         >
-          <div style={{ maxWidth: 900, margin: '0 auto', textAlign: 'center' }}>
-            <img src="/logo-nav.png" alt="The Paper Trail" style={{ height: 32, marginBottom: 12 }} />
-            <p style={{ fontFamily: B, fontSize: 13, color: COLORS.lightMuted, margin: '0 0 8px' }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto', textAlign: 'center' }}>
+            <img src="/logo-nav.png" alt="The Paper Trail" style={{ height: 44, marginBottom: 16 }} />
+            <p style={{ fontFamily: B, fontSize: 13, color: COLORS.lightMuted, margin: '0 0 16px' }}>
               Non-partisan. Source-led. Open.
             </p>
+
+            {/* Support section */}
+            <div
+              style={{
+                background: '#fff',
+                border: '1px solid rgba(27,42,74,0.06)',
+                borderRadius: 12,
+                padding: '24px 28px',
+                maxWidth: 520,
+                margin: '0 auto 24px',
+              }}
+            >
+              <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, margin: '0 0 12px' }}>
+                The Paper Trail is independent and non-partisan. We don&apos;t take money from political parties.
+                If you want to help us keep checking the numbers, you can support us.
+              </p>
+              <a
+                href="/support"
+                style={{
+                  fontFamily: B,
+                  fontSize: 13,
+                  fontWeight: 600,
+                  color: COLORS.navy,
+                  textDecoration: 'none',
+                  border: `1.5px solid ${COLORS.navy}`,
+                  borderRadius: 8,
+                  padding: '8px 20px',
+                  display: 'inline-block',
+                }}
+              >
+                Support us &rarr;
+              </a>
+            </div>
+
             <p style={{ fontFamily: B, fontSize: 12, color: COLORS.lightMuted, margin: '0 0 16px' }}>
               thepapertrail.uk &middot; &copy; {new Date().getFullYear()}
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
               <Link href="/how-it-works" style={{ fontFamily: B, fontSize: 12, color: COLORS.muted, textDecoration: 'none' }}>What we do</Link>
               <Link href="/about" style={{ fontFamily: B, fontSize: 12, color: COLORS.muted, textDecoration: 'none' }}>What we are fighting for</Link>
+              <a href="/support" style={{ fontFamily: B, fontSize: 12, color: COLORS.muted, textDecoration: 'none' }}>Support us</a>
             </div>
           </div>
         </footer>

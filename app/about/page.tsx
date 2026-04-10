@@ -30,7 +30,7 @@ export default function AboutPage() {
             <img
               src="/logo-nav.png"
               alt="The Paper Trail"
-              style={{ height: 56 }}
+              style={{ height: 80 }}
             />
           </div>
           <p style={labelStyle}>About</p>

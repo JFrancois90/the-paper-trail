@@ -78,7 +78,7 @@ export default function PreviewGate({ children }: PreviewGateProps) {
       <img
         src="/logo-dark.png"
         alt="The Paper Trail"
-        style={{ height: 56, marginBottom: 24 }}
+        style={{ height: 64, marginBottom: 24 }}
       />
 
       {/* Slogan */}

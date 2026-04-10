@@ -30,6 +30,13 @@ export interface Investigation {
   questions: [string, string, string];
   multiplier: string;
   multiplierLabel: string;
+  rebuttalStatus: {
+    invited: string;
+    dateInvited?: string;
+    status: 'invited' | 'no-response' | 'responded';
+    responseText?: string;
+    responseDate?: string;
+  } | null;
 }
 
 export const investigations: Investigation[] = [
@@ -69,6 +76,7 @@ export const investigations: Investigation[] = [
     ],
     multiplier: '15×',
     multiplierLabel: 'cost understated',
+    rebuttalStatus: { invited: 'Clive Lewis MP', dateInvited: 'Jan 2026', status: 'no-response' },
   },
   {
     id: 2,
@@ -99,6 +107,7 @@ export const investigations: Investigation[] = [
     ],
     multiplier: '−12%',
     multiplierLabel: 'actual trend',
+    rebuttalStatus: { invited: 'Green Party leadership', dateInvited: 'Dec 2025', status: 'no-response' },
   },
   {
     id: 3,
@@ -132,6 +141,7 @@ export const investigations: Investigation[] = [
     ],
     multiplier: 'False',
     multiplierLabel: 'US starts at 0%',
+    rebuttalStatus: { invited: 'Green Party leadership', dateInvited: 'Dec 2025', status: 'no-response' },
   },
   {
     id: 4,
@@ -169,5 +179,6 @@ export const investigations: Investigation[] = [
     ],
     multiplier: '48×',
     multiplierLabel: 'figure inflated',
+    rebuttalStatus: { invited: 'Multiple sources', dateInvited: 'Jan 2026', status: 'invited' },
   },
 ];

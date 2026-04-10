@@ -48,17 +48,19 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               *, *::before, *::after { box-sizing: border-box; }
-              html { scroll-snap-type: y mandatory; overflow-y: scroll; }
+              html { scroll-snap-type: y mandatory; overflow-y: scroll; scroll-behavior: smooth; }
               body { margin: 0; padding: 0; }
               .snap-section {
                 min-height: 100vh;
                 scroll-snap-align: start;
                 display: flex;
+                flex-direction: column;
                 align-items: center;
+                justify-content: center;
               }
               @media (max-width: 640px) {
-                html { scroll-snap-type: none; }
-                .snap-section { min-height: auto; scroll-snap-align: none; }
+                html { scroll-snap-type: none; scroll-behavior: auto; }
+                .snap-section { min-height: auto; scroll-snap-align: none; display: block; }
               }
               .skip-link {
                 position: absolute;
@@ -86,9 +88,9 @@ export default function RootLayout({
                 outline: 2px solid #2358a3;
                 outline-offset: 2px;
               }
-              .nav-logo { height: 48px; }
+              .nav-logo { height: 56px; }
               @media (max-width: 640px) {
-                .nav-logo { height: 34px; }
+                .nav-logo { height: 38px; }
               }
               .highlight {
                 background: linear-gradient(to bottom, transparent 65%, rgba(196,138,10,0.35) 65%);
