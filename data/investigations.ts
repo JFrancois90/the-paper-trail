@@ -46,7 +46,7 @@ export const investigations: Investigation[] = [
     sourceImage: null,
     sourceOneLiner: 'Equity: \u00a30.5bn. Debt absorbed: \u00a37.1bn. True cost: \u00a37.6bn.',
     impact: 'This claim is being used as one of two key precedents to argue that water nationalisation will be cheap. If you\u2019re understating the cost by a factor of 15, the entire policy costing falls apart. Voters deserve accurate numbers so they can decide for themselves whether nationalisation is affordable.',
-    analogy: 'Think of it like buying a house for \u00a31 when it has a \u00a3500,000 mortgage. The \u00a31 is what you paid for the keys, but you\u2019ve just taken on all the debt too. The real price is \u00a3500,001.',
+    analogy: 'Think of it like buying a house for \u00a3100k when it has a \u00a3400k mortgage. The \u00a3100k is the equity the seller had, but you\u2019ve just taken on all the debt too. The real price is \u00a3500k (otherwise Rightmove has some explaining to do!)',
     barData: [
       { label: 'Quoted', sublabel: 'Equity only', value: 0.5, color: '#b5302a', fmt: '\u00a30.5bn' },
       { label: 'Omitted', sublabel: 'Debt absorbed', value: 7.1, color: '#1b2a4a', fmt: '\u00a37.1bn' },

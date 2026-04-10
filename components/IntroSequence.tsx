@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Typewriter from './Typewriter';
+import { COLORS } from '@/lib/constants';
 
 interface IntroSequenceProps {
   onComplete: () => void;
@@ -15,26 +16,38 @@ interface Line {
   style?: React.CSSProperties;
 }
 
-const LINES: Line[] = [
-  { text: 'There are three kinds of lies:', pause: 200, style: { fontStyle: 'italic', color: 'rgba(255,255,255,0.6)' } },
-  { text: 'lies, damned lies, and statistics.', pause: 800, style: { fontStyle: 'italic', color: 'rgba(255,255,255,0.6)' } },
-  { text: '', pause: 600 },
-  { text: 'That was the worry. Turns out we skipped a step.', pause: 300 },
-  { text: "Politicians aren't even twisting statistics anymore.", pause: 300 },
-  { text: "They're just getting the numbers wrong in the first place.", pause: 800 },
-  { text: '', pause: 400 },
-  { text: 'Mark Twain would be [hl]amazed[/hl].', pause: 1000, speed: 60 },
-];
-
 export default function IntroSequence({ onComplete, isMobile = false }: IntroSequenceProps) {
+  const [screen, setScreen] = useState<1 | 2>(1);
   const [lineIndex, setLineIndex] = useState(0);
   const [linesDone, setLinesDone] = useState<boolean[]>([]);
-  const [showButton, setShowButton] = useState(false);
+  const [showMemeText, setShowMemeText] = useState(false);
+  const [showEnterBtn, setShowEnterBtn] = useState(false);
+  const [screen1Visible, setScreen1Visible] = useState(true);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lineIndexRef = useRef(0);
   lineIndexRef.current = lineIndex;
+  const onCompleteRef = useRef(onComplete);
+  onCompleteRef.current = onComplete;
 
-  const baseSpeed = isMobile ? 35 : 45;
+  const bigSize = isMobile ? '24px' : '32px';
+  const smallSize = isMobile ? '20px' : '24px';
+  const boldSize = isMobile ? '22px' : '28px';
+  const baseSpeed = 35;
+
+  const LINES: Line[] = [
+    { text: 'There are three kinds of lies:', pause: 150, style: { fontSize: bigSize, color: '#fff' } },
+    { text: 'lies, damned lies, and [hl]statistics[/hl].', pause: 600, style: { fontSize: bigSize, color: '#fff' } },
+    { text: '', pause: 400 },
+    { text: 'That was the worry.', pause: 300, style: { fontSize: smallSize, color: 'rgba(255,255,255,0.6)' } },
+    { text: '', pause: 200 },
+    { text: 'Turns out we skipped a step.', pause: 300, style: { fontSize: smallSize, color: 'rgba(255,255,255,0.6)' } },
+    { text: '', pause: 200 },
+    { text: "Politicians aren't [hl]twisting[/hl] statistics anymore.", pause: 300, style: { fontSize: bigSize, color: '#fff' } },
+    { text: '', pause: 200 },
+    { text: "They're just getting the numbers [hl]wrong[/hl].", pause: 600, style: { fontSize: bigSize, color: COLORS.claimRed } },
+    { text: '', pause: 400 },
+    { text: 'Mark Twain would be [hl]amazed[/hl].', pause: 800, speed: 50, style: { fontSize: boldSize, color: '#fff', fontWeight: 700 } },
+  ];
 
   useEffect(() => {
     return () => { if (timerRef.current) clearTimeout(timerRef.current); };
@@ -42,21 +55,31 @@ export default function IntroSequence({ onComplete, isMobile = false }: IntroSeq
 
   // Auto-advance blank lines
   useEffect(() => {
+    if (screen !== 1) return;
     const line = LINES[lineIndex];
-    if (line && line.text === '' && !showButton) {
+    if (line && line.text === '') {
       timerRef.current = setTimeout(() => {
         setLinesDone((prev) => { const n = [...prev]; n[lineIndex] = true; return n; });
-        advance(lineIndex);
+        advanceLine(lineIndex);
       }, line.pause);
     }
-  }, [lineIndex, showButton]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lineIndex, screen]);
 
-  function advance(li: number) {
+  function advanceLine(li: number) {
     if (li < LINES.length - 1) {
       setLineIndex(li + 1);
     } else {
-      // All lines done, show button
-      timerRef.current = setTimeout(() => setShowButton(true), 1000);
+      // Screen 1 done, transition to screen 2
+      timerRef.current = setTimeout(() => {
+        setScreen1Visible(false);
+        timerRef.current = setTimeout(() => {
+          setScreen(2);
+          // Stagger meme text and button
+          timerRef.current = setTimeout(() => setShowMemeText(true), 1000);
+          timerRef.current = setTimeout(() => setShowEnterBtn(true), 1800);
+        }, 500);
+      }, 400);
     }
   }
 
@@ -64,14 +87,24 @@ export default function IntroSequence({ onComplete, isMobile = false }: IntroSeq
     const li = lineIndexRef.current;
     const line = LINES[li];
     if (!line) return;
-
     setLinesDone((prev) => { const n = [...prev]; n[li] = true; return n; });
-    timerRef.current = setTimeout(() => advance(li), line.pause);
+    timerRef.current = setTimeout(() => advanceLine(li), line.pause);
   }
 
   function skip() {
     if (timerRef.current) clearTimeout(timerRef.current);
-    onComplete();
+    sessionStorage.setItem('intro_seen', 'true');
+    onCompleteRef.current();
+  }
+
+  function goToScreen2() {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    setScreen1Visible(false);
+    setTimeout(() => {
+      setScreen(2);
+      setTimeout(() => setShowMemeText(true), 1000);
+      setTimeout(() => setShowEnterBtn(true), 1800);
+    }, 300);
   }
 
   return (
@@ -79,13 +112,16 @@ export default function IntroSequence({ onComplete, isMobile = false }: IntroSeq
       style={{
         position: 'fixed',
         inset: 0,
-        background: '#1b2a4a',
         zIndex: 200,
+        background: screen === 1 ? COLORS.navy : COLORS.paper,
+        transition: 'background 0.5s ease',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '0 8vw',
+        padding: isMobile ? '0 20px' : '0 8vw',
+        overflow: 'hidden',
       }}
+      onClick={screen === 1 ? goToScreen2 : undefined}
     >
       <style>{`
         @keyframes cursorBlink {
@@ -98,47 +134,100 @@ export default function IntroSequence({ onComplete, isMobile = false }: IntroSeq
         }
       `}</style>
 
-      <div style={{ maxWidth: 620, width: '100%' }}>
-        {LINES.map((line, i) => {
-          if (i > lineIndex) return null;
-          if (line.text === '') return <div key={i} style={{ height: 14 }} />;
+      {/* Screen 1: Twain quote */}
+      {screen === 1 && (
+        <div
+          style={{
+            maxWidth: 700,
+            width: '100%',
+            opacity: screen1Visible ? 1 : 0,
+            transition: 'opacity 0.5s ease',
+          }}
+        >
+          {LINES.map((line, i) => {
+            if (i > lineIndex) return null;
+            if (line.text === '') return <div key={i} style={{ height: 10 }} />;
 
-          const isCurrent = i === lineIndex && !linesDone[i];
+            const isCurrent = i === lineIndex && !linesDone[i];
 
-          return (
-            <div key={i} style={{ marginBottom: 4 }}>
-              {isCurrent ? (
-                <Typewriter
-                  text={line.text}
-                  speed={line.speed || baseSpeed}
-                  onComplete={handleLineComplete}
-                  style={line.style}
-                />
-              ) : (
-                <span
-                  style={{
-                    fontFamily: 'var(--font-sans), sans-serif',
-                    fontSize: isMobile ? '20px' : 'clamp(16px, 2vw, 20px)',
-                    lineHeight: 1.6,
-                    color: 'rgba(255,255,255,0.85)',
-                    ...line.style,
-                  }}
-                  dangerouslySetInnerHTML={{
-                    __html: line.text
-                      .replace(/\[hl\]/g, '<span class="highlight">')
-                      .replace(/\[\/hl\]/g, '</span>'),
-                  }}
-                />
-              )}
-            </div>
-          );
-        })}
+            return (
+              <div key={i} style={{ marginBottom: 3 }}>
+                {isCurrent ? (
+                  <Typewriter
+                    text={line.text}
+                    speed={line.speed || baseSpeed}
+                    onComplete={handleLineComplete}
+                    style={line.style}
+                  />
+                ) : (
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-sans), sans-serif',
+                      fontSize: line.style?.fontSize || bigSize,
+                      lineHeight: 1.4,
+                      color: 'rgba(255,255,255,0.85)',
+                      ...line.style,
+                    }}
+                    dangerouslySetInnerHTML={{
+                      __html: line.text
+                        .replace(/\[hl\]/g, '<span class="highlight">')
+                        .replace(/\[\/hl\]/g, '</span>'),
+                    }}
+                  />
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )}
 
-        {/* Button */}
-        {showButton && (
-          <div style={{ marginTop: 40, animation: 'fadeIn 0.6s ease' }}>
+      {/* Screen 2: 280 days meme */}
+      {screen === 2 && (
+        <div
+          style={{
+            maxWidth: 640,
+            width: '100%',
+            textAlign: 'center',
+            animation: 'fadeIn 0.6s ease',
+          }}
+        >
+          <div
+            style={{
+              borderRadius: 12,
+              overflow: 'hidden',
+              border: '1px solid rgba(27,42,74,0.08)',
+              marginBottom: 20,
+            }}
+          >
+            <img
+              src="/images/280-days-meme.png"
+              alt="Three politicians debating policy based on 280 days in a year"
+              style={{
+                width: '100%',
+                height: 'auto',
+                display: 'block',
+              }}
+            />
+          </div>
+
+          {showMemeText && (
+            <p
+              style={{
+                fontFamily: 'var(--font-sans), sans-serif',
+                fontSize: 16,
+                lineHeight: 1.5,
+                color: COLORS.navy,
+                margin: '0 0 24px',
+                animation: 'fadeIn 0.5s ease',
+              }}
+            >
+              Three politicians. One table. None of them checked the number.
+            </p>
+          )}
+
+          {showEnterBtn && (
             <button
-              onClick={skip}
+              onClick={() => { sessionStorage.setItem('intro_seen', 'true'); onCompleteRef.current(); }}
               autoFocus
               aria-label="Enter the site"
               style={{
@@ -147,50 +236,54 @@ export default function IntroSequence({ onComplete, isMobile = false }: IntroSeq
                 fontWeight: 600,
                 textTransform: 'uppercase',
                 letterSpacing: '0.1em',
-                color: '#fff',
+                color: COLORS.navy,
                 background: 'transparent',
-                border: '1.5px solid rgba(255,255,255,0.35)',
+                border: `1.5px solid ${COLORS.navy}`,
                 borderRadius: 8,
                 padding: '14px 32px',
                 cursor: 'pointer',
                 minHeight: 44,
                 minWidth: 44,
+                animation: 'fadeIn 0.5s ease',
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(27,42,74,0.06)'; }}
               onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
             >
               See what we found &rarr;
             </button>
-          </div>
-        )}
-      </div>
-
-      {/* Skip */}
-      {!showButton && (
-        <button
-          onClick={skip}
-          aria-label="Skip intro"
-          style={{
-            position: 'absolute',
-            bottom: 28,
-            right: isMobile ? '50%' : 'clamp(24px, 8vw, 80px)',
-            transform: isMobile ? 'translateX(50%)' : 'none',
-            fontFamily: 'var(--font-sans), sans-serif',
-            fontSize: 11,
-            color: 'rgba(255,255,255,0.3)',
-            background: 'none',
-            border: 'none',
-            cursor: 'pointer',
-            padding: '12px',
-            minHeight: 44,
-            minWidth: 44,
-          }}
-          onMouseEnter={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,0.6)'; }}
-          onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,0.3)'; }}
-        >
-          Skip &rarr;
-        </button>
+          )}
+        </div>
       )}
+
+      {/* Skip button */}
+      <button
+        onClick={(e) => { e.stopPropagation(); sessionStorage.setItem('intro_seen', 'true'); onCompleteRef.current(); }}
+        aria-label="Skip intro"
+        style={{
+          position: 'absolute',
+          bottom: 28,
+          right: isMobile ? '50%' : 'clamp(24px, 8vw, 80px)',
+          transform: isMobile ? 'translateX(50%)' : 'none',
+          fontFamily: 'var(--font-sans), sans-serif',
+          fontSize: 11,
+          color: screen === 1 ? 'rgba(255,255,255,0.3)' : 'rgba(27,42,74,0.3)',
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+          padding: '12px',
+          minHeight: 44,
+          minWidth: 44,
+          transition: 'color 0.3s ease',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.color = screen === 1 ? 'rgba(255,255,255,0.6)' : 'rgba(27,42,74,0.6)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.color = screen === 1 ? 'rgba(255,255,255,0.3)' : 'rgba(27,42,74,0.3)';
+        }}
+      >
+        Skip &rarr;
+      </button>
     </div>
   );
 }

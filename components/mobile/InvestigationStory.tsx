@@ -379,7 +379,7 @@ function buildFrames(inv: Investigation): Frame[] {
 
   // Frame 5: In plain english
   frames.push({
-    bg: COLORS.navyLight,
+    bg: COLORS.paper,
     textColor: COLORS.navy,
     content: (
       <div style={{ maxWidth: 340 }}>
