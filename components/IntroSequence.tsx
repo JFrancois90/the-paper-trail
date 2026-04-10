@@ -196,8 +196,9 @@ export default function IntroSequence({ onComplete, isMobile = false }: IntroSeq
             style={{
               fontFamily: 'var(--font-sans), sans-serif',
               fontSize: 15,
+              fontWeight: 700,
               lineHeight: 1.5,
-              color: COLORS.muted,
+              color: COLORS.claimRed,
               margin: '0 0 16px',
             }}
           >
@@ -231,7 +232,7 @@ export default function IntroSequence({ onComplete, isMobile = false }: IntroSeq
               style={{
                 fontFamily: 'var(--font-sans), sans-serif',
                 fontSize: 16,
-                fontWeight: 600,
+                fontWeight: 400,
                 lineHeight: 1.5,
                 color: COLORS.navy,
                 margin: '0 0 24px',

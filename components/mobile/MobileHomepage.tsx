@@ -7,7 +7,7 @@ import { investigations } from '@/data/investigations';
 import MobileNav from '@/components/MobileNav';
 import BrandSlogan from '@/components/BrandSlogan';
 import HeroSubtitle from '@/components/HeroSubtitle';
-import SubscribeCTA from '@/components/SubscribeCTA';
+// Subscribe is inline below (not using SubscribeCTA component)
 import InvestigationStory from './InvestigationStory';
 import type { Investigation } from '@/data/investigations';
 
@@ -72,7 +72,7 @@ export default function MobileHomepage() {
           </p>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            {investigations.map((inv, i) => (
+            {investigations.filter((inv) => inv.slug !== '350bn-tax-evasion').map((inv, i) => (
               <div key={inv.id}>
                 <button
                   onClick={() => setActiveStory(inv)}
@@ -105,7 +105,7 @@ export default function MobileHomepage() {
                     <span
                       style={{
                         fontFamily: B,
-                        fontSize: 9,
+                        fontSize: 12,
                         fontWeight: 600,
                         textTransform: 'uppercase',
                         letterSpacing: '0.1em',
@@ -126,7 +126,7 @@ export default function MobileHomepage() {
                       margin: '0 0 12px',
                     }}
                   >
-                    &ldquo;{inv.saidQuote}&rdquo;
+                    &ldquo;{inv.claim}&rdquo;
                   </p>
 
                   {/* Who + date */}
@@ -163,9 +163,73 @@ export default function MobileHomepage() {
         </section>
 
         {/* Subscribe */}
-        <div style={{ padding: '40px 16px 0' }}>
-          <SubscribeCTA />
-        </div>
+        <section
+          id="subscribe"
+          style={{
+            background: COLORS.navy,
+            margin: '32px 16px 0',
+            borderRadius: 16,
+            padding: '40px 24px',
+            textAlign: 'center',
+          }}
+        >
+          <p style={{ fontFamily: B, fontSize: 18, color: 'rgba(255,255,255,0.85)', margin: '0 0 8px', lineHeight: 1.5 }}>
+            We publish <span className="highlight">when it matters</span>. Not before.
+          </p>
+          <p style={{ fontFamily: B, fontSize: 14, color: 'rgba(255,255,255,0.45)', margin: '0 0 24px', lineHeight: 1.6 }}>
+            No clickbait. Just the numbers, when they need checking.
+          </p>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              const input = e.currentTarget.querySelector('input') as HTMLInputElement;
+              if (input?.value) {
+                window.open(`https://thepapertrailuk.substack.com/subscribe?email=${encodeURIComponent(input.value)}`, '_blank');
+              }
+            }}
+            style={{ display: 'flex', flexDirection: 'column', gap: 10 }}
+          >
+            <input
+              type="email"
+              placeholder="Your email"
+              aria-label="Email address"
+              style={{
+                padding: '12px 16px',
+                borderRadius: 8,
+                border: '1px solid rgba(255,255,255,0.15)',
+                background: 'rgba(255,255,255,0.08)',
+                color: '#fff',
+                fontFamily: B,
+                fontSize: 14,
+                outline: 'none',
+                minHeight: 44,
+              }}
+            />
+            <button
+              type="submit"
+              style={{
+                padding: '12px',
+                borderRadius: 8,
+                border: 'none',
+                background: '#fff',
+                color: COLORS.navy,
+                fontFamily: B,
+                fontSize: 13,
+                fontWeight: 600,
+                cursor: 'pointer',
+                minHeight: 44,
+              }}
+            >
+              Subscribe
+            </button>
+          </form>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 12 }}>
+            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#FF6719', display: 'inline-block' }} />
+            <span style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'rgba(255,255,255,0.35)' }}>
+              Also on Substack
+            </span>
+          </div>
+        </section>
 
         {/* Footer spacer */}
         <div style={{ height: 80 }} />

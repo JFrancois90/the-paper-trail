@@ -57,7 +57,7 @@ export default function MobileNav({ dark = true }: MobileNavProps) {
           }}
         >
           <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-            <img src={logo} alt="The Paper Trail" style={{ height: 28 }} />
+            <img src={logo} alt="The Paper Trail" style={{ height: 38 }} />
           </Link>
           <button
             onClick={() => setMenuOpen(true)}
@@ -129,7 +129,7 @@ export default function MobileNav({ dark = true }: MobileNavProps) {
               marginBottom: 32,
             }}
           >
-            <img src="/logo-dark.png" alt="The Paper Trail" style={{ height: 24 }} />
+            <img src="/logo-dark.png" alt="The Paper Trail" style={{ height: 38 }} />
             <button
               onClick={() => setMenuOpen(false)}
               aria-label="Close menu"

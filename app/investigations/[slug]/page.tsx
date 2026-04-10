@@ -17,6 +17,7 @@ import RebuttalBox from '@/components/RebuttalBox';
 import StudentDebtExtras from '@/components/StudentDebtExtras';
 import ReformTaxExtras from '@/components/ReformTaxExtras';
 import RailtrackExtras from '@/components/RailtrackExtras';
+import StudentDebt97kExtras from '@/components/StudentDebt97kExtras';
 import { HIGHLIGHT_PHRASES } from '@/lib/highlights';
 import InvestigationPageBars from './InvestigationPageBars';
 import InvestigationPageChain from './InvestigationPageChain';
@@ -68,7 +69,7 @@ export default async function InvestigationPage({ params }: PageProps) {
           href="/"
           style={{
             fontFamily: 'var(--font-sans), sans-serif',
-            fontSize: 11,
+            fontSize: 12,
             fontWeight: 600,
             textTransform: 'uppercase',
             letterSpacing: '0.1em',
@@ -92,6 +93,34 @@ export default async function InvestigationPage({ params }: PageProps) {
           All investigations
         </Link>
 
+        {/* Position banner */}
+        <div
+          style={{
+            background: '#fdf0d0',
+            borderRadius: 10,
+            padding: '12px 20px',
+            marginBottom: 24,
+            textAlign: 'center',
+          }}
+        >
+          <p
+            style={{
+              fontFamily: 'var(--font-sans), sans-serif',
+              fontSize: 13,
+              lineHeight: 1.5,
+              color: COLORS.navy,
+              margin: 0,
+            }}
+          >
+            {inv.slug === 'railtrack-500m' && 'We support public accountability for nationalisation costs. We disagree with incorrect figures, regardless of political alignment.'}
+            {(inv.slug === 'billionaire-numbers' || inv.slug === 'cgt-lowest-g7') && 'We support action on wealth inequality and fair taxation. We disagree with incorrect figures, regardless of political alignment.'}
+            {inv.slug === 'student-debt-claim' && 'We support fair access to higher education and reform of student debt. We disagree with incorrect figures, regardless of political alignment.'}
+            {inv.slug === 'reform-tax-canary' && 'We support taxes on those who can afford it. We disagree with incorrect figures, regardless of political alignment.'}
+            {inv.slug === 'student-debt-97k' && 'We support reform of the student loan system. We disagree with incorrect figures, regardless of political alignment.'}
+            {inv.slug === '350bn-tax-evasion' && 'We support action on tax evasion. We disagree with incorrect figures, regardless of political alignment.'}
+          </p>
+        </div>
+
         <ScrollReveal>
           {/* Header */}
           <div style={{ marginBottom: 32 }}>
@@ -100,7 +129,7 @@ export default async function InvestigationPage({ params }: PageProps) {
               <span
                 style={{
                   fontFamily: 'var(--font-sans), sans-serif',
-                  fontSize: 11,
+                  fontSize: 12,
                   color: COLORS.ink40,
                 }}
               >
@@ -203,6 +232,11 @@ export default async function InvestigationPage({ params }: PageProps) {
             <ReformTaxExtras />
           </ScrollReveal>
         )}
+        {inv.slug === 'student-debt-97k' && (
+          <ScrollReveal>
+            <StudentDebt97kExtras />
+          </ScrollReveal>
+        )}
 
         {/* Questions */}
         <ScrollReveal>
@@ -223,7 +257,7 @@ export default async function InvestigationPage({ params }: PageProps) {
         {inv.correction && (
           <ScrollReveal>
             <div style={{ marginBottom: 48 }}>
-              <CorrectionBox text={inv.correction} />
+              <CorrectionBox text={inv.correction} date={inv.slug === 'student-debt-97k' ? 'Feb 2026' : undefined} />
             </div>
           </ScrollReveal>
         )}

@@ -21,7 +21,7 @@ export default function WhisperChain({ chain, note, expanded }: WhisperChainProp
         <div
           style={{
             fontFamily: 'var(--font-sans), sans-serif',
-            fontSize: 9,
+            fontSize: 12,
             fontWeight: 600,
             textTransform: 'uppercase',
             letterSpacing: '0.1em',
@@ -100,7 +100,7 @@ export default function WhisperChain({ chain, note, expanded }: WhisperChainProp
                 <div
                   style={{
                     fontFamily: 'var(--font-sans), sans-serif',
-                    fontSize: 10,
+                    fontSize: 12,
                     color: COLORS.ink40,
                   }}
                 >
@@ -151,7 +151,7 @@ export default function WhisperChain({ chain, note, expanded }: WhisperChainProp
           <div
             style={{
               fontFamily: 'var(--font-sans), sans-serif',
-              fontSize: 9,
+              fontSize: 12,
               fontWeight: 600,
               textTransform: 'uppercase',
               letterSpacing: '0.1em',

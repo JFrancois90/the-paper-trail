@@ -148,13 +148,17 @@ export default function HeroSubtitle({ isMobile = false }: HeroSubtitleProps) {
           href="/about#the-bus"
           style={{
             fontFamily: 'var(--font-sans), sans-serif',
-            fontSize: isMobile ? 16 : 17,
-            color: 'rgba(255,255,255,0.5)',
+            fontSize: isMobile ? 16 : 18,
+            color: 'rgba(255,255,255,0.8)',
             textDecoration: 'none',
             display: 'block',
+            cursor: 'pointer',
+            transition: 'text-decoration 0.2s ease',
           }}
+          onMouseEnter={(e) => { e.currentTarget.style.textDecoration = 'underline'; }}
+          onMouseLeave={(e) => { e.currentTarget.style.textDecoration = 'none'; }}
         >
-          Remember the <span className="highlight">&pound;350m</span> bus? So do we.
+          Remember the <span className="highlight" style={{ textDecoration: 'underline', textDecorationColor: 'rgba(196,138,10,0.6)', textUnderlineOffset: '3px' }}>&pound;350m</span> bus? So do we.
         </a>
       </div>
     </div>

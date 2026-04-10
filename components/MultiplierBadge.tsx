@@ -34,7 +34,7 @@ export default function MultiplierBadge({ multiplier, label }: MultiplierBadgePr
       <span
         style={{
           fontFamily: 'var(--font-sans), sans-serif',
-          fontSize: 9,
+          fontSize: 12,
           fontWeight: 600,
           textTransform: 'uppercase',
           letterSpacing: '0.1em',

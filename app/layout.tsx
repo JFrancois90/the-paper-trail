@@ -107,6 +107,22 @@ export default function RootLayout({
                 padding: 0 3px;
                 border-radius: 2px;
               }
+              /* Global nav link hover */
+              .nav-link {
+                transition: color 0.2s ease, letter-spacing 0.2s ease;
+              }
+              .nav-link:hover {
+                color: #c48a0a !important;
+                letter-spacing: 0.04em;
+              }
+              /* Global card hover */
+              .hover-card {
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+              }
+              .hover-card:hover {
+                transform: scale(1.02) translateY(-2px);
+                box-shadow: 0 8px 24px rgba(27, 42, 74, 0.12);
+              }
               @media (prefers-reduced-motion: reduce) {
                 *, *::before, *::after {
                   animation-duration: 0.01ms !important;

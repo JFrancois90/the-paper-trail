@@ -299,7 +299,7 @@ function buildFrames(inv: Investigation): Frame[] {
             <span
               style={{
                 fontFamily: 'var(--font-sans), sans-serif',
-                fontSize: 10,
+                fontSize: 12,
                 fontWeight: 600,
                 textTransform: 'uppercase',
                 letterSpacing: '0.1em',
@@ -456,7 +456,7 @@ function buildFrames(inv: Investigation): Frame[] {
                   <p style={{ fontFamily: 'var(--font-sans), sans-serif', fontSize: 13, fontWeight: 600, color: node.type === 'final' ? COLORS.claimRed : COLORS.ink, margin: 0, lineHeight: 1.3 }}>
                     {node.name}
                   </p>
-                  <p style={{ fontFamily: 'var(--font-sans), sans-serif', fontSize: 10, color: COLORS.ink40, margin: '2px 0 0' }}>
+                  <p style={{ fontFamily: 'var(--font-sans), sans-serif', fontSize: 12, color: COLORS.ink40, margin: '2px 0 0' }}>
                     {node.date}
                   </p>
                 </div>

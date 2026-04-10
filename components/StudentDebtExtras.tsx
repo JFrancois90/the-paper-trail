@@ -16,7 +16,7 @@ export default function StudentDebtExtras() {
           marginBottom: 28,
         }}
       >
-        <p style={{ fontFamily: B, fontSize: 10, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: '0 0 20px' }}>
+        <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: '0 0 20px' }}>
           Timeline
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
@@ -65,7 +65,7 @@ export default function StudentDebtExtras() {
           marginBottom: 28,
         }}
       >
-        <p style={{ fontFamily: B, fontSize: 10, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: '0 0 16px' }}>
+        <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: '0 0 16px' }}>
           The debt calculation
         </p>
         <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: B, fontSize: 14 }}>
@@ -110,7 +110,7 @@ export default function StudentDebtExtras() {
           marginBottom: 28,
         }}
       >
-        <p style={{ fontFamily: B, fontSize: 10, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: '0 0 16px' }}>
+        <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: '0 0 16px' }}>
           LinkedIn discrepancy
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
@@ -143,7 +143,7 @@ export default function StudentDebtExtras() {
           marginBottom: 28,
         }}
       >
-        <p style={{ fontFamily: B, fontSize: 10, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: '0 0 12px' }}>
+        <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: '0 0 12px' }}>
           Parliamentary Standards Commissioner (ref PCS3735)
         </p>
         <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, margin: '0 0 8px' }}>

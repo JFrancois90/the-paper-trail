@@ -153,7 +153,7 @@ export default function SubscribeCTA() {
           <span
             style={{
               fontFamily: 'var(--font-sans), sans-serif',
-              fontSize: 10,
+              fontSize: 12,
               fontWeight: 600,
               textTransform: 'uppercase',
               letterSpacing: '0.1em',

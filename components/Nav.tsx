@@ -100,10 +100,10 @@ export default function Nav({ forceDark }: NavProps) {
         </Link>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 36 }}>
-          <Link href="/" style={labelStyle}>Home</Link>
-          <Link href="/careless-whispers" style={labelStyle}>Careless whispers</Link>
-          <Link href="/how-it-works" style={labelStyle}>What we do</Link>
-          <Link href="/about" style={labelStyle}>What we are fighting for</Link>
+          <Link href="/" className="nav-link" style={labelStyle}>Home</Link>
+          <Link href="/careless-whispers" className="nav-link" style={labelStyle}>Careless whispers</Link>
+          <Link href="/how-it-works" className="nav-link" style={labelStyle}>What we do</Link>
+          <Link href="/about" className="nav-link" style={labelStyle}>What we are fighting for</Link>
           <Link
             href="/support"
             style={{

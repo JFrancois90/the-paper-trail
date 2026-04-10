@@ -29,7 +29,7 @@ export default function CorrectionBox({ text, date = 'Dec 2025' }: CorrectionBox
         <span
           style={{
             fontFamily: 'var(--font-sans), sans-serif',
-            fontSize: 9,
+            fontSize: 12,
             fontWeight: 600,
             textTransform: 'uppercase',
             letterSpacing: '0.1em',

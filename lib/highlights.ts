@@ -6,4 +6,5 @@ export const HIGHLIGHT_PHRASES: Record<string, string[]> = {
   '350bn-tax-evasion': ['£5.5bn', '£350bn', '48 times'],
   'student-debt-claim': ['£36,000', '£49,600', '4.3%', '£13,600'],
   'reform-tax-canary': ['£1,486', '£7,430', '20%'],
+  'student-debt-97k': ['£79,000', '£50,000', '£29,000', '£97,000'],
 };

@@ -23,8 +23,8 @@ export const COLORS = {
 
   // Ink scale
   ink: '#0f1117',
-  muted: '#5a5d66',
-  lightMuted: '#8b8e99',
+  muted: '#4a4d56',
+  lightMuted: '#6b6e77',
 
   // Legacy aliases (used in existing components)
   ink80: '#2a2d36',
@@ -41,4 +41,5 @@ export const PARTY_COLORS: Record<string, { bg: string; text: string; border: st
   'Lib Dem': { bg: '#f9a82514', text: '#8a5a00', border: '#f9a82522' },
   'Cross-party': { bg: '#5c6bc014', text: '#283593', border: '#5c6bc022' },
   Media: { bg: '#6b6b6b14', text: '#4a4a4a', border: '#6b6b6b22' },
+  Influencer: { bg: '#8b5cf614', text: '#6d28d9', border: '#8b5cf622' },
 };

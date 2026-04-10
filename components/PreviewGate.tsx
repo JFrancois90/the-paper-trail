@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import BrandSlogan from './BrandSlogan';
 
-const PREVIEW_PASSWORD = process.env.NEXT_PUBLIC_PREVIEW_PASSWORD || 'Justice';
+const PREVIEW_PASSWORD = process.env.NEXT_PUBLIC_PREVIEW_PASSWORD || 'factcheck';
 
 interface PreviewGateProps {
   children: React.ReactNode;
@@ -78,7 +78,7 @@ export default function PreviewGate({ children }: PreviewGateProps) {
       <img
         src="/logo-dark.png"
         alt="The Paper Trail"
-        style={{ height: 64, marginBottom: 24 }}
+        style={{ height: 72, marginBottom: 24 }}
       />
 
       {/* Slogan */}

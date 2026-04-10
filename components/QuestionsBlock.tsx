@@ -13,7 +13,7 @@ export default function QuestionsBlock({ questions }: QuestionsBlockProps) {
       <div
         style={{
           fontFamily: 'var(--font-sans), sans-serif',
-          fontSize: 9,
+          fontSize: 12,
           fontWeight: 600,
           textTransform: 'uppercase',
           letterSpacing: '0.1em',

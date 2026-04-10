@@ -4,7 +4,7 @@ import { COLORS } from '@/lib/constants';
 export default function Footer() {
   const linkStyle: React.CSSProperties = {
     fontFamily: 'var(--font-sans), sans-serif',
-    fontSize: 10,
+    fontSize: 12,
     fontWeight: 600,
     textTransform: 'uppercase',
     letterSpacing: '0.12em',
@@ -36,7 +36,7 @@ export default function Footer() {
           <img
             src="/logo-dark.png"
             alt="The Paper Trail"
-            style={{ height: 28 }}
+            style={{ height: 48 }}
           />
           <span style={{ fontSize: 12, color: COLORS.ink20 }}>
             &copy; {new Date().getFullYear()}

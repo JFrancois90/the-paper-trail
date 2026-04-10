@@ -43,7 +43,7 @@ export default function SaidVsSource({
         <div
           style={{
             fontFamily: 'var(--font-sans), sans-serif',
-            fontSize: 9,
+            fontSize: 12,
             fontWeight: 600,
             textTransform: 'uppercase',
             letterSpacing: '0.1em',
@@ -78,7 +78,7 @@ export default function SaidVsSource({
         <div
           style={{
             fontFamily: 'var(--font-sans), sans-serif',
-            fontSize: 9,
+            fontSize: 12,
             fontWeight: 600,
             textTransform: 'uppercase',
             letterSpacing: '0.1em',
@@ -135,7 +135,7 @@ export default function SaidVsSource({
             <span
               style={{
                 fontFamily: 'var(--font-sans), sans-serif',
-                fontSize: 10,
+                fontSize: 12,
                 fontWeight: 600,
                 textTransform: 'uppercase',
                 letterSpacing: '0.1em',
