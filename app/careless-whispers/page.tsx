@@ -10,6 +10,35 @@ import { COLORS } from '@/lib/constants';
 const B = 'var(--font-sans), sans-serif';
 const H = 'var(--font-heading), sans-serif';
 
+/* ── Swipeable Said vs Source mini-cards for within steps ── */
+function SaidSourceSwipe({ said, saidLabel, source, sourceLabel }: { said: string; saidLabel: string; source: string; sourceLabel: string }) {
+  return (
+    <div style={{ marginTop: 16 }}>
+      <div
+        style={{
+          display: 'flex',
+          gap: 10,
+          overflowX: 'auto',
+          scrollSnapType: 'x mandatory',
+          WebkitOverflowScrolling: 'touch',
+          paddingBottom: 6,
+          scrollbarWidth: 'none',
+        }}
+      >
+        <div style={{ flex: '0 0 85%', scrollSnapAlign: 'center', background: COLORS.claimRedLight, borderRadius: 10, padding: '14px 16px' }}>
+          <p style={{ fontFamily: B, fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: COLORS.claimRed, margin: '0 0 6px' }}>{saidLabel}</p>
+          <p style={{ fontFamily: B, fontSize: 15, lineHeight: 1.5, color: COLORS.claimRedDark, margin: 0 }}>{said}</p>
+        </div>
+        <div style={{ flex: '0 0 85%', scrollSnapAlign: 'center', background: COLORS.sourceGreenLight, borderRadius: 10, padding: '14px 16px' }}>
+          <p style={{ fontFamily: B, fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: COLORS.sourceGreen, margin: '0 0 6px' }}>{sourceLabel}</p>
+          <p style={{ fontFamily: B, fontSize: 15, lineHeight: 1.5, color: COLORS.sourceGreenDark, margin: 0 }}>{source}</p>
+        </div>
+      </div>
+      <p style={{ fontFamily: B, fontSize: 11, color: COLORS.lightMuted, textAlign: 'center', margin: '6px 0 0' }}>Swipe to compare &rarr;</p>
+    </div>
+  );
+}
+
 const steps = [
   {
     title: 'The official number',
@@ -42,6 +71,12 @@ const steps = [
           This covers drugs, fraud, trafficking, and criminal funds. This is <strong>not</strong> the same as tax evasion. It covers all economic crime.
         </p>
         <BarComparison left="&pound;7.3bn" leftLabel="HMRC tax gap" right="&pound;100bn" rightLabel="NCA economic crime" />
+        <SaidSourceSwipe
+          said="Tax evasion costs £7.3bn"
+          saidLabel="What the data says"
+          source="Economic crime costs £100bn+"
+          sourceLabel="What the NCA actually measured"
+        />
       </>
     ),
   },
@@ -59,6 +94,12 @@ const steps = [
           <li>The APPG also claimed &pound;350bn equals &ldquo;the annual health and education budget combined.&rdquo; The actual 2024-25 figure was &pound;423bn. Not even close.</li>
         </ul>
         <BarComparison left="&pound;100bn" leftLabel="NCA figure" right="&pound;350bn" rightLabel="APPG upper end" />
+        <SaidSourceSwipe
+          said="NCA said £100bn for all economic crime"
+          saidLabel="What the NCA actually said"
+          source="APPG inflated to £350bn and kept calling it the same thing"
+          sourceLabel="What the APPG wrote"
+        />
       </>
     ),
   },
@@ -74,6 +115,12 @@ const steps = [
         <p style={{ fontFamily: B, fontSize: 16, color: COLORS.muted, margin: '0 0 12px', lineHeight: 1.6 }}>
           The phrase is still &ldquo;economic crime and financial opacity&rdquo; here. Not tax evasion. But it now has the authority of the CIOT name behind it.
         </p>
+        <SaidSourceSwipe
+          said="APPG said £350bn for economic crime and financial opacity"
+          saidLabel="What the APPG wrote"
+          source="CIOT quoted the same £350bn but under a chartered tax body's name"
+          sourceLabel="What the CIOT published"
+        />
       </>
     ),
   },
@@ -94,6 +141,12 @@ const steps = [
           <li style={{ marginBottom: 6 }}>The number stayed at &pound;350bn.</li>
           <li>The definition shrank 48 times.</li>
         </ul>
+        <SaidSourceSwipe
+          said="£5.5bn — HMRC's actual tax evasion figure"
+          saidLabel="The real number"
+          source="£350bn — what public debate now claims for tax evasion"
+          sourceLabel="The inflated claim"
+        />
         <div style={{ display: 'flex', gap: 24, justifyContent: 'center', margin: '20px 0' }}>
           <div style={{ textAlign: 'center' }}>
             <p style={{ fontFamily: H, fontSize: 36, fontWeight: 700, color: COLORS.sourceGreen, margin: 0 }}>&pound;5.5bn</p>

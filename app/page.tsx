@@ -9,6 +9,7 @@ import MobileHomepage from '@/components/mobile/MobileHomepage';
 import BrandSlogan from '@/components/BrandSlogan';
 import HeroSubtitle from '@/components/HeroSubtitle';
 import SubmissionForm from '@/components/SubmissionForm';
+import FloatingNarrative from '@/components/FloatingNarrative';
 import useIsMobile from '@/lib/useIsMobile';
 import { COLORS } from '@/lib/constants';
 
@@ -1225,6 +1226,7 @@ export default function Home() {
           </div>
         </footer>
       </main>
+      <FloatingNarrative />
       <ReturnToTop />
     </>
   );

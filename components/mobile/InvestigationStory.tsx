@@ -228,12 +228,12 @@ function buildFrames(inv: Investigation): Frame[] {
     ),
   });
 
-  // Frame 2: What they said
+  // Frame 2: Said vs Source — swipe comparison
   frames.push({
-    bg: COLORS.claimRedLight,
-    textColor: COLORS.claimRedDark,
+    bg: COLORS.paper,
+    textColor: COLORS.ink,
     content: (
-      <div style={{ maxWidth: 340 }}>
+      <div style={{ maxWidth: 340, width: '100%' }}>
         <p
           style={{
             fontFamily: 'var(--font-sans), sans-serif',
@@ -241,87 +241,69 @@ function buildFrames(inv: Investigation): Frame[] {
             fontWeight: 600,
             textTransform: 'uppercase',
             letterSpacing: '0.1em',
-            color: COLORS.claimRed,
+            color: COLORS.ink40,
             margin: '0 0 16px',
           }}
         >
-          They said
+          Said vs Source
         </p>
-        <p
-          style={{
-            fontFamily: 'var(--font-sans), sans-serif',
-            fontSize: 20,
-            lineHeight: 1.4,
-            color: COLORS.claimRedDark,
-            margin: 0,
-          }}
-        >
-          &ldquo;{inv.saidQuote}&rdquo;
-        </p>
-      </div>
-    ),
-  });
 
-  // Frame 3: What the source shows
-  frames.push({
-    bg: COLORS.sourceGreenLight,
-    textColor: COLORS.sourceGreenDark,
-    content: (
-      <div style={{ maxWidth: 340 }}>
-        <p
+        {/* Swipe container for Said / Source cards */}
+        <div
           style={{
-            fontFamily: 'var(--font-sans), sans-serif',
-            fontSize: 11,
-            fontWeight: 600,
-            textTransform: 'uppercase',
-            letterSpacing: '0.1em',
-            color: COLORS.sourceGreen,
-            margin: '0 0 16px',
+            display: 'flex',
+            gap: 12,
+            overflowX: 'auto',
+            scrollSnapType: 'x mandatory',
+            WebkitOverflowScrolling: 'touch',
+            paddingBottom: 8,
+            scrollbarWidth: 'none',
           }}
         >
-          {inv.sourceLabel}
-        </p>
-        {inv.sourceImage ? (
-          <img
-            src={inv.sourceImage}
-            alt="Source document"
-            style={{ width: '100%', borderRadius: 8, marginBottom: 16 }}
-          />
-        ) : (
+          {/* They Said card */}
           <div
             style={{
-              background: 'rgba(26,107,66,0.08)',
-              borderRadius: 8,
-              padding: '32px 20px',
-              marginBottom: 16,
+              flex: '0 0 85%',
+              scrollSnapAlign: 'center',
+              background: COLORS.claimRedLight,
+              borderRadius: 14,
+              padding: '20px 18px',
+              textAlign: 'left',
             }}
           >
-            <span
-              style={{
-                fontFamily: 'var(--font-sans), sans-serif',
-                fontSize: 12,
-                fontWeight: 600,
-                textTransform: 'uppercase',
-                letterSpacing: '0.1em',
-                color: COLORS.sourceGreen,
-                opacity: 0.5,
-              }}
-            >
-              Source document
-            </span>
+            <p style={{ fontFamily: 'var(--font-sans), sans-serif', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.claimRed, margin: '0 0 10px' }}>
+              They said
+            </p>
+            <p style={{ fontFamily: 'var(--font-sans), sans-serif', fontSize: 17, lineHeight: 1.4, color: COLORS.claimRedDark, margin: 0 }}>
+              &ldquo;{inv.saidQuote}&rdquo;
+            </p>
           </div>
-        )}
-        <p
-          style={{
-            fontFamily: 'var(--font-sans), sans-serif',
-            fontSize: 16,
-            fontWeight: 600,
-            lineHeight: 1.5,
-            color: COLORS.sourceGreenDark,
-            margin: 0,
-          }}
-        >
-          {inv.sourceOneLiner}
+
+          {/* Source card */}
+          <div
+            style={{
+              flex: '0 0 85%',
+              scrollSnapAlign: 'center',
+              background: COLORS.sourceGreenLight,
+              borderRadius: 14,
+              padding: '20px 18px',
+              textAlign: 'left',
+            }}
+          >
+            <p style={{ fontFamily: 'var(--font-sans), sans-serif', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.sourceGreen, margin: '0 0 10px' }}>
+              {inv.sourceLabel}
+            </p>
+            {inv.sourceImage ? (
+              <img src={inv.sourceImage} alt="Source document" style={{ width: '100%', borderRadius: 8, marginBottom: 10 }} />
+            ) : null}
+            <p style={{ fontFamily: 'var(--font-sans), sans-serif', fontSize: 16, fontWeight: 600, lineHeight: 1.5, color: COLORS.sourceGreenDark, margin: 0 }}>
+              {inv.sourceOneLiner}
+            </p>
+          </div>
+        </div>
+
+        <p style={{ fontFamily: 'var(--font-sans), sans-serif', fontSize: 12, color: COLORS.ink40, margin: '10px 0 0', textAlign: 'center' }}>
+          Swipe to compare &rarr;
         </p>
       </div>
     ),
