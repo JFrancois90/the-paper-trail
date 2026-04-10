@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { COLORS } from '@/lib/constants';
 
 interface NavProps {
   forceDark?: boolean;
@@ -101,6 +102,7 @@ export default function Nav({ forceDark }: NavProps) {
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 36 }}>
           <Link href="/" className="nav-link" style={labelStyle}>Home</Link>
+          <Link href="/campaigns" className="nav-link" style={{ ...labelStyle, fontWeight: 600, color: dark ? '#fac75a' : COLORS.amber }}>Our campaigns</Link>
           <Link href="/careless-whispers" className="nav-link" style={labelStyle}>Careless whispers</Link>
           <Link href="/how-it-works" className="nav-link" style={labelStyle}>What we do</Link>
           <Link href="/about" className="nav-link" style={labelStyle}>What we are fighting for</Link>

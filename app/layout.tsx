@@ -3,6 +3,7 @@ import { Sora, Outfit } from 'next/font/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/next';
 import PreviewGate from '@/components/PreviewGate';
+import ScrollToTop from '@/components/ScrollToTop';
 
 const sora = Sora({
   subsets: ['latin'],
@@ -149,6 +150,7 @@ export default function RootLayout({
         <PreviewGate>
           {children}
         </PreviewGate>
+        <ScrollToTop />
         <SpeedInsights />
         <Analytics />
       </body>

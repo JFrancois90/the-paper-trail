@@ -23,6 +23,7 @@ export interface Investigation {
     name: string;
     date: string;
     type: 'origin' | 'mid' | 'final';
+    url?: string;
   }> | null;
   whisperNote: string | null;
   sourceLabel: string;
@@ -30,6 +31,7 @@ export interface Investigation {
   questions: [string, string, string];
   multiplier: string;
   multiplierLabel: string;
+  subject: string;
   rebuttalStatus: {
     invited: string;
     dateInvited?: string;
@@ -60,11 +62,11 @@ export const investigations: Investigation[] = [
       { label: 'True cost', sublabel: 'Equity + debt', value: 7.6, color: '#1a6b42', fmt: '£7.6bn' },
     ],
     whisperChain: [
-      { name: 'Clive Lewis MP', date: 'Dec 2024', type: 'origin' },
-      { name: 'We Own It + Univ. Greenwich', date: 'Apr 2025', type: 'mid' },
-      { name: 'Common Wealth', date: 'Jun 2025', type: 'mid' },
-      { name: 'Left Foot Forward', date: 'Apr 2025', type: 'mid' },
-      { name: 'NEB Digest', date: 'Jul 2025', type: 'final' },
+      { name: 'Clive Lewis MP', date: 'Dec 2024', type: 'origin', url: 'https://www.clivelewis.org/uncategorised/news-and-updates/2024/12/26/analysis-is-the-supposed-90bn-cost-of-compensation-really-a-barrier-to-restoring-water-companies-to-public-ownership/' },
+      { name: 'We Own It + Univ. Greenwich', date: 'Apr 2025', type: 'mid', url: 'https://weownit.org.uk/news/governments-worst-case-scenario-for-nationalising-water-still-leaves-households-better-off/' },
+      { name: 'Common Wealth', date: 'Jun 2025', type: 'mid', url: 'https://www.common-wealth.org/publications/how-to-clean-up-our-water' },
+      { name: 'Left Foot Forward', date: 'Apr 2025', type: 'mid', url: 'https://leftfootforward.org/2025/04/revealed-nationalisation-of-utilities-would-save-the-uk-billions-according-to-new-report/' },
+      { name: 'NEB Digest', date: 'Jul 2025', type: 'final', url: 'https://www.neweconomybrief.net/the-digest/fixing-the-water-sector' },
     ],
     whisperNote: 'The £7.1bn debt and the mischaracterisation of the court ruling both disappeared. By the time it reached NEB Digest, the £500m figure read as established fact.',
     sourceLabel: 'What the numbers actually show',
@@ -76,6 +78,7 @@ export const investigations: Investigation[] = [
     ],
     multiplier: '15×',
     multiplierLabel: 'cost understated',
+    subject: 'Nationalisation',
     rebuttalStatus: { invited: 'Clive Lewis MP', dateInvited: 'Jan 2026', status: 'no-response' },
   },
   {
@@ -107,6 +110,7 @@ export const investigations: Investigation[] = [
     ],
     multiplier: '−12%',
     multiplierLabel: 'actual trend',
+    subject: 'Wealth inequality',
     rebuttalStatus: { invited: 'Green Party leadership', dateInvited: 'Dec 2025', status: 'no-response' },
   },
   {
@@ -141,6 +145,7 @@ export const investigations: Investigation[] = [
     ],
     multiplier: 'False',
     multiplierLabel: 'US starts at 0%',
+    subject: 'Taxation',
     rebuttalStatus: { invited: 'Green Party leadership', dateInvited: 'Dec 2025', status: 'no-response' },
   },
   {
@@ -179,6 +184,7 @@ export const investigations: Investigation[] = [
     ],
     multiplier: '48×',
     multiplierLabel: 'figure inflated',
+    subject: 'Taxation',
     rebuttalStatus: { invited: 'Multiple sources', dateInvited: 'Jan 2026', status: 'invited' },
   },
   {
@@ -210,6 +216,7 @@ export const investigations: Investigation[] = [
     ],
     multiplier: '£13.6k',
     multiplierLabel: 'above max possible',
+    subject: 'Student loans',
     rebuttalStatus: { invited: 'Nadia Whittome MP', dateInvited: 'Jan 2026', status: 'no-response' },
   },
   {
@@ -242,7 +249,8 @@ export const investigations: Investigation[] = [
     ],
     multiplier: '=',
     multiplierLabel: 'same saving',
-    rebuttalStatus: { invited: 'The Canary UK', dateInvited: 'Feb 2026', status: 'no-response' },
+    subject: 'Taxation',
+    rebuttalStatus: { invited: 'The Canary UK & Richard Murphy', dateInvited: 'Feb 2026', status: 'no-response' },
   },
   {
     id: 7,
@@ -275,6 +283,7 @@ export const investigations: Investigation[] = [
     ],
     multiplier: '£29k',
     multiplierLabel: 'less than borrowed',
+    subject: 'Student loans',
     rebuttalStatus: {
       invited: '@yourmoneymatesarah',
       dateInvited: 'Jan 2026',

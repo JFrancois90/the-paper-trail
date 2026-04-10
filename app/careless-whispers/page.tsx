@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Nav from '@/components/Nav';
+import BackButton from '@/components/BackButton';
 import { COLORS } from '@/lib/constants';
 
 const B = 'var(--font-sans), sans-serif';
@@ -115,7 +116,7 @@ const steps = [
         <p style={{ fontFamily: B, fontSize: 17, lineHeight: 1.65, color: COLORS.amberDark, margin: '0 0 24px' }}>
           Any enforcement policy built on this number is budgeting for a problem 48 times larger than it actually is. That&apos;s not a rounding error. That&apos;s a completely different conversation.
         </p>
-        <p style={{ fontFamily: B, fontSize: 10, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.amber, margin: '0 0 12px' }}>
+        <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.amber, margin: '0 0 12px' }}>
           Questions we think deserve answers
         </p>
         <ol style={{ fontFamily: B, fontSize: 15, lineHeight: 1.6, color: COLORS.muted, margin: 0, paddingLeft: 20 }}>
@@ -135,6 +136,7 @@ export default function CarelessWhispersPage() {
   return (
     <>
       <Nav />
+      <BackButton />
       <main
         id="main-content"
         style={{

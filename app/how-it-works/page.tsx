@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { COLORS } from '@/lib/constants';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+import BackButton from '@/components/BackButton';
 import ScrollReveal from '@/components/ScrollReveal';
 
 export const metadata: Metadata = {
@@ -14,6 +15,7 @@ export default function HowItWorksPage() {
   return (
     <>
       <Nav />
+      <BackButton />
       <main
         id="main-content"
         style={{
@@ -26,7 +28,7 @@ export default function HowItWorksPage() {
           <p
             style={{
               fontFamily: 'var(--font-sans), sans-serif',
-              fontSize: 10,
+              fontSize: 12,
               fontWeight: 600,
               textTransform: 'uppercase',
               letterSpacing: '0.12em',

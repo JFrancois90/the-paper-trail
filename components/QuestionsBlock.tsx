@@ -13,17 +13,21 @@ export default function QuestionsBlock({ questions }: QuestionsBlockProps) {
       <div
         style={{
           fontFamily: 'var(--font-sans), sans-serif',
-          fontSize: 12,
-          fontWeight: 600,
+          fontSize: 14,
+          fontWeight: 700,
           textTransform: 'uppercase',
           letterSpacing: '0.1em',
-          color: COLORS.ink40,
-          marginBottom: 12,
+          color: COLORS.navy,
+          marginBottom: 16,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 8,
         }}
       >
+        <span style={{ fontSize: 18 }}>&#x2753;</span>
         Questions we think deserve answers
       </div>
-      <ol
+      <ul
         style={{
           listStyle: 'none',
           padding: 0,
@@ -34,14 +38,14 @@ export default function QuestionsBlock({ questions }: QuestionsBlockProps) {
         }}
       >
         {questions.map((q, i) => (
-          <QuestionItem key={i} number={i + 1} text={q} />
+          <QuestionItem key={i} text={q} />
         ))}
-      </ol>
+      </ul>
     </div>
   );
 }
 
-function QuestionItem({ number, text }: { number: number; text: string }) {
+function QuestionItem({ text }: { text: string }) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -52,7 +56,7 @@ function QuestionItem({ number, text }: { number: number; text: string }) {
         display: 'flex',
         gap: 12,
         alignItems: 'flex-start',
-        padding: '10px 14px',
+        padding: '12px 16px',
         borderRadius: 8,
         background: hovered ? 'rgba(27,42,74,0.03)' : 'transparent',
         transition: 'background 0.25s ease',
@@ -60,20 +64,17 @@ function QuestionItem({ number, text }: { number: number; text: string }) {
     >
       <span
         style={{
-          fontFamily: 'var(--font-serif), serif',
-          fontSize: 18,
-          color: COLORS.navy,
-          lineHeight: 1.3,
+          fontSize: 16,
           flexShrink: 0,
-          opacity: 0.5,
+          lineHeight: 1.5,
         }}
       >
-        {number}
+        &#x1F4AC;
       </span>
       <span
         style={{
           fontFamily: 'var(--font-sans), sans-serif',
-          fontSize: 14,
+          fontSize: 16,
           lineHeight: 1.65,
           color: COLORS.ink80,
         }}

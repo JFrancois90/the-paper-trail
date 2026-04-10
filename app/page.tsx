@@ -161,7 +161,7 @@ export default function Home() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20, marginTop: 20 }}>
               {/* Act 1 */}
               <ScrollReveal anim="scaleReveal" delay={0.5}>
-                <div className="hover-card" style={{ textAlign: 'center', background: '#fff', border: '1px solid rgba(27,42,74,0.10)', borderRadius: 14, padding: '32px 24px', boxShadow: '0 2px 8px rgba(27,42,74,0.04)' }}>
+                <div className="hover-card" style={{ textAlign: 'center', background: '#fff', border: '1px solid rgba(27,42,74,0.10)', borderRadius: 14, padding: '32px 24px', boxShadow: '0 2px 8px rgba(27,42,74,0.04)', minHeight: 220, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                   <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.muted, margin: '0 0 8px' }}>What we were taught</p>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
                     <span style={{ fontFamily: H, fontSize: 'clamp(40px, 4.5vw, 56px)', fontWeight: 700, color: COLORS.navy, letterSpacing: '-0.03em' }}>1 + 1 = 2</span>
@@ -173,7 +173,7 @@ export default function Home() {
 
               {/* Act 2 */}
               <ScrollReveal anim="scaleReveal" delay={0.65}>
-                <div className="hover-card" style={{ textAlign: 'center', background: '#fff', border: '1px solid rgba(27,42,74,0.10)', borderRadius: 14, padding: '32px 24px', boxShadow: '0 2px 8px rgba(27,42,74,0.04)' }}>
+                <div className="hover-card" style={{ textAlign: 'center', background: '#fff', border: '1px solid rgba(27,42,74,0.10)', borderRadius: 14, padding: '32px 24px', boxShadow: '0 2px 8px rgba(27,42,74,0.04)', minHeight: 220, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                   <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.muted, margin: '0 0 8px' }}>What we were taught to look out for</p>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
                     <span style={{ fontFamily: H, fontSize: 'clamp(40px, 4.5vw, 56px)', fontWeight: 700, color: COLORS.navy, letterSpacing: '-0.03em' }}>
@@ -187,7 +187,7 @@ export default function Home() {
 
               {/* Act 3 */}
               <ScrollReveal anim="scaleReveal" delay={0.8}>
-                <div className="hover-card" style={{ textAlign: 'center', background: '#fff', border: '1px solid rgba(27,42,74,0.10)', borderRadius: 14, padding: '32px 24px', boxShadow: '0 2px 8px rgba(27,42,74,0.04)' }}>
+                <div className="hover-card" style={{ textAlign: 'center', background: '#fff', border: '1px solid rgba(27,42,74,0.10)', borderRadius: 14, padding: '32px 24px', boxShadow: '0 2px 8px rgba(27,42,74,0.04)', minHeight: 220, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                   <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.muted, margin: '0 0 8px' }}>What we actually need to find</p>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
                     <span style={{ fontFamily: H, fontSize: 'clamp(40px, 4.5vw, 56px)', fontWeight: 700, color: COLORS.navy, letterSpacing: '-0.03em' }}>
@@ -201,11 +201,11 @@ export default function Home() {
             </div>
 
             <ScrollReveal anim="fadeUp" delay={0.95}>
-              <div style={{ marginTop: 32, maxWidth: 480, marginLeft: 'auto', marginRight: 'auto' }}>
-                <p style={{ fontFamily: B, fontSize: 15, lineHeight: 1.65, color: COLORS.muted, margin: '0 0 4px' }}>Forget the statistics. Forget the politics.</p>
-                <p style={{ fontFamily: B, fontSize: 15, lineHeight: 1.65, color: COLORS.muted, margin: '0 0 4px' }}><span className="highlight">Check the base data.</span></p>
-                <p style={{ fontFamily: B, fontSize: 15, lineHeight: 1.65, color: COLORS.muted, margin: '0 0 4px' }}>Fix that, and the rest follows.</p>
-                <p style={{ fontFamily: B, fontSize: 15, lineHeight: 1.65, color: COLORS.muted, margin: 0 }}>Get it wrong, and it&apos;s a butterfly effect of errors.</p>
+              <div style={{ marginTop: 48, maxWidth: 520, marginLeft: 'auto', marginRight: 'auto' }}>
+                <p style={{ fontFamily: B, fontSize: 18, lineHeight: 1.65, color: COLORS.navy, margin: '0 0 6px' }}>Forget the statistics. Forget the politics.</p>
+                <p style={{ fontFamily: B, fontSize: 18, lineHeight: 1.65, color: COLORS.navy, margin: '0 0 6px' }}><span className="highlight">Check the base data.</span></p>
+                <p style={{ fontFamily: B, fontSize: 18, lineHeight: 1.65, color: COLORS.navy, margin: '0 0 6px' }}>Fix that, and the rest follows.</p>
+                <p style={{ fontFamily: B, fontSize: 18, lineHeight: 1.65, color: COLORS.navy, margin: 0 }}>Get it wrong, and it&apos;s a butterfly effect of errors.</p>
               </div>
             </ScrollReveal>
           </div>
@@ -244,7 +244,7 @@ export default function Home() {
                   margin: '0 0 32px',
                 }}
               >
-                It&apos;s that simple. We&apos;re just checking what people quote is correct.
+                We&apos;re just checking what people quote is correct. It&apos;s that simple.
               </p>
             </ScrollReveal>
 
@@ -315,7 +315,7 @@ export default function Home() {
                       <span
                         style={{
                           fontFamily: H,
-                          fontSize: 60,
+                          fontSize: 64,
                           fontWeight: 700,
                           color: COLORS.navyLight,
                           letterSpacing: '-0.03em',
@@ -338,7 +338,7 @@ export default function Home() {
                       <p
                         style={{
                           fontFamily: B,
-                          fontSize: 15,
+                          fontSize: 16,
                           lineHeight: 1.55,
                           color: COLORS.navy,
                           margin: 0,
@@ -371,8 +371,9 @@ export default function Home() {
               <p style={{ fontFamily: H, fontSize: 22, fontWeight: 700, letterSpacing: '-0.01em', color: COLORS.navy, marginBottom: 16 }}>
                 Featured investigation
               </p>
-              <div style={{ background: '#fdf0d0', borderRadius: 8, padding: '10px 16px', marginBottom: 16 }}>
-                <p style={{ fontFamily: B, fontSize: 13, color: COLORS.navy, margin: 0, textAlign: 'center' }}>We support public accountability for nationalisation costs. We disagree with incorrect figures, regardless of political alignment.</p>
+              <div style={{ background: '#fae9b0', borderRadius: 8, padding: '12px 18px', marginBottom: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                <span style={{ fontSize: 16, flexShrink: 0 }}>&#x1F4E2;</span>
+                <p style={{ fontFamily: B, fontSize: 14, color: COLORS.navy, margin: 0 }}>We support public accountability for nationalisation costs. We disagree with incorrect figures, regardless of political alignment.</p>
               </div>
               <p
                 style={{
@@ -542,8 +543,9 @@ export default function Home() {
               <p style={{ fontFamily: H, fontSize: 22, fontWeight: 700, letterSpacing: '-0.01em', color: COLORS.navy, marginBottom: 16 }}>
                 Featured investigation
               </p>
-              <div style={{ background: '#fdf0d0', borderRadius: 8, padding: '10px 16px', marginBottom: 16 }}>
-                <p style={{ fontFamily: B, fontSize: 13, color: COLORS.navy, margin: 0, textAlign: 'center' }}>We support fair access to higher education and reform of student debt. We disagree with incorrect figures, regardless of political alignment.</p>
+              <div style={{ background: '#fae9b0', borderRadius: 8, padding: '12px 18px', marginBottom: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                <span style={{ fontSize: 16, flexShrink: 0 }}>&#x1F4E2;</span>
+                <p style={{ fontFamily: B, fontSize: 14, color: COLORS.navy, margin: 0 }}>We support fair access to higher education and reform of student debt. We disagree with incorrect figures, regardless of political alignment.</p>
               </div>
               <p style={{ fontFamily: H, fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 400, color: COLORS.ink, lineHeight: 1.4, margin: '0 0 6px' }}>
                 &ldquo;I left university in 2019 with <span className="highlight-red">£49,600</span> of debt&rdquo;
@@ -574,9 +576,9 @@ export default function Home() {
             </div>
 
             <ScrollReveal anim="fadeUp" delay={0.3}>
-              <div style={{ background: '#fff', border: '1px solid rgba(27,42,74,0.06)', borderRadius: 14, padding: '20px 24px', marginBottom: 24 }}>
-                <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.amber, margin: '0 0 8px' }}>Why this matters</p>
-                <p style={{ fontFamily: B, fontSize: 16, lineHeight: 1.6, color: COLORS.ink, margin: 0 }}>
+              <div style={{ background: '#fff', border: '2px solid rgba(196,138,10,0.18)', borderRadius: 14, padding: '24px 28px', marginBottom: 24 }}>
+                <p style={{ fontFamily: B, fontSize: 16, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.amber, margin: '0 0 10px' }}>Why this matters</p>
+                <p style={{ fontFamily: B, fontSize: 18, lineHeight: 1.6, color: COLORS.ink, margin: 0 }}>
                   This figure is being used to argue for tuition fee reform. If the stated debt is &pound;13,600 higher than what&apos;s possible for the study period, the personal story underpinning the policy doesn&apos;t add up.
                 </p>
               </div>
@@ -619,8 +621,9 @@ export default function Home() {
               <p style={{ fontFamily: H, fontSize: 22, fontWeight: 700, letterSpacing: '-0.01em', color: COLORS.navy, marginBottom: 16 }}>
                 Featured investigation
               </p>
-              <div style={{ background: '#fdf0d0', borderRadius: 8, padding: '10px 16px', marginBottom: 16 }}>
-                <p style={{ fontFamily: B, fontSize: 13, color: COLORS.navy, margin: 0, textAlign: 'center' }}>We support taxes on those who can afford it. We disagree with incorrect figures, regardless of political alignment.</p>
+              <div style={{ background: '#fae9b0', borderRadius: 8, padding: '12px 18px', marginBottom: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                <span style={{ fontSize: 16, flexShrink: 0 }}>&#x1F4E2;</span>
+                <p style={{ fontFamily: B, fontSize: 14, color: COLORS.navy, margin: 0 }}>We support taxes on those who can afford it. We disagree with incorrect figures, regardless of political alignment.</p>
               </div>
               <p style={{ fontFamily: H, fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 400, color: COLORS.ink, lineHeight: 1.4, margin: '0 0 6px' }}>
                 &ldquo;Reform&apos;s tax cuts help the <span className="highlight-red">richest people</span> more than the poorest&rdquo;
@@ -651,9 +654,9 @@ export default function Home() {
             </div>
 
             <ScrollReveal anim="fadeUp" delay={0.3}>
-              <div style={{ background: '#fff', border: '1px solid rgba(27,42,74,0.06)', borderRadius: 14, padding: '20px 24px', marginBottom: 24 }}>
-                <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.amber, margin: '0 0 8px' }}>Why this matters</p>
-                <p style={{ fontFamily: B, fontSize: 16, lineHeight: 1.6, color: COLORS.ink, margin: 0 }}>
+              <div style={{ background: '#fff', border: '2px solid rgba(196,138,10,0.18)', borderRadius: 14, padding: '24px 28px', marginBottom: 24 }}>
+                <p style={{ fontFamily: B, fontSize: 16, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.amber, margin: '0 0 10px' }}>Why this matters</p>
+                <p style={{ fontFamily: B, fontSize: 18, lineHeight: 1.6, color: COLORS.ink, margin: 0 }}>
                   Getting tax band maths wrong misleads people about who benefits from a policy. Both earners save exactly the same amount.
                 </p>
               </div>
@@ -669,10 +672,16 @@ export default function Home() {
                 <span style={{ fontSize: 16, flexShrink: 0 }}>&#x1F4E9;</span>
                 <div style={{ flex: 1 }}>
                   <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: COLORS.navy, margin: '0 0 6px' }}>Asked for comment</p>
+                  <p style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: COLORS.navy, margin: '0 0 4px' }}>The Canary</p>
                   <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, margin: '0 0 10px' }}>
-                    We raised this directly with The Canary via Instagram DM on 26 Feb 2026, providing full workings.
+                    No response received.
                   </p>
-                  <span style={{ display: 'inline-block', fontFamily: B, fontSize: 13, fontWeight: 700, color: '#fff', background: COLORS.claimRed, padding: '6px 14px', borderRadius: 20 }}>No response since 26 Feb 2026</span>
+                  <span style={{ display: 'inline-block', fontFamily: B, fontSize: 13, fontWeight: 700, color: '#fff', background: COLORS.claimRed, padding: '6px 14px', borderRadius: 20, marginBottom: 14 }}>No response</span>
+                  <p style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: COLORS.navy, margin: '0 0 4px' }}>Richard Murphy (via Instagram, 26 Feb 2026)</p>
+                  <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, margin: '0 0 10px' }}>
+                    No response received.
+                  </p>
+                  <span style={{ display: 'inline-block', fontFamily: B, fontSize: 13, fontWeight: 700, color: '#fff', background: COLORS.claimRed, padding: '6px 14px', borderRadius: 20 }}>No response</span>
                 </div>
               </div>
             </ScrollReveal>

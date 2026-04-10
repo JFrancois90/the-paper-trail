@@ -5,6 +5,7 @@ import { COLORS } from '@/lib/constants';
 import { investigations } from '@/data/investigations';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+import BackButton from '@/components/BackButton';
 import MultiplierBadge from '@/components/MultiplierBadge';
 import SaidVsSource from '@/components/SaidVsSource';
 import PlainEnglishBox from '@/components/PlainEnglishBox';
@@ -56,6 +57,7 @@ export default async function InvestigationPage({ params }: PageProps) {
   return (
     <>
       <Nav />
+      <BackButton />
       <main
         id="main-content"
         style={{
@@ -96,17 +98,21 @@ export default async function InvestigationPage({ params }: PageProps) {
         {/* Position banner */}
         <div
           style={{
-            background: '#fdf0d0',
+            background: '#fae9b0',
             borderRadius: 10,
             padding: '12px 20px',
             marginBottom: 24,
-            textAlign: 'center',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 8,
           }}
         >
+          <span style={{ fontSize: 16, flexShrink: 0 }}>&#x1F4E2;</span>
           <p
             style={{
               fontFamily: 'var(--font-sans), sans-serif',
-              fontSize: 13,
+              fontSize: 14,
               lineHeight: 1.5,
               color: COLORS.navy,
               margin: 0,
@@ -282,7 +288,7 @@ export default async function InvestigationPage({ params }: PageProps) {
             <p
               style={{
                 fontFamily: 'var(--font-sans), sans-serif',
-                fontSize: 10,
+                fontSize: 12,
                 fontWeight: 600,
                 textTransform: 'uppercase',
                 letterSpacing: '0.12em',

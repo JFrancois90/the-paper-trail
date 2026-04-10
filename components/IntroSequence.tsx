@@ -38,13 +38,13 @@ export default function IntroSequence({ onComplete, isMobile = false }: IntroSeq
     { text: 'There are three kinds of lies:', pause: 150, style: { fontSize: bigSize, color: '#fff' } },
     { text: 'lies, damned lies, and [hl]statistics[/hl].', pause: 600, style: { fontSize: bigSize, color: '#fff' } },
     { text: '', pause: 400 },
-    { text: 'That was the worry.', pause: 300, style: { fontSize: smallSize, color: 'rgba(255,255,255,0.6)' } },
+    { text: 'Or so we thought.', pause: 300, style: { fontSize: smallSize, color: 'rgba(255,255,255,0.6)' } },
     { text: '', pause: 200 },
     { text: 'Turns out we skipped a step.', pause: 300, style: { fontSize: smallSize, color: 'rgba(255,255,255,0.6)' } },
     { text: '', pause: 200 },
-    { text: "Politicians aren't [hl]twisting[/hl] statistics anymore.", pause: 300, style: { fontSize: bigSize, color: '#fff' } },
+    { text: "Public figures aren't [hl]twisting[/hl] statistics anymore.", pause: 300, style: { fontSize: bigSize, color: '#fff' } },
     { text: '', pause: 200 },
-    { text: "They're just getting the numbers [hl]wrong[/hl].", pause: 600, style: { fontSize: bigSize, color: COLORS.claimRed } },
+    { text: "Some are just getting the numbers [hl]wrong[/hl].", pause: 600, style: { fontSize: bigSize, color: COLORS.claimRed } },
     { text: '', pause: 400 },
     { text: 'Mark Twain would be [hl]amazed[/hl].', pause: 800, speed: 50, style: { fontSize: boldSize, color: '#fff', fontWeight: 700 } },
   ];
@@ -203,6 +203,7 @@ export default function IntroSequence({ onComplete, isMobile = false }: IntroSeq
             }}
           >
             Political parties debating how many days off workers should get per year.
+            <br />
             The numbers seem low, but nobody can quite work out why.
           </p>
 

@@ -63,14 +63,17 @@ export default function ReformTaxExtras() {
         <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: '0 0 12px' }}>
           Our outreach
         </p>
-        <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, margin: '0 0 8px' }}>
-          We raised this directly with The Canary via Instagram DM on 26 February 2026.
+        <p style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: COLORS.navy, margin: '0 0 4px' }}>
+          The Canary
         </p>
-        <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, margin: '0 0 8px' }}>
-          We provided full workings showing both earners save the same amount.
+        <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, margin: '0 0 12px' }}>
+          No response received.
+        </p>
+        <p style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: COLORS.navy, margin: '0 0 4px' }}>
+          Richard Murphy (via Instagram, 26 Feb 2026)
         </p>
         <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, margin: 0 }}>
-          No response was received. The original post remains live and uncorrected.
+          No response received.
         </p>
       </div>
     </>

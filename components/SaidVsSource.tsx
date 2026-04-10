@@ -56,7 +56,7 @@ export default function SaidVsSource({
         <p
           style={{
             fontFamily: 'var(--font-serif), serif',
-            fontSize: 15,
+            fontSize: 17,
             lineHeight: 1.5,
             color: COLORS.claimRedDark,
             margin: 0,
@@ -105,10 +105,10 @@ export default function SaidVsSource({
             />
           </div>
         ) : sourceFallback ? (
-          <p
+          <div
             style={{
               fontFamily: 'var(--font-sans), sans-serif',
-              fontSize: 12,
+              fontSize: 14,
               lineHeight: 1.6,
               color: COLORS.sourceGreenDark,
               margin: '0 0 10px',
@@ -116,7 +116,7 @@ export default function SaidVsSource({
             }}
           >
             {sourceFallback}
-          </p>
+          </div>
         ) : (
           /* Placeholder grey box for future screenshots */
           <div
@@ -152,8 +152,8 @@ export default function SaidVsSource({
         <p
           style={{
             fontFamily: 'var(--font-sans), sans-serif',
-            fontSize: 13,
-            fontWeight: 600,
+            fontSize: 15,
+            fontWeight: 700,
             lineHeight: 1.5,
             color: COLORS.sourceGreenDark,
             margin: 0,

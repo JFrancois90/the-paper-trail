@@ -43,6 +43,9 @@ export default function Footer() {
           </span>
         </div>
         <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
+          <Link href="/campaigns" style={linkStyle}>
+            Our campaigns
+          </Link>
           <Link href="/how-it-works" style={linkStyle}>
             What we do
           </Link>

@@ -19,14 +19,14 @@ interface Line {
 
 // "dead wrong" starts at index 29 in "Sometimes those numbers are dead wrong."
 const DESKTOP_LINES: Line[] = [
-  { text: 'Politicians use numbers to win.', color: 'rgba(255,255,255,0.85)', fontSize: '28px', fontWeight: 400, speed: 45, pauseAfter: 400 },
-  { text: 'Sometimes those numbers are dead wrong.', color: 'rgba(255,255,255,0.85)', fontSize: '28px', fontWeight: 400, speed: 45, pauseAfter: 400, highlightRange: [29, 39], highlightColor: 'rgba(196,138,10,0.35)' },
+  { text: 'Politicians use numbers to win.', color: '#ffffff', fontSize: '28px', fontWeight: 400, speed: 45, pauseAfter: 400 },
+  { text: 'Sometimes those numbers are dead wrong.', color: '#fac75a', fontSize: '28px', fontWeight: 400, speed: 45, pauseAfter: 400, highlightRange: [29, 39], highlightColor: 'rgba(196,138,10,0.35)' },
   { text: 'We check them.', color: '#fff', fontSize: '36px', fontWeight: 700, speed: 60, pauseAfter: 1000, highlightRange: [3, 14], highlightColor: 'rgba(196,138,10,0.35)' },
 ];
 
 const MOBILE_LINES: Line[] = [
-  { text: 'Politicians use numbers to win.', color: 'rgba(255,255,255,0.85)', fontSize: '22px', fontWeight: 400, speed: 40, pauseAfter: 500 },
-  { text: 'Sometimes those numbers are dead wrong.', color: 'rgba(255,255,255,0.85)', fontSize: '22px', fontWeight: 400, speed: 40, pauseAfter: 500, highlightRange: [29, 39], highlightColor: 'rgba(196,138,10,0.35)' },
+  { text: 'Politicians use numbers to win.', color: '#ffffff', fontSize: '22px', fontWeight: 400, speed: 40, pauseAfter: 500 },
+  { text: 'Sometimes those numbers are dead wrong.', color: '#fac75a', fontSize: '22px', fontWeight: 400, speed: 40, pauseAfter: 500, highlightRange: [29, 39], highlightColor: 'rgba(196,138,10,0.35)' },
   { text: 'We check them.', color: '#fff', fontSize: '26px', fontWeight: 700, speed: 60, pauseAfter: 1000, highlightRange: [3, 14], highlightColor: 'rgba(196,138,10,0.35)' },
 ];
 
@@ -149,7 +149,7 @@ export default function HeroSubtitle({ isMobile = false }: HeroSubtitleProps) {
           style={{
             fontFamily: 'var(--font-sans), sans-serif',
             fontSize: isMobile ? 16 : 18,
-            color: 'rgba(255,255,255,0.8)',
+            color: 'rgba(255,255,255,0.85)',
             textDecoration: 'none',
             display: 'block',
             cursor: 'pointer',
@@ -158,7 +158,7 @@ export default function HeroSubtitle({ isMobile = false }: HeroSubtitleProps) {
           onMouseEnter={(e) => { e.currentTarget.style.textDecoration = 'underline'; }}
           onMouseLeave={(e) => { e.currentTarget.style.textDecoration = 'none'; }}
         >
-          Remember the <span className="highlight" style={{ textDecoration: 'underline', textDecorationColor: 'rgba(196,138,10,0.6)', textUnderlineOffset: '3px' }}>&pound;350m</span> bus? So do we.
+          Remember the <span className="highlight" style={{ textDecoration: 'underline', textDecorationColor: 'rgba(196,138,10,0.6)', textUnderlineOffset: '3px' }}>&pound;350 million a week</span> bus? Unfortunately, so do we...
         </a>
       </div>
     </div>
