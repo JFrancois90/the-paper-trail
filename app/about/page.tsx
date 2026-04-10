@@ -3,6 +3,7 @@ import { COLORS } from '@/lib/constants';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import BackButton from '@/components/BackButton';
+import SourceDocsNotice from '@/components/SourceDocsNotice';
 import ScrollReveal from '@/components/ScrollReveal';
 import Highlight from '@/components/Highlight';
 import MemeIllustration from '@/components/MemeIllustration';
@@ -26,6 +27,8 @@ export default function AboutPage() {
           padding: '100px 28px 48px',
         }}
       >
+        <SourceDocsNotice />
+
         {/* Hero */}
         <ScrollReveal>
           <div style={{ marginBottom: 20 }}>

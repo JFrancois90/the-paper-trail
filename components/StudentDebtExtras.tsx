@@ -144,7 +144,7 @@ export default function StudentDebtExtras() {
         }}
       >
         <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: '0 0 12px' }}>
-          Parliamentary Standards Commissioner (ref PCS3735)
+          Parliamentary Standards Commissioner
         </p>
         <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, margin: '0 0 8px' }}>
           We raised this with the Parliamentary Standards Commissioner in January 2026.

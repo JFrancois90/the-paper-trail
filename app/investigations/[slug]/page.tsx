@@ -6,6 +6,7 @@ import { investigations } from '@/data/investigations';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import BackButton from '@/components/BackButton';
+import SourceDocsNotice from '@/components/SourceDocsNotice';
 import MultiplierBadge from '@/components/MultiplierBadge';
 import SaidVsSource from '@/components/SaidVsSource';
 import PlainEnglishBox from '@/components/PlainEnglishBox';
@@ -66,6 +67,8 @@ export default async function InvestigationPage({ params }: PageProps) {
           padding: '100px 28px 48px',
         }}
       >
+        <SourceDocsNotice />
+
         {/* Back link */}
         <Link
           href="/"

@@ -516,7 +516,7 @@ export default function Home() {
                 <div style={{ flex: 1 }}>
                   <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: COLORS.navy, margin: '0 0 6px' }}>Asked for comment</p>
                   <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, margin: '0 0 10px' }}>
-                    We have asked Clive Lewis MP for comment. The Parliamentary Standards Commissioner declined to open a formal investigation (ref PCS3735, Jan 2026) but noted the concerns for wider work.
+                    We have asked Clive Lewis MP for comment.
                   </p>
                   <span style={{ display: 'inline-block', fontFamily: B, fontSize: 13, fontWeight: 700, color: '#fff', background: COLORS.claimRed, padding: '6px 14px', borderRadius: 20 }}>Outstanding</span>
                 </div>
@@ -603,7 +603,7 @@ export default function Home() {
                   <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, margin: '0 0 10px' }}>
                     The response noted that the Commissioner &ldquo;takes careful note of concerns raised by members of the public&rdquo; and is &ldquo;concerned by some of the choices of language and tone made by some MPs.&rdquo;
                   </p>
-                  <span style={{ display: 'inline-block', fontFamily: B, fontSize: 13, fontWeight: 700, color: '#fff', background: COLORS.claimRed, padding: '6px 14px', borderRadius: 20 }}>Outstanding (ref PCS3735)</span>
+                  <span style={{ display: 'inline-block', fontFamily: B, fontSize: 13, fontWeight: 700, color: '#fff', background: COLORS.claimRed, padding: '6px 14px', borderRadius: 20 }}>Outstanding</span>
                 </div>
               </div>
             </ScrollReveal>

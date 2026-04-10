@@ -7,7 +7,7 @@ import { investigations } from '@/data/investigations';
 import MobileNav from '@/components/MobileNav';
 import BrandSlogan from '@/components/BrandSlogan';
 import HeroSubtitle from '@/components/HeroSubtitle';
-// Subscribe is inline below (not using SubscribeCTA component)
+import SourceDocsNotice from '@/components/SourceDocsNotice';
 import InvestigationStory from './InvestigationStory';
 import type { Investigation } from '@/data/investigations';
 
@@ -37,7 +37,7 @@ export default function MobileHomepage() {
     <>
       <MobileNav />
       <main id="main-content">
-        {/* Hero (70vh) */}
+        {/* Hero */}
         <section
           style={{
             minHeight: '70vh',
@@ -54,22 +54,90 @@ export default function MobileHomepage() {
           <HeroSubtitle isMobile />
         </section>
 
-        {/* Investigation feed */}
-        <section style={{ padding: '32px 16px 0' }}>
-          <p
-            style={{
-              fontFamily: B,
-              fontSize: 11,
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '0.1em',
-              color: COLORS.ink40,
-              margin: '0 0 16px',
-              padding: '0 8px',
-            }}
-          >
-            Latest investigations
+        {/* Source docs notice */}
+        <div style={{ padding: '20px 16px 0' }}>
+          <SourceDocsNotice />
+        </div>
+
+        {/* Equations */}
+        <section style={{ padding: '24px 16px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            {[
+              { label: 'What we were taught', eq: '1 + 1 = 2', icon: '\u2713', iconColor: COLORS.sourceGreen, caption: 'The basics. Everyone agrees.' },
+              { label: 'What we were taught to look out for', eq: '1 + 1 = ', eqRed: '3', icon: '\u2717', iconColor: COLORS.claimRed, caption: 'The old problem. Twisting the answer.' },
+              { label: 'What we actually need to find', eq: ' + 1 = 2', eqRedPrefix: '5', icon: '\u2717', iconColor: COLORS.claimRed, caption: 'The inputs are wrong. Nobody checks.' },
+            ].map((card, i) => (
+              <div key={i} style={{ background: '#fff', border: '1px solid rgba(27,42,74,0.10)', borderRadius: 12, padding: '20px 16px', textAlign: 'center' }}>
+                <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: COLORS.muted, margin: '0 0 6px' }}>{card.label}</p>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                  <span style={{ fontFamily: H, fontSize: 32, fontWeight: 700, color: COLORS.navy, letterSpacing: '-0.03em' }}>
+                    {card.eqRedPrefix && <span style={{ color: COLORS.claimRed }}>{card.eqRedPrefix}</span>}
+                    {card.eq}
+                    {card.eqRed && <span style={{ color: COLORS.claimRed }}>{card.eqRed}</span>}
+                  </span>
+                  <span style={{ fontSize: 24, color: card.iconColor }}>{card.icon}</span>
+                </div>
+                <p style={{ fontFamily: B, fontSize: 14, color: COLORS.navy, margin: '4px 0 0' }}>{card.caption}</p>
+              </div>
+            ))}
+          </div>
+          <p style={{ fontFamily: B, fontSize: 16, lineHeight: 1.65, color: COLORS.navy, margin: '20px 0 0', textAlign: 'center' }}>
+            Forget the statistics. Forget the politics. <span className="highlight">Check the base data.</span>
           </p>
+        </section>
+
+        {/* What we do */}
+        <section style={{ padding: '16px 16px 24px' }}>
+          <h2 style={{ fontFamily: H, fontSize: 22, fontWeight: 700, color: COLORS.navy, margin: '0 0 8px' }}>What we do</h2>
+          <p style={{ fontFamily: B, fontSize: 15, color: COLORS.muted, margin: '0 0 16px' }}>
+            We are just checking what people quote is correct. It is that simple.
+          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            {[
+              { num: '01', title: 'They cite a source', desc: 'A public figure references a report to back up their claim.' },
+              { num: '02', title: 'We read it', desc: 'We read the actual source. Not a summary. The original.' },
+              { num: '03', title: 'We compare', desc: 'We put what they said next to what the source shows. Side by side.' },
+            ].map((step) => (
+              <div key={step.num} style={{ background: '#fff', border: '1px solid rgba(27,42,74,0.10)', borderRadius: 12, padding: '16px 18px', display: 'flex', gap: 14, alignItems: 'flex-start' }}>
+                <span style={{ fontFamily: H, fontSize: 28, fontWeight: 700, color: COLORS.navyLight, letterSpacing: '-0.03em', lineHeight: 1, flexShrink: 0 }}>{step.num}</span>
+                <div>
+                  <p style={{ fontFamily: H, fontSize: 16, fontWeight: 700, color: COLORS.navy, margin: '0 0 2px' }}>{step.title}</p>
+                  <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.5, color: COLORS.muted, margin: 0 }}>{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Featured: Railtrack */}
+        <section style={{ padding: '16px 16px 24px' }}>
+          <div style={{ background: '#fae9b0', borderRadius: 8, padding: '10px 14px', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 6 }}>
+            <span style={{ fontSize: 14 }}>&#x1F4E2;</span>
+            <p style={{ fontFamily: B, fontSize: 13, color: COLORS.navy, margin: 0 }}>We support public accountability for nationalisation costs.</p>
+          </div>
+          <p style={{ fontFamily: H, fontSize: 18, fontWeight: 400, color: COLORS.ink, lineHeight: 1.4, margin: '0 0 16px' }}>
+            &ldquo;Labour nationalised Railtrack, paying just <span className="highlight-red">&pound;500 million</span>&rdquo;
+          </p>
+          <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
+            <div style={{ flex: 1, background: COLORS.claimRedLight, borderRadius: 10, padding: '16px 12px', textAlign: 'center' }}>
+              <p style={{ fontFamily: H, fontSize: 28, fontWeight: 700, color: COLORS.claimRed, margin: '0 0 4px', letterSpacing: '-0.03em' }}>&pound;500m</p>
+              <p style={{ fontFamily: B, fontSize: 12, color: COLORS.claimRedDark, margin: 0 }}>What they said</p>
+            </div>
+            <div style={{ flex: 1, background: COLORS.sourceGreenLight, borderRadius: 10, padding: '16px 12px', textAlign: 'center' }}>
+              <p style={{ fontFamily: H, fontSize: 28, fontWeight: 700, color: COLORS.sourceGreen, margin: '0 0 4px', letterSpacing: '-0.03em' }}>&pound;7.6bn</p>
+              <p style={{ fontFamily: B, fontSize: 12, color: COLORS.sourceGreenDark, margin: 0 }}>What it cost</p>
+            </div>
+          </div>
+          <Link href="/investigations/railtrack-500m" style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: COLORS.chainBlue, textDecoration: 'none' }}>
+            See the full trail &rarr;
+          </Link>
+        </section>
+
+        {/* Investigation feed */}
+        <section style={{ padding: '16px 16px 0' }}>
+          <h2 style={{ fontFamily: H, fontSize: 22, fontWeight: 700, color: COLORS.navy, margin: '0 0 16px' }}>
+            All investigations
+          </h2>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
             {investigations.filter((inv) => inv.slug !== '350bn-tax-evasion').map((inv, i) => (
@@ -148,11 +216,11 @@ export default function MobileHomepage() {
                   </p>
                 </button>
 
-                {/* Bridge text between cards */}
+                {/* Bridge text */}
                 {i === 1 && (
                   <div style={{ padding: '24px 8px', textAlign: 'center' }}>
                     <p style={{ fontFamily: B, fontSize: 15, lineHeight: 1.6, color: COLORS.ink40, margin: 0 }}>
-                      When politicians get their numbers wrong, the people who need help most{' '}
+                      When public figures get their numbers wrong, the people who need help most{' '}
                       <span className="highlight">pay the price</span>.
                     </p>
                   </div>
