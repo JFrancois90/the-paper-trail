@@ -221,8 +221,8 @@ export default function IntroSequence({ onComplete, isMobile = false }: IntroSeq
                 animation: 'fadeIn 0.5s ease',
               }}
             >
-              Four politicians. One table. 280 days in a year.<br />
-              Not one of them noticed.
+              Three politicians arguing how many days off you deserve.<br />
+              None of them noticed the year is 85 days short.
             </p>
           )}
 
