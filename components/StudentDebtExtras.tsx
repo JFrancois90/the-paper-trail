@@ -25,8 +25,8 @@ export default function StudentDebtExtras() {
             { year: '2015-16', text: 'Access to HE diploma at New College Nottingham.' },
             { year: '2017', text: 'Started Law (LLB) at University of Nottingham.' },
             { year: '2017', text: 'Ran in Nottinghamshire County Council election. Came second.', highlight: true },
-            { year: '2018', text: 'Failed first year. Required to resit (repeat the year). Only 4.3% of Nottingham students are in this position.' },
-            { year: '2019', text: 'Completed resit year. Left university without completing the degree.' },
+            { year: '2018', text: 'Required to resit (repeat the year).' },
+            { year: '2019', text: 'Left university during resit year, shortly before entering politics.' },
             { year: '2019', text: 'Elected as MP for Nottingham East.', highlight: true },
           ].map((item, i) => (
             <div key={i} style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
