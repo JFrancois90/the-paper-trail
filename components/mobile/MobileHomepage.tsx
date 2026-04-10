@@ -99,7 +99,7 @@ function FullWidthCarousel({
 const EQUATION_CARDS = [
   { label: 'What we were taught', eq: '1 + 1 = 2', icon: '\u2713', iconColor: COLORS.sourceGreen, caption: 'The basics. Everyone agrees.' },
   { label: 'What we were taught to look out for', eq: '1 + 1 = ', eqRed: '3', icon: '\u2717', iconColor: COLORS.claimRed, caption: 'The old problem. Twisting the answer.' },
-  { label: 'What we actually need to find', eq: ' + 1 = 2', eqRedPrefix: '5', icon: '\u2717', iconColor: COLORS.claimRed, caption: 'The inputs are wrong. Nobody checks.' },
+  { label: 'What we actually need to find', eq: ' + 1 = 2', eqRedPrefix: '2', icon: '\u2717', iconColor: COLORS.claimRed, caption: 'The inputs are wrong. Nobody checks.' },
 ];
 
 /* ───── What We Do steps ───── */

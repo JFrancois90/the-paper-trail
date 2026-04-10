@@ -192,7 +192,7 @@ export default function Home() {
                   <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.muted, margin: '0 0 8px' }}>What we actually need to find</p>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
                     <span style={{ fontFamily: H, fontSize: 'clamp(40px, 4.5vw, 56px)', fontWeight: 700, color: COLORS.navy, letterSpacing: '-0.03em' }}>
-                      <span style={{ color: COLORS.claimRed, textDecoration: 'underline', textDecorationColor: 'rgba(181,48,42,0.3)', textUnderlineOffset: '4px' }}>5</span> + 1 = 2
+                      <span style={{ color: COLORS.claimRed, textDecoration: 'underline', textDecorationColor: 'rgba(181,48,42,0.3)', textUnderlineOffset: '4px' }}>2</span> + 1 = 2
                     </span>
                     <span style={{ fontSize: 'clamp(28px, 3vw, 40px)', color: COLORS.claimRed }}>&#10007;</span>
                   </div>
