@@ -21,6 +21,7 @@ import StudentDebtExtras from '@/components/StudentDebtExtras';
 import ReformTaxExtras from '@/components/ReformTaxExtras';
 import RailtrackExtras from '@/components/RailtrackExtras';
 import StudentDebt97kExtras from '@/components/StudentDebt97kExtras';
+import TimesStudentDebtExtras from '@/components/TimesStudentDebtExtras';
 import { HIGHLIGHT_PHRASES } from '@/lib/highlights';
 import InvestigationPageBars from './InvestigationPageBars';
 import InvestigationPageChain from './InvestigationPageChain';
@@ -54,7 +55,9 @@ export default async function InvestigationPage({ params }: PageProps) {
   const inv = investigations.find((i) => i.slug === slug);
   if (!inv) notFound();
 
-  const related = investigations.filter((i) => i.slug !== slug).slice(0, 2);
+  const related = slug === 'times-student-debt-37'
+    ? investigations.filter((i) => i.slug === 'student-debt-claim' || i.slug === 'student-debt-97k')
+    : investigations.filter((i) => i.slug !== slug).slice(0, 2);
 
   return (
     <>
@@ -128,6 +131,7 @@ export default async function InvestigationPage({ params }: PageProps) {
             {inv.slug === 'reform-tax-canary' && 'We support taxes on those who can afford it. We disagree with incorrect figures, regardless of political alignment.'}
             {inv.slug === 'student-debt-97k' && 'We support reform of the student loan system. We disagree with incorrect figures, regardless of political alignment.'}
             {inv.slug === '350bn-tax-evasion' && 'We support action on tax evasion. We disagree with incorrect figures, regardless of political alignment.'}
+            {inv.slug === 'times-student-debt-37' && 'We support transparency in student finance and reform of the loan system. We disagree with incorrect figures, regardless of who publishes them.'}
           </p>
         </div>
 
@@ -254,6 +258,11 @@ export default async function InvestigationPage({ params }: PageProps) {
         {inv.slug === 'student-debt-97k' && (
           <ScrollReveal>
             <StudentDebt97kExtras />
+          </ScrollReveal>
+        )}
+        {inv.slug === 'times-student-debt-37' && (
+          <ScrollReveal>
+            <TimesStudentDebtExtras />
           </ScrollReveal>
         )}
 

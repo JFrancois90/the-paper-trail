@@ -178,19 +178,21 @@ export default function MobileHomepage() {
 
         {/* ═══ SECTION 2: THE PROBLEM — Equations ═══ */}
         <SnapSection>
-          <p
+          <div
             style={{
               fontFamily: B,
-              fontSize: 16,
+              fontSize: 18,
               fontWeight: 600,
               color: COLORS.navy,
               margin: '0 0 20px',
               textAlign: 'center',
-              lineHeight: 1.5,
+              lineHeight: 1.8,
             }}
           >
-            These aren&rsquo;t opinions. They&rsquo;re numbers. And they&rsquo;re wrong.
-          </p>
+            <span>These aren&rsquo;t opinions.</span><br />
+            <span>They&rsquo;re numbers.</span><br />
+            <span style={{ color: COLORS.claimRed }}>And they&rsquo;re wrong.</span>
+          </div>
 
           <FullWidthCarousel>
             {EQUATION_CARDS.map((card, i) => (
@@ -588,7 +590,7 @@ export default function MobileHomepage() {
         </SnapSection>
 
         {/* ═══ SUBSCRIBE ═══ */}
-        <SnapSection bg={COLORS.navy} style={{ paddingBottom: 100, textAlign: 'center' }}>
+        <SnapSection bg={COLORS.navy} style={{ textAlign: 'center' }}>
           <div id="subscribe">
             <p
               style={{
@@ -694,9 +696,6 @@ export default function MobileHomepage() {
         </SnapSection>
       </div>
 
-      {/* ═══ FIXED SUBSCRIBE BAR ═══ */}
-      <FixedSubscribeBar containerRef={mainRef} />
-
       {/* ═══ SCROLL TO TOP ═══ */}
       <FixedScrollToTop containerRef={mainRef} />
 
@@ -704,68 +703,6 @@ export default function MobileHomepage() {
         div::-webkit-scrollbar { display: none; }
       `}</style>
     </>
-  );
-}
-
-/* ───── Fixed subscribe bar ───── */
-function FixedSubscribeBar({ containerRef }: { containerRef: React.RefObject<HTMLDivElement | null> }) {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    const onScroll = () => {
-      setVisible(el.scrollTop > el.clientHeight * 0.7);
-    };
-    el.addEventListener('scroll', onScroll, { passive: true });
-    return () => el.removeEventListener('scroll', onScroll);
-  }, [containerRef]);
-
-  return (
-    <div
-      style={{
-        position: 'fixed',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        padding: '12px 20px',
-        background: 'rgba(255, 255, 255, 0.95)',
-        backdropFilter: 'blur(10px)',
-        WebkitBackdropFilter: 'blur(10px)',
-        zIndex: 100,
-        borderTop: '1px solid rgba(0, 0, 0, 0.1)',
-        opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0)' : 'translateY(100%)',
-        transition: 'opacity 0.3s ease, transform 0.3s ease',
-        pointerEvents: visible ? 'auto' : 'none',
-      }}
-    >
-      <a
-        href="#subscribe"
-        onClick={(e) => {
-          e.preventDefault();
-          const el = document.getElementById('subscribe');
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
-        }}
-        style={{
-          display: 'block',
-          width: '100%',
-          padding: '12px',
-          borderRadius: 10,
-          background: COLORS.navy,
-          color: '#fff',
-          fontFamily: 'var(--font-sans), sans-serif',
-          fontSize: 14,
-          fontWeight: 600,
-          textAlign: 'center',
-          textDecoration: 'none',
-          letterSpacing: '0.04em',
-          textTransform: 'uppercase',
-        }}
-      >
-        Subscribe for updates
-      </a>
-    </div>
   );
 }
 
@@ -792,7 +729,7 @@ function FixedScrollToTop({ containerRef }: { containerRef: React.RefObject<HTML
       aria-label="Back to top"
       style={{
         position: 'fixed',
-        bottom: 72,
+        bottom: 20,
         right: 20,
         zIndex: 101,
         width: 40,

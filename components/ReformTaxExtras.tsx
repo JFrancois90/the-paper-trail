@@ -11,19 +11,23 @@ export default function ReformTaxExtras() {
         <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: '0 0 16px' }}>
           How tax bands actually work
         </p>
-        <div style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: COLORS.muted }}>
-          <p style={{ margin: '0 0 12px' }}>You don&apos;t pay one rate on all your income. You pay different rates on different slices.</p>
-          <p style={{ margin: '0 0 8px', fontWeight: 600, color: COLORS.navy }}>Current system:</p>
-          <p style={{ margin: '0 0 4px' }}>First &pound;12,570: <strong>0%</strong> (your personal allowance, you keep all of it)</p>
-          <p style={{ margin: '0 0 4px' }}>&pound;12,571 to &pound;50,270: <strong>20%</strong> (basic rate)</p>
-          <p style={{ margin: '0 0 12px' }}>&pound;50,271 to &pound;125,140: <strong>40%</strong> (higher rate)</p>
-          <p style={{ margin: '0 0 8px', fontWeight: 600, color: COLORS.navy }}>Reform proposed raising the personal allowance to &pound;20,000.</p>
-          <p style={{ margin: '0 0 4px' }}>That means an extra &pound;7,430 of income becomes tax-free.</p>
-          <p style={{ margin: '0 0 4px' }}>That &pound;7,430 was previously taxed at 20%.</p>
-          <p style={{ margin: '0 0 4px' }}>20% of &pound;7,430 = <strong>&pound;1,486</strong>.</p>
-          <p style={{ margin: '0 0 4px' }}>Everyone earning above &pound;20,000 saves exactly &pound;1,486.</p>
-          <p style={{ margin: 0 }}>The 40% band is completely untouched.</p>
-        </div>
+        <p style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: COLORS.muted, margin: '0 0 12px' }}>
+          You pay different rates on different slices of income.
+        </p>
+        <p style={{ fontFamily: B, fontSize: 13, fontWeight: 600, color: COLORS.navy, margin: '0 0 8px' }}>Current system:</p>
+        <ul style={{ margin: '0 0 12px', padding: '0 0 0 20px', listStyleType: 'disc' }}>
+          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: COLORS.muted, marginBottom: 4 }}>First £12,570: <strong>0%</strong> (personal allowance)</li>
+          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: COLORS.muted, marginBottom: 4 }}>£12,571 to £50,270: <strong>20%</strong> (basic rate)</li>
+          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: COLORS.muted }}>£50,271 to £125,140: <strong>40%</strong> (higher rate)</li>
+        </ul>
+        <p style={{ fontFamily: B, fontSize: 13, fontWeight: 600, color: COLORS.navy, margin: '0 0 8px' }}>Reform proposal:</p>
+        <ul style={{ margin: 0, padding: '0 0 0 20px', listStyleType: 'disc' }}>
+          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: COLORS.muted, marginBottom: 4 }}>Raise personal allowance to £20,000</li>
+          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: COLORS.muted, marginBottom: 4 }}>Extra £7,430 becomes tax-free</li>
+          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: COLORS.muted, marginBottom: 4 }}>20% of £7,430 = <strong>£1,486</strong> saving</li>
+          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: COLORS.muted, marginBottom: 4 }}>Everyone above £20k saves exactly £1,486</li>
+          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: COLORS.muted }}>40% band is completely untouched</li>
+        </ul>
       </div>
 
       {/* Tax tables */}

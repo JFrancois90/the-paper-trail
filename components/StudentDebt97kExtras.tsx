@@ -48,32 +48,32 @@ export default function StudentDebt97kExtras() {
         <p style={{ fontFamily: B, fontSize: 13, fontWeight: 600, color: COLORS.navy, margin: '0 0 8px' }}>
           What the video claims:
         </p>
-        <div style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.muted, marginBottom: 20 }}>
-          <p style={{ margin: '0 0 4px' }}>She says her &ldquo;student loan&rdquo; balance is £97,592.</p>
-          <p style={{ margin: '0 0 4px' }}>She says she&apos;ll repay &ldquo;nearly £50,000.&rdquo;</p>
-          <p style={{ margin: 0 }}>She says that&apos;s &ldquo;more than I originally took out.&rdquo;</p>
-        </div>
+        <ul style={{ margin: '0 0 20px', padding: '0 0 0 20px', listStyleType: 'disc' }}>
+          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.muted, marginBottom: 4 }}>Balance: £97,592</li>
+          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.muted, marginBottom: 4 }}>Will repay &ldquo;nearly £50,000&rdquo;</li>
+          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.muted }}>Claims that is &ldquo;more than I originally took out&rdquo;</li>
+        </ul>
 
         <p style={{ fontFamily: B, fontSize: 13, fontWeight: 600, color: COLORS.claimRed, margin: '0 0 8px' }}>
           The problem:
         </p>
-        <div style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.muted, marginBottom: 20 }}>
-          <p style={{ margin: '0 0 4px' }}>£97,592 is the balance today, including ~£18,000 of interest that built up during and after university.</p>
-          <p style={{ margin: '0 0 8px' }}>But £97,592 is not what she &ldquo;took out.&rdquo; What she took out was ~£79,000.</p>
-          <p style={{ margin: '0 0 4px' }}>She will repay ~£50,000.</p>
-          <p style={{ margin: '0 0 4px' }}>£79,000 minus £50,000 = £29,000 that gets written off.</p>
-          <p style={{ margin: 0 }}>She is paying back <strong style={{ color: COLORS.sourceGreen }}>LESS</strong> than she borrowed. Not more. Less.</p>
-        </div>
+        <ul style={{ margin: '0 0 20px', padding: '0 0 0 20px', listStyleType: 'disc' }}>
+          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.muted, marginBottom: 4 }}>£97k balance includes ~£18k of interest</li>
+          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.muted, marginBottom: 4 }}>What she took out was ~£79,000</li>
+          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.muted, marginBottom: 4 }}>She will repay ~£50,000</li>
+          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.muted, marginBottom: 4 }}>£79k minus £50k = £29k written off</li>
+          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.muted }}>She pays back <strong style={{ color: COLORS.sourceGreen }}>LESS</strong> than she borrowed</li>
+        </ul>
 
         <p style={{ fontFamily: B, fontSize: 13, fontWeight: 600, color: COLORS.navy, margin: '0 0 8px' }}>
-          The comparison she makes in the video:
+          The false comparison:
         </p>
-        <div style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.muted }}>
-          <p style={{ margin: '0 0 8px' }}>She compares her current balance (~£97k, which includes interest) against &ldquo;what she took out&rdquo; (which she means as ~£50k of core tuition only, excluding maintenance and hardship).</p>
-          <p style={{ margin: '0 0 4px' }}>But maintenance IS borrowing. Hardship IS borrowing.</p>
-          <p style={{ margin: '0 0 4px' }}>You can&apos;t exclude them and then claim you&apos;re paying back &ldquo;more than you borrowed.&rdquo;</p>
-          <p style={{ margin: 0 }}>It&apos;s comparing apples to oranges to reach a conclusion that doesn&apos;t hold.</p>
-        </div>
+        <ul style={{ margin: 0, padding: '0 0 0 20px', listStyleType: 'disc' }}>
+          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.muted, marginBottom: 4 }}>Compares £97k balance against ~£50k tuition only</li>
+          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.muted, marginBottom: 4 }}>Excludes maintenance and hardship borrowing</li>
+          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.muted, marginBottom: 4 }}>Maintenance IS borrowing. Hardship IS borrowing.</li>
+          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.muted }}>Apples to oranges comparison</li>
+        </ul>
       </div>
 
       {/* Why this matters */}
@@ -81,14 +81,14 @@ export default function StudentDebt97kExtras() {
         <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.amber, margin: '0 0 16px' }}>
           Why this matters
         </p>
-        <div style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: COLORS.amberDark }}>
-          <p style={{ margin: '0 0 12px' }}>The current political argument says poorer households pay back more than they borrow. This case shows the opposite.</p>
-          <p style={{ margin: '0 0 12px' }}>Sarah borrowed ~£79,000. She will repay ~£50,000. That&apos;s £29,000 less than she borrowed.</p>
-          <p style={{ margin: '0 0 12px' }}>If politicians build policy on the claim that graduates repay more than they borrow, they risk designing solutions for a problem that doesn&apos;t work the way they think.</p>
-          <p style={{ margin: '0 0 12px' }}>Worse: policy based on wrong numbers could end up benefiting wealthier students (who repay more of their loan due to higher salaries) at the expense of the lower income students it&apos;s meant to protect.</p>
-          <p style={{ margin: '0 0 4px' }}>We take no position on the policy.</p>
-          <p style={{ margin: 0 }}>We&apos;re pointing out the input is wrong.</p>
-        </div>
+        <ul style={{ margin: 0, padding: '0 0 0 20px', listStyleType: 'disc' }}>
+          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: COLORS.amberDark, marginBottom: 6 }}>Borrowed: ~£79,000. Will repay: ~£50,000</li>
+          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: COLORS.amberDark, marginBottom: 6 }}>That is £29,000 less than she borrowed</li>
+          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: COLORS.amberDark, marginBottom: 6 }}>Policy claims graduates overpay. This shows the opposite.</li>
+          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: COLORS.amberDark, marginBottom: 6 }}>Wrong numbers risk targeting the wrong people</li>
+          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: COLORS.amberDark, marginBottom: 6 }}>We take no position on the policy</li>
+          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: COLORS.amberDark }}>We are pointing out the input is wrong</li>
+        </ul>
       </div>
 
       {/* Credit where due */}
@@ -96,12 +96,12 @@ export default function StudentDebt97kExtras() {
         <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.sourceGreen, margin: '0 0 12px' }}>
           Credit where due
         </p>
-        <div style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.sourceGreenDark }}>
-          <p style={{ margin: '0 0 4px' }}>Sarah engaged with our questions directly and in good faith.</p>
-          <p style={{ margin: '0 0 4px' }}>She described it as &ldquo;a language issue rather than a maths one.&rdquo;</p>
-          <p style={{ margin: '0 0 4px' }}>She added a caption disclaimer to the post.</p>
-          <p style={{ margin: 0 }}>That&apos;s more than most do. We credit her for that.</p>
-        </div>
+        <ul style={{ margin: 0, padding: '0 0 0 20px', listStyleType: 'disc' }}>
+          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.sourceGreenDark, marginBottom: 4 }}>Engaged directly and in good faith</li>
+          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.sourceGreenDark, marginBottom: 4 }}>Described it as &ldquo;a language issue&rdquo;</li>
+          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.sourceGreenDark, marginBottom: 4 }}>Added a caption disclaimer to the post</li>
+          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.sourceGreenDark }}>That is more than most do</li>
+        </ul>
       </div>
 
       {/* Still outstanding */}
@@ -109,13 +109,13 @@ export default function StudentDebt97kExtras() {
         <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.amber, margin: '0 0 12px' }}>
           Still outstanding
         </p>
-        <div style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.amberDark }}>
-          <p style={{ margin: '0 0 4px' }}>The video itself remains unchanged.</p>
-          <p style={{ margin: '0 0 4px' }}>The £97k headline and &ldquo;more than I took out&rdquo; claim are still in the video.</p>
-          <p style={{ margin: '0 0 4px' }}>The caption disclaimer doesn&apos;t appear in the video itself.</p>
-          <p style={{ margin: '0 0 4px' }}>Most viewers won&apos;t read the caption.</p>
-          <p style={{ margin: 0, fontWeight: 600 }}>Verdict: pending.</p>
-        </div>
+        <ul style={{ margin: 0, padding: '0 0 0 20px', listStyleType: 'disc' }}>
+          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.amberDark, marginBottom: 4 }}>Video itself remains unchanged</li>
+          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.amberDark, marginBottom: 4 }}>£97k headline still in the video</li>
+          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.amberDark, marginBottom: 4 }}>Caption disclaimer not visible in the video</li>
+          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.amberDark, marginBottom: 4 }}>Most viewers won&apos;t read the caption</li>
+          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.amberDark, fontWeight: 600 }}>Verdict: pending</li>
+        </ul>
       </div>
 
       {/* We also agree */}
@@ -123,14 +123,14 @@ export default function StudentDebt97kExtras() {
         <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'rgba(255,255,255,0.4)', margin: '0 0 16px' }}>
           We also agree
         </p>
-        <div style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: 'rgba(255,255,255,0.85)' }}>
-          <p style={{ margin: '0 0 12px', fontWeight: 600, color: '#fff' }}>We agree the student loan system has serious problems.</p>
-          <p style={{ margin: '0 0 4px' }}>Interest rates linked to RPI are unfair.</p>
-          <p style={{ margin: '0 0 4px' }}>The government changing loan terms after students signed up is wrong.</p>
-          <p style={{ margin: '0 0 12px' }}>Sarah is right to campaign on this.</p>
-          <p style={{ margin: '0 0 12px' }}>But the specific numbers in the video don&apos;t support the claim being made. Prospective students deserve accurate information when deciding whether to go to university.</p>
-          <p style={{ margin: 0 }}>Getting the system changed requires getting the numbers right first. Otherwise the argument is easy to dismiss.</p>
-        </div>
+        <ul style={{ margin: 0, padding: '0 0 0 20px', listStyleType: 'disc' }}>
+          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: '#fff', fontWeight: 600, marginBottom: 8 }}>We agree the student loan system has serious problems</li>
+          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: 'rgba(255,255,255,0.85)', marginBottom: 4 }}>RPI-linked interest rates are unfair</li>
+          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: 'rgba(255,255,255,0.85)', marginBottom: 4 }}>Changing terms after students signed up is wrong</li>
+          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: 'rgba(255,255,255,0.85)', marginBottom: 8 }}>Sarah is right to campaign on this</li>
+          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: 'rgba(255,255,255,0.85)', marginBottom: 4 }}>But the numbers in the video don&apos;t support the claim</li>
+          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: 'rgba(255,255,255,0.85)' }}>Getting it changed means getting the numbers right first</li>
+        </ul>
       </div>
 
       {/* Conversation timeline */}

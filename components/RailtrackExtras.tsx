@@ -17,9 +17,9 @@ export default function RailtrackExtras() {
         Where this argument leads
       </p>
 
-      <p style={{ fontFamily: B, fontSize: 16, lineHeight: 1.65, color: COLORS.muted, margin: '0 0 16px' }}>
-        The &pound;500m Railtrack claim is not academic. It is being used right now to argue that water nationalisation will be cheap.
-      </p>
+      <ul style={{ margin: '0 0 16px', padding: '0 0 0 20px', listStyleType: 'disc' }}>
+        <li style={{ fontFamily: B, fontSize: 16, lineHeight: 1.65, color: COLORS.muted }}>The £500m Railtrack claim is not academic. It is being used right now to argue water nationalisation will be cheap.</li>
+      </ul>
 
       <div
         style={{

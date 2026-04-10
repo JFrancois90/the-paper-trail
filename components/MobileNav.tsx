@@ -159,6 +159,7 @@ export default function MobileNav({ dark = true }: MobileNavProps) {
               { href: '/careless-whispers', label: 'Careless whispers' },
               { href: '/how-it-works', label: 'What we do' },
               { href: '/about', label: 'What we are fighting for' },
+              { href: '/fighting-for-change', label: 'Join the fight' },
             ].map((item) => (
               <Link
                 key={item.href}

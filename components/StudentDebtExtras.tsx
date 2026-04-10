@@ -146,19 +146,20 @@ export default function StudentDebtExtras() {
         <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: '0 0 12px' }}>
           Parliamentary Standards Commissioner
         </p>
-        <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, margin: '0 0 8px' }}>
-          We raised this with the Parliamentary Standards Commissioner in January 2026.
-        </p>
-        <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, margin: '0 0 8px' }}>
-          The Commissioner confirmed he will not open a formal investigation at this time.
-        </p>
-        <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, margin: '0 0 8px' }}>
-          However, the response noted that the Commissioner &ldquo;takes careful note of concerns raised by members of the public&rdquo;
-          and is &ldquo;concerned by some of the choices of language and tone made by some MPs.&rdquo;
-        </p>
-        <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, margin: 0 }}>
-          The complaint will be considered as part of the Commissioner&apos;s &ldquo;wider work.&rdquo;
-        </p>
+        <ul style={{ margin: 0, padding: '0 0 0 20px', listStyleType: 'disc' }}>
+          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, marginBottom: 6 }}>
+            Raised with the Commissioner in January 2026
+          </li>
+          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, marginBottom: 6 }}>
+            No formal investigation opened at this time
+          </li>
+          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, marginBottom: 6 }}>
+            Commissioner noted concern about &ldquo;choices of language and tone&rdquo;
+          </li>
+          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, marginBottom: 0 }}>
+            Complaint will be considered in &ldquo;wider work&rdquo;
+          </li>
+        </ul>
       </div>
     </>
   );

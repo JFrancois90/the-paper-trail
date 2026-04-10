@@ -106,6 +106,7 @@ export default function Nav({ forceDark }: NavProps) {
           <Link href="/careless-whispers" className="nav-link" style={labelStyle}>Careless whispers</Link>
           <Link href="/how-it-works" className="nav-link" style={labelStyle}>What we do</Link>
           <Link href="/about" className="nav-link" style={labelStyle}>What we are fighting for</Link>
+          <Link href="/fighting-for-change" className="nav-link" style={labelStyle}>Join the fight</Link>
           <Link
             href="/support"
             style={{
