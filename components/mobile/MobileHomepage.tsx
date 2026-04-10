@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { COLORS } from '@/lib/constants';
 import { investigations } from '@/data/investigations';
@@ -13,6 +13,101 @@ import type { Investigation } from '@/data/investigations';
 
 const H = 'var(--font-heading), sans-serif';
 const B = 'var(--font-sans), sans-serif';
+
+/* ───── Swipe carousel ───── */
+function SwipeCarousel({ children, cardWidth = 280, gap = 12 }: { children: React.ReactNode[]; cardWidth?: number; gap?: number }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const count = children.length;
+
+  const handleScroll = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const scrollLeft = el.scrollLeft;
+    const step = cardWidth + gap;
+    const idx = Math.round(scrollLeft / step);
+    setActiveIndex(Math.min(Math.max(idx, 0), count - 1));
+  }, [cardWidth, gap, count]);
+
+  /* Snap the last card to centre */
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const resizeObs = new ResizeObserver(() => {
+      // Set right padding so last card can centre-align when scrolled to
+      const viewW = el.clientWidth;
+      const rightPad = Math.max((viewW - cardWidth) / 2, 16);
+      el.style.paddingRight = `${rightPad}px`;
+    });
+    resizeObs.observe(el);
+    return () => resizeObs.disconnect();
+  }, [cardWidth]);
+
+  return (
+    <div>
+      <div
+        ref={scrollRef}
+        onScroll={handleScroll}
+        style={{
+          display: 'flex',
+          gap,
+          overflowX: 'auto',
+          scrollSnapType: 'x mandatory',
+          WebkitOverflowScrolling: 'touch',
+          paddingLeft: 16,
+          paddingBottom: 8,
+          msOverflowStyle: 'none',
+          scrollbarWidth: 'none',
+        }}
+      >
+        <style>{`
+          .swipe-carousel::-webkit-scrollbar { display: none; }
+        `}</style>
+        {children.map((child, i) => (
+          <div
+            key={i}
+            style={{
+              flex: `0 0 ${cardWidth}px`,
+              scrollSnapAlign: 'center',
+            }}
+          >
+            {child}
+          </div>
+        ))}
+      </div>
+
+      {/* Dot indicators */}
+      <div style={{ display: 'flex', justifyContent: 'center', gap: 6, marginTop: 10 }}>
+        {Array.from({ length: count }).map((_, i) => (
+          <span
+            key={i}
+            style={{
+              width: activeIndex === i ? 16 : 6,
+              height: 6,
+              borderRadius: 3,
+              background: activeIndex === i ? COLORS.navy : 'rgba(27,42,74,0.15)',
+              transition: 'all 0.25s ease',
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ───── Equation cards data ───── */
+const EQUATION_CARDS = [
+  { label: 'What we were taught', eq: '1 + 1 = 2', icon: '\u2713', iconColor: COLORS.sourceGreen, caption: 'The basics. Everyone agrees.' },
+  { label: 'What we were taught to look out for', eq: '1 + 1 = ', eqRed: '3', icon: '\u2717', iconColor: COLORS.claimRed, caption: 'The old problem. Twisting the answer.' },
+  { label: 'What we actually need to find', eq: ' + 1 = 2', eqRedPrefix: '5', icon: '\u2717', iconColor: COLORS.claimRed, caption: 'The inputs are wrong. Nobody checks.' },
+];
+
+/* ───── What We Do steps ───── */
+const STEPS = [
+  { num: '01', title: 'They cite a source', desc: 'A public figure references a report to back up their claim.' },
+  { num: '02', title: 'We read it', desc: 'We read the actual source. Not a summary. The original.' },
+  { num: '03', title: 'We compare', desc: 'We put what they said next to what the source shows. Side by side.' },
+];
 
 export default function MobileHomepage() {
   const [activeStory, setActiveStory] = useState<Investigation | null>(null);
@@ -59,54 +154,47 @@ export default function MobileHomepage() {
           <SourceDocsNotice />
         </div>
 
-        {/* Equations */}
-        <section style={{ padding: '24px 16px' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            {[
-              { label: 'What we were taught', eq: '1 + 1 = 2', icon: '\u2713', iconColor: COLORS.sourceGreen, caption: 'The basics. Everyone agrees.' },
-              { label: 'What we were taught to look out for', eq: '1 + 1 = ', eqRed: '3', icon: '\u2717', iconColor: COLORS.claimRed, caption: 'The old problem. Twisting the answer.' },
-              { label: 'What we actually need to find', eq: ' + 1 = 2', eqRedPrefix: '5', icon: '\u2717', iconColor: COLORS.claimRed, caption: 'The inputs are wrong. Nobody checks.' },
-            ].map((card, i) => (
-              <div key={i} style={{ background: '#fff', border: '1px solid rgba(27,42,74,0.10)', borderRadius: 12, padding: '20px 16px', textAlign: 'center' }}>
-                <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: COLORS.muted, margin: '0 0 6px' }}>{card.label}</p>
+        {/* Equations — swipeable cards */}
+        <section style={{ padding: '24px 0 16px' }}>
+          <p style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: COLORS.navy, margin: '0 0 12px', padding: '0 16px', textAlign: 'center' }}>
+            These aren&rsquo;t opinions. They&rsquo;re numbers. And they&rsquo;re wrong.
+          </p>
+          <SwipeCarousel cardWidth={260} gap={12}>
+            {EQUATION_CARDS.map((card, i) => (
+              <div key={i} style={{ background: '#fff', border: '1px solid rgba(27,42,74,0.10)', borderRadius: 12, padding: '24px 16px', textAlign: 'center', minHeight: 170, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <p style={{ fontFamily: B, fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: COLORS.muted, margin: '0 0 8px' }}>{card.label}</p>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-                  <span style={{ fontFamily: H, fontSize: 32, fontWeight: 700, color: COLORS.navy, letterSpacing: '-0.03em' }}>
+                  <span style={{ fontFamily: H, fontSize: 36, fontWeight: 700, color: COLORS.navy, letterSpacing: '-0.03em' }}>
                     {card.eqRedPrefix && <span style={{ color: COLORS.claimRed }}>{card.eqRedPrefix}</span>}
                     {card.eq}
                     {card.eqRed && <span style={{ color: COLORS.claimRed }}>{card.eqRed}</span>}
                   </span>
-                  <span style={{ fontSize: 24, color: card.iconColor }}>{card.icon}</span>
+                  <span style={{ fontSize: 26, color: card.iconColor }}>{card.icon}</span>
                 </div>
-                <p style={{ fontFamily: B, fontSize: 14, color: COLORS.navy, margin: '4px 0 0' }}>{card.caption}</p>
+                <p style={{ fontFamily: B, fontSize: 14, color: COLORS.navy, margin: '8px 0 0' }}>{card.caption}</p>
               </div>
             ))}
-          </div>
-          <p style={{ fontFamily: B, fontSize: 16, lineHeight: 1.65, color: COLORS.navy, margin: '20px 0 0', textAlign: 'center' }}>
+          </SwipeCarousel>
+          <p style={{ fontFamily: B, fontSize: 15, lineHeight: 1.65, color: COLORS.navy, margin: '16px 16px 0', textAlign: 'center' }}>
             Forget the statistics. Forget the politics. <span className="highlight">Check the base data.</span>
           </p>
         </section>
 
-        {/* What we do */}
-        <section style={{ padding: '16px 16px 24px' }}>
-          <h2 style={{ fontFamily: H, fontSize: 22, fontWeight: 700, color: COLORS.navy, margin: '0 0 8px' }}>What we do</h2>
-          <p style={{ fontFamily: B, fontSize: 15, color: COLORS.muted, margin: '0 0 16px' }}>
+        {/* What we do — swipeable cards */}
+        <section style={{ padding: '16px 0 24px' }}>
+          <h2 style={{ fontFamily: H, fontSize: 22, fontWeight: 700, color: COLORS.navy, margin: '0 0 4px', padding: '0 16px' }}>What we do</h2>
+          <p style={{ fontFamily: B, fontSize: 15, color: COLORS.muted, margin: '0 0 14px', padding: '0 16px' }}>
             We are just checking what people quote is correct. It is that simple.
           </p>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            {[
-              { num: '01', title: 'They cite a source', desc: 'A public figure references a report to back up their claim.' },
-              { num: '02', title: 'We read it', desc: 'We read the actual source. Not a summary. The original.' },
-              { num: '03', title: 'We compare', desc: 'We put what they said next to what the source shows. Side by side.' },
-            ].map((step) => (
-              <div key={step.num} style={{ background: '#fff', border: '1px solid rgba(27,42,74,0.10)', borderRadius: 12, padding: '16px 18px', display: 'flex', gap: 14, alignItems: 'flex-start' }}>
-                <span style={{ fontFamily: H, fontSize: 28, fontWeight: 700, color: COLORS.navyLight, letterSpacing: '-0.03em', lineHeight: 1, flexShrink: 0 }}>{step.num}</span>
-                <div>
-                  <p style={{ fontFamily: H, fontSize: 16, fontWeight: 700, color: COLORS.navy, margin: '0 0 2px' }}>{step.title}</p>
-                  <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.5, color: COLORS.muted, margin: 0 }}>{step.desc}</p>
-                </div>
+          <SwipeCarousel cardWidth={270} gap={12}>
+            {STEPS.map((step) => (
+              <div key={step.num} style={{ background: '#fff', border: '1px solid rgba(27,42,74,0.10)', borderRadius: 12, padding: '24px 20px', minHeight: 150, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <span style={{ fontFamily: H, fontSize: 36, fontWeight: 700, color: COLORS.navyLight, letterSpacing: '-0.03em', lineHeight: 1, marginBottom: 8 }}>{step.num}</span>
+                <p style={{ fontFamily: H, fontSize: 17, fontWeight: 700, color: COLORS.navy, margin: '0 0 4px' }}>{step.title}</p>
+                <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.5, color: COLORS.muted, margin: 0 }}>{step.desc}</p>
               </div>
             ))}
-          </div>
+          </SwipeCarousel>
         </section>
 
         {/* Featured: Railtrack */}
