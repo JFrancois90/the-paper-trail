@@ -108,8 +108,8 @@ export default function SaidVsSource({
           <div
             style={{
               fontFamily: 'var(--font-sans), sans-serif',
-              fontSize: 14,
-              lineHeight: 1.6,
+              fontSize: 17,
+              lineHeight: 1.5,
               color: COLORS.sourceGreenDark,
               margin: '0 0 10px',
               flex: 1,

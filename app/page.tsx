@@ -122,7 +122,7 @@ export default function Home() {
           <div style={{ maxWidth: 1100, margin: '0 auto', textAlign: 'center' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginBottom: 40 }}>
               {[
-                { text: <><span className="highlight-red">&pound;350 million</span> on a bus.</>, delay: 0 },
+                { text: <><span className="highlight-red">&pound;350m a week</span> plastered on a bus.</>, delay: 0 },
                 { text: <><span className="highlight-red">&pound;7.1 billion</span> missing from a policy.</>, delay: 0.12 },
                 { text: <>A <span className="highlight-red">48&times;</span> exaggeration in Parliament.</>, delay: 0.24 },
               ].map((item, i) => (
@@ -154,7 +154,7 @@ export default function Home() {
                   margin: '0 0 40px',
                 }}
               >
-                These aren&apos;t opinions. They&apos;re numbers. And they&apos;re wrong.
+                These aren&apos;t <span style={{ color: COLORS.navy, fontWeight: 600 }}>opinions</span>. They&apos;re <span style={{ color: COLORS.amber, fontWeight: 600 }}>numbers</span>. And they&apos;re <span style={{ color: COLORS.claimRed, fontWeight: 600 }}>wrong</span>.
               </p>
             </ScrollReveal>
 
@@ -163,7 +163,7 @@ export default function Home() {
               {/* Act 1 */}
               <ScrollReveal anim="scaleReveal" delay={0.5}>
                 <div className="hover-card" style={{ textAlign: 'center', background: '#fff', border: '1px solid rgba(27,42,74,0.10)', borderRadius: 14, padding: '32px 24px', boxShadow: '0 2px 8px rgba(27,42,74,0.04)', minHeight: 220, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                  <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.muted, margin: '0 0 8px' }}>What we were taught</p>
+                  <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.muted, margin: '0 0 8px' }}>What we were <span style={{ color: COLORS.navy, fontWeight: 700 }}>taught</span></p>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
                     <span style={{ fontFamily: H, fontSize: 'clamp(40px, 4.5vw, 56px)', fontWeight: 700, color: COLORS.navy, letterSpacing: '-0.03em' }}>1 + 1 = 2</span>
                     <span style={{ fontSize: 'clamp(28px, 3vw, 40px)', color: COLORS.sourceGreen }}>&#10003;</span>
@@ -189,7 +189,7 @@ export default function Home() {
               {/* Act 3 */}
               <ScrollReveal anim="scaleReveal" delay={0.8}>
                 <div className="hover-card" style={{ textAlign: 'center', background: '#fff', border: '1px solid rgba(27,42,74,0.10)', borderRadius: 14, padding: '32px 24px', boxShadow: '0 2px 8px rgba(27,42,74,0.04)', minHeight: 220, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                  <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.muted, margin: '0 0 8px' }}>What we actually need to find</p>
+                  <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.muted, margin: '0 0 8px' }}>What we actually need to <span style={{ color: COLORS.claimRed, fontWeight: 700 }}>look out for</span></p>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
                     <span style={{ fontFamily: H, fontSize: 'clamp(40px, 4.5vw, 56px)', fontWeight: 700, color: COLORS.navy, letterSpacing: '-0.03em' }}>
                       <span style={{ color: COLORS.claimRed, textDecoration: 'underline', textDecorationColor: 'rgba(181,48,42,0.3)', textUnderlineOffset: '4px' }}>2</span> + 1 = 2
@@ -255,6 +255,7 @@ export default function Home() {
                   num: '01',
                   title: 'They cite a source',
                   desc: 'A politician references a report to back up their claim.',
+                  bg: '#e8f0fa',
                   icon: (
                     <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
                       <rect x="16" y="12" width="36" height="48" rx="4" stroke="#1b2a4a" strokeWidth="2" />
@@ -270,6 +271,7 @@ export default function Home() {
                   num: '02',
                   title: 'We read it',
                   desc: 'We read the actual source. Not a summary. The original.',
+                  bg: '#fef3d0',
                   icon: (
                     <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
                       <rect x="20" y="16" width="32" height="44" rx="4" stroke="#1b2a4a" strokeWidth="2" />
@@ -284,6 +286,7 @@ export default function Home() {
                   num: '03',
                   title: 'We compare',
                   desc: 'We put what they said next to what the source shows. Side by side.',
+                  bg: '#e0f2e9',
                   icon: (
                     <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
                       <rect x="8" y="16" width="26" height="40" rx="4" stroke="#b5302a" strokeWidth="2" />
@@ -300,8 +303,8 @@ export default function Home() {
                   <div
                     className="hover-card"
                     style={{
-                      background: '#fff',
-                      border: '1px solid rgba(27,42,74,0.10)',
+                      background: step.bg,
+                      border: '1px solid rgba(27,42,74,0.08)',
                       borderRadius: 14,
                       padding: 28,
                       display: 'flex',
@@ -637,7 +640,7 @@ export default function Home() {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 16, alignItems: 'center', marginBottom: 40 }}>
               <ScrollReveal anim="fadeUp" delay={0.1}>
                 <div style={{ background: COLORS.claimRedLight, borderRadius: 14, padding: '32px 24px', textAlign: 'center' }}>
-                  <p style={{ fontFamily: H, fontSize: 'clamp(24px, 3vw, 32px)', fontWeight: 700, color: COLORS.claimRed, margin: '0 0 8px', lineHeight: 1.2 }}>Richest benefit more</p>
+                  <p style={{ fontFamily: H, fontSize: 'clamp(20px, 2.5vw, 28px)', fontWeight: 700, color: COLORS.claimRed, margin: '0 0 8px', lineHeight: 1.2 }}>&pound;1,500 vs &pound;3,000</p>
                   <p style={{ fontFamily: B, fontSize: 14, color: COLORS.claimRedDark, margin: 0 }}>What they claimed</p>
                 </div>
               </ScrollReveal>

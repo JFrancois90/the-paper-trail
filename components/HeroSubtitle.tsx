@@ -17,17 +17,17 @@ interface Line {
   pauseAfter: number;
 }
 
-// "dead wrong" starts at index 29 in "Sometimes those numbers are dead wrong."
+// "read them" starts at index 3 in "We read them."
 const DESKTOP_LINES: Line[] = [
-  { text: 'Politicians use numbers to win.', color: '#ffffff', fontSize: '28px', fontWeight: 400, speed: 45, pauseAfter: 400 },
-  { text: 'Sometimes those numbers are dead wrong.', color: '#fac75a', fontSize: '28px', fontWeight: 400, speed: 45, pauseAfter: 400, highlightRange: [29, 39], highlightColor: 'rgba(196,138,10,0.35)' },
-  { text: 'We check them.', color: '#fff', fontSize: '36px', fontWeight: 700, speed: 60, pauseAfter: 1000, highlightRange: [3, 14], highlightColor: 'rgba(196,138,10,0.35)' },
+  { text: 'Public figures cite reports you\'ll never read.', color: '#ffffff', fontSize: '28px', fontWeight: 400, speed: 45, pauseAfter: 400 },
+  { text: 'We read them.', color: '#fac75a', fontSize: '28px', fontWeight: 700, speed: 45, pauseAfter: 400, highlightRange: [3, 12], highlightColor: 'rgba(196,138,10,0.35)' },
+  { text: 'Sometimes they don\'t say what they claim.', color: '#fff', fontSize: '36px', fontWeight: 700, speed: 60, pauseAfter: 1000 },
 ];
 
 const MOBILE_LINES: Line[] = [
-  { text: 'Politicians use numbers to win.', color: '#ffffff', fontSize: '22px', fontWeight: 400, speed: 40, pauseAfter: 500 },
-  { text: 'Sometimes those numbers are dead wrong.', color: '#fac75a', fontSize: '22px', fontWeight: 400, speed: 40, pauseAfter: 500, highlightRange: [29, 39], highlightColor: 'rgba(196,138,10,0.35)' },
-  { text: 'We check them.', color: '#fff', fontSize: '26px', fontWeight: 700, speed: 60, pauseAfter: 1000, highlightRange: [3, 14], highlightColor: 'rgba(196,138,10,0.35)' },
+  { text: 'Public figures cite reports you\'ll never read.', color: '#ffffff', fontSize: '22px', fontWeight: 400, speed: 40, pauseAfter: 500 },
+  { text: 'We read them.', color: '#fac75a', fontSize: '22px', fontWeight: 700, speed: 40, pauseAfter: 500, highlightRange: [3, 12], highlightColor: 'rgba(196,138,10,0.35)' },
+  { text: 'Sometimes they don\'t say what they claim.', color: '#fff', fontSize: '26px', fontWeight: 700, speed: 60, pauseAfter: 1000 },
 ];
 
 export default function HeroSubtitle({ isMobile = false }: HeroSubtitleProps) {

@@ -96,7 +96,7 @@ export default function Nav({ forceDark }: NavProps) {
           height: 72,
         }}
       >
-        <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+        <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', marginRight: 24 }}>
           <img src={logo} alt="The Paper Trail" className="nav-logo" />
         </Link>
 

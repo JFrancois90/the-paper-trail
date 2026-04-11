@@ -86,21 +86,6 @@ export default function TimesStudentDebtExtras() {
         </div>
       </div>
 
-      {/* Why this matters */}
-      <div style={{ background: COLORS.amberLight, borderRadius: 14, border: '1px solid rgba(196,138,10,0.12)', padding: '24px 28px', marginBottom: 28 }}>
-        <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.amber, margin: '0 0 16px' }}>
-          Why this matters
-        </p>
-        <ul style={{ margin: 0, padding: '0 0 0 20px', listStyleType: 'disc' }}>
-          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: COLORS.amberDark, marginBottom: 6 }}>Published on The Times&apos; official Instagram</li>
-          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: COLORS.amberDark, marginBottom: 6 }}>Presented by a Senior Data Journalist</li>
-          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: COLORS.amberDark, marginBottom: 6 }}>When The Times puts a number on screen, people trust it</li>
-          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: COLORS.amberDark, marginBottom: 6 }}>Real increase: 11.6%. Claimed increase: 37%.</li>
-          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: COLORS.amberDark, marginBottom: 6 }}>Policy should be built on the real number</li>
-          <li style={{ fontFamily: B, fontSize: 15, lineHeight: 1.7, color: COLORS.amberDark }}>A data journalist should get percentages right</li>
-        </ul>
-      </div>
-
       {/* We also agree */}
       <div style={{ background: COLORS.navy, borderRadius: 14, padding: '24px 28px', marginBottom: 28 }}>
         <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'rgba(255,255,255,0.4)', margin: '0 0 16px' }}>

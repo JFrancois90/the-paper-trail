@@ -21,6 +21,7 @@ function SaidSourceSwipe({ said, saidLabel, source, sourceLabel }: { said: strin
           overflowX: 'auto',
           scrollSnapType: 'x mandatory',
           WebkitOverflowScrolling: 'touch',
+          touchAction: 'pan-x',
           paddingBottom: 6,
           scrollbarWidth: 'none',
         }}
@@ -197,29 +198,6 @@ export default function CarelessWhispersPage() {
     }
   }, [step]);
 
-  // Handle scroll snap detection
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    let ticking = false;
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        const containerTop = container.scrollTop;
-        const sectionHeight = container.clientHeight;
-        const newStep = Math.round(containerTop / sectionHeight);
-        if (newStep >= 0 && newStep < steps.length + 1 && newStep !== step) {
-          setStep(Math.min(newStep > 0 ? newStep - 1 : 0, steps.length - 1));
-        }
-        ticking = false;
-      });
-    };
-
-    container.addEventListener('scroll', onScroll, { passive: true });
-    return () => container.removeEventListener('scroll', onScroll);
-  }, [step]);
 
   return (
     <>
@@ -230,7 +208,6 @@ export default function CarelessWhispersPage() {
         style={{
           height: '100vh',
           overflowY: 'scroll',
-          scrollSnapType: 'y mandatory',
           scrollBehavior: 'smooth',
         }}
       >
@@ -238,7 +215,6 @@ export default function CarelessWhispersPage() {
         <div
           ref={(el) => { sectionRefs.current[0] = el; }}
           style={{
-            scrollSnapAlign: 'start',
             minHeight: '100vh',
             display: 'flex',
             flexDirection: 'column',
@@ -319,8 +295,7 @@ export default function CarelessWhispersPage() {
             key={i}
             ref={(el) => { sectionRefs.current[i + 1] = el; }}
             style={{
-              scrollSnapAlign: 'start',
-              minHeight: '100vh',
+                minHeight: '100vh',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',

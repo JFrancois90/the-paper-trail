@@ -14,6 +14,7 @@ import ImpactBox from '@/components/ImpactBox';
 import QuestionsBlock from '@/components/QuestionsBlock';
 import ScrollReveal from '@/components/ScrollReveal';
 import HighlightedText from '@/components/HighlightedText';
+import Highlight from '@/components/Highlight';
 import CorrectionBox from '@/components/CorrectionBox';
 import RebuttalBox from '@/components/RebuttalBox';
 import StatusBadge from '@/components/StatusBadge';
@@ -184,7 +185,7 @@ export default async function InvestigationPage({ params }: PageProps) {
               sourceImage={inv.sourceImage}
               sourceOneLiner={inv.sourceOneLiner}
               sourceFallback={
-                <HighlightedText
+                <SourceBullets
                   text={inv.source}
                   phrases={HIGHLIGHT_PHRASES[inv.slug] || []}
                 />
@@ -368,5 +369,35 @@ export default async function InvestigationPage({ params }: PageProps) {
       </main>
       <Footer />
     </>
+  );
+}
+
+function SourceBullets({ text, phrases }: { text: string; phrases: string[] }) {
+  const bullets = text
+    .split(/(?<=\.)\s+/)
+    .map((s) => s.trim())
+    .filter((s) => s.length > 0);
+
+  if (bullets.length <= 1) {
+    return <HighlightedText text={text} phrases={phrases} />;
+  }
+
+  // Sort phrases by length descending for matching
+  const sorted = [...phrases].sort((a, b) => b.length - a.length);
+  const escaped = sorted.map((p) => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  const pattern = escaped.length ? new RegExp(`(${escaped.join('|')})`, 'g') : null;
+
+  return (
+    <ul style={{ margin: 0, padding: '0 0 0 18px', listStyleType: 'disc' }}>
+      {bullets.map((bullet, i) => (
+        <li key={i} style={{ marginBottom: i < bullets.length - 1 ? 4 : 0 }}>
+          {pattern
+            ? bullet.split(pattern).map((part, j) =>
+                phrases.includes(part) ? <Highlight key={j}>{part}</Highlight> : <span key={j}>{part}</span>
+              )
+            : bullet}
+        </li>
+      ))}
+    </ul>
   );
 }
