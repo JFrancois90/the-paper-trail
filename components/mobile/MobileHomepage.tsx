@@ -383,6 +383,17 @@ export default function MobileHomepage() {
 
         {/* ═══ SECTION 4: RAILTRACK INVESTIGATION ═══ */}
         <SnapSection>
+          <h2
+            style={{
+              fontFamily: H,
+              fontSize: 22,
+              fontWeight: 700,
+              color: COLORS.navy,
+              margin: '0 0 24px',
+            }}
+          >
+            Featured Investigations
+          </h2>
           {/* Position banner - compact */}
           <div
             style={{
