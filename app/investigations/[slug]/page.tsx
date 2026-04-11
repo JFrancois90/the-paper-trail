@@ -288,7 +288,7 @@ export default async function InvestigationPage({ params }: PageProps) {
         {(inv.slug === 'railtrack-500m' || inv.slug === 'student-debt-claim' || inv.slug === 'reform-tax-canary' || inv.slug === 'student-debt-97k' || inv.slug === 'times-student-debt-37' || inv.slug === 'reform-prolific-offenders' || inv.slug === 'reform-stop-search' || inv.slug === 'reform-234bn-immigration') && (
           <section className="inv-snap-section">
             <div className="inv-inner">
-              <h2 className="inv-section-title">Deep Dive</h2>
+              <h2 className="inv-section-title">What happened</h2>
               {inv.slug === 'railtrack-500m' && <RailtrackExtras />}
               {inv.slug === 'student-debt-claim' && <StudentDebtExtras />}
               {inv.slug === 'reform-tax-canary' && <ReformTaxExtras />}

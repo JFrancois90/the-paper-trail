@@ -70,6 +70,55 @@ const railtrackDisappeared = [
   'The distinction between shareholder payout and total cost to taxpayer',
 ];
 
+/* ── £234bn immigration chain ── */
+
+const immigrationSteps: ChainStep[] = [
+  {
+    title: 'The original number',
+    who: 'Centre for Policy Studies',
+    label: 'The original number',
+    detail: 'CPS publishes "Here to Stay?" report, 8 September 2025. Central estimate: 801,000 migrants gaining ILR would have a lifetime net fiscal cost of £234bn.',
+  },
+  {
+    title: 'The data gets revised',
+    who: 'OBR',
+    label: 'Data invalidated',
+    detail: 'The OBR revised the definitions of the fiscal data that the CPS report was built on. The foundations of the £234bn estimate were knocked out.',
+  },
+  {
+    title: 'The source withdraws it',
+    who: 'CPS',
+    label: "Source says: don't use this number",
+    detail: 'CPS adds a disclaimer to its own report: "the overall cost estimates should no longer be used." The £234bn is formally dead. The CPS itself killed it.',
+  },
+  {
+    title: 'Reform adopts it anyway',
+    who: 'Reform UK',
+    label: 'Used after withdrawal',
+    detail: 'Nigel Farage and Zia Yusuf announce the ILR abolition policy at a press conference, citing the £234bn figure. The CPS had already withdrawn it.',
+  },
+  {
+    title: 'Still live today',
+    who: 'Reform UK website',
+    label: 'Still in use. OBR says the opposite.',
+    detail: 'The £234bn figure remains on Reform\'s immigration policy page. The OBR\'s March 2024 analysis shows higher migration reduces borrowing by £13-20bn over five years.',
+  },
+];
+
+const immigrationNodes: ChainNode[] = [
+  { label: 'CPS', sub: '£234bn report', color: COLORS.sourceGreen },
+  { label: 'OBR', sub: 'Data revised', color: COLORS.navy },
+  { label: 'CPS', sub: 'Withdraws figure', color: COLORS.claimRed },
+  { label: 'Reform UK', sub: 'Uses it anyway', color: COLORS.claimRed },
+  { label: 'Still live', sub: 'OBR says opposite', color: COLORS.claimRed },
+];
+
+const immigrationDisappeared = [
+  'The CPS withdrawal and disclaimer',
+  "The OBR's contradicting analysis",
+  'The fact that £234bn was a lifetime fiscal cost, not a benefits bill',
+];
+
 /* ── HMRC chain ── */
 
 const hmrcSteps: ChainStep[] = [
@@ -273,7 +322,7 @@ export default function CarelessWhispersPage() {
             Careless whispers
           </h1>
           <p style={{ fontFamily: B, fontSize: 18, color: COLORS.muted, margin: '0 0 8px' }}>
-            How numbers change as they pass from source to source. Two examples.
+            How numbers change as they pass from source to source. Three examples.
           </p>
         </div>
 
@@ -293,7 +342,23 @@ export default function CarelessWhispersPage() {
           <hr style={{ border: 'none', borderTop: '1px solid rgba(27,42,74,0.1)', margin: '0 0 60px' }} />
         </div>
 
-        {/* Chain 2: HMRC Tax Evasion */}
+        {/* Chain 2: £234bn Immigration */}
+        <ChainSection
+          id="immigration-chain"
+          title="How a withdrawn number ended up on a party's website"
+          subtitle="The £234bn immigration cost claim. From think tank report to national policy."
+          steps={immigrationSteps}
+          nodes={immigrationNodes}
+          disappeared={immigrationDisappeared}
+          endNote="A think tank published a number. The think tank withdrew it. A political party adopted it after the withdrawal. It's still on their website. The independent fiscal watchdog says the opposite."
+        />
+
+        {/* Divider */}
+        <div style={{ maxWidth: 900, margin: '0 auto', padding: '0 28px' }}>
+          <hr style={{ border: 'none', borderTop: '1px solid rgba(27,42,74,0.1)', margin: '0 0 60px' }} />
+        </div>
+
+        {/* Chain 3: HMRC Tax Evasion */}
         <ChainSection
           id="hmrc-chain"
           title="How £5.5bn became £350bn"
