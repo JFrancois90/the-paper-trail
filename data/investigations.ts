@@ -56,7 +56,7 @@ export const investigations: Investigation[] = [
     sourceImage: null,
     sourceOneLiner: '',
     impact: 'We need to know the real cost to nationalise. Maths errors of this size are not acceptable. Billions of pounds of public money are at stake.',
-    analogy: 'Think of it like buying a house for £100k — but it also has a £400k mortgage. The £100k is the equity the seller had, but you\'ve also just taken on all the debt too. The real price is £500k (otherwise Rightmove has some explaining to do!)',
+    analogy: 'Think of it like buying a house for £100k. But it also has a £400k mortgage. The £100k is the equity the seller had, but you\'ve also just taken on all the debt too. The real price is £500k (otherwise Rightmove has some explaining to do!)',
     barData: [
       { label: 'Quoted', sublabel: 'Equity only', value: 0.5, color: '#b5302a', fmt: '£0.5bn' },
       { label: 'Omitted', sublabel: 'Debt absorbed', value: 7.1, color: '#1b2a4a', fmt: '£7.1bn' },
@@ -282,7 +282,7 @@ export const investigations: Investigation[] = [
     ],
     whisperChain: null,
     whisperNote: null,
-    correction: 'Sarah added a caption disclaimer referring to "core borrowing for my degree." This phrase is a little opaque — in practice it means tuition fees only, with maintenance loans stripped out. Most people would include maintenance when quoting their student debt. The comparison in the video measures tuition-only borrowing against a current balance that includes both maintenance and interest. That makes the gap look much larger than it is. The disclaimer acknowledges interest accrual but doesn\'t address the missing maintenance borrowing.',
+    correction: 'Sarah added a caption disclaimer referring to "core borrowing for my degree." This phrase is a little opaque. In practice it means tuition fees only, with maintenance loans stripped out. Most people would include maintenance when quoting their student debt. The comparison in the video measures tuition-only borrowing against a current balance that includes both maintenance and interest. That makes the gap look much larger than it is. The disclaimer acknowledges interest accrual but doesn\'t address the missing maintenance borrowing.',
     questions: [
       'You state you\'ll pay back \'more than you originally took out\'. Your total borrowing was ~£79,000 (tuition, maintenance, hardship). Repaying ~£50,000 is £29,000 less. Can you clarify?',
       'The £97,000 balance includes interest accrued since 2016. Presenting this as \'debt\' without separating borrowing from interest creates a misleading picture of the system. Will you update the video itself?',

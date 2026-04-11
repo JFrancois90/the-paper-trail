@@ -19,7 +19,7 @@ export default function WatchButton({ investigationSlug, investigationTitle, com
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!email) return;
-    // Store interest — in production this would POST to an API
+    // Store interest - in production this would POST to an API
     try {
       const existing = JSON.parse(localStorage.getItem('watch_alerts') || '[]');
       existing.push({ email, slug: investigationSlug, timestamp: Date.now() });

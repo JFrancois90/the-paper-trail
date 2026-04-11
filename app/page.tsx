@@ -158,6 +158,22 @@ export default function Home() {
               </p>
             </ScrollReveal>
 
+            <ScrollReveal anim="fadeUp" delay={0.5}>
+              <p
+                style={{
+                  fontFamily: B,
+                  fontSize: 'clamp(14px, 1.5vw, 16px)',
+                  fontWeight: 600,
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  color: COLORS.amber,
+                  margin: '0 0 40px',
+                }}
+              >
+                Integrity, not ideology.
+              </p>
+            </ScrollReveal>
+
             {/* Three-act equation */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20, marginTop: 20 }}>
               {/* Act 1 */}
@@ -189,14 +205,14 @@ export default function Home() {
               {/* Act 3 */}
               <ScrollReveal anim="scaleReveal" delay={0.8}>
                 <div className="hover-card" style={{ textAlign: 'center', background: '#fff', border: '1px solid rgba(27,42,74,0.10)', borderRadius: 14, padding: '32px 24px', boxShadow: '0 2px 8px rgba(27,42,74,0.04)', minHeight: 220, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                  <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.muted, margin: '0 0 8px' }}>What we actually need to <span style={{ color: COLORS.claimRed, fontWeight: 700 }}>look out for</span></p>
+                  <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.claimRed, margin: '0 0 8px' }}>The new problem</p>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
                     <span style={{ fontFamily: H, fontSize: 'clamp(40px, 4.5vw, 56px)', fontWeight: 700, color: COLORS.navy, letterSpacing: '-0.03em' }}>
                       <span style={{ color: COLORS.claimRed, textDecoration: 'underline', textDecorationColor: 'rgba(181,48,42,0.3)', textUnderlineOffset: '4px' }}>2</span> + 1 = 2
                     </span>
                     <span style={{ fontSize: 'clamp(28px, 3vw, 40px)', color: COLORS.claimRed }}>&#10007;</span>
                   </div>
-                  <p style={{ fontFamily: B, fontSize: 15, color: COLORS.navy, margin: '6px 0 0' }}>The inputs are wrong. The answer looks familiar, so nobody checks.</p>
+                  <p style={{ fontFamily: B, fontSize: 15, color: COLORS.navy, margin: '6px 0 0' }}>Twisting the input. The answer looks right, so nobody checks.</p>
                 </div>
               </ScrollReveal>
             </div>
@@ -396,19 +412,19 @@ export default function Home() {
               >
                 What we are fighting for
               </h2>
-              <p style={{ fontFamily: B, fontSize: 16, color: COLORS.muted, margin: '0 0 28px' }}>
-                Not a political position. A mathematical one.
+              <p style={{ fontFamily: B, fontSize: 18, color: COLORS.navy, margin: '0 0 28px' }}>
+                Not ideology. <span className="highlight"  style={{ fontWeight: 700 }}>Integrity.</span>
               </p>
             </ScrollReveal>
 
             <ScrollReveal anim="fadeUp" delay={0.1}>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 16 }}>
                 {[
-                  'Politicians should use the actual numbers from their own cited sources',
-                  'When errors are found, they should be corrected — not ignored',
-                  'Public debate should be built on verified data, not inherited mistakes',
-                  'Every party, every claim, same standard — no exceptions',
-                  'Transparency in how figures are quoted and where they come from',
+                  <><span key="t">Politicians quote numbers to justify policy. We check if those numbers are </span><span key="h" className="highlight" style={{ fontWeight: 700 }}>right</span></>,
+                  <>We don&apos;t care which party said it. Left, right, centre. If the maths is wrong, the maths is wrong</>,
+                  <><span key="t">You can&apos;t build good policy on bad numbers. Get the </span><span key="h1" className="highlight" style={{ fontWeight: 700 }}>inputs</span><span key="m"> wrong and the </span><span key="h2" className="highlight" style={{ fontWeight: 700 }}>output</span><span key="e"> is worthless</span></>,
+                  <>When we find errors, we ask for corrections. Some parties fix them. Others go quiet</>,
+                  <><span key="t">This isn&apos;t about picking sides. It&apos;s about making sure the </span><span key="h" className="highlight" style={{ fontWeight: 700 }}>starting point</span><span key="e"> is honest</span></>,
                 ].map((point, i) => (
                   <li
                     key={i}
@@ -423,14 +439,29 @@ export default function Home() {
                     }}
                   >
                     <span style={{ color: COLORS.amber, fontWeight: 700, fontSize: 20, lineHeight: 1.3, flexShrink: 0 }}>&bull;</span>
-                    {point}
+                    <span>{point}</span>
                   </li>
                 ))}
               </ul>
             </ScrollReveal>
 
+            <ScrollReveal anim="fadeUp" delay={0.15}>
+              <p
+                style={{
+                  fontFamily: H,
+                  fontSize: 20,
+                  fontWeight: 700,
+                  color: COLORS.navy,
+                  margin: '32px 0 0',
+                  lineHeight: 1.5,
+                }}
+              >
+                You can&apos;t have ideology without <span className="highlight">integrity</span>. We campaign for <span className="highlight">integrity</span>.
+              </p>
+            </ScrollReveal>
+
             <ScrollReveal anim="fadeUp" delay={0.2}>
-              <div style={{ marginTop: 32 }}>
+              <div style={{ marginTop: 28 }}>
                 <Link
                   href="/about"
                   style={{
@@ -532,8 +563,11 @@ export default function Home() {
               {/* Final node */}
               <ScrollReveal anim="scaleReveal" delay={0.3}>
                 <div style={{ background: COLORS.claimRedLight, borderRadius: 12, padding: '16px 32px', textAlign: 'center' }}>
-                  <p style={{ fontFamily: H, fontSize: 18, fontWeight: 700, color: COLORS.claimRed, margin: 0 }}>
-                    &ldquo;Established fact&rdquo; &#10007;
+                  <p style={{ fontFamily: H, fontSize: 16, fontWeight: 700, color: COLORS.claimRed, margin: '0 0 4px' }}>
+                    &ldquo;Established fact&rdquo;: Railtrack was nationalised for just &pound;500m &#10007;
+                  </p>
+                  <p style={{ fontFamily: B, fontSize: 14, color: COLORS.claimRedDark, margin: 0, opacity: 0.7 }}>
+                    It wasn&apos;t.
                   </p>
                 </div>
               </ScrollReveal>
@@ -853,7 +887,7 @@ export default function Home() {
           <div style={{ maxWidth: 1100, margin: '0 auto', textAlign: 'center' }}>
             <img src="/logo-nav.png" alt="The Paper Trail" style={{ height: 44, marginBottom: 16 }} />
             <p style={{ fontFamily: B, fontSize: 13, color: COLORS.lightMuted, margin: '0 0 16px' }}>
-              Non-partisan. Source-led. Open.
+              Integrity, not ideology.
             </p>
 
             {/* Support section */}

@@ -39,7 +39,7 @@ export default function QuestionsBlock({ questions }: QuestionsBlockProps) {
           margin: '0 0 20px',
         }}
       >
-        Our questions are not about policy &mdash; that&apos;s for individuals to decide. We ask the questions that ensure the base claims politicians make are factually correct.
+        Our questions are not about policy. That&apos;s for individuals to decide. We ask the questions that ensure the base claims politicians make are factually correct.
       </p>
 
       <ul

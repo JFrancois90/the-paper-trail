@@ -69,7 +69,7 @@ function FullWidthCarousel({
           </div>
         ))}
       </div>
-      {/* Dot indicators — tappable */}
+      {/* Dot indicators - tappable */}
       <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginTop: 14 }}>
         {Array.from({ length: count }).map((_, i) => (
           <button
@@ -173,7 +173,7 @@ export default function MobileHomepage() {
           <HeroSubtitle isMobile />
         </SnapSection>
 
-        {/* ═══ SECTION 2: THE PROBLEM — Equations ═══ */}
+        {/* ═══ SECTION 2: THE PROBLEM - Equations ═══ */}
         <SnapSection>
           <div
             style={{
@@ -340,7 +340,7 @@ export default function MobileHomepage() {
 
         {/* ═══ SECTION 4: RAILTRACK INVESTIGATION ═══ */}
         <SnapSection>
-          {/* Position banner — compact */}
+          {/* Position banner - compact */}
           <div
             style={{
               background: '#fae9b0',
@@ -372,7 +372,7 @@ export default function MobileHomepage() {
             <span className="highlight-red">&pound;500 million</span>&rdquo;
           </p>
 
-          {/* Said vs Source — SWIPE CARDS */}
+          {/* Said vs Source - SWIPE CARDS */}
           <FullWidthCarousel dotColor={COLORS.claimRed}>
             {[
               <div
@@ -454,7 +454,7 @@ export default function MobileHomepage() {
           </div>
         </SnapSection>
 
-        {/* ═══ ALL INVESTIGATIONS — HORIZONTAL SWIPE ═══ */}
+        {/* ═══ ALL INVESTIGATIONS - HORIZONTAL SWIPE ═══ */}
         <SnapSection>
           <h2
             style={{

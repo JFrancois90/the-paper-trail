@@ -125,13 +125,13 @@ export default async function InvestigationPage({ params }: PageProps) {
               margin: 0,
             }}
           >
-            {inv.slug === 'railtrack-500m' && 'We support public accountability for nationalisation costs. We disagree with incorrect figures, regardless of political alignment.'}
-            {(inv.slug === 'billionaire-numbers' || inv.slug === 'cgt-lowest-g7') && 'We support action on wealth inequality and fair taxation. We disagree with incorrect figures, regardless of political alignment.'}
-            {inv.slug === 'student-debt-claim' && 'We support fair access to higher education and reform of student debt. We disagree with incorrect figures, regardless of political alignment.'}
-            {inv.slug === 'reform-tax-canary' && 'We support taxes on those who can afford it. We disagree with incorrect figures, regardless of political alignment.'}
-            {inv.slug === 'student-debt-97k' && 'We support reform of the student loan system. We disagree with incorrect figures, regardless of political alignment.'}
-            {inv.slug === '350bn-tax-evasion' && 'We support action on tax evasion. We disagree with incorrect figures, regardless of political alignment.'}
-            {inv.slug === 'times-student-debt-37' && 'We support transparency in student finance and reform of the loan system. We disagree with incorrect figures, regardless of who publishes them.'}
+            {inv.slug === 'railtrack-500m' && 'We support public accountability for nationalisation costs. We disagree with incorrect figures, regardless of political alignment. Integrity, not ideology.'}
+            {(inv.slug === 'billionaire-numbers' || inv.slug === 'cgt-lowest-g7') && 'We support action on wealth inequality and fair taxation. We disagree with incorrect figures, regardless of political alignment. Integrity, not ideology.'}
+            {inv.slug === 'student-debt-claim' && 'We support fair access to higher education and reform of student debt. We disagree with incorrect figures, regardless of political alignment. Integrity, not ideology.'}
+            {inv.slug === 'reform-tax-canary' && 'We support taxes on those who can afford it. We disagree with incorrect figures, regardless of political alignment. Integrity, not ideology.'}
+            {inv.slug === 'student-debt-97k' && 'We support reform of the student loan system. We disagree with incorrect figures, regardless of political alignment. Integrity, not ideology.'}
+            {inv.slug === '350bn-tax-evasion' && 'We support action on tax evasion. We disagree with incorrect figures, regardless of political alignment. Integrity, not ideology.'}
+            {inv.slug === 'times-student-debt-37' && 'We support transparency in student finance and reform of the loan system. We disagree with incorrect figures, regardless of who publishes them. Integrity, not ideology.'}
           </p>
         </div>
 

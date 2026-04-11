@@ -14,7 +14,7 @@ const NARRATIVES = [
 ];
 
 /**
- * Floating narrative bubble — desktop only.
+ * Floating narrative bubble - desktop only.
  * Appears after the user pauses scrolling for 3 seconds.
  * Fades in bottom-right, auto-dismisses after 6s or on click.
  */
@@ -27,7 +27,7 @@ export default function FloatingNarrative() {
   const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const shownCount = useRef(0);
 
-  // Track viewport size — kill on mobile/tablet entirely
+  // Track viewport size - kill on mobile/tablet entirely
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const mq = window.matchMedia('(min-width: 769px)');

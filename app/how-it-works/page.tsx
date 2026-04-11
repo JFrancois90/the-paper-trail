@@ -6,11 +6,64 @@ import BackButton from '@/components/BackButton';
 import SourceDocsNotice from '@/components/SourceDocsNotice';
 import ScrollReveal from '@/components/ScrollReveal';
 
+const H = 'var(--font-heading), sans-serif';
+const B = 'var(--font-sans), sans-serif';
+
 export const metadata: Metadata = {
   title: 'How it works | The Paper Trail',
   description:
-    'Our three-step process: find the source, compare the numbers, trace the citation chain.',
+    'Our three-step process: find the source, compare the numbers, trace the citation chain. Integrity, not ideology.',
 };
+
+const steps = [
+  {
+    num: '01',
+    title: 'Find the source',
+    desc: 'When a politician quotes a figure, we track down the exact report, dataset, or study they say it comes from. Not a press release. Not a media summary. The actual document.',
+    bg: '#e8f0fa',
+    icon: (
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+        <rect x="16" y="12" width="36" height="48" rx="4" stroke="#1b2a4a" strokeWidth="2" />
+        <line x1="24" y1="24" x2="44" y2="24" stroke="#1b2a4a" strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="24" y1="32" x2="44" y2="32" stroke="#1b2a4a" strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="24" y1="40" x2="36" y2="40" stroke="#1b2a4a" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="56" cy="48" r="10" stroke="#1b2a4a" strokeWidth="2" />
+        <path d="M52 48h8M56 44v8" stroke="#1b2a4a" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    ),
+  },
+  {
+    num: '02',
+    title: 'Compare',
+    desc: 'We put what they said next to what the source actually says. Red on the left, green on the right. You can see the gap for yourself.',
+    bg: '#fef3d0',
+    icon: (
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+        <rect x="8" y="16" width="26" height="40" rx="4" stroke="#b5302a" strokeWidth="2" />
+        <rect x="46" y="16" width="26" height="40" rx="4" stroke="#1a6b42" strokeWidth="2" />
+        <text x="21" y="40" textAnchor="middle" fill="#b5302a" fontSize="10" fontWeight="700" fontFamily="sans-serif">VS</text>
+        <line x1="38" y1="28" x2="42" y2="28" stroke="#1b2a4a" strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="38" y1="36" x2="42" y2="36" stroke="#1b2a4a" strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="38" y1="44" x2="42" y2="44" stroke="#1b2a4a" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    ),
+  },
+  {
+    num: '03',
+    title: 'Trace the chain',
+    desc: 'Sometimes a claim gets passed from outlet to outlet, changing slightly at each step. We trace the full citation chain to show exactly where the number shifted.',
+    bg: '#e0f2e9',
+    icon: (
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+        <rect x="20" y="16" width="32" height="44" rx="4" stroke="#1b2a4a" strokeWidth="2" />
+        <line x1="28" y1="28" x2="44" y2="28" stroke="#1b2a4a" strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="28" y1="36" x2="44" y2="36" stroke="#1b2a4a" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="50" cy="50" r="14" stroke="#1b2a4a" strokeWidth="2" />
+        <line x1="60" y1="60" x2="68" y2="68" stroke="#1b2a4a" strokeWidth="2.5" strokeLinecap="round" />
+      </svg>
+    ),
+  },
+];
 
 export default function HowItWorksPage() {
   return (
@@ -20,7 +73,7 @@ export default function HowItWorksPage() {
       <main
         id="main-content"
         style={{
-          maxWidth: 680,
+          maxWidth: 900,
           margin: '0 auto',
           padding: '100px 28px 48px',
         }}
@@ -28,126 +81,91 @@ export default function HowItWorksPage() {
         <SourceDocsNotice />
 
         <ScrollReveal>
-          <p
-            style={{
-              fontFamily: 'var(--font-sans), sans-serif',
-              fontSize: 12,
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '0.12em',
-              color: COLORS.ink40,
-              marginBottom: 16,
-            }}
-          >
-            How it works
-          </p>
           <h1
             style={{
-              fontFamily: 'var(--font-serif), serif',
-              fontSize: 40,
-              fontWeight: 400,
-              letterSpacing: '-0.03em',
+              fontFamily: H,
+              fontSize: 'clamp(32px, 5vw, 44px)',
+              fontWeight: 700,
+              letterSpacing: '-0.02em',
               color: COLORS.navy,
               lineHeight: 1.15,
-              margin: '0 0 28px',
+              margin: '0 0 8px',
             }}
           >
-            Three steps, every time
+            What we do
           </h1>
-          <p style={{ ...bodyStyle, fontSize: 22, fontWeight: 600, color: COLORS.navy }}>
-            Three steps. No opinion. Just numbers.
+          <p
+            style={{
+              fontFamily: B,
+              fontSize: 18,
+              color: COLORS.muted,
+              margin: '0 0 40px',
+            }}
+          >
+            Every investigation follows <strong style={{ color: COLORS.navy }}>three steps:</strong>
           </p>
         </ScrollReveal>
 
-        {/* Step 1 */}
-        <ScrollReveal delay={0.1}>
-          <div style={stepContainer}>
-            <span style={stepNumber}>01</span>
-            <h2 style={h2Style}>Find the source</h2>
-            <ul style={bulletList}>
-              <li style={bulletItem}>A public figure quotes a number</li>
-              <li style={bulletItem}>We find the exact report they say it came from</li>
-              <li style={bulletItem}>Not a summary. Not a press release.</li>
-              <li style={bulletItem}><strong style={{ color: COLORS.amber }}>The actual document.</strong></li>
-            </ul>
-          </div>
-        </ScrollReveal>
-
-        {/* Step 2 */}
-        <ScrollReveal delay={0.1}>
-          <div style={stepContainer}>
-            <span style={stepNumber}>02</span>
-            <h2 style={h2Style}>Compare the numbers</h2>
-            <ul style={bulletList}>
-              <li style={bulletItem}>What they said goes on the left (red)</li>
-              <li style={bulletItem}>What the source says goes on the right (green)</li>
-              <li style={bulletItem}>You see both. You judge the gap.</li>
-              <li style={bulletItem}>We add a <strong style={{ color: COLORS.amber }}>&ldquo;plain English&rdquo;</strong> box so anyone can understand it</li>
-            </ul>
-          </div>
-        </ScrollReveal>
-
-        {/* Step 3 */}
-        <ScrollReveal delay={0.1}>
-          <div style={stepContainer}>
-            <span style={stepNumber}>03</span>
-            <h2 style={h2Style}>Trace the chain</h2>
-            <ul style={bulletList}>
-              <li style={bulletItem}>Some claims start accurate but get distorted as they spread</li>
-              <li style={bulletItem}>Each outlet changes it slightly. Context drops. Definitions shift.</li>
-              <li style={bulletItem}>We map every step from original source to final claim</li>
-              <li style={bulletItem}>You see <strong style={{ color: COLORS.claimRed }}>exactly where it went wrong</strong></li>
-            </ul>
-          </div>
-        </ScrollReveal>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 20 }}>
+          {steps.map((step, i) => (
+            <ScrollReveal key={step.num} anim="fadeUp" delay={i * 0.15}>
+              <div
+                className="hover-card"
+                style={{
+                  background: step.bg,
+                  border: '1px solid rgba(27,42,74,0.08)',
+                  borderRadius: 14,
+                  padding: 28,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 16,
+                  boxShadow: '0 2px 8px rgba(27,42,74,0.04)',
+                  height: '100%',
+                }}
+              >
+                <div style={{ flexShrink: 0 }}>{step.icon}</div>
+                <div>
+                  <span
+                    style={{
+                      fontFamily: H,
+                      fontSize: 56,
+                      fontWeight: 700,
+                      color: 'rgba(27,42,74,0.08)',
+                      letterSpacing: '-0.03em',
+                      lineHeight: 1,
+                    }}
+                  >
+                    {step.num}
+                  </span>
+                  <h2
+                    style={{
+                      fontFamily: H,
+                      fontSize: 22,
+                      fontWeight: 700,
+                      color: COLORS.navy,
+                      margin: '0 0 8px',
+                    }}
+                  >
+                    {step.title}
+                  </h2>
+                  <p
+                    style={{
+                      fontFamily: B,
+                      fontSize: 16,
+                      lineHeight: 1.6,
+                      color: COLORS.ink,
+                      margin: 0,
+                    }}
+                  >
+                    {step.desc}
+                  </p>
+                </div>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
       </main>
       <Footer />
     </>
   );
 }
-
-const bodyStyle: React.CSSProperties = {
-  fontFamily: 'var(--font-sans), sans-serif',
-  fontSize: 16,
-  lineHeight: 1.7,
-  color: COLORS.ink60,
-  margin: 0,
-};
-
-const h2Style: React.CSSProperties = {
-  fontFamily: 'var(--font-serif), serif',
-  fontSize: 28,
-  fontWeight: 400,
-  letterSpacing: '-0.02em',
-  color: COLORS.navy,
-  margin: '8px 0 16px',
-};
-
-const stepNumber: React.CSSProperties = {
-  fontFamily: 'var(--font-serif), serif',
-  fontSize: 32,
-  color: COLORS.navy,
-  opacity: 0.15,
-  letterSpacing: '-0.02em',
-};
-
-const bulletList: React.CSSProperties = {
-  margin: 0,
-  padding: '0 0 0 20px',
-  listStyleType: 'disc',
-};
-
-const bulletItem: React.CSSProperties = {
-  fontFamily: 'var(--font-sans), sans-serif',
-  fontSize: 18,
-  lineHeight: 1.7,
-  color: COLORS.ink60,
-  marginBottom: 8,
-};
-
-const stepContainer: React.CSSProperties = {
-  marginTop: 48,
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 16,
-};

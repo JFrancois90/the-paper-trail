@@ -114,7 +114,7 @@ export default function FightingForChangePage() {
           </div>
         </ScrollReveal>
 
-        {/* Who is fighting — swipe cards */}
+        {/* Who is fighting - swipe cards */}
         <ScrollReveal>
           <div style={{ marginBottom: 28 }}>
             <p

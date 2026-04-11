@@ -85,7 +85,7 @@ export default function RebuttalBox({ invited, dateInvited, status, responseText
             margin: 0,
           }}
         >
-          {status === 'no-response' ? '\u2014 No response received' : '\u2709 Invitation sent'}
+          {status === 'no-response' ? 'No response received' : '\u2709 Invitation sent'}
           {dateInvited ? ` (${dateInvited})` : ''}
         </p>
       )}

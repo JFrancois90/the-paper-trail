@@ -228,7 +228,7 @@ function buildFrames(inv: Investigation): Frame[] {
     ),
   });
 
-  // Frame 2: Said vs Source — swipe comparison
+  // Frame 2: Said vs Source - swipe comparison
   frames.push({
     bg: COLORS.paper,
     textColor: COLORS.ink,

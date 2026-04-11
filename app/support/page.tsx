@@ -82,7 +82,7 @@ export default function SupportPage() {
                 'This is an independent publication',
                 'We are not affiliated with any political party',
                 'We constantly investigate, but we only publish when things need to be addressed',
-                "We don\u2019t promise content for content\u2019s sake \u2014 we publish when things need to be corrected",
+                "We don\u2019t promise content for content\u2019s sake. We publish when things need to be corrected",
               ].map((point, i) => (
                 <li
                   key={i}

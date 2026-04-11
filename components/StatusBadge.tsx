@@ -93,7 +93,7 @@ export default function StatusBadge({
         }}
       >
         <span style={{ fontSize: compact ? 10 : 12 }}>
-          {correction ? '\u2713' : status === 'responded' ? '\u2709' : status === 'declined' ? '\u2717' : status === 'no-response' ? '\u2014' : '\u2709'}
+          {correction ? '\u2713' : status === 'responded' ? '\u2709' : status === 'declined' ? '\u2717' : status === 'no-response' ? '\u2013' : '\u2709'}
         </span>
         {label}
       </span>
