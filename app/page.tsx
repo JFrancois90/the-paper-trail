@@ -64,18 +64,100 @@ export default function Home() {
             position: 'relative',
           }}
         >
-          <div style={{ maxWidth: 1200, margin: '0 auto', width: '100%' }}>
-            <h1
+          <div style={{ maxWidth: 1200, margin: '0 auto', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 48 }}>
+            {/* Left side */}
+            <div style={{ flex: '0 0 52%' }}>
+              <h1
+                style={{
+                  margin: '0 0 40px',
+                  animation: 'fadeUp 0.8s ease forwards',
+                  opacity: 0,
+                }}
+              >
+                <BrandSlogan size="lg" theme="dark" />
+              </h1>
+
+              <HeroSubtitle />
+            </div>
+
+            {/* Right side — frosted glass panel */}
+            <div
               style={{
-                margin: '0 0 40px',
-                animation: 'fadeUp 0.8s ease forwards',
+                flex: '0 0 42%',
+                background: 'rgba(200, 225, 245, 0.1)',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)',
+                border: '1px solid rgba(255, 255, 255, 0.12)',
+                borderRadius: 20,
+                padding: '48px 36px',
+                color: '#fff',
+                minHeight: '50vh',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                animation: 'fadeUp 0.8s ease 0.4s forwards',
                 opacity: 0,
               }}
             >
-              <BrandSlogan size="lg" theme="dark" />
-            </h1>
+              <p
+                style={{
+                  fontFamily: H,
+                  fontSize: 32,
+                  fontWeight: 700,
+                  color: '#fff',
+                  margin: '0 0 8px',
+                  lineHeight: 1.2,
+                  letterSpacing: '-0.02em',
+                }}
+              >
+                Your questions.
+              </p>
+              <p
+                style={{
+                  fontFamily: H,
+                  fontSize: 32,
+                  fontWeight: 700,
+                  color: '#fff',
+                  margin: '0 0 28px',
+                  lineHeight: 1.2,
+                  letterSpacing: '-0.02em',
+                }}
+              >
+                Their answers.
+              </p>
 
-            <HeroSubtitle />
+              <div style={{ fontFamily: B, fontSize: 17, lineHeight: 2, color: 'rgba(255,255,255,0.8)' }}>
+                <p style={{ margin: '0 0 20px' }}>
+                  Every investigation ends with questions your MP should answer.
+                </p>
+                <p style={{ margin: 0 }}>Take them to your surgery.</p>
+                <p style={{ margin: 0 }}>Put them in an email.</p>
+                <p style={{ margin: '0 0 20px' }}>Share them on social media.</p>
+                <p style={{ margin: 0, color: '#fff', fontWeight: 600 }}>We arm you with the facts.</p>
+                <p style={{ margin: '0 0 28px', color: '#fff', fontWeight: 600 }}>You hold them to account.</p>
+              </div>
+
+              <Link
+                href="/campaigns"
+                style={{
+                  display: 'inline-block',
+                  fontFamily: B,
+                  fontSize: 14,
+                  fontWeight: 600,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  color: COLORS.navy,
+                  background: COLORS.amber,
+                  padding: '14px 28px',
+                  borderRadius: 10,
+                  textDecoration: 'none',
+                  textAlign: 'center',
+                  alignSelf: 'flex-start',
+                }}
+              >
+                See the questions &rarr;
+              </Link>
+            </div>
           </div>
 
           {/* Scroll arrow */}

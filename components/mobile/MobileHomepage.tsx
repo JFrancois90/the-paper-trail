@@ -176,6 +176,72 @@ export default function MobileHomepage() {
           </div>
         </SnapSection>
 
+        {/* ═══ YOUR QUESTIONS PANEL ═══ */}
+        <SnapSection bg={COLORS.navy}>
+          <div
+            style={{
+              background: 'rgba(200, 225, 245, 0.1)',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+              border: '1px solid rgba(255, 255, 255, 0.12)',
+              borderRadius: 20,
+              padding: '32px 24px',
+              color: '#fff',
+            }}
+          >
+            <p
+              style={{
+                fontFamily: H,
+                fontSize: 26,
+                fontWeight: 700,
+                color: '#fff',
+                margin: '0 0 6px',
+                lineHeight: 1.2,
+              }}
+            >
+              Your questions.
+            </p>
+            <p
+              style={{
+                fontFamily: H,
+                fontSize: 26,
+                fontWeight: 700,
+                color: '#fff',
+                margin: '0 0 20px',
+                lineHeight: 1.2,
+              }}
+            >
+              Their answers.
+            </p>
+            <div style={{ fontFamily: B, fontSize: 16, lineHeight: 1.9, color: 'rgba(255,255,255,0.8)' }}>
+              <p style={{ margin: '0 0 16px' }}>Every investigation ends with questions your MP should answer.</p>
+              <p style={{ margin: 0 }}>Take them to your surgery.</p>
+              <p style={{ margin: 0 }}>Put them in an email.</p>
+              <p style={{ margin: '0 0 16px' }}>Share them on social media.</p>
+              <p style={{ margin: 0, color: '#fff', fontWeight: 600 }}>We arm you with the facts.</p>
+              <p style={{ margin: '0 0 20px', color: '#fff', fontWeight: 600 }}>You hold them to account.</p>
+            </div>
+            <Link
+              href="/campaigns"
+              style={{
+                display: 'inline-block',
+                fontFamily: B,
+                fontSize: 14,
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em',
+                color: COLORS.navy,
+                background: COLORS.amber,
+                padding: '12px 24px',
+                borderRadius: 10,
+                textDecoration: 'none',
+              }}
+            >
+              See the questions &rarr;
+            </Link>
+          </div>
+        </SnapSection>
+
         {/* ═══ SECTION 2: THE PROBLEM — Equations ═══ */}
         <SnapSection>
           <div
