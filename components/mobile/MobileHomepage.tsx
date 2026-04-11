@@ -171,36 +171,6 @@ export default function MobileHomepage() {
             <BrandSlogan size="md" theme="dark" />
           </h1>
           <HeroSubtitle isMobile />
-          <div style={{ marginTop: 24 }}>
-            <SourceDocsNotice />
-          </div>
-        </SnapSection>
-
-        {/* ═══ YOUR QUESTIONS PANEL ═══ */}
-        <SnapSection bg={COLORS.navy}>
-          <div
-            style={{
-              background: 'rgba(220, 235, 250, 0.85)',
-              backdropFilter: 'blur(12px)',
-              WebkitBackdropFilter: 'blur(12px)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              borderRadius: 20,
-              padding: '32px 24px',
-              color: COLORS.navy,
-            }}
-          >
-            <div style={{ fontFamily: B, fontSize: 16, lineHeight: 1.8, color: COLORS.navy }}>
-              <p style={{ margin: '0 0 4px' }}>Every campaign ends with questions.</p>
-              <p style={{ margin: '0 0 20px', fontWeight: 600 }}>Questions your MP should answer.</p>
-
-              <p style={{ margin: '0 0 10px', fontFamily: H, fontSize: 20, fontWeight: 700, color: '#D4A84B' }}>Take them to your surgery.</p>
-              <p style={{ margin: '0 0 10px', fontFamily: H, fontSize: 20, fontWeight: 700, color: '#E74C3C' }}>Put them in an email.</p>
-              <p style={{ margin: '0 0 24px', fontFamily: H, fontSize: 20, fontWeight: 700, color: '#7FB3D8' }}>Share them on social media.</p>
-
-              <p style={{ margin: 0, fontWeight: 600 }}>We arm you with the facts.</p>
-              <p style={{ margin: 0, fontWeight: 600 }}>You hold them to account.</p>
-            </div>
-          </div>
         </SnapSection>
 
         {/* ═══ SECTION 2: THE PROBLEM — Equations ═══ */}
@@ -484,146 +454,29 @@ export default function MobileHomepage() {
           </div>
         </SnapSection>
 
-        {/* ═══ SECTION 5+: EACH INVESTIGATION = ITS OWN SNAP SECTION ═══ */}
-        {filteredInvestigations.map((inv) => (
-          <SnapSection key={inv.id}>
-            <div
-              style={{
-                background: '#fff',
-                border: '1px solid rgba(27,42,74,0.08)',
-                borderRadius: 16,
-                padding: '28px 24px',
-                textAlign: 'left',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                minHeight: 320,
-              }}
-            >
-              {/* Stat badge — large and prominent */}
-              <div style={{ marginBottom: 16 }}>
-                <span
-                  style={{
-                    fontFamily: H,
-                    fontSize: 36,
-                    fontWeight: 700,
-                    color: inv.multiplier === 'False' ? COLORS.claimRed : COLORS.navy,
-                    letterSpacing: '-0.03em',
-                    lineHeight: 1,
-                  }}
-                >
-                  {inv.multiplier}
-                </span>
-                <p
-                  style={{
-                    fontFamily: B,
-                    fontSize: 14,
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.1em',
-                    color: COLORS.ink40,
-                    margin: '4px 0 0',
-                  }}
-                >
-                  {inv.multiplierLabel}
-                </p>
-              </div>
-
-              {/* Claim quote */}
-              <p
-                style={{
-                  fontFamily: 'Georgia, "Times New Roman", serif',
-                  fontSize: 22,
-                  lineHeight: 1.4,
-                  color: COLORS.ink,
-                  margin: '0 0 16px',
-                }}
-              >
-                &ldquo;{inv.claim}&rdquo;
-              </p>
-
-              {/* Attribution */}
-              <p style={{ fontFamily: B, fontSize: 14, color: COLORS.ink40, margin: '0 0 20px' }}>
-                {inv.who} &middot; {inv.date}
-              </p>
-
-              {/* CTAs */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 8, alignSelf: 'stretch' }}>
-                <button
-                  onClick={() => setActiveStory(inv)}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: 6,
-                    fontFamily: B,
-                    fontSize: 14,
-                    fontWeight: 600,
-                    color: COLORS.chainBlue,
-                    background: `${COLORS.chainBlue}10`,
-                    border: 'none',
-                    borderRadius: 8,
-                    padding: '10px 18px',
-                    cursor: 'pointer',
-                    WebkitTapHighlightColor: 'transparent',
-                  }}
-                  aria-label={`Read investigation: ${inv.claim}`}
-                >
-                  Tap to see the story &rarr;
-                </button>
-                <Link
-                  href={`/investigations/${inv.slug}`}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: 6,
-                    fontFamily: B,
-                    fontSize: 14,
-                    fontWeight: 600,
-                    color: COLORS.navy,
-                    background: 'transparent',
-                    border: `1.5px solid rgba(27,42,74,0.15)`,
-                    borderRadius: 8,
-                    padding: '10px 18px',
-                    textDecoration: 'none',
-                  }}
-                >
-                  View full investigation &rarr;
-                </Link>
-              </div>
-            </div>
-          </SnapSection>
-        ))}
-
-        {/* ═══ SEE ALL CAMPAIGNS ═══ */}
-        <SnapSection style={{ textAlign: 'center' }}>
+        {/* ═══ ALL INVESTIGATIONS — HORIZONTAL SWIPE ═══ */}
+        <SnapSection>
           <h2
             style={{
               fontFamily: H,
-              fontSize: 28,
+              fontSize: 22,
               fontWeight: 700,
               color: COLORS.navy,
-              margin: '0 0 12px',
+              margin: '0 0 16px',
             }}
           >
-            Want to see more?
+            All investigations
           </h2>
-          <p
-            style={{
-              fontFamily: B,
-              fontSize: 16,
-              lineHeight: 1.6,
-              color: COLORS.muted,
-              margin: '0 0 24px',
-            }}
-          >
-            We are investigating claims across parties, media, and influencers.
-          </p>
+
+          <InvestigationCarousel
+            investigations={filteredInvestigations}
+            onStoryTap={setActiveStory}
+          />
+
           <Link
             href="/campaigns"
             style={{
-              display: 'inline-block',
+              display: 'block',
               fontFamily: B,
               fontSize: 16,
               fontWeight: 600,
@@ -861,5 +714,163 @@ function FixedScrollToTop({ containerRef }: { containerRef: React.RefObject<HTML
         <path d="M3 8l4-4 4 4" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     </button>
+  );
+}
+
+/* ───── Investigation swipe carousel ───── */
+function InvestigationCarousel({
+  investigations: invs,
+  onStoryTap,
+}: {
+  investigations: Investigation[];
+  onStoryTap: (inv: Investigation) => void;
+}) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleScroll = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const idx = Math.round(el.scrollLeft / el.clientWidth);
+    setActiveIndex(Math.min(Math.max(idx, 0), invs.length - 1));
+  }, [invs.length]);
+
+  return (
+    <div style={{ marginBottom: 20 }}>
+      <div
+        ref={scrollRef}
+        onScroll={handleScroll}
+        style={{
+          display: 'flex',
+          overflowX: 'auto',
+          scrollSnapType: 'x mandatory',
+          WebkitOverflowScrolling: 'touch',
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
+        }}
+      >
+        {invs.map((inv) => (
+          <div
+            key={inv.id}
+            style={{
+              flex: '0 0 100%',
+              scrollSnapAlign: 'center',
+              padding: '0 4px',
+              boxSizing: 'border-box',
+            }}
+          >
+            <div
+              style={{
+                background: '#fff',
+                border: '1px solid rgba(27,42,74,0.08)',
+                borderRadius: 16,
+                padding: '24px 20px',
+                textAlign: 'left',
+              }}
+            >
+              <div style={{ marginBottom: 12 }}>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-heading), sans-serif',
+                    fontSize: 32,
+                    fontWeight: 700,
+                    color: inv.multiplier === 'False' ? COLORS.claimRed : COLORS.navy,
+                    letterSpacing: '-0.03em',
+                    lineHeight: 1,
+                  }}
+                >
+                  {inv.multiplier}
+                </span>
+                <p
+                  style={{
+                    fontFamily: 'var(--font-sans), sans-serif',
+                    fontSize: 12,
+                    fontWeight: 600,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.1em',
+                    color: COLORS.ink40,
+                    margin: '4px 0 0',
+                  }}
+                >
+                  {inv.multiplierLabel}
+                </p>
+              </div>
+
+              <p
+                style={{
+                  fontFamily: 'Georgia, "Times New Roman", serif',
+                  fontSize: 18,
+                  lineHeight: 1.4,
+                  color: COLORS.ink,
+                  margin: '0 0 10px',
+                }}
+              >
+                &ldquo;{inv.claim}&rdquo;
+              </p>
+
+              <p style={{ fontFamily: 'var(--font-sans), sans-serif', fontSize: 13, color: COLORS.ink40, margin: '0 0 16px' }}>
+                {inv.who} &middot; {inv.date}
+              </p>
+
+              <div style={{ display: 'flex', gap: 8 }}>
+                <button
+                  onClick={() => onStoryTap(inv)}
+                  style={{
+                    flex: 1,
+                    fontFamily: 'var(--font-sans), sans-serif',
+                    fontSize: 13,
+                    fontWeight: 600,
+                    color: COLORS.chainBlue,
+                    background: `${COLORS.chainBlue}10`,
+                    border: 'none',
+                    borderRadius: 8,
+                    padding: '10px 0',
+                    cursor: 'pointer',
+                    WebkitTapHighlightColor: 'transparent',
+                  }}
+                  aria-label={`Read investigation: ${inv.claim}`}
+                >
+                  Story &rarr;
+                </button>
+                <Link
+                  href={`/investigations/${inv.slug}`}
+                  style={{
+                    flex: 1,
+                    fontFamily: 'var(--font-sans), sans-serif',
+                    fontSize: 13,
+                    fontWeight: 600,
+                    color: COLORS.navy,
+                    background: 'transparent',
+                    border: `1.5px solid rgba(27,42,74,0.15)`,
+                    borderRadius: 8,
+                    padding: '10px 0',
+                    textDecoration: 'none',
+                    textAlign: 'center',
+                  }}
+                >
+                  Full page &rarr;
+                </Link>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Dot indicators */}
+      <div style={{ display: 'flex', justifyContent: 'center', gap: 6, marginTop: 12 }}>
+        {invs.map((_, i) => (
+          <span
+            key={i}
+            style={{
+              width: activeIndex === i ? 16 : 6,
+              height: 6,
+              borderRadius: 3,
+              background: activeIndex === i ? COLORS.navy : 'rgba(27,42,74,0.15)',
+              transition: 'all 0.25s ease',
+            }}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
