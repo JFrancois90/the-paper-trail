@@ -146,6 +146,7 @@ export default function RootLayout({
               .nav-logo { height: 56px; }
               .nav-logo-light { mix-blend-mode: multiply; }
               .nav-link { white-space: nowrap; }
+              .emphasis-red { color: #b5302a; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
               h1, h2, h3 { text-wrap: balance; }
               @media (max-width: 768px) {
                 .nav-logo { height: 38px; }

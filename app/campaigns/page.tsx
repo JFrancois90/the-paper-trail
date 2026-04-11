@@ -176,7 +176,9 @@ export default function CampaignsPage() {
                     margin: '0 0 8px',
                   }}
                 >
-                  &ldquo;{inv.claim}&rdquo;
+                  &ldquo;{inv.claim.split(/(IS)/).map((part, i) =>
+                    part === 'IS' ? <span key={i} className="emphasis-red">IS</span> : part
+                  )}&rdquo;
                 </p>
 
                 <p

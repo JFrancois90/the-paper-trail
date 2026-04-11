@@ -912,7 +912,7 @@ function FeaturedInvestigations() {
               <p style={{ fontFamily: B, fontSize: 14, color: COLORS.navy, margin: 0 }}>We take no position on criminal justice policy. We take a position on the quality of evidence used to drive it.</p>
             </div>
             <p style={{ fontFamily: H, fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 400, color: COLORS.ink, lineHeight: 1.4, margin: '0 0 6px' }}>
-              &ldquo;<span className="highlight-red">10% of criminals</span> commit 50% of all the crime&rdquo;
+              Britain <span className="emphasis-red">IS</span> lawless: &ldquo;<span className="highlight-red">10% of criminals</span> commit 50% of all the crime&rdquo;
             </p>
             <p style={{ fontFamily: B, fontSize: 13, color: COLORS.lightMuted, margin: '0 0 32px' }}>Reform UK, Jul 2025</p>
 
