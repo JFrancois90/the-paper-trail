@@ -3,13 +3,13 @@ import { COLORS } from '@/lib/constants';
 const B = 'var(--font-sans), sans-serif';
 const H = 'var(--font-heading), sans-serif';
 
-const timeline = [
-  { year: '2017', event: 'Theresa May was Prime Minister' },
-  { year: '2017', event: 'Article 50 had been triggered 3 months earlier' },
-  { year: '2020', event: 'COVID was 3 years away' },
-  { year: '2022', event: 'The Queen was alive' },
-  { year: '2017', event: 'Trump was 5 months into his first term' },
-  { year: '2017', event: 'The iPhone X hadn\'t been released yet' },
+const cards = [
+  'Theresa May was Prime Minister',
+  'Article 50 had been triggered 3 months earlier',
+  'COVID was 3 years away',
+  'The Queen was alive',
+  'Trump was 5 months into his first term',
+  'The iPhone X hadn\'t been released yet',
 ];
 
 export default function ReformStopSearchExtras() {
@@ -23,7 +23,7 @@ export default function ReformStopSearchExtras() {
           textTransform: 'uppercase',
           letterSpacing: '0.1em',
           color: COLORS.navy,
-          marginBottom: 20,
+          marginBottom: 8,
         }}
       >
         How out of date is this?
@@ -39,25 +39,31 @@ export default function ReformStopSearchExtras() {
         To put June 2017 in context:
       </p>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 12, marginBottom: 32 }}>
-        {timeline.map((item, i) => (
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12, marginBottom: 48 }}>
+        {cards.map((text, i) => (
           <div
             key={i}
             style={{
-              background: '#fff',
-              border: '1px solid rgba(27,42,74,0.08)',
+              background: COLORS.navy,
               borderRadius: 10,
-              padding: '14px 18px',
+              padding: '18px 20px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              textAlign: 'center',
+              minHeight: 80,
             }}
           >
             <span
               style={{
                 fontFamily: B,
-                fontSize: 'var(--inv-body, 18px)',
-                color: COLORS.ink,
+                fontSize: 15,
+                fontWeight: 600,
+                color: '#fff',
+                lineHeight: 1.4,
               }}
             >
-              {item.event}
+              {text}
             </span>
           </div>
         ))}
@@ -66,11 +72,13 @@ export default function ReformStopSearchExtras() {
       <p
         style={{
           fontFamily: H,
-          fontSize: 20,
+          fontSize: 22,
           fontWeight: 700,
           color: COLORS.navy,
           lineHeight: 1.5,
           margin: 0,
+          paddingTop: 8,
+          paddingBottom: 32,
         }}
       >
         This article is 8 years old. It was written before the pandemic, before the current King, and before the government it was criticising left office. It&apos;s the source behind the first bullet of a national policing policy.

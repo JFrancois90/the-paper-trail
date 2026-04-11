@@ -7,7 +7,6 @@ import { investigations } from '@/data/investigations';
 import MobileNav from '@/components/MobileNav';
 import BrandSlogan from '@/components/BrandSlogan';
 import HeroSubtitle from '@/components/HeroSubtitle';
-import SourceDocsNotice from '@/components/SourceDocsNotice';
 import InvestigationStory from './InvestigationStory';
 import type { Investigation } from '@/data/investigations';
 

@@ -3,7 +3,6 @@ import { COLORS } from '@/lib/constants';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import BackButton from '@/components/BackButton';
-import SourceDocsNotice from '@/components/SourceDocsNotice';
 import ScrollReveal from '@/components/ScrollReveal';
 
 const H = 'var(--font-heading), sans-serif';
@@ -78,7 +77,6 @@ export default function HowItWorksPage() {
           padding: '100px 28px 48px',
         }}
       >
-        <SourceDocsNotice />
 
         <ScrollReveal>
           <h1

@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Nav from '@/components/Nav';
 import BackButton from '@/components/BackButton';
-import SourceDocsNotice from '@/components/SourceDocsNotice';
 import { COLORS } from '@/lib/constants';
 
 const B = 'var(--font-sans), sans-serif';
@@ -86,7 +85,6 @@ export default function CarelessWhispersPage() {
       <main id="main-content" style={{ background: COLORS.paper }}>
         {/* Header */}
         <div style={{ padding: '100px 28px 40px', maxWidth: 900, margin: '0 auto' }}>
-          <SourceDocsNotice />
           <div style={{ background: COLORS.navy, borderRadius: 8, padding: '12px 18px', marginBottom: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
             <span style={{ fontSize: 16, flexShrink: 0 }}>&#x1F4E2;</span>
             <p style={{ fontFamily: B, fontSize: 14, color: 'rgba(255,255,255,0.85)', margin: 0 }}>

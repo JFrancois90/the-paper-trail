@@ -12,7 +12,7 @@ export default function PlainEnglishBox({ analogy }: PlainEnglishBoxProps) {
       style={{
         background: COLORS.navy,
         borderRadius: 10,
-        padding: '24px 28px',
+        padding: '28px 32px',
       }}
     >
       <div

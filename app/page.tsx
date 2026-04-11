@@ -889,39 +889,39 @@ function FeaturedInvestigations() {
           </div>
         </div>
 
-        {/* Investigation 2: Whittome Student Debt */}
+        {/* Investigation 2: Reform Prolific Offenders */}
         <div className="fi-scroll" style={{ height: '100%', scrollSnapAlign: 'start', display: 'flex', alignItems: 'center', padding: '60px 8vw', boxSizing: 'border-box' }}>
           <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%', paddingTop: 40 }}>
             <div style={{ background: '#fae9b0', borderRadius: 8, padding: '12px 18px', marginBottom: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
               <span style={{ fontSize: 16, flexShrink: 0 }}>&#x1F4E2;</span>
-              <p style={{ fontFamily: B, fontSize: 14, color: COLORS.navy, margin: 0 }}>We support fair access to higher education and reform of student debt. We disagree with incorrect figures, regardless of political alignment.</p>
+              <p style={{ fontFamily: B, fontSize: 14, color: COLORS.navy, margin: 0 }}>We take no position on criminal justice policy. We take a position on the quality of evidence used to drive it.</p>
             </div>
             <p style={{ fontFamily: H, fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 400, color: COLORS.ink, lineHeight: 1.4, margin: '0 0 6px' }}>
-              &ldquo;I left university in 2019 with <span className="highlight-red">&pound;49,600</span> of debt&rdquo;
+              &ldquo;<span className="highlight-red">10% of criminals</span> commit 50% of all the crime&rdquo;
             </p>
-            <p style={{ fontFamily: B, fontSize: 13, color: COLORS.lightMuted, margin: '0 0 32px' }}>Nadia Whittome MP, 2025</p>
+            <p style={{ fontFamily: B, fontSize: 13, color: COLORS.lightMuted, margin: '0 0 32px' }}>Reform UK, Jul 2025</p>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 16, alignItems: 'center', marginBottom: 32 }}>
               <div style={{ background: COLORS.claimRedLight, borderRadius: 14, padding: '32px 24px', textAlign: 'center' }}>
-                <p style={{ fontFamily: H, fontSize: 'clamp(40px, 5vw, 64px)', fontWeight: 700, color: COLORS.claimRed, margin: '0 0 8px', letterSpacing: '-0.03em', lineHeight: 1 }}>&pound;49,600</p>
-                <p style={{ fontFamily: B, fontSize: 14, color: COLORS.claimRedDark, margin: 0 }}>Claimed debt</p>
+                <p style={{ fontFamily: H, fontSize: 'clamp(32px, 4vw, 48px)', fontWeight: 700, color: COLORS.claimRed, margin: '0 0 8px', letterSpacing: '-0.03em', lineHeight: 1 }}>50%</p>
+                <p style={{ fontFamily: B, fontSize: 14, color: COLORS.claimRedDark, margin: 0 }}>What they said</p>
               </div>
               <div style={{ width: 56, height: 56, borderRadius: '50%', background: COLORS.navy, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <span style={{ fontFamily: H, fontSize: 14, fontWeight: 700, color: '#fff' }}>&pound;13.6k</span>
+                <span style={{ fontFamily: H, fontSize: 14, fontWeight: 700, color: '#fff' }}>&#x23F3;</span>
               </div>
               <div style={{ background: COLORS.sourceGreenLight, borderRadius: 14, padding: '32px 24px', textAlign: 'center' }}>
-                <p style={{ fontFamily: H, fontSize: 'clamp(40px, 5vw, 64px)', fontWeight: 700, color: COLORS.sourceGreen, margin: '0 0 8px', letterSpacing: '-0.03em', lineHeight: 1 }}>~&pound;36k</p>
-                <p style={{ fontFamily: B, fontSize: 14, color: COLORS.sourceGreenDark, margin: 0 }}>Max possible for 2 years</p>
+                <p style={{ fontFamily: H, fontSize: 'clamp(32px, 4vw, 48px)', fontWeight: 700, color: COLORS.sourceGreen, margin: '0 0 8px', letterSpacing: '-0.03em', lineHeight: 1 }}>43%</p>
+                <p style={{ fontFamily: B, fontSize: 14, color: COLORS.sourceGreenDark, margin: 0 }}>By 2016 (and falling)</p>
               </div>
             </div>
 
             <div style={{ background: '#fff', border: '2px solid rgba(196,138,10,0.18)', borderRadius: 14, padding: '24px 28px', marginBottom: 16 }}>
               <p style={{ fontFamily: B, fontSize: 16, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.amber, margin: '0 0 10px' }}>Why this matters</p>
               <p style={{ fontFamily: B, fontSize: 18, lineHeight: 1.6, color: COLORS.ink, margin: 0 }}>
-                This figure is being used to argue for tuition fee reform. If the stated debt is &pound;13,600 higher than what&apos;s possible for the study period, the personal story underpinning the policy doesn&apos;t add up.
+                Their source covers 2000 to 2016. The MoJ publishes quarterly data up to 2024. It was chosen not to be used.
               </p>
             </div>
-            <Link href="/investigations/student-debt-claim" style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: COLORS.chainBlue, textDecoration: 'none' }}>See the full trail &rarr;</Link>
+            <Link href="/investigations/reform-prolific-offenders" style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: COLORS.chainBlue, textDecoration: 'none' }}>See the full trail &rarr;</Link>
           </div>
         </div>
 

@@ -3,13 +3,13 @@ import { COLORS } from '@/lib/constants';
 const B = 'var(--font-sans), sans-serif';
 const H = 'var(--font-heading), sans-serif';
 
-const timeline = [
-  { year: '2016', event: 'Brexit referendum' },
-  { year: '2020', event: 'COVID-19 pandemic' },
-  { year: '2022', event: 'Queen Elizabeth II dies. Charles III becomes King' },
-  { year: '2022', event: 'Cost of living crisis begins' },
-  { year: '2023-25', event: 'Multiple changes to sentencing, policing, and prison policy' },
-  { year: 'Jul 2025', event: 'Reform publishes this data as current' },
+const cards = [
+  'Brexit referendum happened',
+  'COVID-19 pandemic',
+  'Queen Elizabeth II died',
+  'Cost of living crisis',
+  'Multiple changes to sentencing and prison policy',
+  'Three different Prime Ministers since',
 ];
 
 export default function ReformProlificExtras() {
@@ -23,7 +23,7 @@ export default function ReformProlificExtras() {
           textTransform: 'uppercase',
           letterSpacing: '0.1em',
           color: COLORS.navy,
-          marginBottom: 20,
+          marginBottom: 8,
         }}
       >
         How out of date is this?
@@ -39,39 +39,31 @@ export default function ReformProlificExtras() {
         To put 2016 in context:
       </p>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 0, marginBottom: 32 }}>
-        {timeline.map((item, i) => (
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12, marginBottom: 48 }}>
+        {cards.map((text, i) => (
           <div
             key={i}
             style={{
+              background: COLORS.navy,
+              borderRadius: 10,
+              padding: '18px 20px',
               display: 'flex',
-              gap: 16,
-              alignItems: 'flex-start',
-              padding: '12px 0',
-              borderBottom: i < timeline.length - 1 ? '1px solid rgba(27,42,74,0.06)' : 'none',
+              alignItems: 'center',
+              justifyContent: 'center',
+              textAlign: 'center',
+              minHeight: 80,
             }}
           >
             <span
               style={{
-                fontFamily: H,
-                fontSize: 16,
-                fontWeight: 700,
-                color: i === timeline.length - 1 ? COLORS.claimRed : COLORS.navy,
-                minWidth: 70,
-                flexShrink: 0,
-              }}
-            >
-              {item.year}
-            </span>
-            <span
-              style={{
                 fontFamily: B,
-                fontSize: 'var(--inv-body, 18px)',
-                color: i === timeline.length - 1 ? COLORS.claimRed : COLORS.ink,
-                fontWeight: i === timeline.length - 1 ? 700 : 400,
+                fontSize: 15,
+                fontWeight: 600,
+                color: '#fff',
+                lineHeight: 1.4,
               }}
             >
-              {item.event}
+              {text}
             </span>
           </div>
         ))}
@@ -80,11 +72,13 @@ export default function ReformProlificExtras() {
       <p
         style={{
           fontFamily: H,
-          fontSize: 20,
+          fontSize: 22,
           fontWeight: 700,
           color: COLORS.navy,
           lineHeight: 1.5,
           margin: 0,
+          paddingTop: 8,
+          paddingBottom: 32,
         }}
       >
         The world has changed. The data hasn&apos;t. But the policy is being written as if it has.

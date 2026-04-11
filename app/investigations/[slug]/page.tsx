@@ -5,7 +5,6 @@ import { COLORS } from '@/lib/constants';
 import { investigations } from '@/data/investigations';
 import Nav from '@/components/Nav';
 import BackButton from '@/components/BackButton';
-import SourceDocsNotice from '@/components/SourceDocsNotice';
 import MultiplierBadge from '@/components/MultiplierBadge';
 import SaidVsSource from '@/components/SaidVsSource';
 import PlainEnglishBox from '@/components/PlainEnglishBox';
@@ -93,10 +92,6 @@ export default async function InvestigationPage({ params }: PageProps) {
         {/* ─── SECTION 1: THE CLAIM ─── */}
         <section className="inv-snap-section">
           <div className="inv-inner">
-            <div className="inv-source-notice-desktop">
-              <SourceDocsNotice />
-            </div>
-
             {/* Back link */}
             <Link
               href="/campaigns"
@@ -248,17 +243,19 @@ export default async function InvestigationPage({ params }: PageProps) {
         <section className="inv-snap-section">
           <div className="inv-inner">
             <PlainEnglishBox analogy={inv.analogy} />
-            <div
-              style={{
-                background: '#fff',
-                borderRadius: 14,
-                border: '1px solid rgba(27,42,74,0.08)',
-                padding: '28px 28px',
-                marginTop: 28,
-              }}
-            >
-              <InvestigationPageBars data={inv.barData} />
-            </div>
+            {inv.barData.length > 0 && (
+              <div
+                style={{
+                  background: '#fff',
+                  borderRadius: 14,
+                  border: '1px solid rgba(27,42,74,0.08)',
+                  padding: '28px 28px',
+                  marginTop: 28,
+                }}
+              >
+                <InvestigationPageBars data={inv.barData} />
+              </div>
+            )}
           </div>
         </section>
 

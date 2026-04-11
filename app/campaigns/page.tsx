@@ -7,7 +7,6 @@ import Footer from '@/components/Footer';
 import MultiplierBadge from '@/components/MultiplierBadge';
 import StatusBadge from '@/components/StatusBadge';
 import ScrollReveal from '@/components/ScrollReveal';
-import SourceDocsNotice from '@/components/SourceDocsNotice';
 import { COLORS, TOPIC_COLORS } from '@/lib/constants';
 import { investigations } from '@/data/investigations';
 
@@ -34,7 +33,6 @@ export default function CampaignsPage() {
           padding: '100px 28px 48px',
         }}
       >
-        <SourceDocsNotice />
 
         <ScrollReveal>
           <h1
