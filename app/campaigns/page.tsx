@@ -18,9 +18,18 @@ const ALL_SUBJECTS = Array.from(new Set(investigations.map((inv) => inv.subject)
 export default function CampaignsPage() {
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
 
-  const filtered = activeFilter
+  const MONTH_ORDER: Record<string, number> = { Jan: 1, Feb: 2, Mar: 3, Apr: 4, May: 5, Jun: 6, Jul: 7, Aug: 8, Sep: 9, Oct: 10, Nov: 11, Dec: 12 };
+  const parseDate = (d: string) => {
+    const parts = d.split(' ');
+    if (parts.length === 2) return (parseInt(parts[1]) * 100) + (MONTH_ORDER[parts[0]] || 0);
+    if (parts.length === 1) return parseInt(parts[0]) * 100;
+    return 0;
+  };
+
+  const filtered = (activeFilter
     ? investigations.filter((inv) => inv.subject === activeFilter)
-    : investigations;
+    : investigations
+  ).sort((a, b) => parseDate(b.date) - parseDate(a.date));
 
   return (
     <>
@@ -124,7 +133,8 @@ export default function CampaignsPage() {
                 className="hover-card"
                 style={{
                   textDecoration: 'none',
-                  display: 'block',
+                  display: 'flex',
+                  flexDirection: 'column',
                   background: '#fff',
                   border: '1px solid rgba(27,42,74,0.10)',
                   borderRadius: 14,
@@ -180,6 +190,9 @@ export default function CampaignsPage() {
                     part === 'IS' ? <span key={i} className="emphasis-red">IS</span> : part
                   )}&rdquo;
                 </p>
+
+                {/* Spacer pushes attribution + button to bottom */}
+                <div style={{ flex: 1 }} />
 
                 <p
                   style={{
