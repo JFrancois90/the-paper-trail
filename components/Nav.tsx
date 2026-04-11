@@ -10,7 +10,7 @@ interface NavProps {
 
 const NAV_LINKS = [
   { href: '/', label: 'Home', sectionId: '' },
-  { href: '/campaigns', label: 'Investigations', sectionId: 'investigations' },
+  { href: '/campaigns', label: 'Investigations', sectionId: '' },
   { href: '/careless-whispers', label: 'Careless Whispers', sectionId: 'careless-whispers' },
   { href: '/about', label: 'About', sectionId: 'what-we-do' },
   { href: '/fighting-for-change', label: 'Join', sectionId: '' },
