@@ -331,16 +331,6 @@ export default async function InvestigationPage({ params }: PageProps) {
                 date={inv.slug === 'student-debt-97k' ? 'Feb 2026' : undefined}
                 variant={inv.slug === 'student-debt-97k' ? 'disclaimer' : 'correction'}
               />
-              {isCorrected && inv.rebuttalStatus && (
-                <div style={{ marginTop: 28 }}>
-                  <RebuttalBox
-                    invited={inv.rebuttalStatus.invited}
-                    dateInvited={inv.rebuttalStatus.dateInvited}
-                    status={inv.rebuttalStatus.status}
-                    responseText={inv.rebuttalStatus.responseText}
-                  />
-                </div>
-              )}
             </div>
           </section>
         )}

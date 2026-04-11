@@ -46,7 +46,7 @@ export default function Home() {
   return (
     <>
       <Nav />
-      <main id="main-content" style={{ overflowX: 'hidden' }}>
+      <main id="main-content">
         {/* ─── SECTION 1: HERO ─── */}
         <section
           className="snap-section"
@@ -64,6 +64,20 @@ export default function Home() {
           }}
         >
           <div style={{ maxWidth: 900, margin: '0 auto', width: '100%' }}>
+            <p
+              style={{
+                fontFamily: B,
+                fontSize: 'clamp(14px, 1.8vw, 18px)',
+                fontWeight: 400,
+                color: 'rgba(255,255,255,0.5)',
+                letterSpacing: '0.02em',
+                margin: '0 0 16px',
+                animation: 'fadeUp 0.8s ease forwards',
+                opacity: 0,
+              }}
+            >
+              Taking the politics out of politics
+            </p>
             <h1
               style={{
                 fontFamily: H,
@@ -73,7 +87,7 @@ export default function Home() {
                 lineHeight: 1.2,
                 letterSpacing: '-0.03em',
                 margin: '0 0 24px',
-                animation: 'fadeUp 0.8s ease forwards',
+                animation: 'fadeUp 0.8s ease 0.15s forwards',
                 opacity: 0,
               }}
             >

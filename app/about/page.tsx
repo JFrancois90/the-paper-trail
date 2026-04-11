@@ -21,21 +21,14 @@ export default function AboutPage() {
       <main
         id="main-content"
         style={{
-          maxWidth: 680,
+          maxWidth: 720,
           margin: '0 auto',
-          padding: '100px 28px 48px',
+          padding: '120px 32px 64px',
         }}
       >
 
         {/* Hero */}
         <ScrollReveal>
-          <div style={{ marginBottom: 20 }}>
-            <img
-              src="/logo-nav.png"
-              alt="The Paper Trail"
-              style={{ height: 80 }}
-            />
-          </div>
           <p style={labelStyle}>About</p>
           <h1
             style={{
@@ -239,15 +232,15 @@ const labelStyle: React.CSSProperties = {
 
 const bodyStyle: React.CSSProperties = {
   fontFamily: 'var(--font-sans), sans-serif',
-  fontSize: 16,
+  fontSize: 18,
   lineHeight: 1.7,
   color: '#525560',
-  margin: 0,
+  margin: '0 0 12px',
 };
 
 const listStyle: React.CSSProperties = {
   fontFamily: 'var(--font-sans), sans-serif',
-  fontSize: 16,
+  fontSize: 18,
   lineHeight: 1.7,
   color: '#525560',
   margin: 0,

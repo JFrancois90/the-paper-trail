@@ -55,7 +55,7 @@ export const investigations: Investigation[] = [
     source: 'Shareholder payout: £500m. Debt taken on by government: £7.1bn. Total cost to taxpayer: £7.6bn. They said: £500m. Actual cost: 15x higher. £500m was equity only. __They ignored the debt.__',
     sourceImage: null,
     sourceOneLiner: '',
-    impact: 'We need to know the real cost to nationalise. Maths errors of this size are not acceptable. Billions of pounds of public money are at stake.',
+    impact: 'The \u00a3500m claim is being used right now to argue water nationalisation would be cheap. If the real cost is 15x higher, the public is being misled on what nationalisation would actually cost them. Policy built on the wrong number risks billions of pounds of public money.',
     analogy: 'Think of it like buying a house for £100k. But it also has a £400k mortgage. The £100k is the equity the seller had, but you\'ve also just taken on all the debt too. The real price is £500k (otherwise Rightmove has some explaining to do!)',
     barData: [
       { label: 'Quoted', sublabel: 'Equity only', value: 0.5, color: '#b5302a', fmt: '£0.5bn' },
@@ -164,7 +164,7 @@ export const investigations: Investigation[] = [
     source: 'HMRC tax evasion figure: £5.5bn. Tax avoidance: £1.8bn. Total tax gap: £7.3bn. The £350bn covers all economic crime. Not the same as tax evasion. __The label shrank. The number stayed.__',
     sourceImage: null,
     sourceOneLiner: 'HMRC official figure: £5.5bn. Not £350bn.',
-    impact: 'HMRC figure: £5.5bn. Claimed: £350bn. That is 48 times too high.',
+    impact: 'The \u00a3350bn figure is being used to justify enforcement spending 48 times larger than the actual problem. If HMRC says the real number is \u00a35.5bn, any policy built on \u00a3350bn is budgeting for a different universe. Taxpayers pay for the gap.',
     analogy: 'It\'s like quoting the entire NHS budget when someone asks how much we spend on plasters.',
     barData: [
       { label: 'HMRC actual', sublabel: 'Tax evasion', value: 5.5, color: '#1a6b42', fmt: '£5.5bn' },
@@ -205,7 +205,7 @@ export const investigations: Investigation[] = [
     sourceImage: null,
     sourceOneLiner: 'Max possible debt for 2 years at Nottingham: ~£36,000. Claimed: £49,600.',
     sourceLabel: 'What the maths actually shows',
-    impact: 'This figure drives tuition fee reform arguments. The stated debt is £13,600 higher than possible. The personal story underpinning the policy does not add up.',
+    impact: 'This figure is being used to argue for tuition fee reform. If the claimed debt is \u00a313,600 higher than what is actually possible for the study period, the personal story driving the policy case does not stand up to basic checks.',
     analogy: 'It\'s like claiming your shopping bill was £150 when you only bought £100 worth of stuff. The receipt doesn\'t support the story.',
     barData: [
       { label: 'Max possible', sublabel: '2 years, living at home', value: 36, color: '#1a6b42', fmt: '~£36,000' },
@@ -238,7 +238,7 @@ export const investigations: Investigation[] = [
     sourceImage: null,
     sourceOneLiner: '£30K earner saves £1,486. £60K earner saves £1,486. The same amount.',
     sourceLabel: 'What the maths actually shows',
-    impact: '£30k earner saves £1,486. £60k earner saves £1,486. The saving is identical.',
+    impact: 'The claim that this policy helps the rich more is being used to argue against it. If both earners save the same amount, the criticism is built on false information. People deserve accurate information to form their own view on tax policy.',
     analogy: 'It\'s like saying a 10% off voucher at Tesco, but only on the first £20 of your shop, benefits rich shoppers more. It doesn\'t. Whether you spend £30 or £60, you save the same £2. The discount stops at £20. The rest of your bill is untouched.',
     barData: [
       { label: '£15K earner', sublabel: 'He said: £500', value: 486, color: '#1b2a4a', fmt: '£486' },
@@ -272,7 +272,7 @@ export const investigations: Investigation[] = [
     sourceImage: null,
     sourceOneLiner: 'Borrowed ~£79,000. Will repay ~£50,000. That\'s £29,000 less, not more.',
     sourceLabel: 'What the maths actually shows',
-    impact: 'Borrowed: ~£79,000. Will repay: ~£50,000. She pays back less, not more.',
+    impact: 'The claim that graduates overpay is being used to drive policy changes on student loans. This case actually shows a graduate paying back \u00a329,000 less than they borrowed. If real cases show the opposite of the claim, the policy could be designed to fix a problem that doesn\'t exist.',
     analogy: 'It\'s like saying your phone contract cost you more than the phone. You got a £1,000 phone. You\'ll pay £700 over the contract. The rest gets written off. That\'s not paying more. That\'s paying less.',
     barData: [
       { label: 'Total borrowed', sublabel: 'Tuition + maintenance + hardship + interest', value: 97, color: '#1b2a4a', fmt: '~£97,000 (current balance)' },
@@ -313,7 +313,7 @@ export const investigations: Investigation[] = [
     sourceImage: null,
     sourceOneLiner: 'She borrowed £49k + £11k = £60k total. Balance is £67k. That\'s 11.6% higher, not 37%.',
     sourceLabel: 'What the maths actually shows',
-    impact: 'Claimed increase: 37%. Actual: 11.6%. Overstated by 3.2 times.',
+    impact: 'A Times-branded video reaching prospective students claims a 37% debt increase. The actual figure is 11.6%. Students watching this may make life decisions based on a number that is 3.2 times too high.',
     analogy: 'It\'s like buying a car for £20,000, adding £5,000 of upgrades, then telling everyone the dealer charged you 25% more because you\'re comparing the final price to just the base model. You spent £25,000. The final bill being £27,000 is an 8% increase, not 25%.',
     barData: [
       { label: 'Undergrad borrowing', sublabel: 'What she said she borrowed first', value: 49, color: '#1b2a4a', fmt: '£49,000' },
