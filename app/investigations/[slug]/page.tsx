@@ -123,6 +123,7 @@ export default async function InvestigationPage({ params }: PageProps) {
 
         {/* Position banner */}
         <div
+          className="position-banner"
           style={{
             background: '#fae9b0',
             borderRadius: 10,

@@ -75,6 +75,9 @@ export default function RootLayout({
               .snap-section[data-nav-theme="dark"] { background: #1b2a4a !important; }
               @media (max-width: 768px) {
                 .snap-section { padding-top: 48px; padding-bottom: 48px; }
+                /* Reduce position banner size on mobile */
+                .position-banner { padding: 8px 14px !important; }
+                .position-banner p { font-size: 15px !important; }
               }
               .skip-link {
                 position: absolute;
@@ -174,7 +177,6 @@ export default function RootLayout({
                 width: 100%;
                 margin: 0 auto;
               }
-              .inv-source-notice-desktop {}
               @media (max-width: 768px) {
                 .inv-snap-container {
                   height: auto;
@@ -187,7 +189,6 @@ export default function RootLayout({
                   display: block;
                   padding: 40px 20px;
                 }
-                .inv-source-notice-desktop { display: none; }
               }
               /* Global nav link hover */
               .nav-link {

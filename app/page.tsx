@@ -97,6 +97,7 @@ export default function Home() {
                 fontWeight: 600,
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
+                textAlign: 'center',
                 color: COLORS.amber,
                 margin: '0 0 40px',
                 animation: 'fadeUp 0.8s ease 0.3s forwards',
@@ -819,12 +820,12 @@ function FeaturedInvestigations() {
       id="investigations"
       className="snap-section"
       data-nav-theme="light"
-      style={{ height: '100vh', background: COLORS.paper, position: 'relative' }}
+      style={{ height: '100vh', background: COLORS.paper, position: 'relative', display: 'flex', flexDirection: 'column' }}
     >
-      {/* Section title */}
-      <div style={{ position: 'absolute', top: 72, left: 0, right: 0, zIndex: 2, padding: '20px 8vw 0' }}>
+      {/* Section title - in normal flow */}
+      <div style={{ padding: '80px 8vw 0', flexShrink: 0 }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <h2 style={{ fontFamily: H, fontSize: 22, fontWeight: 700, letterSpacing: '-0.01em', color: COLORS.navy, margin: 0 }}>
+          <h2 style={{ fontFamily: H, fontSize: 22, fontWeight: 700, letterSpacing: '-0.01em', color: COLORS.navy, margin: '0 0 24px' }}>
             Featured Investigations
           </h2>
         </div>
@@ -856,7 +857,7 @@ function FeaturedInvestigations() {
         ref={scrollRef}
         onScroll={handleScroll}
         style={{
-          height: '100%',
+          flex: 1,
           overflowY: 'auto',
           scrollSnapType: 'y mandatory',
           scrollbarWidth: 'none',
@@ -866,7 +867,7 @@ function FeaturedInvestigations() {
 
         {/* Investigation 1: Railtrack */}
         <div className="fi-scroll" style={{ height: '100%', scrollSnapAlign: 'start', display: 'flex', alignItems: 'center', padding: '60px 8vw', boxSizing: 'border-box' }}>
-          <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%', paddingTop: 60 }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%' }}>
             <div style={{ background: '#fae9b0', borderRadius: 8, padding: '12px 18px', marginBottom: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
               <span style={{ fontSize: 16, flexShrink: 0 }}>&#x1F4E2;</span>
               <p style={{ fontFamily: B, fontSize: 14, color: COLORS.navy, margin: 0 }}>We support public accountability for nationalisation costs. We disagree with incorrect figures, regardless of political alignment.</p>
@@ -902,7 +903,7 @@ function FeaturedInvestigations() {
 
         {/* Investigation 2: Reform Prolific Offenders */}
         <div className="fi-scroll" style={{ height: '100%', scrollSnapAlign: 'start', display: 'flex', alignItems: 'center', padding: '60px 8vw', boxSizing: 'border-box' }}>
-          <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%', paddingTop: 60 }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%' }}>
             <div style={{ background: '#fae9b0', borderRadius: 8, padding: '12px 18px', marginBottom: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
               <span style={{ fontSize: 16, flexShrink: 0 }}>&#x1F4E2;</span>
               <p style={{ fontFamily: B, fontSize: 14, color: COLORS.navy, margin: 0 }}>We take no position on criminal justice policy. We take a position on the quality of evidence used to drive it.</p>
@@ -938,7 +939,7 @@ function FeaturedInvestigations() {
 
         {/* Investigation 3: Canary/Reform Tax */}
         <div className="fi-scroll" style={{ height: '100%', scrollSnapAlign: 'start', display: 'flex', alignItems: 'center', padding: '60px 8vw', boxSizing: 'border-box' }}>
-          <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%', paddingTop: 60 }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%' }}>
             <div style={{ background: '#fae9b0', borderRadius: 8, padding: '12px 18px', marginBottom: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
               <span style={{ fontSize: 16, flexShrink: 0 }}>&#x1F4E2;</span>
               <p style={{ fontFamily: B, fontSize: 14, color: COLORS.navy, margin: 0 }}>We support taxes on those who can afford it. We disagree with incorrect figures, regardless of political alignment.</p>
