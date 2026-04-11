@@ -18,13 +18,13 @@ export default function MultiplierBadge({ multiplier, label }: MultiplierBadgePr
         gap: 6,
         background: bg,
         borderRadius: 6,
-        padding: '4px 10px',
+        padding: '6px 14px',
       }}
     >
       <span
         style={{
           fontFamily: 'var(--font-serif), serif',
-          fontSize: 18,
+          fontSize: 'var(--inv-badge, 18px)',
           color,
           letterSpacing: '-0.02em',
         }}
@@ -34,7 +34,7 @@ export default function MultiplierBadge({ multiplier, label }: MultiplierBadgePr
       <span
         style={{
           fontFamily: 'var(--font-sans), sans-serif',
-          fontSize: 12,
+          fontSize: 'var(--inv-badge-sm, 14px)',
           fontWeight: 600,
           textTransform: 'uppercase',
           letterSpacing: '0.1em',

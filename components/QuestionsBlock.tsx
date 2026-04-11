@@ -13,12 +13,12 @@ export default function QuestionsBlock({ questions }: QuestionsBlockProps) {
       <div
         style={{
           fontFamily: 'var(--font-sans), sans-serif',
-          fontSize: 14,
+          fontSize: 'var(--inv-section-heading, 14px)',
           fontWeight: 700,
           textTransform: 'uppercase',
           letterSpacing: '0.1em',
           color: COLORS.navy,
-          marginBottom: 16,
+          marginBottom: 12,
           display: 'flex',
           alignItems: 'center',
           gap: 8,
@@ -27,6 +27,21 @@ export default function QuestionsBlock({ questions }: QuestionsBlockProps) {
         <span style={{ fontSize: 18 }}>&#x2753;</span>
         Questions we think deserve answers
       </div>
+
+      {/* Preamble */}
+      <p
+        style={{
+          fontFamily: 'var(--font-sans), sans-serif',
+          fontSize: 'var(--inv-question-preamble, 16px)',
+          fontStyle: 'italic',
+          lineHeight: 1.6,
+          color: COLORS.muted,
+          margin: '0 0 20px',
+        }}
+      >
+        Our questions are not about policy &mdash; that&apos;s for individuals to decide. We ask the questions that ensure the base claims politicians make are factually correct.
+      </p>
+
       <ul
         style={{
           listStyle: 'none',
@@ -56,7 +71,7 @@ function QuestionItem({ text }: { text: string }) {
         display: 'flex',
         gap: 12,
         alignItems: 'flex-start',
-        padding: '12px 16px',
+        padding: '14px 18px',
         borderRadius: 8,
         background: hovered ? 'rgba(27,42,74,0.03)' : 'transparent',
         transition: 'background 0.25s ease',
@@ -64,7 +79,7 @@ function QuestionItem({ text }: { text: string }) {
     >
       <span
         style={{
-          fontSize: 16,
+          fontSize: 18,
           flexShrink: 0,
           lineHeight: 1.5,
         }}
@@ -74,8 +89,8 @@ function QuestionItem({ text }: { text: string }) {
       <span
         style={{
           fontFamily: 'var(--font-sans), sans-serif',
-          fontSize: 16,
-          lineHeight: 1.65,
+          fontSize: 'var(--inv-question, 22px)',
+          lineHeight: 1.5,
           color: COLORS.ink80,
         }}
       >

@@ -25,7 +25,7 @@ export default function ImpactBox({ impact }: ImpactBoxProps) {
       <div
         style={{
           fontFamily: B,
-          fontSize: 16,
+          fontSize: 'var(--inv-section-heading, 14px)',
           fontWeight: 700,
           textTransform: 'uppercase',
           letterSpacing: '0.1em',
@@ -48,7 +48,7 @@ export default function ImpactBox({ impact }: ImpactBoxProps) {
               key={i}
               style={{
                 fontFamily: B,
-                fontSize: 16,
+                fontSize: 'var(--inv-impact, 18px)',
                 lineHeight: 1.7,
                 color: COLORS.amberDark,
                 marginBottom: i < sentences.length - 1 ? 6 : 0,
@@ -62,7 +62,7 @@ export default function ImpactBox({ impact }: ImpactBoxProps) {
         <p
           style={{
             fontFamily: B,
-            fontSize: 16,
+            fontSize: 'var(--inv-impact, 18px)',
             lineHeight: 1.7,
             color: COLORS.amberDark,
             margin: 0,

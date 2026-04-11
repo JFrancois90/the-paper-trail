@@ -98,6 +98,26 @@ export default function RootLayout({
                 outline: 2px solid #2358a3;
                 outline-offset: 2px;
               }
+              /* ── Investigation page type scale ── */
+              :root {
+                --inv-banner: 18px;
+                --inv-badge: 16px;
+                --inv-badge-sm: 14px;
+                --inv-title: clamp(32px, 5vw, 40px);
+                --inv-source-link: 14px;
+                --inv-label: 12px;
+                --inv-bullet: 18px;
+                --inv-punchline: 18px;
+                --inv-section-heading: 14px;
+                --inv-body: 18px;
+                --inv-bar-label: 16px;
+                --inv-bar-amount: 20px;
+                --inv-chain-node: 16px;
+                --inv-chain-note: 18px;
+                --inv-question-preamble: 16px;
+                --inv-question: 22px;
+                --inv-impact: 18px;
+              }
               .nav-logo { height: 56px; }
               .nav-logo-light { mix-blend-mode: multiply; }
               .nav-link { white-space: nowrap; }
@@ -119,6 +139,45 @@ export default function RootLayout({
                 background: linear-gradient(to bottom, transparent 65%, rgba(26,107,66,0.2) 65%);
                 padding: 0 3px;
                 border-radius: 2px;
+              }
+              /* Investigation page snap scroll */
+              .inv-snap-container {
+                height: 100vh;
+                overflow-y: auto;
+                scroll-snap-type: y mandatory;
+                scroll-behavior: smooth;
+                scrollbar-width: none;
+              }
+              .inv-snap-container::-webkit-scrollbar { display: none; }
+              .inv-snap-section {
+                min-height: 100vh;
+                scroll-snap-align: start;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 80px 28px 40px;
+                box-sizing: border-box;
+                overflow-y: auto;
+              }
+              .inv-inner {
+                max-width: 900px;
+                width: 100%;
+                margin: 0 auto;
+              }
+              .inv-source-notice-desktop {}
+              @media (max-width: 768px) {
+                .inv-snap-container {
+                  height: auto;
+                  overflow-y: visible;
+                  scroll-snap-type: none;
+                }
+                .inv-snap-section {
+                  min-height: auto;
+                  scroll-snap-align: none;
+                  display: block;
+                  padding: 40px 20px;
+                }
+                .inv-source-notice-desktop { display: none; }
               }
               /* Global nav link hover */
               .nav-link {

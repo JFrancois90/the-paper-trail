@@ -4,7 +4,6 @@ import type { Metadata } from 'next';
 import { COLORS } from '@/lib/constants';
 import { investigations } from '@/data/investigations';
 import Nav from '@/components/Nav';
-import Footer from '@/components/Footer';
 import BackButton from '@/components/BackButton';
 import SourceDocsNotice from '@/components/SourceDocsNotice';
 import MultiplierBadge from '@/components/MultiplierBadge';
@@ -57,9 +56,7 @@ export default async function InvestigationPage({ params }: PageProps) {
   const inv = investigations.find((i) => i.slug === slug);
   if (!inv) notFound();
 
-  const related = slug === 'times-student-debt-37'
-    ? investigations.filter((i) => i.slug === 'student-debt-claim' || i.slug === 'student-debt-97k')
-    : investigations.filter((i) => i.slug !== slug).slice(0, 2);
+  const isCorrected = !!inv.correction && inv.slug !== 'student-debt-97k';
 
   return (
     <>
@@ -67,61 +64,62 @@ export default async function InvestigationPage({ params }: PageProps) {
       <BackButton />
       <main
         id="main-content"
-        style={{
-          maxWidth: 900,
-          margin: '0 auto',
-          padding: '100px 28px 48px',
-        }}
+        className="inv-snap-container"
       >
-        <SourceDocsNotice />
+        {/* ─── SECTION 1: THE CLAIM ─── */}
+        <section className="inv-snap-section">
+          <div className="inv-inner">
+            <div className="inv-source-notice-desktop">
+              <SourceDocsNotice />
+            </div>
 
-        {/* Back link */}
-        <Link
-          href="/"
-          style={{
-            fontFamily: 'var(--font-sans), sans-serif',
-            fontSize: 12,
-            fontWeight: 600,
-            textTransform: 'uppercase',
-            letterSpacing: '0.1em',
-            color: COLORS.ink40,
-            textDecoration: 'none',
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 6,
-            marginBottom: 32,
-          }}
-        >
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path
-              d="M9 3L5 7l4 4"
-              stroke={COLORS.ink40}
-              strokeWidth="1.3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          All investigations
-        </Link>
+            {/* Back link */}
+            <Link
+              href="/campaigns"
+              style={{
+                fontFamily: 'var(--font-sans), sans-serif',
+                fontSize: 'var(--inv-source-link, 14px)',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '0.1em',
+                color: COLORS.ink40,
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 6,
+                marginBottom: 24,
+              }}
+            >
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path
+                  d="M9 3L5 7l4 4"
+                  stroke={COLORS.ink40}
+                  strokeWidth="1.3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              Back to investigations
+            </Link>
 
         {/* Position banner */}
         <div
           style={{
             background: '#fae9b0',
             borderRadius: 10,
-            padding: '12px 20px',
+            padding: '14px 24px',
             marginBottom: 24,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            gap: 8,
+            gap: 10,
           }}
         >
-          <span style={{ fontSize: 16, flexShrink: 0 }}>&#x1F4E2;</span>
+          <span style={{ fontSize: 18, flexShrink: 0 }}>&#x1F4E2;</span>
           <p
             style={{
               fontFamily: 'var(--font-sans), sans-serif',
-              fontSize: 14,
+              fontSize: 'var(--inv-banner, 18px)',
               lineHeight: 1.5,
               color: COLORS.navy,
               margin: 0,
@@ -140,7 +138,7 @@ export default async function InvestigationPage({ params }: PageProps) {
         <ScrollReveal>
           {/* Header */}
           <div style={{ marginBottom: 32 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14, flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16, flexWrap: 'wrap' }}>
               <MultiplierBadge multiplier={inv.multiplier} label={inv.multiplierLabel} />
               {inv.rebuttalStatus && (
                 <StatusBadge
@@ -154,8 +152,8 @@ export default async function InvestigationPage({ params }: PageProps) {
               <span
                 style={{
                   fontFamily: 'var(--font-sans), sans-serif',
-                  fontSize: 12,
-                  color: COLORS.ink40,
+                  fontSize: 'var(--inv-badge, 16px)',
+                  color: COLORS.muted,
                 }}
               >
                 {inv.who} &middot; {inv.date}
@@ -165,22 +163,46 @@ export default async function InvestigationPage({ params }: PageProps) {
             <h1
               style={{
                 fontFamily: 'var(--font-serif), serif',
-                fontSize: 36,
+                fontSize: 'var(--inv-title, 36px)',
                 fontWeight: 400,
                 letterSpacing: '-0.02em',
                 color: COLORS.ink,
                 lineHeight: 1.25,
-                margin: 0,
+                margin: '0 0 12px',
               }}
             >
               &ldquo;{inv.claim}&rdquo;
             </h1>
+            {inv.sourceUrl && (
+              <a
+                href={inv.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 5,
+                  fontFamily: 'var(--font-sans), sans-serif',
+                  fontSize: 'var(--inv-source-link, 14px)',
+                  fontWeight: 600,
+                  color: COLORS.chainBlue,
+                  textDecoration: 'none',
+                  background: 'rgba(35,88,163,0.06)',
+                  padding: '5px 12px',
+                  borderRadius: 6,
+                }}
+              >
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M5 1h6v6M11 1L5.5 6.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M9 7v3.5a.5.5 0 01-.5.5h-7a.5.5 0 01-.5-.5v-7a.5.5 0 01.5-.5H5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+                </svg>
+                View original source
+              </a>
+            )}
           </div>
         </ScrollReveal>
 
-        {/* Said vs Source (full width) */}
-        <ScrollReveal>
-          <div style={{ marginBottom: 28 }}>
+        {/* Said vs Source */}
             <SaidVsSource
               saidQuote={inv.saidQuote}
               sourceLabel={inv.sourceLabel}
@@ -194,186 +216,110 @@ export default async function InvestigationPage({ params }: PageProps) {
               }
             />
           </div>
-        </ScrollReveal>
+        </section>
 
-        {/* Plain english */}
-        <ScrollReveal>
-          <div style={{ marginBottom: 28 }}>
+        {/* ─── SECTION 2: PLAIN ENGLISH + THE NUMBERS ─── */}
+        <section className="inv-snap-section">
+          <div className="inv-inner">
             <PlainEnglishBox analogy={inv.analogy} />
-          </div>
-        </ScrollReveal>
-
-        {/* Bar chart */}
-        <ScrollReveal>
-          <div
-            style={{
-              background: '#fff',
-              borderRadius: 14,
-              border: '1px solid rgba(27,42,74,0.08)',
-              padding: '22px 24px',
-              marginBottom: 28,
-            }}
-          >
-            <InvestigationPageBars data={inv.barData} />
-          </div>
-        </ScrollReveal>
-
-        {/* Whisper chain */}
-        {inv.whisperChain && (
-          <ScrollReveal>
             <div
               style={{
                 background: '#fff',
                 borderRadius: 14,
                 border: '1px solid rgba(27,42,74,0.08)',
-                padding: '22px 24px',
-                marginBottom: 28,
+                padding: '28px 28px',
+                marginTop: 28,
               }}
             >
-              <InvestigationPageChain chain={inv.whisperChain} note={inv.whisperNote} />
+              <InvestigationPageBars data={inv.barData} />
             </div>
-          </ScrollReveal>
-        )}
+          </div>
+        </section>
 
-        {/* Impact */}
-        <ScrollReveal>
-          <div style={{ marginBottom: 28 }}>
+        {/* ─── SECTION 3: CARELESS WHISPERS + WHY THIS MATTERS ─── */}
+        <section className="inv-snap-section">
+          <div className="inv-inner">
+            {inv.whisperChain && (
+              <div
+                style={{
+                  background: '#fff',
+                  borderRadius: 14,
+                  border: '1px solid rgba(27,42,74,0.08)',
+                  padding: '28px 28px',
+                  marginBottom: 28,
+                }}
+              >
+                <InvestigationPageChain chain={inv.whisperChain} note={inv.whisperNote} />
+              </div>
+            )}
             <ImpactBox impact={inv.impact} />
           </div>
-        </ScrollReveal>
+        </section>
 
-        {/* Investigation-specific extras */}
-        {inv.slug === 'railtrack-500m' && (
-          <ScrollReveal>
-            <RailtrackExtras />
-          </ScrollReveal>
-        )}
-        {inv.slug === 'student-debt-claim' && (
-          <ScrollReveal>
-            <StudentDebtExtras />
-          </ScrollReveal>
-        )}
-        {inv.slug === 'reform-tax-canary' && (
-          <ScrollReveal>
-            <ReformTaxExtras />
-          </ScrollReveal>
-        )}
-        {inv.slug === 'student-debt-97k' && (
-          <ScrollReveal>
-            <StudentDebt97kExtras />
-          </ScrollReveal>
-        )}
-        {inv.slug === 'times-student-debt-37' && (
-          <ScrollReveal>
-            <TimesStudentDebtExtras />
-          </ScrollReveal>
+        {/* ─── SECTION 4: WHERE THIS ARGUMENT LEADS (extras) ─── */}
+        {(inv.slug === 'railtrack-500m' || inv.slug === 'student-debt-claim' || inv.slug === 'reform-tax-canary' || inv.slug === 'student-debt-97k' || inv.slug === 'times-student-debt-37') && (
+          <section className="inv-snap-section">
+            <div className="inv-inner">
+              {inv.slug === 'railtrack-500m' && <RailtrackExtras />}
+              {inv.slug === 'student-debt-claim' && <StudentDebtExtras />}
+              {inv.slug === 'reform-tax-canary' && <ReformTaxExtras />}
+              {inv.slug === 'student-debt-97k' && <StudentDebt97kExtras />}
+              {inv.slug === 'times-student-debt-37' && <TimesStudentDebtExtras />}
+            </div>
+          </section>
         )}
 
-        {/* Questions */}
-        <ScrollReveal>
-          <div
-            style={{
-              background: '#fff',
-              borderRadius: 14,
-              border: '1px solid rgba(27,42,74,0.08)',
-              padding: '22px 24px',
-              marginBottom: 48,
-            }}
-          >
-            <QuestionsBlock questions={inv.questions} />
-          </div>
-        </ScrollReveal>
+        {/* ─── SECTION 5: QUESTIONS + OPEN INVITATION ─── */}
+        {!isCorrected && (
+          <section className="inv-snap-section">
+            <div className="inv-inner">
+              <div
+                style={{
+                  background: '#fff',
+                  borderRadius: 14,
+                  border: '1px solid rgba(27,42,74,0.08)',
+                  padding: '28px 28px',
+                  marginBottom: 28,
+                }}
+              >
+                <QuestionsBlock questions={inv.questions} />
+              </div>
 
-        {/* Correction box */}
+              {inv.rebuttalStatus && (
+                <RebuttalBox
+                  invited={inv.rebuttalStatus.invited}
+                  dateInvited={inv.rebuttalStatus.dateInvited}
+                  status={inv.rebuttalStatus.status}
+                  responseText={inv.rebuttalStatus.responseText}
+                />
+              )}
+            </div>
+          </section>
+        )}
+
+        {/* Correction box (for corrected investigations, shown inline) */}
         {inv.correction && (
-          <ScrollReveal>
-            <div style={{ marginBottom: 48 }}>
+          <section className="inv-snap-section">
+            <div className="inv-inner">
               <CorrectionBox
                 text={inv.correction}
                 date={inv.slug === 'student-debt-97k' ? 'Feb 2026' : undefined}
                 variant={inv.slug === 'student-debt-97k' ? 'disclaimer' : 'correction'}
               />
-            </div>
-          </ScrollReveal>
-        )}
-
-        {/* Rebuttal invitation */}
-        {inv.rebuttalStatus && (
-          <ScrollReveal>
-            <div style={{ marginBottom: 48 }}>
-              <RebuttalBox
-                invited={inv.rebuttalStatus.invited}
-                dateInvited={inv.rebuttalStatus.dateInvited}
-                status={inv.rebuttalStatus.status}
-                responseText={inv.rebuttalStatus.responseText}
-              />
-            </div>
-          </ScrollReveal>
-        )}
-
-        {/* Related investigations */}
-        {related.length > 0 && (
-          <section aria-label="Related investigations" style={{ marginBottom: 48 }}>
-            <p
-              style={{
-                fontFamily: 'var(--font-sans), sans-serif',
-                fontSize: 12,
-                fontWeight: 600,
-                textTransform: 'uppercase',
-                letterSpacing: '0.12em',
-                color: COLORS.ink40,
-                marginBottom: 16,
-              }}
-            >
-              More investigations
-            </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              {related.map((r) => (
-                <Link
-                  key={r.slug}
-                  href={`/investigations/${r.slug}`}
-                  style={{
-                    textDecoration: 'none',
-                    background: '#fff',
-                    borderRadius: 12,
-                    border: '1px solid rgba(27,42,74,0.08)',
-                    padding: '16px 20px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    gap: 12,
-                  }}
-                >
-                  <div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
-                      <MultiplierBadge multiplier={r.multiplier} label={r.multiplierLabel} />
-                    </div>
-                    <span
-                      style={{
-                        fontFamily: 'var(--font-serif), serif',
-                        fontSize: 16,
-                        color: COLORS.ink,
-                      }}
-                    >
-                      &ldquo;{r.claim}&rdquo;
-                    </span>
-                  </div>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0 }}>
-                    <path
-                      d="M6 4l4 4-4 4"
-                      stroke={COLORS.ink40}
-                      strokeWidth="1.3"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </Link>
-              ))}
+              {isCorrected && inv.rebuttalStatus && (
+                <div style={{ marginTop: 28 }}>
+                  <RebuttalBox
+                    invited={inv.rebuttalStatus.invited}
+                    dateInvited={inv.rebuttalStatus.dateInvited}
+                    status={inv.rebuttalStatus.status}
+                    responseText={inv.rebuttalStatus.responseText}
+                  />
+                </div>
+              )}
             </div>
           </section>
         )}
       </main>
-      <Footer />
     </>
   );
 }
@@ -394,16 +340,30 @@ function SourceBullets({ text, phrases }: { text: string; phrases: string[] }) {
   const pattern = escaped.length ? new RegExp(`(${escaped.join('|')})`, 'g') : null;
 
   return (
-    <ul style={{ margin: 0, padding: '0 0 0 18px', listStyleType: 'disc' }}>
-      {bullets.map((bullet, i) => (
-        <li key={i} style={{ marginBottom: i < bullets.length - 1 ? 4 : 0 }}>
-          {pattern
-            ? bullet.split(pattern).map((part, j) =>
-                phrases.includes(part) ? <Highlight key={j}>{part}</Highlight> : <span key={j}>{part}</span>
-              )
-            : bullet}
-        </li>
-      ))}
+    <ul style={{ margin: 0, padding: '0 0 0 18px', listStyleType: 'disc', fontSize: 'var(--inv-bullet, 18px)' }}>
+      {bullets.map((bullet, i) => {
+        // Check for __punchline__ markers
+        const isPunchline = bullet.includes('__');
+        const cleanBullet = bullet.replace(/__/g, '');
+        return (
+          <li
+            key={i}
+            style={{
+              marginBottom: i < bullets.length - 1 ? 6 : 0,
+              fontWeight: isPunchline ? 700 : undefined,
+              textDecoration: isPunchline ? 'underline' : undefined,
+              textDecorationColor: isPunchline ? 'rgba(26,107,66,0.4)' : undefined,
+              textUnderlineOffset: isPunchline ? '4px' : undefined,
+            }}
+          >
+            {pattern
+              ? cleanBullet.split(pattern).map((part, j) =>
+                  phrases.includes(part) ? <Highlight key={j}>{part}</Highlight> : <span key={j}>{part}</span>
+                )
+              : cleanBullet}
+          </li>
+        );
+      })}
     </ul>
   );
 }

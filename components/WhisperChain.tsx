@@ -19,16 +19,16 @@ interface WhisperChainProps {
 export default function WhisperChain({ chain, note, expanded }: WhisperChainProps) {
   return (
     <div>
-      <div style={{ marginBottom: 12 }}>
+      <div style={{ marginBottom: 14 }}>
         <div
           style={{
             fontFamily: 'var(--font-sans), sans-serif',
-            fontSize: 12,
-            fontWeight: 600,
+            fontSize: 'var(--inv-section-heading, 14px)',
+            fontWeight: 700,
             textTransform: 'uppercase',
             letterSpacing: '0.1em',
             color: COLORS.chainBlue,
-            marginBottom: 3,
+            marginBottom: 4,
           }}
         >
           Careless whispers
@@ -36,8 +36,8 @@ export default function WhisperChain({ chain, note, expanded }: WhisperChainProp
         <div
           style={{
             fontFamily: 'var(--font-sans), sans-serif',
-            fontSize: 12,
-            color: COLORS.ink40,
+            fontSize: 'var(--inv-bar-label, 16px)',
+            color: COLORS.muted,
           }}
         >
           How the claim spread from source to &lsquo;established fact&rsquo;
@@ -108,12 +108,12 @@ export default function WhisperChain({ chain, note, expanded }: WhisperChainProp
           <div
             style={{
               fontFamily: 'var(--font-sans), sans-serif',
-              fontSize: 12,
-              fontWeight: 600,
+              fontSize: 'var(--inv-section-heading, 14px)',
+              fontWeight: 700,
               textTransform: 'uppercase',
               letterSpacing: '0.1em',
               color: COLORS.amber,
-              marginBottom: 4,
+              marginBottom: 6,
             }}
           >
             What disappeared
@@ -121,7 +121,7 @@ export default function WhisperChain({ chain, note, expanded }: WhisperChainProp
           <p
             style={{
               fontFamily: 'var(--font-sans), sans-serif',
-              fontSize: 13,
+              fontSize: 'var(--inv-chain-note, 18px)',
               lineHeight: 1.65,
               color: COLORS.amberDark,
               margin: 0,
@@ -172,7 +172,7 @@ function ChainNodeBubble({ node, expanded, delay }: { node: ChainNode; expanded:
       <div
         style={{
           fontFamily: 'var(--font-sans), sans-serif',
-          fontSize: 12,
+          fontSize: 'var(--inv-chain-node, 16px)',
           fontWeight: 600,
           color: node.type === 'final' ? COLORS.claimRed : COLORS.ink,
           lineHeight: 1.4,
@@ -193,7 +193,7 @@ function ChainNodeBubble({ node, expanded, delay }: { node: ChainNode; expanded:
       <div
         style={{
           fontFamily: 'var(--font-sans), sans-serif',
-          fontSize: 12,
+          fontSize: 14,
           color: COLORS.ink40,
         }}
       >

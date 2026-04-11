@@ -18,7 +18,7 @@ export default function PlainEnglishBox({ analogy }: PlainEnglishBoxProps) {
       <div
         style={{
           fontFamily: B,
-          fontSize: 16,
+          fontSize: 'var(--inv-section-heading, 14px)',
           fontWeight: 700,
           textTransform: 'uppercase',
           letterSpacing: '0.1em',
@@ -31,7 +31,7 @@ export default function PlainEnglishBox({ analogy }: PlainEnglishBoxProps) {
       <p
         style={{
           fontFamily: B,
-          fontSize: 16,
+          fontSize: 'var(--inv-body, 18px)',
           lineHeight: 1.7,
           color: 'rgba(255,255,255,0.92)',
           margin: 0,

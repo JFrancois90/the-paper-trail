@@ -178,7 +178,7 @@ function MobileSwipeCards({
             <div
               style={{
                 fontFamily: 'var(--font-sans), sans-serif',
-                fontSize: 17,
+                fontSize: 'var(--inv-body, 18px)',
                 lineHeight: 1.5,
                 color: COLORS.sourceGreenDark,
                 margin: '0 0 12px',
@@ -251,7 +251,7 @@ function SaidPanel({ saidQuote }: { saidQuote: string }) {
       <div
         style={{
           fontFamily: 'var(--font-sans), sans-serif',
-          fontSize: 12,
+          fontSize: 'var(--inv-label, 12px)',
           fontWeight: 600,
           textTransform: 'uppercase',
           letterSpacing: '0.1em',
@@ -264,7 +264,7 @@ function SaidPanel({ saidQuote }: { saidQuote: string }) {
       <p
         style={{
           fontFamily: 'var(--font-serif), serif',
-          fontSize: 17,
+          fontSize: 'var(--inv-body, 18px)',
           lineHeight: 1.5,
           color: COLORS.claimRedDark,
           margin: 0,
@@ -294,7 +294,7 @@ function SourcePanel({
       <div
         style={{
           fontFamily: 'var(--font-sans), sans-serif',
-          fontSize: 12,
+          fontSize: 'var(--inv-label, 12px)',
           fontWeight: 600,
           textTransform: 'uppercase',
           letterSpacing: '0.1em',
@@ -319,7 +319,7 @@ function SourcePanel({
         <div
           style={{
             fontFamily: 'var(--font-sans), sans-serif',
-            fontSize: 17,
+            fontSize: 'var(--inv-body, 18px)',
             lineHeight: 1.5,
             color: COLORS.sourceGreenDark,
             margin: '0 0 10px',
@@ -358,18 +358,20 @@ function SourcePanel({
         </div>
       )}
 
-      <p
-        style={{
-          fontFamily: 'var(--font-sans), sans-serif',
-          fontSize: 15,
-          fontWeight: 700,
-          lineHeight: 1.5,
-          color: COLORS.sourceGreenDark,
-          margin: 0,
-        }}
-      >
-        {sourceOneLiner}
-      </p>
+      {sourceOneLiner && (
+        <p
+          style={{
+            fontFamily: 'var(--font-sans), sans-serif',
+            fontSize: 'var(--inv-body, 18px)',
+            fontWeight: 700,
+            lineHeight: 1.5,
+            color: COLORS.sourceGreenDark,
+            margin: 0,
+          }}
+        >
+          {sourceOneLiner}
+        </p>
+      )}
     </div>
   );
 }

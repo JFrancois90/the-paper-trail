@@ -32,6 +32,7 @@ export interface Investigation {
   multiplier: string;
   multiplierLabel: string;
   subject: string;
+  sourceUrl: string | null;
   rebuttalStatus: {
     invited: string;
     dateInvited?: string;
@@ -51,11 +52,11 @@ export const investigations: Investigation[] = [
     claim: 'Labour nationalised Railtrack, paying just £500 million for the entire UK rail network',
     saidQuote: 'Labour nationalised Railtrack, paying just £500 million for the entire UK rail network',
     said: 'Railtrack was nationalised for £500m, and this is being used as a precedent to argue that nationalising water companies won\'t cost much',
-    source: 'Shareholder payout: £500m. Debt taken on by government: £7.1bn. Total cost to taxpayer: £7.6bn. They said: £500m. Actual cost: 15x higher. £500m was equity only. They ignored the debt.',
+    source: 'Shareholder payout: £500m. Debt taken on by government: £7.1bn. Total cost to taxpayer: £7.6bn. They said: £500m. Actual cost: 15x higher. £500m was equity only. __They ignored the debt.__',
     sourceImage: null,
-    sourceOneLiner: 'Equity: £0.5bn. Debt absorbed: £7.1bn. True cost: £7.6bn.',
+    sourceOneLiner: '',
     impact: 'We need to know the real cost to nationalise. Maths errors of this size are not acceptable. Billions of pounds of public money are at stake.',
-    analogy: 'Think of it like buying a house for £100k when it has a £400k mortgage. The £100k is the equity the seller had, but you\'ve just taken on all the debt too. The real price is £500k (otherwise Rightmove has some explaining to do!)',
+    analogy: 'Think of it like buying a house for £100k — but it also has a £400k mortgage. The £100k is the equity the seller had, but you\'ve also just taken on all the debt too. The real price is £500k (otherwise Rightmove has some explaining to do!)',
     barData: [
       { label: 'Quoted', sublabel: 'Equity only', value: 0.5, color: '#b5302a', fmt: '£0.5bn' },
       { label: 'Omitted', sublabel: 'Debt absorbed', value: 7.1, color: '#1b2a4a', fmt: '£7.1bn' },
@@ -73,12 +74,13 @@ export const investigations: Investigation[] = [
     correction: null,
     questions: [
       'Why was the £7.1bn debt left out of every version of this claim?',
-      'If the true cost was £7.6bn, does water nationalisation still add up under your current projections?',
-      'Four outlets cited each other without checking the original source. What responsibility do MPs have when their claims get republished unchecked?',
+      'If the true cost was £7.6bn, using this approach for the whole water industry, what is the likely cost for the UK taxpayer to nationalise water companies?',
+      'To put clarity on the abstract term \'shareholders\', how much of the debt and equity of the UK water industry is owned by UK pensioners / pension funds?',
     ],
     multiplier: '15×',
     multiplierLabel: 'cost understated',
     subject: 'Nationalisation',
+    sourceUrl: 'https://www.clivelewis.org/uncategorised/news-and-updates/2024/12/26/analysis-is-the-supposed-90bn-cost-of-compensation-really-a-barrier-to-restoring-water-companies-to-public-ownership/',
     rebuttalStatus: { invited: 'Clive Lewis MP', dateInvited: 'Jan 2026', status: 'no-response' },
   },
   {
@@ -90,7 +92,7 @@ export const investigations: Investigation[] = [
     claim: 'The number of billionaires has increased since 2022',
     saidQuote: 'The number of billionaires has increased since 2022',
     said: 'Used in a public letter to the Chancellor to argue that wealth inequality is getting worse and needs urgent action',
-    source: 'They said billionaire numbers increased since 2022. Their own source shows 177 in 2022, down to 156 in 2025. That is a decrease, not an increase. Their cited source contradicts the claim.',
+    source: 'They said billionaire numbers increased since 2022. Their own source shows 177 in 2022, down to 156 in 2025. That is a decrease, not an increase. __Their cited source contradicts the claim.__',
     sourceImage: null,
     sourceOneLiner: 'Their source shows 177 → 156. That\'s a decrease.',
     impact: 'Their source: 177 down to 156. They said it was rising. Their own cited report contradicts the claim.',
@@ -111,6 +113,7 @@ export const investigations: Investigation[] = [
     multiplier: '−12%',
     multiplierLabel: 'actual trend',
     subject: 'Wealth inequality',
+    sourceUrl: null,
     rebuttalStatus: { invited: 'Green Party leadership', dateInvited: 'Dec 2025', status: 'no-response' },
   },
   {
@@ -122,10 +125,10 @@ export const investigations: Investigation[] = [
     claim: 'UK Capital Gains Tax rates are currently the lowest in the G7',
     saidQuote: 'UK Capital Gains Tax rates are currently the lowest in the G7',
     said: 'Used in the same letter to the Chancellor, arguing for CGT to be aligned with income tax rates',
-    source: 'UK CGT: 18% basic, 24% higher. US long-term rate starts at 0%. Then 15%. Tops at 20%. The US rates are clearly lower. UK is not the lowest in the G7.',
+    source: 'UK CGT: 18% basic, 24% higher. US long-term rate starts at 0%, rising to 20%. __UK is not the lowest in the G7.__',
     sourceImage: null,
-    sourceOneLiner: 'US long-term rate starts at 0%. UK basic rate: 18%.',
-    impact: 'US rate starts at 0%. UK rate: 18%. The UK is not the lowest in the G7.',
+    sourceOneLiner: '',
+    impact: 'Using a statement that UK CGT is the lowest in the G7 as a way to argue for higher rates means decision-making is being driven by false information.',
     analogy: 'It\'s a bit like saying your car is the slowest on the motorway while you\'re overtaking someone.',
     barData: [
       { label: 'US (low)', sublabel: '0% band', value: 0, color: '#1a6b42', fmt: '0%' },
@@ -146,6 +149,7 @@ export const investigations: Investigation[] = [
     multiplier: 'False',
     multiplierLabel: 'US starts at 0%',
     subject: 'Taxation',
+    sourceUrl: null,
     rebuttalStatus: { invited: 'Green Party leadership', dateInvited: 'Dec 2025', status: 'no-response' },
   },
   {
@@ -157,7 +161,7 @@ export const investigations: Investigation[] = [
     claim: '£350 billion is lost to tax evasion each year',
     saidQuote: '£350 billion is lost to tax evasion each year',
     said: 'Attributed to the Chartered Institute of Taxation, and used to argue for massive enforcement spending',
-    source: 'HMRC tax evasion figure: £5.5bn. Tax avoidance: £1.8bn. Total tax gap: £7.3bn. The £350bn covers all economic crime. Not the same as tax evasion. The label shrank. The number stayed.',
+    source: 'HMRC tax evasion figure: £5.5bn. Tax avoidance: £1.8bn. Total tax gap: £7.3bn. The £350bn covers all economic crime. Not the same as tax evasion. __The label shrank. The number stayed.__',
     sourceImage: null,
     sourceOneLiner: 'HMRC official figure: £5.5bn. Not £350bn.',
     impact: 'HMRC figure: £5.5bn. Claimed: £350bn. That is 48 times too high.',
@@ -185,6 +189,7 @@ export const investigations: Investigation[] = [
     multiplier: '48×',
     multiplierLabel: 'figure inflated',
     subject: 'Taxation',
+    sourceUrl: null,
     rebuttalStatus: { invited: 'Multiple sources', dateInvited: 'Jan 2026', status: 'invited' },
   },
   {
@@ -217,6 +222,7 @@ export const investigations: Investigation[] = [
     multiplier: '£13.6k',
     multiplierLabel: 'above max possible',
     subject: 'Student loans',
+    sourceUrl: null,
     rebuttalStatus: { invited: 'Nadia Whittome MP', dateInvited: 'Jan 2026', status: 'no-response' },
   },
   {
@@ -250,6 +256,7 @@ export const investigations: Investigation[] = [
     multiplier: '=',
     multiplierLabel: 'same saving',
     subject: 'Taxation',
+    sourceUrl: null,
     rebuttalStatus: { invited: 'The Canary (no response) and Richard Murphy (via Instagram, 26 Feb 2026, no response)', dateInvited: 'Feb 2026', status: 'no-response' },
   },
   {
@@ -284,6 +291,7 @@ export const investigations: Investigation[] = [
     multiplier: '£29k',
     multiplierLabel: 'less than borrowed',
     subject: 'Student loans',
+    sourceUrl: null,
     rebuttalStatus: {
       invited: '@yourmoneymatesarah',
       dateInvited: 'Jan 2026',
@@ -324,6 +332,7 @@ export const investigations: Investigation[] = [
     multiplier: '3.2\u00d7',
     multiplierLabel: 'increase overstated',
     subject: 'Student loans',
+    sourceUrl: null,
     rebuttalStatus: {
       invited: 'Matilda Davies (LinkedIn, 10 Feb 2026) and The Times (Instagram DM, 10 Feb 2026)',
       dateInvited: 'Feb 2026',
