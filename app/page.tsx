@@ -6,9 +6,6 @@ import Nav from '@/components/Nav';
 import ScrollReveal from '@/components/ScrollReveal';
 import IntroSequence from '@/components/IntroSequence';
 import MobileHomepage from '@/components/mobile/MobileHomepage';
-import BrandSlogan from '@/components/BrandSlogan';
-import HeroSubtitle from '@/components/HeroSubtitle';
-import SubmissionForm from '@/components/SubmissionForm';
 import FloatingNarrative from '@/components/FloatingNarrative';
 import useIsMobile from '@/lib/useIsMobile';
 import { COLORS } from '@/lib/constants';
@@ -60,22 +57,64 @@ export default function Home() {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
+            alignItems: 'center',
             padding: '0 8vw',
             position: 'relative',
+            textAlign: 'center',
           }}
         >
-          <div style={{ maxWidth: 1200, margin: '0 auto', width: '100%' }}>
+          <div style={{ maxWidth: 900, margin: '0 auto', width: '100%' }}>
             <h1
               style={{
-                margin: '0 0 40px',
+                fontFamily: H,
+                fontSize: 'clamp(28px, 4.5vw, 52px)',
+                fontWeight: 700,
+                color: '#fff',
+                lineHeight: 1.2,
+                letterSpacing: '-0.03em',
+                margin: '0 0 24px',
                 animation: 'fadeUp 0.8s ease forwards',
                 opacity: 0,
               }}
             >
-              <BrandSlogan size="lg" theme="dark" />
+              These aren&apos;t opinions. They&apos;re numbers. And they&apos;re wrong.
             </h1>
 
-            <HeroSubtitle />
+            <p
+              style={{
+                fontFamily: B,
+                fontSize: 'clamp(14px, 1.5vw, 16px)',
+                fontWeight: 600,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                color: COLORS.amber,
+                margin: '0 0 40px',
+                animation: 'fadeUp 0.8s ease 0.3s forwards',
+                opacity: 0,
+              }}
+            >
+              Integrity, not ideology.
+            </p>
+
+            <div style={{ animation: 'fadeUp 0.8s ease 0.6s forwards', opacity: 0 }}>
+              <Link
+                href="/campaigns"
+                style={{
+                  display: 'inline-block',
+                  fontFamily: B,
+                  fontSize: 16,
+                  fontWeight: 700,
+                  color: COLORS.navy,
+                  background: '#fff',
+                  padding: '16px 36px',
+                  borderRadius: 8,
+                  textDecoration: 'none',
+                  transition: 'transform 0.15s ease',
+                }}
+              >
+                See our investigations &rarr;
+              </Link>
+            </div>
           </div>
 
           {/* Scroll arrow */}
@@ -104,128 +143,6 @@ export default function Home() {
               50% { transform: translateX(-50%) translateY(8px); }
             }
           `}</style>
-        </section>
-
-        {/* ─── SECTION 2: THE PROBLEM ─── */}
-        <section
-          className="snap-section"
-          data-nav-theme="light"
-          style={{
-            minHeight: '100vh',
-            background: COLORS.paper,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '60px 8vw',
-          }}
-        >
-          <div style={{ maxWidth: 1100, margin: '0 auto', textAlign: 'center' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginBottom: 40 }}>
-              {[
-                { text: <><span className="highlight-red">&pound;350m a week</span> plastered on a bus.</>, delay: 0 },
-                { text: <><span className="highlight-red">&pound;7.1 billion</span> missing from a policy.</>, delay: 0.12 },
-                { text: <>A <span className="highlight-red">48&times;</span> exaggeration in Parliament.</>, delay: 0.24 },
-              ].map((item, i) => (
-                <ScrollReveal key={i} anim="scaleReveal" delay={item.delay}>
-                  <p
-                    style={{
-                      fontFamily: H,
-                      fontSize: 'clamp(32px, 4.5vw, 56px)',
-                      fontWeight: 700,
-                      color: COLORS.navy,
-                      margin: 0,
-                      lineHeight: 1.15,
-                      letterSpacing: '-0.03em',
-                    }}
-                  >
-                    {item.text}
-                  </p>
-                </ScrollReveal>
-              ))}
-            </div>
-
-            <ScrollReveal anim="fadeUp" delay={0.4}>
-              <p
-                style={{
-                  fontFamily: B,
-                  fontSize: 'clamp(16px, 2vw, 20px)',
-                  color: COLORS.muted,
-                  lineHeight: 1.6,
-                  margin: '0 0 40px',
-                }}
-              >
-                These aren&apos;t <span style={{ color: COLORS.navy, fontWeight: 600 }}>opinions</span>. They&apos;re <span style={{ color: COLORS.amber, fontWeight: 600 }}>numbers</span>. And they&apos;re <span style={{ color: COLORS.claimRed, fontWeight: 600 }}>wrong</span>.
-              </p>
-            </ScrollReveal>
-
-            <ScrollReveal anim="fadeUp" delay={0.5}>
-              <p
-                style={{
-                  fontFamily: B,
-                  fontSize: 'clamp(14px, 1.5vw, 16px)',
-                  fontWeight: 600,
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase',
-                  color: COLORS.amber,
-                  margin: '0 0 40px',
-                }}
-              >
-                Integrity, not ideology.
-              </p>
-            </ScrollReveal>
-
-            {/* Three-act equation */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20, marginTop: 20 }}>
-              {/* Act 1 */}
-              <ScrollReveal anim="scaleReveal" delay={0.5}>
-                <div className="hover-card" style={{ textAlign: 'center', background: '#fff', border: '1px solid rgba(27,42,74,0.10)', borderRadius: 14, padding: '32px 24px', boxShadow: '0 2px 8px rgba(27,42,74,0.04)', minHeight: 220, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                  <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.muted, margin: '0 0 8px' }}>What we were <span style={{ color: COLORS.navy, fontWeight: 700 }}>taught</span></p>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
-                    <span style={{ fontFamily: H, fontSize: 'clamp(40px, 4.5vw, 56px)', fontWeight: 700, color: COLORS.navy, letterSpacing: '-0.03em' }}>1 + 1 = 2</span>
-                    <span style={{ fontSize: 'clamp(28px, 3vw, 40px)', color: COLORS.sourceGreen }}>&#10003;</span>
-                  </div>
-                  <p style={{ fontFamily: B, fontSize: 15, color: COLORS.navy, margin: '6px 0 0' }}>The basics. Everyone agrees.</p>
-                </div>
-              </ScrollReveal>
-
-              {/* Act 2 */}
-              <ScrollReveal anim="scaleReveal" delay={0.65}>
-                <div className="hover-card" style={{ textAlign: 'center', background: '#fff', border: '1px solid rgba(27,42,74,0.10)', borderRadius: 14, padding: '32px 24px', boxShadow: '0 2px 8px rgba(27,42,74,0.04)', minHeight: 220, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                  <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.muted, margin: '0 0 8px' }}>What we were taught to look out for</p>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
-                    <span style={{ fontFamily: H, fontSize: 'clamp(40px, 4.5vw, 56px)', fontWeight: 700, color: COLORS.navy, letterSpacing: '-0.03em' }}>
-                      1 + 1 = <span style={{ color: COLORS.claimRed }}>3</span>
-                    </span>
-                    <span style={{ fontSize: 'clamp(28px, 3vw, 40px)', color: COLORS.claimRed }}>&#10007;</span>
-                  </div>
-                  <p style={{ fontFamily: B, fontSize: 15, color: COLORS.navy, margin: '6px 0 0' }}>The old problem. Twisting the answer.</p>
-                </div>
-              </ScrollReveal>
-
-              {/* Act 3 */}
-              <ScrollReveal anim="scaleReveal" delay={0.8}>
-                <div className="hover-card" style={{ textAlign: 'center', background: '#fff', border: '1px solid rgba(27,42,74,0.10)', borderRadius: 14, padding: '32px 24px', boxShadow: '0 2px 8px rgba(27,42,74,0.04)', minHeight: 220, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                  <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.claimRed, margin: '0 0 8px' }}>The new problem</p>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
-                    <span style={{ fontFamily: H, fontSize: 'clamp(40px, 4.5vw, 56px)', fontWeight: 700, color: COLORS.navy, letterSpacing: '-0.03em' }}>
-                      <span style={{ color: COLORS.claimRed, textDecoration: 'underline', textDecorationColor: 'rgba(181,48,42,0.3)', textUnderlineOffset: '4px' }}>2</span> + 1 = 2
-                    </span>
-                    <span style={{ fontSize: 'clamp(28px, 3vw, 40px)', color: COLORS.claimRed }}>&#10007;</span>
-                  </div>
-                  <p style={{ fontFamily: B, fontSize: 15, color: COLORS.navy, margin: '6px 0 0' }}>Twisting the input. The answer looks right, so nobody checks.</p>
-                </div>
-              </ScrollReveal>
-            </div>
-
-            <ScrollReveal anim="fadeUp" delay={0.95}>
-              <div style={{ marginTop: 48, maxWidth: 520, marginLeft: 'auto', marginRight: 'auto' }}>
-                <p style={{ fontFamily: B, fontSize: 18, lineHeight: 1.65, color: COLORS.navy, margin: '0 0 6px' }}>Forget the statistics. Forget the politics.</p>
-                <p style={{ fontFamily: B, fontSize: 18, lineHeight: 1.65, color: COLORS.navy, margin: '0 0 6px' }}><span className="highlight">Check the base data.</span></p>
-                <p style={{ fontFamily: B, fontSize: 18, lineHeight: 1.65, color: COLORS.navy, margin: '0 0 6px' }}>Fix that, and the rest follows.</p>
-                <p style={{ fontFamily: B, fontSize: 18, lineHeight: 1.65, color: COLORS.navy, margin: 0 }}>Get it wrong, and it&apos;s a butterfly effect of errors.</p>
-              </div>
-            </ScrollReveal>
-          </div>
         </section>
 
         {/* ─── SECTION 3: WHAT WE DO ─── */}
@@ -270,6 +187,7 @@ export default function Home() {
               <img
                 src="/images/forest-illustration.png"
                 alt="When the base number is wrong, everything built on it falls apart."
+                loading="lazy"
                 style={{
                   width: '100%',
                   maxWidth: 800,
@@ -385,6 +303,31 @@ export default function Home() {
                   </div>
                 </ScrollReveal>
               ))}
+            </div>
+
+            {/* Equation cards */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16, marginTop: 40 }}>
+              <ScrollReveal anim="scaleReveal" delay={0.5}>
+                <div className="hover-card" style={{ textAlign: 'center', background: '#fff', border: '1px solid rgba(27,42,74,0.10)', borderRadius: 14, padding: '28px 20px', boxShadow: '0 2px 8px rgba(27,42,74,0.04)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                  <p style={{ fontFamily: B, fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.muted, margin: '0 0 6px' }}>What we were <span style={{ color: COLORS.navy, fontWeight: 700 }}>taught</span></p>
+                  <span style={{ fontFamily: H, fontSize: 'clamp(32px, 4vw, 44px)', fontWeight: 700, color: COLORS.navy, letterSpacing: '-0.03em' }}>1 + 1 = 2 <span style={{ color: COLORS.sourceGreen }}>&#10003;</span></span>
+                  <p style={{ fontFamily: B, fontSize: 13, color: COLORS.navy, margin: '4px 0 0' }}>The basics. Everyone agrees.</p>
+                </div>
+              </ScrollReveal>
+              <ScrollReveal anim="scaleReveal" delay={0.6}>
+                <div className="hover-card" style={{ textAlign: 'center', background: '#fff', border: '1px solid rgba(27,42,74,0.10)', borderRadius: 14, padding: '28px 20px', boxShadow: '0 2px 8px rgba(27,42,74,0.04)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                  <p style={{ fontFamily: B, fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.muted, margin: '0 0 6px' }}>What we were taught to look out for</p>
+                  <span style={{ fontFamily: H, fontSize: 'clamp(32px, 4vw, 44px)', fontWeight: 700, color: COLORS.navy, letterSpacing: '-0.03em' }}>1 + 1 = <span style={{ color: COLORS.claimRed }}>3</span> <span style={{ color: COLORS.claimRed }}>&#10007;</span></span>
+                  <p style={{ fontFamily: B, fontSize: 13, color: COLORS.navy, margin: '4px 0 0' }}>The old problem. Twisting the answer.</p>
+                </div>
+              </ScrollReveal>
+              <ScrollReveal anim="scaleReveal" delay={0.7}>
+                <div className="hover-card" style={{ textAlign: 'center', background: '#fff', border: '1px solid rgba(27,42,74,0.10)', borderRadius: 14, padding: '28px 20px', boxShadow: '0 2px 8px rgba(27,42,74,0.04)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                  <p style={{ fontFamily: B, fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.claimRed, margin: '0 0 6px' }}>The new problem</p>
+                  <span style={{ fontFamily: H, fontSize: 'clamp(32px, 4vw, 44px)', fontWeight: 700, color: COLORS.navy, letterSpacing: '-0.03em' }}><span style={{ color: COLORS.claimRed, textDecoration: 'underline', textDecorationColor: 'rgba(181,48,42,0.3)', textUnderlineOffset: '3px' }}>2</span> + 1 = 2 <span style={{ color: COLORS.claimRed }}>&#10007;</span></span>
+                  <p style={{ fontFamily: B, fontSize: 13, color: COLORS.navy, margin: '4px 0 0' }}>Twisting the input. The answer looks right, so nobody checks.</p>
+                </div>
+              </ScrollReveal>
             </div>
           </div>
         </section>
@@ -678,95 +621,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ─── SECTION 7: THE MISSION ─── */}
-        <section
-          className="snap-section"
-          data-nav-theme="light"
-          style={{
-            minHeight: '100vh',
-            background: COLORS.paper,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '60px 8vw',
-            textAlign: 'center',
-          }}
-        >
-          <div style={{ maxWidth: 800, margin: '0 auto' }}>
-            <ScrollReveal anim="scaleReveal">
-              <p
-                style={{
-                  fontFamily: H,
-                  fontSize: 'clamp(28px, 4vw, 40px)',
-                  fontWeight: 700,
-                  color: COLORS.navy,
-                  lineHeight: 1.25,
-                  margin: '0 0 8px',
-                  letterSpacing: '-0.02em',
-                }}
-              >
-                <span className="highlight">Getting it wrong isn&apos;t the crime.</span>
-              </p>
-              <p
-                style={{
-                  fontFamily: H,
-                  fontSize: 'clamp(28px, 4vw, 40px)',
-                  fontWeight: 700,
-                  color: COLORS.navy,
-                  lineHeight: 1.25,
-                  margin: '0 0 32px',
-                  letterSpacing: '-0.02em',
-                }}
-              >
-                <span className="highlight">Refusing to fix it is.</span>
-              </p>
-            </ScrollReveal>
-
-            <ScrollReveal anim="fadeUp" delay={0.2}>
-              <p
-                style={{
-                  fontFamily: B,
-                  fontSize: 16,
-                  lineHeight: 1.65,
-                  color: COLORS.muted,
-                  margin: '0 0 32px',
-                  maxWidth: 520,
-                  marginLeft: 'auto',
-                  marginRight: 'auto',
-                }}
-              >
-                We&apos;re not attacking any policy. That&apos;s what politicians want. It creates noise.
-                We&apos;re inviting them to clarify the numbers they use. Without the politics.
-              </p>
-            </ScrollReveal>
-
-            <ScrollReveal anim="fadeUp" delay={0.3}>
-              <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 8, marginBottom: 16 }}>
-                {['Labour', 'Conservative', 'Green', 'Reform', 'Lib Dem'].map((party) => (
-                  <span
-                    key={party}
-                    style={{
-                      fontFamily: B,
-                      fontSize: 12,
-                      fontWeight: 500,
-                      color: COLORS.navy,
-                      background: 'rgba(27,42,74,0.06)',
-                      borderRadius: 20,
-                      padding: '6px 16px',
-                    }}
-                  >
-                    {party}
-                  </span>
-                ))}
-              </div>
-              <p style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: COLORS.muted, margin: 0 }}>
-                Same standard. Every party. No exceptions.
-              </p>
-            </ScrollReveal>
-          </div>
-        </section>
-
-        {/* ─── SECTION 8: SUBSCRIBE ─── */}
+        {/* ─── SECTION 7: SUBSCRIBE ─── */}
         <section
           className="snap-section"
           id="subscribe"
@@ -860,22 +715,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ─── SUBMISSION FORM ─── */}
-        <section
-          className="snap-section"
-          data-nav-theme="light"
-          style={{
-            minHeight: '100vh',
-            background: COLORS.paper,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '60px 8vw',
-          }}
-        >
-          <SubmissionForm />
-        </section>
-
         {/* ─── FOOTER ─── */}
         <footer
           style={{
@@ -927,9 +766,9 @@ export default function Home() {
               thepapertrail.uk &middot; &copy; {new Date().getFullYear()}
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
-              <Link href="/how-it-works" style={{ fontFamily: B, fontSize: 12, color: COLORS.muted, textDecoration: 'none' }}>What we do</Link>
-              <Link href="/about" style={{ fontFamily: B, fontSize: 12, color: COLORS.muted, textDecoration: 'none' }}>What we are fighting for</Link>
-              <a href="/support" style={{ fontFamily: B, fontSize: 12, color: COLORS.muted, textDecoration: 'none' }}>Support us</a>
+              <Link href="/campaigns" style={{ fontFamily: B, fontSize: 12, color: COLORS.muted, textDecoration: 'none' }}>Investigations</Link>
+              <Link href="/about" style={{ fontFamily: B, fontSize: 12, color: COLORS.muted, textDecoration: 'none' }}>About</Link>
+              <Link href="/fighting-for-change" style={{ fontFamily: B, fontSize: 12, color: COLORS.muted, textDecoration: 'none' }}>Join</Link>
             </div>
           </div>
         </footer>

@@ -294,7 +294,7 @@ function buildFrames(inv: Investigation): Frame[] {
               {inv.sourceLabel}
             </p>
             {inv.sourceImage ? (
-              <img src={inv.sourceImage} alt="Source document" style={{ width: '100%', borderRadius: 8, marginBottom: 10 }} />
+              <img src={inv.sourceImage} alt="Source document" loading="lazy" style={{ width: '100%', borderRadius: 8, marginBottom: 10 }} />
             ) : null}
             <p style={{ fontFamily: 'var(--font-sans), sans-serif', fontSize: 16, fontWeight: 600, lineHeight: 1.5, color: COLORS.sourceGreenDark, margin: 0 }}>
               {inv.sourceOneLiner}

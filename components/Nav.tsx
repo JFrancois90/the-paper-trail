@@ -9,12 +9,10 @@ interface NavProps {
 }
 
 const NAV_LINKS = [
-  { href: '/', label: 'Home', sectionId: '' },
-  { href: '/campaigns', label: 'Our investigations', highlight: true, sectionId: 'investigations' },
-  { href: '/careless-whispers', label: 'Careless whispers', sectionId: 'careless-whispers' },
-  { href: '/how-it-works', label: 'What we do', sectionId: 'what-we-do' },
-  { href: '/about', label: 'What we are fighting for', sectionId: 'fighting-for', cta: true },
-  { href: '/fighting-for-change', label: 'Join the fight', sectionId: '' },
+  { href: '/campaigns', label: 'Investigations', sectionId: 'investigations' },
+  { href: '/careless-whispers', label: 'Careless Whispers', sectionId: 'careless-whispers' },
+  { href: '/about', label: 'About', sectionId: 'what-we-do' },
+  { href: '/fighting-for-change', label: 'Join', sectionId: '' },
 ];
 
 export default function Nav({ forceDark }: NavProps) {
@@ -156,26 +154,9 @@ export default function Nav({ forceDark }: NavProps) {
               {NAV_LINKS.map((link) => {
                 const isActive = link.sectionId && activeSection === link.sectionId;
                 const activeColor = dark ? '#fff' : COLORS.navy;
-                const isCta = 'cta' in link && link.cta;
-                let baseStyle: React.CSSProperties;
-                if (isCta) {
-                  baseStyle = {
-                    ...labelStyle,
-                    fontWeight: 700,
-                    color: dark ? '#1b2a4a' : '#fff',
-                    background: dark ? '#fac75a' : COLORS.navy,
-                    padding: '6px 16px',
-                    borderRadius: 6,
-                    whiteSpace: 'nowrap',
-                  };
-                } else if (link.highlight) {
-                  baseStyle = { ...labelStyle, fontWeight: 600, color: dark ? '#fac75a' : COLORS.amber };
-                } else {
-                  baseStyle = labelStyle;
-                }
-                const style = isActive && !isCta
-                  ? { ...baseStyle, color: activeColor, fontWeight: 700, borderBottom: `2px solid ${activeColor}`, paddingBottom: 2 }
-                  : baseStyle;
+                const style = isActive
+                  ? { ...labelStyle, color: activeColor, fontWeight: 700, borderBottom: `2px solid ${activeColor}`, paddingBottom: 2 }
+                  : labelStyle;
                 return (
                   <Link
                     key={link.href}
@@ -197,25 +178,6 @@ export default function Nav({ forceDark }: NavProps) {
                   </Link>
                 );
               })}
-              <Link
-                href="/support"
-                style={{
-                  fontFamily: 'var(--font-sans), sans-serif',
-                  fontSize: 13,
-                  fontWeight: 500,
-                  textDecoration: 'none',
-                  padding: '8px 18px',
-                  borderRadius: 6,
-                  border: `1.5px solid ${dark ? 'rgba(255,255,255,0.3)' : '#1b2a4a'}`,
-                  color: dark ? 'rgba(255,255,255,0.7)' : '#1b2a4a',
-                  background: 'transparent',
-                  transition: 'all 0.3s ease',
-                  display: 'flex',
-                  alignItems: 'center',
-                }}
-              >
-                Support us
-              </Link>
               <Link
                 href="/subscribe"
                 style={{

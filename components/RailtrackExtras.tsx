@@ -91,6 +91,7 @@ export default function RailtrackExtras() {
       <img
         src="/images/water-company-iceberg.png"
         alt="Water company nationalisation iceberg, debt below the waterline"
+        loading="lazy"
         style={{
           width: '100%',
           maxWidth: 900,

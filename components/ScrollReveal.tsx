@@ -14,9 +14,9 @@ interface ScrollRevealProps {
 
 const animations: Record<AnimType, { hidden: React.CSSProperties; visible: React.CSSProperties; duration: string }> = {
   fadeUp: {
-    hidden: { opacity: 0, transform: 'translateY(40px)' },
+    hidden: { opacity: 0, transform: 'translateY(20px)' },
     visible: { opacity: 1, transform: 'translateY(0)' },
-    duration: '0.6s',
+    duration: '0.4s',
   },
   scaleReveal: {
     hidden: { opacity: 0, transform: 'scale(0.95)' },

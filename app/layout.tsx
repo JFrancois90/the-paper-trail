@@ -69,9 +69,12 @@ export default function RootLayout({
                 align-items: center;
                 justify-content: center;
               }
+              /* Section dividers: alternate cream/white */
+              .snap-section:nth-child(even) { background: #fff; }
+              .snap-section:nth-child(odd) { background: #f0efe8; }
+              .snap-section[data-nav-theme="dark"] { background: #1b2a4a !important; }
               @media (max-width: 768px) {
-                html { scroll-snap-type: none; scroll-behavior: auto; }
-                .snap-section { min-height: auto; scroll-snap-align: none; display: block; }
+                .snap-section { padding-top: 48px; padding-bottom: 48px; }
               }
               .skip-link {
                 position: absolute;
@@ -98,6 +101,12 @@ export default function RootLayout({
                 text-decoration: none;
                 outline: 2px solid #2358a3;
                 outline-offset: 2px;
+              }
+              /* ── Global typography ── */
+              :root {
+                --body-text: 18px;
+                --body-line-height: 1.6;
+                --body-max-width: 680px;
               }
               /* ── Investigation page type scale ── */
               :root {
@@ -188,13 +197,46 @@ export default function RootLayout({
                 color: #c48a0a !important;
                 letter-spacing: 0.04em;
               }
+              /* Global body typography */
+              body {
+                font-size: var(--body-text, 18px);
+                line-height: var(--body-line-height, 1.6);
+              }
+              p, li, td { max-width: var(--body-max-width, 680px); }
+              /* Touch targets: minimum 44px on mobile */
+              @media (max-width: 768px) {
+                a, button, [role="button"] { min-height: 44px; min-width: 44px; }
+              }
               /* Global card hover */
               .hover-card {
-                transition: transform 0.2s ease, box-shadow 0.2s ease;
+                transition: transform 0.15s ease, box-shadow 0.15s ease;
               }
               .hover-card:hover {
                 transform: scale(1.02) translateY(-2px);
                 box-shadow: 0 8px 24px rgba(27, 42, 74, 0.12);
+              }
+              /* Micro-interactions */
+              button, a[href] {
+                transition: color 0.2s ease, background 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
+              }
+              button:hover, .cta-button:hover {
+                transform: scale(1.02);
+              }
+              /* Skeleton loading */
+              .skeleton {
+                background: linear-gradient(90deg, rgba(27,42,74,0.06) 25%, rgba(27,42,74,0.1) 50%, rgba(27,42,74,0.06) 75%);
+                background-size: 200% 100%;
+                animation: shimmer 1.5s infinite;
+                border-radius: 8px;
+              }
+              @keyframes shimmer {
+                0% { background-position: 200% 0; }
+                100% { background-position: -200% 0; }
+              }
+              /* Badge pulse on first appearance */
+              @keyframes badgePulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.05); }
               }
               @media (prefers-reduced-motion: reduce) {
                 *, *::before, *::after {

@@ -38,6 +38,7 @@ export const TOPIC_COLORS: Record<string, { bg: string; text: string }> = {
   Taxation: { bg: '#1A5632', text: '#fff' },
   'Wealth inequality': { bg: '#8B6914', text: '#fff' },
   'Student loans': { bg: '#8B1A1A', text: '#fff' },
+  'Criminal justice': { bg: '#4A1B6B', text: '#fff' },
 };
 
 export const PARTY_COLORS: Record<string, { bg: string; text: string; border: string }> = {
