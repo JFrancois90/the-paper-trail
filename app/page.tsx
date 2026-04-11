@@ -107,7 +107,7 @@ export default function Home() {
                 opacity: 0,
               }}
             >
-              Integrity, not ideology.
+              Integrity before ideology.
             </p>
 
             <div style={{ animation: 'fadeUp 0.8s ease 0.6s forwards', opacity: 0, textAlign: 'center', width: '100%' }}>
@@ -370,7 +370,7 @@ export default function Home() {
                 What we are fighting for
               </h2>
               <p style={{ fontFamily: B, fontSize: 18, color: COLORS.navy, margin: '0 0 28px' }}>
-                Not ideology. <span className="highlight"  style={{ fontWeight: 700 }}>Integrity.</span>
+                <span className="highlight" style={{ fontWeight: 700 }}>Integrity</span> before ideology.
               </p>
             </ScrollReveal>
 
@@ -413,7 +413,7 @@ export default function Home() {
                   lineHeight: 1.5,
                 }}
               >
-                You can&apos;t have ideology without <span className="highlight">integrity</span>. We campaign for <span className="highlight">integrity</span>.
+                You can&apos;t have ideology without <span className="highlight">integrity</span>. <span className="highlight">Integrity</span> before ideology.
               </p>
             </ScrollReveal>
 
@@ -740,7 +740,7 @@ export default function Home() {
           <div style={{ maxWidth: 1100, margin: '0 auto', textAlign: 'center' }}>
             <img src="/logo-nav.png" alt="The Paper Trail" style={{ height: 44, marginBottom: 16 }} />
             <p style={{ fontFamily: B, fontSize: 13, color: COLORS.lightMuted, margin: '0 0 16px' }}>
-              Integrity, not ideology.
+              Integrity before ideology.
             </p>
 
             {/* Support section */}

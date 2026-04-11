@@ -10,7 +10,7 @@ import MemeIllustration from '@/components/MemeIllustration';
 export const metadata: Metadata = {
   title: 'About | The Paper Trail',
   description:
-    "We campaign for integrity, not ideology. The Paper Trail checks whether politicians' numbers match their own cited sources.",
+    "We campaign for integrity before ideology. The Paper Trail checks whether politicians' numbers match their own cited sources.",
 };
 
 export default function AboutPage() {
@@ -41,7 +41,7 @@ export default function AboutPage() {
               margin: '0 0 28px',
             }}
           >
-            We campaign for integrity, not ideology
+            We campaign for integrity before ideology
           </h1>
         </ScrollReveal>
 

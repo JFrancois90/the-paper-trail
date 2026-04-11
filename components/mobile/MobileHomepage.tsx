@@ -195,7 +195,7 @@ export default function MobileHomepage() {
                 margin: '0 0 28px',
               }}
             >
-              Integrity, not ideology.
+              Integrity before ideology.
             </p>
             <Link
               href="/campaigns"

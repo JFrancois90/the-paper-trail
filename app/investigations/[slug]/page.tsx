@@ -146,16 +146,16 @@ export default async function InvestigationPage({ params }: PageProps) {
               margin: 0,
             }}
           >
-            {inv.slug === 'railtrack-500m' && 'We support public accountability for nationalisation costs. We disagree with incorrect figures, regardless of political alignment. Integrity, not ideology.'}
-            {(inv.slug === 'billionaire-numbers' || inv.slug === 'cgt-lowest-g7') && 'We support action on wealth inequality and fair taxation. We disagree with incorrect figures, regardless of political alignment. Integrity, not ideology.'}
-            {inv.slug === 'student-debt-claim' && 'We support fair access to higher education and reform of student debt. We disagree with incorrect figures, regardless of political alignment. Integrity, not ideology.'}
-            {inv.slug === 'reform-tax-canary' && 'We support taxes on those who can afford it. We disagree with incorrect figures, regardless of political alignment. Integrity, not ideology.'}
-            {inv.slug === 'student-debt-97k' && 'We support reform of the student loan system. We disagree with incorrect figures, regardless of political alignment. Integrity, not ideology.'}
-            {inv.slug === '350bn-tax-evasion' && 'We support action on tax evasion. We disagree with incorrect figures, regardless of political alignment. Integrity, not ideology.'}
-            {inv.slug === 'times-student-debt-37' && 'We support transparency in student finance and reform of the loan system. We disagree with incorrect figures, regardless of who publishes them. Integrity, not ideology.'}
-            {inv.slug === 'reform-prolific-offenders' && 'We take no position on criminal justice policy. We take a position on the quality of evidence used to drive it. Integrity, not ideology.'}
-            {inv.slug === 'reform-stop-search' && 'We take no position on stop and search policy. We take a position on the quality of sources used to justify it. Integrity, not ideology.'}
-            {inv.slug === 'reform-234bn-immigration' && 'We take no position on immigration policy. We take a position on the quality of evidence used to drive it. Integrity, not ideology.'}
+            {inv.slug === 'railtrack-500m' && 'We support public accountability for nationalisation costs. We disagree with incorrect figures, regardless of political alignment. Integrity before ideology.'}
+            {(inv.slug === 'billionaire-numbers' || inv.slug === 'cgt-lowest-g7') && 'We support action on wealth inequality and fair taxation. We disagree with incorrect figures, regardless of political alignment. Integrity before ideology.'}
+            {inv.slug === 'student-debt-claim' && 'We support fair access to higher education and reform of student debt. We disagree with incorrect figures, regardless of political alignment. Integrity before ideology.'}
+            {inv.slug === 'reform-tax-canary' && 'We support taxes on those who can afford it. We disagree with incorrect figures, regardless of political alignment. Integrity before ideology.'}
+            {inv.slug === 'student-debt-97k' && 'We support reform of the student loan system. We disagree with incorrect figures, regardless of political alignment. Integrity before ideology.'}
+            {inv.slug === '350bn-tax-evasion' && 'We support action on tax evasion. We disagree with incorrect figures, regardless of political alignment. Integrity before ideology.'}
+            {inv.slug === 'times-student-debt-37' && 'We support transparency in student finance and reform of the loan system. We disagree with incorrect figures, regardless of who publishes them. Integrity before ideology.'}
+            {inv.slug === 'reform-prolific-offenders' && 'We take no position on criminal justice policy. We take a position on the quality of evidence used to drive it. Integrity before ideology.'}
+            {inv.slug === 'reform-stop-search' && 'We take no position on stop and search policy. We take a position on the quality of sources used to justify it. Integrity before ideology.'}
+            {inv.slug === 'reform-234bn-immigration' && 'We take no position on immigration policy. We take a position on the quality of evidence used to drive it. Integrity before ideology.'}
           </p>
         </div>
 

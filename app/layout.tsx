@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://thepapertrail.uk'),
   title: 'The Paper Trail | Taking politics out of politics',
   description:
-    "Integrity, not ideology. We check whether politicians' numbers match their own cited sources. Non-partisan, source-led fact-checking for the UK.",
+    "Integrity before ideology. We check whether politicians' numbers match their own cited sources. Non-partisan, source-led fact-checking for the UK.",
   icons: {
     icon: '/images/square.png',
     apple: '/images/square.png',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'The Paper Trail',
     description:
-      "Integrity, not ideology. We check whether politicians' numbers match their own cited sources.",
+      "Integrity before ideology. We check whether politicians' numbers match their own cited sources.",
     siteName: 'The Paper Trail',
     url: 'https://www.thepapertrail.uk',
     type: 'website',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: 'summary',
     title: 'The Paper Trail',
     description:
-      "Integrity, not ideology. We check whether politicians' numbers match their own cited sources.",
+      "Integrity before ideology. We check whether politicians' numbers match their own cited sources.",
     images: ['/images/square.png'],
   },
 };

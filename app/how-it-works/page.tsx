@@ -11,7 +11,7 @@ const B = 'var(--font-sans), sans-serif';
 export const metadata: Metadata = {
   title: 'How it works | The Paper Trail',
   description:
-    'Our three-step process: find the source, compare the numbers, trace the citation chain. Integrity, not ideology.',
+    'Our three-step process: find the source, compare the numbers, trace the citation chain. Integrity before ideology.',
 };
 
 const steps = [
