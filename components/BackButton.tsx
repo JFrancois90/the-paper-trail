@@ -10,6 +10,7 @@ export default function BackButton() {
     <button
       onClick={() => router.back()}
       aria-label="Go back"
+      className="back-button-fixed"
       style={{
         position: 'fixed',
         top: 80,

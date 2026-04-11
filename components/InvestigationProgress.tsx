@@ -147,18 +147,11 @@ export default function InvestigationProgress({
               onClick={() => goToSection(i)}
               style={{
                 flex: 1,
-                height: 3,
-                borderRadius: 2,
-                background: i <= activeIdx ? COLORS.navy : 'rgba(27,42,74,0.15)',
                 cursor: 'pointer',
-                transition: 'background 0.3s ease',
-                minHeight: 44,
-                display: 'flex',
-                alignItems: 'flex-start',
-                paddingTop: 0,
+                padding: '8px 0',
               }}
             >
-              <div style={{ width: '100%', height: 3, borderRadius: 2, background: i <= activeIdx ? COLORS.navy : 'rgba(27,42,74,0.15)' }} />
+              <div style={{ width: '100%', height: 3, borderRadius: 2, background: i <= activeIdx ? COLORS.navy : 'rgba(27,42,74,0.15)', transition: 'background 0.3s ease' }} />
             </div>
           ))}
         </div>

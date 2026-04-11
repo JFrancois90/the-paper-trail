@@ -71,6 +71,10 @@ export default function RootLayout({
               .snap-section:nth-child(even) { background: #fff; }
               .snap-section:nth-child(odd) { background: #f0efe8; }
               .snap-section[data-nav-theme="dark"] { background: #1b2a4a !important; }
+              /* Hide fixed back button on mobile */
+              @media (max-width: 768px) {
+                .back-button-fixed { display: none !important; }
+              }
               /* Investigation section titles (desktop: outside box, large) */
               .inv-section-title {
                 font-family: var(--font-heading), sans-serif;
