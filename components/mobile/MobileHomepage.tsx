@@ -211,7 +211,7 @@ export default function MobileHomepage() {
                 textDecoration: 'none',
               }}
             >
-              See our investigations &rarr;
+              See our campaigns &rarr;
             </Link>
           </div>
         </SnapSection>
@@ -392,7 +392,7 @@ export default function MobileHomepage() {
               margin: '0 0 24px',
             }}
           >
-            Featured Investigations
+            Featured Campaigns
           </h2>
           {/* Position banner - compact */}
           <div
@@ -519,7 +519,7 @@ export default function MobileHomepage() {
               margin: '0 0 16px',
             }}
           >
-            All investigations
+            All campaigns
           </h2>
 
           <InvestigationCarousel
@@ -542,7 +542,7 @@ export default function MobileHomepage() {
               marginBottom: 12,
             }}
           >
-            See all our investigations &rarr;
+            See all our campaigns &rarr;
           </Link>
           <br />
           <Link

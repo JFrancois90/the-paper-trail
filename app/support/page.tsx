@@ -160,7 +160,7 @@ export default function SupportPage() {
                 marginRight: 'auto',
               }}
             >
-              Donations are coming soon. In the meantime, subscribing and sharing our investigations is the best way to support&nbsp;us.
+              Donations are coming soon. In the meantime, subscribing and sharing our campaigns is the best way to support&nbsp;us.
             </p>
 
             <div

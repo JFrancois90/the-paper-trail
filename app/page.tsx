@@ -126,7 +126,7 @@ export default function Home() {
                   transition: 'transform 0.15s ease',
                 }}
               >
-                See our investigations &rarr;
+                See our campaigns &rarr;
               </Link>
             </div>
           </div>
@@ -629,7 +629,7 @@ export default function Home() {
                   transition: 'opacity 0.2s ease',
                 }}
               >
-                See all investigations &rarr;
+                See all campaigns &rarr;
               </Link>
             </ScrollReveal>
           </div>
@@ -780,7 +780,7 @@ export default function Home() {
               thepapertrail.uk &middot; &copy; {new Date().getFullYear()}
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
-              <Link href="/campaigns" style={{ fontFamily: B, fontSize: 12, color: COLORS.muted, textDecoration: 'none' }}>Investigations</Link>
+              <Link href="/campaigns" style={{ fontFamily: B, fontSize: 12, color: COLORS.muted, textDecoration: 'none' }}>Campaigns</Link>
               <Link href="/about" style={{ fontFamily: B, fontSize: 12, color: COLORS.muted, textDecoration: 'none' }}>About</Link>
               <Link href="/gallery" style={{ fontFamily: B, fontSize: 12, color: COLORS.muted, textDecoration: 'none' }}>Gallery</Link>
               <Link href="/fighting-for-change" style={{ fontFamily: B, fontSize: 12, color: COLORS.muted, textDecoration: 'none' }}>Join</Link>
@@ -829,7 +829,7 @@ function FeaturedInvestigations() {
       <div style={{ padding: '80px 8vw 0', flexShrink: 0 }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <h2 style={{ fontFamily: H, fontSize: 22, fontWeight: 700, letterSpacing: '-0.01em', color: COLORS.navy, margin: '0 0 24px' }}>
-            Featured Investigations
+            Featured Campaigns
           </h2>
         </div>
       </div>

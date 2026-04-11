@@ -155,7 +155,7 @@ export default function MobileNav({ dark = true }: MobileNavProps) {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8, flex: 1 }}>
             {[
               { href: '/', label: 'Home' },
-              { href: '/campaigns', label: 'Investigations' },
+              { href: '/campaigns', label: 'Campaigns' },
               { href: '/careless-whispers', label: 'Careless Whispers' },
               { href: '/about', label: 'About' },
               { href: '/fighting-for-change', label: 'Join' },

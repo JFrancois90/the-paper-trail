@@ -119,7 +119,7 @@ export default async function InvestigationPage({ params }: PageProps) {
                   strokeLinejoin="round"
                 />
               </svg>
-              Back to investigations
+              Back to campaigns
             </Link>
 
         {/* Position banner */}

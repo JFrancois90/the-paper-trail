@@ -10,7 +10,7 @@ const H = 'var(--font-heading), sans-serif';
 
 export const metadata: Metadata = {
   title: 'Gallery | The Paper Trail',
-  description: 'Illustrations and visuals from our investigations.',
+  description: 'Illustrations and visuals from our campaigns.',
 };
 
 const images = [
@@ -65,7 +65,7 @@ export default function GalleryPage() {
               margin: '0 0 40px',
             }}
           >
-            Illustrations from our investigations. Share freely.
+            Illustrations from our campaigns. Share freely.
           </p>
         </ScrollReveal>
 

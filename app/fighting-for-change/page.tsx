@@ -414,7 +414,7 @@ export default function FightingForChangePage() {
           </div>
         </ScrollReveal>
 
-        {/* Back to investigations */}
+        {/* Back to campaigns */}
         <div style={{ textAlign: 'center', marginBottom: 48 }}>
           <Link
             href="/"
@@ -426,7 +426,7 @@ export default function FightingForChangePage() {
               textDecoration: 'none',
             }}
           >
-            &larr; Back to all investigations
+            &larr; Back to all campaigns
           </Link>
         </div>
       </main>
