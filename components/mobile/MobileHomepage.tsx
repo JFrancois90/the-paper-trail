@@ -569,6 +569,64 @@ export default function MobileHomepage() {
           </SnapSection>
         ))}
 
+        {/* ═══ SEE ALL CAMPAIGNS ═══ */}
+        <SnapSection style={{ textAlign: 'center' }}>
+          <h2
+            style={{
+              fontFamily: H,
+              fontSize: 28,
+              fontWeight: 700,
+              color: COLORS.navy,
+              margin: '0 0 12px',
+            }}
+          >
+            Want to see more?
+          </h2>
+          <p
+            style={{
+              fontFamily: B,
+              fontSize: 16,
+              lineHeight: 1.6,
+              color: COLORS.muted,
+              margin: '0 0 24px',
+            }}
+          >
+            We are investigating claims across parties, media, and influencers.
+          </p>
+          <Link
+            href="/campaigns"
+            style={{
+              display: 'inline-block',
+              fontFamily: B,
+              fontSize: 16,
+              fontWeight: 600,
+              color: '#fff',
+              background: COLORS.navy,
+              borderRadius: 10,
+              padding: '14px 28px',
+              textDecoration: 'none',
+              marginBottom: 12,
+            }}
+          >
+            See all our campaigns &rarr;
+          </Link>
+          <br />
+          <Link
+            href="/fighting-for-change"
+            style={{
+              display: 'inline-block',
+              fontFamily: B,
+              fontSize: 14,
+              fontWeight: 600,
+              color: COLORS.chainBlue,
+              textDecoration: 'none',
+              marginTop: 8,
+            }}
+          >
+            Join the fight for change &rarr;
+          </Link>
+        </SnapSection>
+
         {/* ═══ MISSION / ABOUT ═══ */}
         <SnapSection bg={COLORS.navy} style={{ textAlign: 'center' }}>
           <h2

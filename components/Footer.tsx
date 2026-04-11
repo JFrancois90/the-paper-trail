@@ -42,7 +42,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()}
           </span>
         </div>
-        <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap', alignItems: 'center' }}>
           <Link href="/campaigns" style={linkStyle}>
             Our campaigns
           </Link>
@@ -52,6 +52,28 @@ export default function Footer() {
           <Link href="/about" style={linkStyle}>
             What we are fighting for
           </Link>
+          <a
+            href="https://www.instagram.com/papertrail.uk"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Follow us on Instagram"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: 44,
+              height: 44,
+              borderRadius: '50%',
+              color: COLORS.ink40,
+              transition: 'color 0.2s ease',
+            }}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+              <circle cx="12" cy="12" r="5" />
+              <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
+            </svg>
+          </a>
         </div>
       </div>
     </footer>

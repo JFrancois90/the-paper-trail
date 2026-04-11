@@ -41,7 +41,7 @@ export default function MobileNav({ dark = true }: MobileNavProps) {
           left: 0,
           right: 0,
           zIndex: 100,
-          padding: '0 24px',
+          padding: '0 20px',
           background: bg,
           backdropFilter: scrolled ? 'blur(14px)' : 'none',
           WebkitBackdropFilter: scrolled ? 'blur(14px)' : 'none',

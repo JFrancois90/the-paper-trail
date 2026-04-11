@@ -5,6 +5,7 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import BackButton from '@/components/BackButton';
 import ScrollReveal from '@/components/ScrollReveal';
+import FighterCarousel from '@/components/FighterCarousel';
 
 const B = 'var(--font-sans), sans-serif';
 const H = 'var(--font-heading), sans-serif';
@@ -113,17 +114,9 @@ export default function FightingForChangePage() {
           </div>
         </ScrollReveal>
 
-        {/* Who is fighting */}
+        {/* Who is fighting — swipe cards */}
         <ScrollReveal>
-          <div
-            style={{
-              background: '#fff',
-              borderRadius: 14,
-              border: '1px solid rgba(27,42,74,0.06)',
-              padding: '24px 28px',
-              marginBottom: 28,
-            }}
-          >
+          <div style={{ marginBottom: 28 }}>
             <p
               style={{
                 fontFamily: B,
@@ -137,70 +130,7 @@ export default function FightingForChangePage() {
             >
               Who is fighting for change
             </p>
-
-            {[
-              {
-                name: 'Peter Stefanovic',
-                desc: 'Lawyer and campaigner. Viral videos documenting misleading statements. Tens of millions of views.',
-              },
-              {
-                name: 'Compassion in Politics',
-                desc: 'Cross-party campaign pushing for legislation making it an offence to deliberately mislead Parliament.',
-              },
-              {
-                name: 'Dawn Butler MP',
-                desc: 'Suspended from the Commons in 2021 for calling the PM a liar. Highlighted the paradox in the rules.',
-              },
-              {
-                name: 'Andy Slaughter MP',
-                desc: 'Introduced a Private Members\' Bill proposing sanctions for MPs who knowingly mislead.',
-              },
-              {
-                name: 'Led By Donkeys',
-                desc: 'Campaign group using billboards and stunts to hold politicians accountable for their statements.',
-              },
-              {
-                name: 'Public petitions',
-                desc: 'Multiple petitions on 38 Degrees and Change.org with hundreds of thousands of signatures.',
-              },
-            ].map((person, i) => (
-              <div
-                key={i}
-                style={{
-                  display: 'flex',
-                  gap: 12,
-                  alignItems: 'flex-start',
-                  padding: '12px 0',
-                  borderBottom: i < 5 ? '1px solid rgba(27,42,74,0.06)' : 'none',
-                }}
-              >
-                <span style={{ fontSize: 16, flexShrink: 0, lineHeight: 1.5 }}>&#x1F4AC;</span>
-                <div>
-                  <p
-                    style={{
-                      fontFamily: B,
-                      fontSize: 15,
-                      fontWeight: 600,
-                      color: COLORS.navy,
-                      margin: '0 0 2px',
-                    }}
-                  >
-                    {person.name}
-                  </p>
-                  <p
-                    style={{
-                      fontFamily: B,
-                      fontSize: 14,
-                      lineHeight: 1.5,
-                      color: COLORS.muted,
-                      margin: 0,
-                    }}
-                  >
-                    {person.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
+            <FighterCarousel />
           </div>
         </ScrollReveal>
 

@@ -24,16 +24,24 @@ export const metadata: Metadata = {
   description:
     "We check whether politicians' numbers match their own cited sources. Non-partisan, source-led political fact-checking for the UK.",
   icons: {
-    icon: '/favicon.png',
-    apple: '/favicon.png',
+    icon: '/images/square.png',
+    apple: '/images/square.png',
   },
   openGraph: {
     title: 'The Paper Trail',
     description:
-      "Taking politics out of politics. We check whether politicians' numbers match their own cited sources.",
+      "Taking politics out of politics. We check whether politicians' numbers match their own cited sources and base data.",
     siteName: 'The Paper Trail',
+    url: 'https://www.thepapertrail.uk',
     type: 'website',
-    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    images: [{ url: '/images/square.png', width: 1200, height: 1200 }],
+  },
+  twitter: {
+    card: 'summary',
+    title: 'The Paper Trail',
+    description:
+      "Taking politics out of politics. We check whether politicians' numbers match their own cited sources and base data.",
+    images: ['/images/square.png'],
   },
 };
 
