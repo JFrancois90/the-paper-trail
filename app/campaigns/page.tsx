@@ -184,12 +184,15 @@ export default function CampaignsPage() {
                 <p
                   style={{
                     fontFamily: B,
-                    fontSize: 13,
-                    color: COLORS.lightMuted,
+                    fontSize: 18,
+                    color: COLORS.navy,
                     margin: '0 0 12px',
+                    borderBottom: `2px solid ${COLORS.claimRed}`,
+                    paddingBottom: 6,
+                    display: 'inline-block',
                   }}
                 >
-                  {inv.who} &middot; {inv.date}
+                  <strong>{inv.who}</strong> <span style={{ fontWeight: 400, color: COLORS.muted }}>&middot; {inv.date}</span>
                 </p>
 
                 <span
