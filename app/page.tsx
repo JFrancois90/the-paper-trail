@@ -64,53 +64,18 @@ export default function Home() {
             position: 'relative',
           }}
         >
-          <div style={{ maxWidth: 1200, margin: '0 auto', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 48 }}>
-            {/* Left side */}
-            <div style={{ flex: '0 0 52%' }}>
-              <h1
-                style={{
-                  margin: '0 0 40px',
-                  animation: 'fadeUp 0.8s ease forwards',
-                  opacity: 0,
-                }}
-              >
-                <BrandSlogan size="lg" theme="dark" />
-              </h1>
-
-              <HeroSubtitle />
-            </div>
-
-            {/* Right side — translucent blue panel */}
-            <div
+          <div style={{ maxWidth: 1200, margin: '0 auto', width: '100%' }}>
+            <h1
               style={{
-                flex: '0 0 42%',
-                background: 'rgba(220, 235, 250, 0.85)',
-                backdropFilter: 'blur(12px)',
-                WebkitBackdropFilter: 'blur(12px)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                borderRadius: 20,
-                padding: '48px 36px',
-                color: COLORS.navy,
-                minHeight: '50vh',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                animation: 'fadeUp 0.8s ease 0.4s forwards',
+                margin: '0 0 40px',
+                animation: 'fadeUp 0.8s ease forwards',
                 opacity: 0,
               }}
             >
-              <div style={{ fontFamily: B, fontSize: 17, lineHeight: 1.8, color: COLORS.navy }}>
-                <p style={{ margin: '0 0 4px' }}>Every campaign ends with questions.</p>
-                <p style={{ margin: '0 0 24px', fontWeight: 600 }}>Questions your MP should answer.</p>
+              <BrandSlogan size="lg" theme="dark" />
+            </h1>
 
-                <p style={{ margin: '0 0 12px', fontFamily: H, fontSize: 22, fontWeight: 700, color: '#D4A84B' }}>Take them to your surgery.</p>
-                <p style={{ margin: '0 0 12px', fontFamily: H, fontSize: 22, fontWeight: 700, color: '#E74C3C' }}>Put them in an email.</p>
-                <p style={{ margin: '0 0 28px', fontFamily: H, fontSize: 22, fontWeight: 700, color: '#7FB3D8' }}>Share them on social media.</p>
-
-                <p style={{ margin: 0, fontWeight: 600 }}>We arm you with the facts.</p>
-                <p style={{ margin: 0, fontWeight: 600 }}>You hold them to account.</p>
-              </div>
-            </div>
+            <HeroSubtitle />
           </div>
 
           {/* Scroll arrow */}

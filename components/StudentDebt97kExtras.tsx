@@ -104,20 +104,6 @@ export default function StudentDebt97kExtras() {
         </ul>
       </div>
 
-      {/* Still outstanding */}
-      <div style={{ background: COLORS.amberLight, borderRadius: 14, border: '1px solid rgba(196,138,10,0.12)', padding: '24px 28px', marginBottom: 28 }}>
-        <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.amber, margin: '0 0 12px' }}>
-          Still outstanding
-        </p>
-        <ul style={{ margin: 0, padding: '0 0 0 20px', listStyleType: 'disc' }}>
-          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.amberDark, marginBottom: 4 }}>Video itself remains unchanged</li>
-          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.amberDark, marginBottom: 4 }}>£97k headline still in the video</li>
-          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.amberDark, marginBottom: 4 }}>Caption disclaimer not visible in the video</li>
-          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.amberDark, marginBottom: 4 }}>Most viewers won&apos;t read the caption</li>
-          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.amberDark, fontWeight: 600 }}>Verdict: pending</li>
-        </ul>
-      </div>
-
       {/* We also agree */}
       <div style={{ background: COLORS.navy, borderRadius: 14, padding: '24px 28px', marginBottom: 28 }}>
         <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'rgba(255,255,255,0.4)', margin: '0 0 16px' }}>
