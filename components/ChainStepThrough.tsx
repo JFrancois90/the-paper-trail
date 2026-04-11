@@ -12,6 +12,7 @@ export interface ChainStep {
   who: string;
   detail: string;
   label?: string;
+  date?: string;
 }
 
 export interface ChainNode {
@@ -71,14 +72,14 @@ export default function ChainStepThrough({
         </h2>
         <p style={{ fontFamily: B, fontSize: 16, color: COLORS.muted, margin: '0 0 16px' }}>{subtitle}</p>
 
-        {/* Progress bar */}
-        <div style={{ display: 'flex', gap: 4, marginBottom: 6 }}>
+        {/* Progress bar (desktop only) */}
+        <div className="cw-progress-bar" style={{ display: 'flex', gap: 4, marginBottom: 6 }}>
           {steps.map((_, i) => (
             <div key={i} style={{ flex: 1, height: 4, borderRadius: 2, background: i <= activeStep ? COLORS.navy : 'rgba(27,42,74,0.1)', transition: 'background 0.3s ease' }} />
           ))}
         </div>
         <p style={{ fontFamily: B, fontSize: 14, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: 0 }}>
-          Step {activeStep + 1} of {steps.length}{steps[activeStep].who ? ` \u00b7 ${steps[activeStep].who}` : ''}
+          Step {activeStep + 1} of {steps.length}{steps[activeStep].who ? ` \u00b7 ${steps[activeStep].who}` : ''}{steps[activeStep].date ? ` \u00b7 ${steps[activeStep].date}` : ''}
         </p>
       </div>
 
@@ -132,7 +133,7 @@ export default function ChainStepThrough({
                 }}
               >
                 <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.amber, margin: '0 0 6px' }}>
-                  Step {i + 1}{step.who ? ` \u00b7 ${step.who}` : ''}
+                  Step {i + 1}{step.who ? ` \u00b7 ${step.who}` : ''}{step.date ? ` \u00b7 ${step.date}` : ''}
                 </p>
                 {step.label && (
                   <p style={{ fontFamily: B, fontSize: 12, fontWeight: 700, color: COLORS.claimRed, margin: '0 0 8px', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
@@ -175,6 +176,7 @@ export default function ChainStepThrough({
       <style>{`
         @media (max-width: 768px) {
           .cw-chain-desktop { display: none !important; }
+          .cw-progress-bar { display: none !important; }
         }
       `}</style>
     </div>
