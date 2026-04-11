@@ -64,7 +64,7 @@ export default function Home() {
             textAlign: 'center',
           }}
         >
-          <div style={{ maxWidth: 900, margin: '0 auto', width: '100%', textAlign: 'center' }}>
+          <div style={{ maxWidth: 900, margin: '0 auto', width: '100%', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <div
               style={{
                 margin: '0 0 32px',
@@ -100,6 +100,7 @@ export default function Home() {
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
                 textAlign: 'center',
+                width: '100%',
                 color: COLORS.amber,
                 margin: '0 0 40px',
                 animation: 'fadeUp 0.8s ease 0.3s forwards',
@@ -109,7 +110,7 @@ export default function Home() {
               Integrity, not ideology.
             </p>
 
-            <div style={{ animation: 'fadeUp 0.8s ease 0.6s forwards', opacity: 0 }}>
+            <div style={{ animation: 'fadeUp 0.8s ease 0.6s forwards', opacity: 0, textAlign: 'center', width: '100%' }}>
               <Link
                 href="/campaigns"
                 style={{
