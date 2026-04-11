@@ -256,7 +256,7 @@ export const investigations: Investigation[] = [
     multiplier: '=',
     multiplierLabel: 'same saving',
     subject: 'Taxation',
-    sourceUrl: null,
+    sourceUrl: 'https://www.thecanary.co/uk/analysis/2026/02/18/reform-uk-tax-cuts/',
     rebuttalStatus: { invited: 'The Canary (no response) and Richard Murphy (via Instagram, 26 Feb 2026, no response)', dateInvited: 'Feb 2026', status: 'no-response' },
   },
   {
@@ -272,7 +272,7 @@ export const investigations: Investigation[] = [
     sourceImage: null,
     sourceOneLiner: 'Borrowed ~£79,000. Will repay ~£50,000. That\'s £29,000 less, not more.',
     sourceLabel: 'What the maths actually shows',
-    impact: 'The claim that graduates overpay is being used to drive policy changes on student loans. This case actually shows a graduate paying back \u00a329,000 less than they borrowed. If real cases show the opposite of the claim, the policy could be designed to fix a problem that doesn\'t exist.',
+    impact: 'Borrowed: ~\u00a379,000. Will repay: ~\u00a350,000. That is \u00a329,000 less than she borrowed. Policy claims graduates overpay. This shows the opposite. Wrong numbers risk targeting the wrong people. We take no position on the policy. We are pointing out the input is wrong.',
     analogy: 'It\'s like saying your phone contract cost you more than the phone. You got a £1,000 phone. You\'ll pay £700 over the contract. The rest gets written off. That\'s not paying more. That\'s paying less.',
     barData: [
       { label: 'Total borrowed', sublabel: 'Tuition + maintenance + hardship + interest', value: 97, color: '#1b2a4a', fmt: '~£97,000 (current balance)' },
