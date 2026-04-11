@@ -171,16 +171,17 @@ export default function RootLayout({
                 overflow-y: auto;
                 scroll-snap-type: y mandatory;
                 scroll-behavior: smooth;
+                scroll-padding-top: 108px;
                 scrollbar-width: none;
               }
               .inv-snap-container::-webkit-scrollbar { display: none; }
               .inv-snap-section {
-                min-height: 100vh;
+                min-height: calc(100vh - 108px);
                 scroll-snap-align: start;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                padding: 80px 28px 40px;
+                padding: 40px 28px 32px;
                 box-sizing: border-box;
                 overflow-y: auto;
               }
