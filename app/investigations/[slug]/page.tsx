@@ -286,7 +286,11 @@ export default async function InvestigationPage({ params }: PageProps) {
         {inv.correction && (
           <ScrollReveal>
             <div style={{ marginBottom: 48 }}>
-              <CorrectionBox text={inv.correction} date={inv.slug === 'student-debt-97k' ? 'Feb 2026' : undefined} />
+              <CorrectionBox
+                text={inv.correction}
+                date={inv.slug === 'student-debt-97k' ? 'Feb 2026' : undefined}
+                variant={inv.slug === 'student-debt-97k' ? 'disclaimer' : 'correction'}
+              />
             </div>
           </ScrollReveal>
         )}

@@ -5,9 +5,19 @@ const B = 'var(--font-sans), sans-serif';
 interface CorrectionBoxProps {
   text: string;
   date?: string;
+  /** 'correction' = green (default), 'disclaimer' = amber */
+  variant?: 'correction' | 'disclaimer';
 }
 
-export default function CorrectionBox({ text, date = 'Dec 2025' }: CorrectionBoxProps) {
+export default function CorrectionBox({ text, date = 'Dec 2025', variant = 'correction' }: CorrectionBoxProps) {
+  const isDisclaimer = variant === 'disclaimer';
+  const bg = isDisclaimer ? COLORS.amberLight : COLORS.sourceGreenLight;
+  const borderColor = isDisclaimer ? 'rgba(196,138,10,0.18)' : 'rgba(26,107,66,0.15)';
+  const accentColor = isDisclaimer ? COLORS.amber : COLORS.sourceGreen;
+  const textColor = isDisclaimer ? COLORS.amberDark : COLORS.sourceGreenDark;
+  const label = isDisclaimer ? `Disclaimer added, ${date}` : `Correction issued, ${date}`;
+  const icon = isDisclaimer ? '\u26A0' : '\u2713';
+
   // Split correction text into sentences for bullet-point display
   const sentences = text
     .split(/(?<=\.)\s+/)
@@ -17,8 +27,8 @@ export default function CorrectionBox({ text, date = 'Dec 2025' }: CorrectionBox
   return (
     <div
       style={{
-        background: COLORS.sourceGreenLight,
-        border: '2px solid rgba(26,107,66,0.15)',
+        background: bg,
+        border: `2px solid ${borderColor}`,
         borderRadius: 10,
         padding: '24px 28px',
       }}
@@ -32,7 +42,7 @@ export default function CorrectionBox({ text, date = 'Dec 2025' }: CorrectionBox
         }}
       >
         <span style={{ fontSize: 16 }} aria-hidden="true">
-          &#10003;
+          {icon}
         </span>
         <span
           style={{
@@ -41,10 +51,10 @@ export default function CorrectionBox({ text, date = 'Dec 2025' }: CorrectionBox
             fontWeight: 700,
             textTransform: 'uppercase',
             letterSpacing: '0.1em',
-            color: COLORS.sourceGreen,
+            color: accentColor,
           }}
         >
-          Correction issued, {date}
+          {label}
         </span>
       </div>
       {sentences.length > 1 ? (
@@ -62,7 +72,7 @@ export default function CorrectionBox({ text, date = 'Dec 2025' }: CorrectionBox
                 fontFamily: B,
                 fontSize: 16,
                 lineHeight: 1.7,
-                color: COLORS.sourceGreenDark,
+                color: textColor,
                 marginBottom: i < sentences.length - 1 ? 6 : 0,
               }}
             >
@@ -76,7 +86,7 @@ export default function CorrectionBox({ text, date = 'Dec 2025' }: CorrectionBox
             fontFamily: B,
             fontSize: 16,
             lineHeight: 1.7,
-            color: COLORS.sourceGreenDark,
+            color: textColor,
             margin: 0,
           }}
         >

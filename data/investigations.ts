@@ -275,7 +275,7 @@ export const investigations: Investigation[] = [
     ],
     whisperChain: null,
     whisperNote: null,
-    correction: 'Sarah added a caption disclaimer to the post stating: \'For clarity: the amount I took out refers to the core borrowing for my degree; interest accrues during study under Plan 2, so balances are already higher by graduation.\'',
+    correction: 'Sarah added a caption disclaimer, but the core issue remains. She compares tuition fees only (excluding maintenance loans) with her current balance (which includes maintenance and interest). That\'s apples and oranges. Tens of thousands of pounds in maintenance borrowing are missing from the comparison. The balance hasn\'t grown by as much as it appears — she\'s just left out a large chunk of what she borrowed.',
     questions: [
       'You state you\'ll pay back \'more than you originally took out\'. Your total borrowing was ~£79,000 (tuition, maintenance, hardship). Repaying ~£50,000 is £29,000 less. Can you clarify?',
       'The £97,000 balance includes interest accrued since 2016. Presenting this as \'debt\' without separating borrowing from interest creates a misleading picture of the system. Will you update the video itself?',
