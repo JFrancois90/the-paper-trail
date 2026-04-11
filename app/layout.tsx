@@ -58,12 +58,10 @@ export default function RootLayout({
             __html: `
               /* STYLE RULE: Never use em-dashes (\u2014). Use full stops or commas instead. */
               *, *::before, *::after { box-sizing: border-box; }
-              html { scroll-snap-type: y mandatory; overflow-y: scroll; scroll-behavior: smooth; }
+              html { overflow-y: scroll; scroll-behavior: smooth; }
               body { margin: 0; padding: 0; }
               .snap-section {
                 min-height: 100vh;
-                scroll-snap-align: start;
-                scroll-snap-stop: always;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -73,7 +71,17 @@ export default function RootLayout({
               .snap-section:nth-child(even) { background: #fff; }
               .snap-section:nth-child(odd) { background: #f0efe8; }
               .snap-section[data-nav-theme="dark"] { background: #1b2a4a !important; }
+              /* Investigation section titles (desktop: outside box, large) */
+              .inv-section-title {
+                font-family: var(--font-heading), sans-serif;
+                font-size: 28px;
+                font-weight: 700;
+                color: #1b2a4a;
+                margin: 0 0 20px;
+                letter-spacing: -0.02em;
+              }
               @media (max-width: 768px) {
+                .inv-section-title { display: none; }
                 .snap-section { padding-top: 48px; padding-bottom: 48px; }
                 /* Reduce position banner size on mobile */
                 .position-banner { padding: 8px 14px !important; }

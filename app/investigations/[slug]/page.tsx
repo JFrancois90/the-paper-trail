@@ -243,6 +243,7 @@ export default async function InvestigationPage({ params }: PageProps) {
         {/* ─── SECTION 2: PLAIN ENGLISH + THE NUMBERS ─── */}
         <section className="inv-snap-section">
           <div className="inv-inner">
+            <h2 className="inv-section-title">In Plain English</h2>
             <PlainEnglishBox analogy={inv.analogy} />
             {inv.barData.length > 0 && (
               <div
@@ -263,6 +264,7 @@ export default async function InvestigationPage({ params }: PageProps) {
         {/* ─── SECTION 3: CARELESS WHISPERS + WHY THIS MATTERS ─── */}
         <section className="inv-snap-section">
           <div className="inv-inner">
+            <h2 className="inv-section-title">{inv.whisperChain ? 'Careless Whispers' : 'Why This Matters'}</h2>
             {inv.whisperChain && (
               <div
                 style={{
@@ -284,6 +286,7 @@ export default async function InvestigationPage({ params }: PageProps) {
         {(inv.slug === 'railtrack-500m' || inv.slug === 'student-debt-claim' || inv.slug === 'reform-tax-canary' || inv.slug === 'student-debt-97k' || inv.slug === 'times-student-debt-37' || inv.slug === 'reform-prolific-offenders' || inv.slug === 'reform-stop-search') && (
           <section className="inv-snap-section">
             <div className="inv-inner">
+              <h2 className="inv-section-title">Deep Dive</h2>
               {inv.slug === 'railtrack-500m' && <RailtrackExtras />}
               {inv.slug === 'student-debt-claim' && <StudentDebtExtras />}
               {inv.slug === 'reform-tax-canary' && <ReformTaxExtras />}
@@ -299,6 +302,7 @@ export default async function InvestigationPage({ params }: PageProps) {
         {!isCorrected && (
           <section className="inv-snap-section">
             <div className="inv-inner">
+              <h2 className="inv-section-title">Questions</h2>
               <div
                 style={{
                   background: '#fff',
