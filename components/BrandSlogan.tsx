@@ -24,7 +24,8 @@ export default function BrandSlogan({ size = 'lg', theme = 'dark' }: BrandSlogan
         lineHeight: s.lineHeight,
         letterSpacing: '-0.03em',
         color: baseColor,
-        display: 'inline',
+        display: 'block',
+        textAlign: 'center',
       }}
     >
       Taking{' '}
