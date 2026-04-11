@@ -22,15 +22,25 @@ export default function FloatingNarrative() {
   const [visible, setVisible] = useState(false);
   const [text, setText] = useState('');
   const [dismissed, setDismissed] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
   const scrollTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const shownCount = useRef(0);
 
+  // Track viewport size — kill on mobile/tablet entirely
   useEffect(() => {
-    // Only show on desktop (>768px) and if not already shown 3+ times this session
     if (typeof window === 'undefined') return;
-    const mq = window.matchMedia('(max-width: 768px)');
-    if (mq.matches) return;
+    const mq = window.matchMedia('(min-width: 769px)');
+    const handler = (e: MediaQueryListEvent | MediaQueryList) => setIsDesktop(e.matches);
+    handler(mq);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
+  useEffect(() => {
+    // Only show on desktop (769px+) and if not already shown 3+ times this session
+    if (typeof window === 'undefined') return;
+    if (!isDesktop) return;
 
     const stored = sessionStorage.getItem('narrative_count');
     if (stored) shownCount.current = parseInt(stored);
@@ -65,9 +75,10 @@ export default function FloatingNarrative() {
       if (scrollTimer.current) clearTimeout(scrollTimer.current);
       if (hideTimer.current) clearTimeout(hideTimer.current);
     };
-  }, [dismissed, visible]);
+  }, [dismissed, visible, isDesktop]);
 
-  if (!text || dismissed) return null;
+  // Never render on mobile/tablet
+  if (!isDesktop || !text || dismissed) return null;
 
   return (
     <div

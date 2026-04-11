@@ -1019,6 +1019,29 @@ export default function Home() {
                 See our careless whispers: how claims degrade through citation chains &rarr;
               </Link>
             </ScrollReveal>
+
+            <ScrollReveal anim="fadeUp" delay={0.6}>
+              <div style={{ textAlign: 'center', marginTop: 28 }}>
+                <Link
+                  href="/campaigns"
+                  style={{
+                    display: 'inline-block',
+                    fontFamily: B,
+                    fontSize: 16,
+                    fontWeight: 700,
+                    color: '#fff',
+                    background: COLORS.navy,
+                    padding: '16px 40px',
+                    borderRadius: 8,
+                    textDecoration: 'none',
+                    maxWidth: 400,
+                    transition: 'opacity 0.2s ease',
+                  }}
+                >
+                  View All Investigations &rarr;
+                </Link>
+              </div>
+            </ScrollReveal>
           </div>
         </section>
 
