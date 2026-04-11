@@ -218,7 +218,7 @@ function ChainSection({
             <div key={i} style={{ flex: 1, height: 4, borderRadius: 2, background: i <= activeStep ? COLORS.navy : 'rgba(27,42,74,0.1)', transition: 'background 0.3s ease' }} />
           ))}
         </div>
-        <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: 0 }}>
+        <p style={{ fontFamily: B, fontSize: 14, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: 0 }}>
           Step {activeStep + 1} of {steps.length}{steps[activeStep].who ? ` \u00b7 ${steps[activeStep].who}` : ''}
         </p>
       </div>
@@ -226,7 +226,7 @@ function ChainSection({
       {/* Body */}
       <div style={{ display: 'flex', maxWidth: 1100, margin: '0 auto', padding: '0 28px', gap: 40 }}>
         {/* Sticky chain */}
-        <div className="cw-chain-desktop" style={{ flex: '0 0 260px', position: 'sticky', top: 120, alignSelf: 'flex-start', display: 'flex', flexDirection: 'column', gap: 0 }}>
+        <div className="cw-chain-desktop" style={{ flex: '0 0 300px', position: 'sticky', top: 120, alignSelf: 'flex-start', display: 'flex', flexDirection: 'column', gap: 0 }}>
           {nodes.map((node, i) => (
             <div key={i}>
               <div
@@ -234,15 +234,15 @@ function ChainSection({
                   background: i <= activeStep ? (i === activeStep ? node.color : 'rgba(27,42,74,0.08)') : 'rgba(27,42,74,0.04)',
                   border: i === activeStep ? `2px solid ${node.color}` : '2px solid transparent',
                   borderRadius: 10,
-                  padding: '10px 14px',
+                  padding: '14px 18px',
                   textAlign: 'center',
                   transition: 'all 0.4s ease',
                   opacity: i <= activeStep ? 1 : 0.3,
                   transform: i === activeStep ? 'scale(1.05)' : 'scale(1)',
                 }}
               >
-                <p style={{ fontFamily: B, fontSize: 13, fontWeight: 700, color: i === activeStep ? '#fff' : COLORS.ink, margin: 0 }}>{node.label}</p>
-                <p style={{ fontFamily: B, fontSize: 11, color: i === activeStep ? 'rgba(255,255,255,0.7)' : COLORS.lightMuted, margin: '2px 0 0' }}>{node.sub}</p>
+                <p style={{ fontFamily: B, fontSize: 20, fontWeight: 700, color: i === activeStep ? '#fff' : COLORS.ink, margin: 0 }}>{node.label}</p>
+                <p style={{ fontFamily: B, fontSize: 16, color: i === activeStep ? 'rgba(255,255,255,0.7)' : COLORS.lightMuted, margin: '4px 0 0' }}>{node.sub}</p>
               </div>
               {i < nodes.length - 1 && (
                 <div style={{ display: 'flex', justifyContent: 'center', padding: '3px 0' }}>
