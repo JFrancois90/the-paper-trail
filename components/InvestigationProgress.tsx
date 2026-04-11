@@ -126,36 +126,8 @@ export default function InvestigationProgress({
         )}
       </div>
 
-      {/* Progress dots (desktop: right side, mobile: top bar) */}
-      {isMobile ? (
-        <div
-          style={{
-            position: 'fixed',
-            top: showVerdict ? 108 : 72,
-            left: 0,
-            right: 0,
-            zIndex: 85,
-            display: 'flex',
-            gap: 4,
-            padding: '0 20px',
-            transition: 'top 0.3s ease',
-          }}
-        >
-          {sectionNames.map((_, i) => (
-            <div
-              key={i}
-              onClick={() => goToSection(i)}
-              style={{
-                flex: 1,
-                cursor: 'pointer',
-                padding: '8px 0',
-              }}
-            >
-              <div style={{ width: '100%', height: 3, borderRadius: 2, background: i <= activeIdx ? COLORS.navy : 'rgba(27,42,74,0.15)', transition: 'background 0.3s ease' }} />
-            </div>
-          ))}
-        </div>
-      ) : (
+      {/* Progress dots (desktop only: right side) */}
+      {isMobile ? null : (
         <div
           style={{
             position: 'fixed',
