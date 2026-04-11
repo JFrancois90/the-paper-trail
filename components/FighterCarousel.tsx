@@ -184,7 +184,7 @@ export default function FighterCarousel() {
             textDecoration: 'none',
           }}
         >
-          See our campaigns &rarr;
+          See our investigations &rarr;
         </Link>
       </div>
     </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { COLORS } from '@/lib/constants';
 
@@ -9,12 +9,12 @@ interface NavProps {
 }
 
 const NAV_LINKS = [
-  { href: '/', label: 'Home' },
-  { href: '/campaigns', label: 'Our campaigns', highlight: true },
-  { href: '/careless-whispers', label: 'Careless whispers' },
-  { href: '/how-it-works', label: 'What we do' },
-  { href: '/about', label: 'What we are fighting for' },
-  { href: '/fighting-for-change', label: 'Join the fight' },
+  { href: '/', label: 'Home', sectionId: '' },
+  { href: '/campaigns', label: 'Our investigations', highlight: true, sectionId: 'investigations' },
+  { href: '/careless-whispers', label: 'Careless whispers', sectionId: 'careless-whispers' },
+  { href: '/how-it-works', label: 'What we do', sectionId: 'what-we-do' },
+  { href: '/about', label: 'What we are fighting for', sectionId: 'fighting-for', cta: true },
+  { href: '/fighting-for-change', label: 'Join the fight', sectionId: '' },
 ];
 
 export default function Nav({ forceDark }: NavProps) {
@@ -22,6 +22,7 @@ export default function Nav({ forceDark }: NavProps) {
   const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 768);
@@ -68,6 +69,32 @@ export default function Nav({ forceDark }: NavProps) {
       window.removeEventListener('scroll', onScroll);
     };
   }, [forceDark]);
+
+  // Track which homepage section is in view
+  useEffect(() => {
+    const sectionIds = NAV_LINKS.map((l) => l.sectionId).filter(Boolean);
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean) as HTMLElement[];
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Find the most visible section
+        let best: { id: string; ratio: number } | null = null;
+        for (const entry of entries) {
+          if (entry.isIntersecting && (!best || entry.intersectionRatio > best.ratio)) {
+            best = { id: entry.target.id, ratio: entry.intersectionRatio };
+          }
+        }
+        if (best) setActiveSection(best.id);
+      },
+      { threshold: [0.2, 0.4, 0.6], rootMargin: '-72px 0px 0px 0px' }
+    );
+
+    sections.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   const textColor = dark ? '#fff' : '#1b2a4a';
   const textMuted = dark ? 'rgba(255,255,255,0.6)' : '#5a5d66';
@@ -120,22 +147,56 @@ export default function Nav({ forceDark }: NavProps) {
           }}
         >
           <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', marginRight: 24 }}>
-            <img src={logo} alt="The Paper Trail" className="nav-logo" />
+            <img src={logo} alt="The Paper Trail" className={`nav-logo${dark ? '' : ' nav-logo-light'}`} />
           </Link>
 
           {/* Desktop links */}
           {!isMobile && (
             <div style={{ display: 'flex', alignItems: 'center', gap: 36 }}>
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="nav-link"
-                  style={link.highlight ? { ...labelStyle, fontWeight: 600, color: dark ? '#fac75a' : COLORS.amber } : labelStyle}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {NAV_LINKS.map((link) => {
+                const isActive = link.sectionId && activeSection === link.sectionId;
+                const activeColor = dark ? '#fff' : COLORS.navy;
+                const isCta = 'cta' in link && link.cta;
+                let baseStyle: React.CSSProperties;
+                if (isCta) {
+                  baseStyle = {
+                    ...labelStyle,
+                    fontWeight: 700,
+                    color: dark ? '#1b2a4a' : '#fff',
+                    background: dark ? '#fac75a' : COLORS.navy,
+                    padding: '6px 16px',
+                    borderRadius: 6,
+                    whiteSpace: 'nowrap',
+                  };
+                } else if (link.highlight) {
+                  baseStyle = { ...labelStyle, fontWeight: 600, color: dark ? '#fac75a' : COLORS.amber };
+                } else {
+                  baseStyle = labelStyle;
+                }
+                const style = isActive && !isCta
+                  ? { ...baseStyle, color: activeColor, fontWeight: 700, borderBottom: `2px solid ${activeColor}`, paddingBottom: 2 }
+                  : baseStyle;
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="nav-link"
+                    style={style as React.CSSProperties}
+                    onClick={(e) => {
+                      if (link.sectionId) {
+                        const el = document.getElementById(link.sectionId);
+                        if (el) {
+                          e.preventDefault();
+                          el.scrollIntoView({ behavior: 'smooth' });
+                          setActiveSection(link.sectionId);
+                        }
+                      }
+                    }}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
               <Link
                 href="/support"
                 style={{
@@ -156,7 +217,7 @@ export default function Nav({ forceDark }: NavProps) {
                 Support us
               </Link>
               <Link
-                href="#subscribe"
+                href="/subscribe"
                 style={{
                   fontFamily: 'var(--font-sans), sans-serif',
                   fontSize: 13,
@@ -281,7 +342,7 @@ export default function Nav({ forceDark }: NavProps) {
                 </Link>
               ))}
               <Link
-                href="#subscribe"
+                href="/subscribe"
                 onClick={() => setMenuOpen(false)}
                 style={{
                   fontFamily: 'var(--font-sans), sans-serif',

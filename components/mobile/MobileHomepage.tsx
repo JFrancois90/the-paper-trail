@@ -488,7 +488,7 @@ export default function MobileHomepage() {
               marginBottom: 12,
             }}
           >
-            See all our campaigns &rarr;
+            See all our investigations &rarr;
           </Link>
           <br />
           <Link

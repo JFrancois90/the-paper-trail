@@ -11,7 +11,7 @@ interface StatusBadgeProps {
   invited: string;
   dateInvited?: string;
   responseText?: string;
-  /** compact mode for campaign cards */
+  /** compact mode for investigation cards */
   compact?: boolean;
 }
 

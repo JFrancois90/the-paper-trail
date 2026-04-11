@@ -26,6 +26,7 @@ import TimesStudentDebtExtras from '@/components/TimesStudentDebtExtras';
 import { HIGHLIGHT_PHRASES } from '@/lib/highlights';
 import InvestigationPageBars from './InvestigationPageBars';
 import InvestigationPageChain from './InvestigationPageChain';
+import WatchButton from '@/components/WatchButton';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -159,6 +160,7 @@ export default async function InvestigationPage({ params }: PageProps) {
               >
                 {inv.who} &middot; {inv.date}
               </span>
+              <WatchButton investigationSlug={inv.slug} investigationTitle={inv.claim} />
             </div>
             <h1
               style={{

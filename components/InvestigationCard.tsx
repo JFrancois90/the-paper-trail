@@ -11,6 +11,7 @@ import WhisperChain from './WhisperChain';
 import ImpactBox from './ImpactBox';
 import QuestionsBlock from './QuestionsBlock';
 import CorrectionBox from './CorrectionBox';
+import WatchButton from './WatchButton';
 
 interface InvestigationCardProps {
   investigation: Investigation;
@@ -65,15 +66,18 @@ export default function InvestigationCard({ investigation }: InvestigationCardPr
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <MultiplierBadge multiplier={inv.multiplier} label={inv.multiplierLabel} />
           </div>
-          <span
-            style={{
-              fontFamily: 'var(--font-sans), sans-serif',
-              fontSize: 11,
-              color: COLORS.ink40,
-            }}
-          >
-            {inv.who} &middot; {inv.date}
-          </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <span
+              style={{
+                fontFamily: 'var(--font-sans), sans-serif',
+                fontSize: 11,
+                color: COLORS.ink40,
+              }}
+            >
+              {inv.who} &middot; {inv.date}
+            </span>
+            <WatchButton investigationSlug={inv.slug} investigationTitle={inv.claim} compact />
+          </div>
         </div>
 
         {/* Claim */}

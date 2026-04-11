@@ -48,7 +48,7 @@ export default function CampaignsPage() {
               margin: '0 0 12px',
             }}
           >
-            Our campaigns
+            Our investigations
           </h1>
           <p
             style={{

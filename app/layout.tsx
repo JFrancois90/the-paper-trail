@@ -99,6 +99,9 @@ export default function RootLayout({
                 outline-offset: 2px;
               }
               .nav-logo { height: 56px; }
+              .nav-logo-light { mix-blend-mode: multiply; }
+              .nav-link { white-space: nowrap; }
+              h1, h2, h3 { text-wrap: balance; }
               @media (max-width: 768px) {
                 .nav-logo { height: 38px; }
               }

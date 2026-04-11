@@ -155,7 +155,7 @@ export default function MobileNav({ dark = true }: MobileNavProps) {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8, flex: 1 }}>
             {[
               { href: '/', label: 'Home' },
-              { href: '/campaigns', label: 'Our campaigns' },
+              { href: '/campaigns', label: 'Our investigations' },
               { href: '/careless-whispers', label: 'Careless whispers' },
               { href: '/how-it-works', label: 'What we do' },
               { href: '/about', label: 'What we are fighting for' },
@@ -179,7 +179,7 @@ export default function MobileNav({ dark = true }: MobileNavProps) {
               </Link>
             ))}
             <Link
-              href="#subscribe"
+              href="/subscribe"
               onClick={() => setMenuOpen(false)}
               style={{
                 fontFamily: 'var(--font-sans), sans-serif',

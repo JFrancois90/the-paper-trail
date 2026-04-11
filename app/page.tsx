@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import Nav from '@/components/Nav';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -214,6 +214,7 @@ export default function Home() {
 
         {/* ─── SECTION 3: WHAT WE DO ─── */}
         <section
+          id="what-we-do"
           className="snap-section"
           data-nav-theme="light"
           style={{
@@ -372,342 +373,91 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ─── SECTION 4: FEATURED INVESTIGATION (RAILTRACK) ─── */}
+        {/* ─── SECTION 3B: WHAT WE ARE FIGHTING FOR (SUMMARY) ─── */}
         <section
+          id="fighting-for"
           className="snap-section"
           data-nav-theme="light"
           style={{
-            minHeight: '100vh',
             background: COLORS.paper,
-            display: 'flex',
-            alignItems: 'center',
-            padding: '60px 8vw',
+            padding: '80px 8vw',
           }}
         >
-          <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%' }}>
+          <div style={{ maxWidth: 800, margin: '0 auto', width: '100%' }}>
             <ScrollReveal anim="fadeUp">
-              <p style={{ fontFamily: H, fontSize: 22, fontWeight: 700, letterSpacing: '-0.01em', color: COLORS.navy, marginBottom: 16 }}>
-                Featured investigation
-              </p>
-              <div style={{ background: '#fae9b0', borderRadius: 8, padding: '12px 18px', marginBottom: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-                <span style={{ fontSize: 16, flexShrink: 0 }}>&#x1F4E2;</span>
-                <p style={{ fontFamily: B, fontSize: 14, color: COLORS.navy, margin: 0 }}>We support public accountability for nationalisation costs. We disagree with incorrect figures, regardless of political alignment.</p>
-              </div>
-              <p
+              <h2
                 style={{
                   fontFamily: H,
-                  fontSize: 'clamp(18px, 2.5vw, 22px)',
-                  fontWeight: 400,
-                  color: COLORS.ink,
-                  lineHeight: 1.4,
-                  margin: '0 0 6px',
+                  fontSize: 28,
+                  fontWeight: 700,
+                  color: COLORS.navy,
+                  margin: '0 0 8px',
                 }}
               >
-                &ldquo;Labour nationalised Railtrack, paying just <span className="highlight-red">&pound;500 million</span>&rdquo;
-              </p>
-              <p style={{ fontFamily: B, fontSize: 13, color: COLORS.lightMuted, margin: '0 0 40px' }}>
-                Clive Lewis MP, Dec 2024
+                What we are fighting for
+              </h2>
+              <p style={{ fontFamily: B, fontSize: 16, color: COLORS.muted, margin: '0 0 28px' }}>
+                Not a political position. A mathematical one.
               </p>
             </ScrollReveal>
 
-            {/* Big comparison cards */}
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr auto 1fr',
-                gap: 16,
-                alignItems: 'center',
-                marginBottom: 40,
-              }}
-            >
-              <ScrollReveal anim="fadeUp" delay={0.1}>
-                <div
-                  style={{
-                    background: COLORS.claimRedLight,
-                    borderRadius: 14,
-                    padding: '32px 24px',
-                    textAlign: 'center',
-                  }}
-                >
-                  <p
+            <ScrollReveal anim="fadeUp" delay={0.1}>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 16 }}>
+                {[
+                  'Politicians should use the actual numbers from their own cited sources',
+                  'When errors are found, they should be corrected — not ignored',
+                  'Public debate should be built on verified data, not inherited mistakes',
+                  'Every party, every claim, same standard — no exceptions',
+                  'Transparency in how figures are quoted and where they come from',
+                ].map((point, i) => (
+                  <li
+                    key={i}
                     style={{
-                      fontFamily: H,
-                      fontSize: 'clamp(40px, 5vw, 64px)',
-                      fontWeight: 700,
-                      color: COLORS.claimRed,
-                      margin: '0 0 8px',
-                      letterSpacing: '-0.03em',
-                      lineHeight: 1,
+                      fontFamily: B,
+                      fontSize: 17,
+                      lineHeight: 1.5,
+                      color: COLORS.ink,
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: 12,
                     }}
                   >
-                    &pound;500m
-                  </p>
-                  <p style={{ fontFamily: B, fontSize: 14, color: COLORS.claimRedDark, margin: 0 }}>
-                    What they said it cost
-                  </p>
-                </div>
-              </ScrollReveal>
+                    <span style={{ color: COLORS.amber, fontWeight: 700, fontSize: 20, lineHeight: 1.3, flexShrink: 0 }}>&bull;</span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </ScrollReveal>
 
-              <ScrollReveal anim="scaleReveal" delay={0.25}>
-                <div
+            <ScrollReveal anim="fadeUp" delay={0.2}>
+              <div style={{ marginTop: 32 }}>
+                <Link
+                  href="/about"
                   style={{
-                    width: 56,
-                    height: 56,
-                    borderRadius: '50%',
+                    display: 'inline-block',
+                    fontFamily: B,
+                    fontSize: 15,
+                    fontWeight: 700,
+                    color: '#fff',
                     background: COLORS.navy,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    animation: 'pulse 3s ease-in-out infinite',
+                    padding: '14px 28px',
+                    borderRadius: 8,
+                    textDecoration: 'none',
                   }}
                 >
-                  <span style={{ fontFamily: H, fontSize: 18, fontWeight: 700, color: '#fff' }}>15&times;</span>
-                </div>
-              </ScrollReveal>
-
-              <ScrollReveal anim="fadeUp" delay={0.15}>
-                <div
-                  style={{
-                    background: COLORS.sourceGreenLight,
-                    borderRadius: 14,
-                    padding: '32px 24px',
-                    textAlign: 'center',
-                  }}
-                >
-                  <p
-                    style={{
-                      fontFamily: H,
-                      fontSize: 'clamp(40px, 5vw, 64px)',
-                      fontWeight: 700,
-                      color: COLORS.sourceGreen,
-                      margin: '0 0 8px',
-                      letterSpacing: '-0.03em',
-                      lineHeight: 1,
-                    }}
-                  >
-                    &pound;7.6bn
-                  </p>
-                  <p style={{ fontFamily: B, fontSize: 14, color: COLORS.sourceGreenDark, margin: 0 }}>
-                    What it actually cost
-                  </p>
-                </div>
-              </ScrollReveal>
-            </div>
-
-            <ScrollReveal anim="fadeUp" delay={0.3}>
-              <div
-                style={{
-                  background: '#fff',
-                  border: '1px solid rgba(27,42,74,0.06)',
-                  borderRadius: 14,
-                  padding: '20px 24px',
-                  marginBottom: 24,
-                }}
-              >
-                <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.amber, margin: '0 0 8px' }}>
-                  Why this matters
-                </p>
-                <p style={{ fontFamily: B, fontSize: 16, lineHeight: 1.6, color: COLORS.ink, margin: 0 }}>
-                  We need to know what it will cost to nationalise. Plain and simple. Maths errors of this size aren&apos;t acceptable when billions of pounds of public money are at stake.
-                </p>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal anim="fadeUp" delay={0.35}>
-              <Link
-                href="/investigations/railtrack-500m"
-                style={{
-                  fontFamily: B,
-                  fontSize: 14,
-                  fontWeight: 600,
-                  color: COLORS.chainBlue,
-                  textDecoration: 'none',
-                }}
-              >
-                See the full trail &rarr;
-              </Link>
-            </ScrollReveal>
-
-            <ScrollReveal anim="fadeUp" delay={0.4}>
-              <div style={{ marginTop: 20, border: `1px solid rgba(27,42,74,0.12)`, borderRadius: 10, padding: '16px 20px', background: '#fff', display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-                <span style={{ fontSize: 16, flexShrink: 0 }}>&#x1F4E9;</span>
-                <div style={{ flex: 1 }}>
-                  <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: COLORS.navy, margin: '0 0 6px' }}>Asked for comment</p>
-                  <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, margin: '0 0 10px' }}>
-                    We have asked Clive Lewis MP for comment.
-                  </p>
-                  <span style={{ display: 'inline-block', fontFamily: B, fontSize: 13, fontWeight: 700, color: '#fff', background: COLORS.claimRed, padding: '6px 14px', borderRadius: 20 }}>Outstanding</span>
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
-
-          <style>{`
-            @keyframes pulse {
-              0%, 100% { transform: scale(1); }
-              50% { transform: scale(1.06); }
-            }
-          `}</style>
-        </section>
-
-        {/* ─── SECTION 4B: FEATURED — WHITTOME ─── */}
-        <section
-          className="snap-section"
-          data-nav-theme="light"
-          style={{ minHeight: '100vh', background: COLORS.paper, display: 'flex', alignItems: 'center', padding: '60px 8vw' }}
-        >
-          <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%' }}>
-            <ScrollReveal anim="fadeUp">
-              <p style={{ fontFamily: H, fontSize: 22, fontWeight: 700, letterSpacing: '-0.01em', color: COLORS.navy, marginBottom: 16 }}>
-                Featured investigation
-              </p>
-              <div style={{ background: '#fae9b0', borderRadius: 8, padding: '12px 18px', marginBottom: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-                <span style={{ fontSize: 16, flexShrink: 0 }}>&#x1F4E2;</span>
-                <p style={{ fontFamily: B, fontSize: 14, color: COLORS.navy, margin: 0 }}>We support fair access to higher education and reform of student debt. We disagree with incorrect figures, regardless of political alignment.</p>
-              </div>
-              <p style={{ fontFamily: H, fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 400, color: COLORS.ink, lineHeight: 1.4, margin: '0 0 6px' }}>
-                &ldquo;I left university in 2019 with <span className="highlight-red">£49,600</span> of debt&rdquo;
-              </p>
-              <p style={{ fontFamily: B, fontSize: 13, color: COLORS.lightMuted, margin: '0 0 40px' }}>
-                Nadia Whittome MP, 2025
-              </p>
-            </ScrollReveal>
-
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 16, alignItems: 'center', marginBottom: 40 }}>
-              <ScrollReveal anim="fadeUp" delay={0.1}>
-                <div style={{ background: COLORS.claimRedLight, borderRadius: 14, padding: '32px 24px', textAlign: 'center' }}>
-                  <p style={{ fontFamily: H, fontSize: 'clamp(40px, 5vw, 64px)', fontWeight: 700, color: COLORS.claimRed, margin: '0 0 8px', letterSpacing: '-0.03em', lineHeight: 1 }}>£49,600</p>
-                  <p style={{ fontFamily: B, fontSize: 14, color: COLORS.claimRedDark, margin: 0 }}>Claimed debt</p>
-                </div>
-              </ScrollReveal>
-              <ScrollReveal anim="scaleReveal" delay={0.25}>
-                <div style={{ width: 56, height: 56, borderRadius: '50%', background: COLORS.navy, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <span style={{ fontFamily: H, fontSize: 14, fontWeight: 700, color: '#fff' }}>£13.6k</span>
-                </div>
-              </ScrollReveal>
-              <ScrollReveal anim="fadeUp" delay={0.15}>
-                <div style={{ background: COLORS.sourceGreenLight, borderRadius: 14, padding: '32px 24px', textAlign: 'center' }}>
-                  <p style={{ fontFamily: H, fontSize: 'clamp(40px, 5vw, 64px)', fontWeight: 700, color: COLORS.sourceGreen, margin: '0 0 8px', letterSpacing: '-0.03em', lineHeight: 1 }}>~£36k</p>
-                  <p style={{ fontFamily: B, fontSize: 14, color: COLORS.sourceGreenDark, margin: 0 }}>Max possible for 2 years</p>
-                </div>
-              </ScrollReveal>
-            </div>
-
-            <ScrollReveal anim="fadeUp" delay={0.3}>
-              <div style={{ background: '#fff', border: '2px solid rgba(196,138,10,0.18)', borderRadius: 14, padding: '24px 28px', marginBottom: 24 }}>
-                <p style={{ fontFamily: B, fontSize: 16, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.amber, margin: '0 0 10px' }}>Why this matters</p>
-                <p style={{ fontFamily: B, fontSize: 18, lineHeight: 1.6, color: COLORS.ink, margin: 0 }}>
-                  This figure is being used to argue for tuition fee reform. If the stated debt is &pound;13,600 higher than what&apos;s possible for the study period, the personal story underpinning the policy doesn&apos;t add up.
-                </p>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal anim="fadeUp" delay={0.35}>
-              <Link href="/investigations/student-debt-claim" style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: COLORS.chainBlue, textDecoration: 'none' }}>
-                See the full trail &rarr;
-              </Link>
-            </ScrollReveal>
-
-            <ScrollReveal anim="fadeUp" delay={0.4}>
-              <div style={{ marginTop: 20, border: `1px solid rgba(27,42,74,0.12)`, borderRadius: 10, padding: '16px 20px', background: '#fff', display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-                <span style={{ fontSize: 16, flexShrink: 0 }}>&#x1F4E9;</span>
-                <div style={{ flex: 1 }}>
-                  <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: COLORS.navy, margin: '0 0 6px' }}>Asked for comment</p>
-                  <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, margin: '0 0 4px' }}>
-                    We raised this with the Parliamentary Standards Commissioner in January 2026.
-                  </p>
-                  <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, margin: '0 0 4px' }}>
-                    The Commissioner confirmed he will not open a formal investigation at this time.
-                  </p>
-                  <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, margin: '0 0 10px' }}>
-                    The response noted that the Commissioner &ldquo;takes careful note of concerns raised by members of the public&rdquo; and is &ldquo;concerned by some of the choices of language and tone made by some MPs.&rdquo;
-                  </p>
-                  <span style={{ display: 'inline-block', fontFamily: B, fontSize: 13, fontWeight: 700, color: '#fff', background: COLORS.claimRed, padding: '6px 14px', borderRadius: 20 }}>Outstanding</span>
-                </div>
+                  Read more about what we stand for &rarr;
+                </Link>
               </div>
             </ScrollReveal>
           </div>
         </section>
 
-        {/* ─── SECTION 4C: FEATURED — CANARY/REFORM ─── */}
-        <section
-          className="snap-section"
-          data-nav-theme="light"
-          style={{ minHeight: '100vh', background: COLORS.paper, display: 'flex', alignItems: 'center', padding: '60px 8vw' }}
-        >
-          <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%' }}>
-            <ScrollReveal anim="fadeUp">
-              <p style={{ fontFamily: H, fontSize: 22, fontWeight: 700, letterSpacing: '-0.01em', color: COLORS.navy, marginBottom: 16 }}>
-                Featured investigation
-              </p>
-              <div style={{ background: '#fae9b0', borderRadius: 8, padding: '12px 18px', marginBottom: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-                <span style={{ fontSize: 16, flexShrink: 0 }}>&#x1F4E2;</span>
-                <p style={{ fontFamily: B, fontSize: 14, color: COLORS.navy, margin: 0 }}>We support taxes on those who can afford it. We disagree with incorrect figures, regardless of political alignment.</p>
-              </div>
-              <p style={{ fontFamily: H, fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 400, color: COLORS.ink, lineHeight: 1.4, margin: '0 0 6px' }}>
-                &ldquo;Reform&apos;s tax cuts help the <span className="highlight-red">richest people</span> more than the poorest&rdquo;
-              </p>
-              <p style={{ fontFamily: B, fontSize: 13, color: COLORS.lightMuted, margin: '0 0 40px' }}>
-                The Canary UK, Feb 2026
-              </p>
-            </ScrollReveal>
-
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 16, alignItems: 'center', marginBottom: 40 }}>
-              <ScrollReveal anim="fadeUp" delay={0.1}>
-                <div style={{ background: COLORS.claimRedLight, borderRadius: 14, padding: '32px 24px', textAlign: 'center' }}>
-                  <p style={{ fontFamily: H, fontSize: 'clamp(20px, 2.5vw, 28px)', fontWeight: 700, color: COLORS.claimRed, margin: '0 0 8px', lineHeight: 1.2 }}>&pound;1,500 vs &pound;3,000</p>
-                  <p style={{ fontFamily: B, fontSize: 14, color: COLORS.claimRedDark, margin: 0 }}>What they claimed</p>
-                </div>
-              </ScrollReveal>
-              <ScrollReveal anim="scaleReveal" delay={0.25}>
-                <div style={{ width: 72, height: 72, borderRadius: '50%', background: COLORS.amber, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <span style={{ fontFamily: H, fontSize: 36, fontWeight: 700, color: '#fff' }}>=</span>
-                </div>
-              </ScrollReveal>
-              <ScrollReveal anim="fadeUp" delay={0.15}>
-                <div style={{ background: COLORS.sourceGreenLight, borderRadius: 14, padding: '32px 24px', textAlign: 'center' }}>
-                  <p style={{ fontFamily: H, fontSize: 'clamp(24px, 3vw, 32px)', fontWeight: 700, color: COLORS.sourceGreen, margin: '0 0 8px', lineHeight: 1.2 }}>£1,486 = £1,486</p>
-                  <p style={{ fontFamily: B, fontSize: 14, color: COLORS.sourceGreenDark, margin: 0 }}>Both earners save the same</p>
-                </div>
-              </ScrollReveal>
-            </div>
-
-            <ScrollReveal anim="fadeUp" delay={0.3}>
-              <div style={{ background: '#fff', border: '2px solid rgba(196,138,10,0.18)', borderRadius: 14, padding: '24px 28px', marginBottom: 24 }}>
-                <p style={{ fontFamily: B, fontSize: 16, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.amber, margin: '0 0 10px' }}>Why this matters</p>
-                <p style={{ fontFamily: B, fontSize: 18, lineHeight: 1.6, color: COLORS.ink, margin: 0 }}>
-                  Getting tax band maths wrong misleads people about who benefits from a policy. Both earners save exactly the same amount.
-                </p>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal anim="fadeUp" delay={0.35}>
-              <Link href="/investigations/reform-tax-canary" style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: COLORS.chainBlue, textDecoration: 'none' }}>
-                See the full trail &rarr;
-              </Link>
-            </ScrollReveal>
-
-            <ScrollReveal anim="fadeUp" delay={0.4}>
-              <div style={{ marginTop: 20, border: `1px solid rgba(27,42,74,0.12)`, borderRadius: 10, padding: '16px 20px', background: '#fff', display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-                <span style={{ fontSize: 16, flexShrink: 0 }}>&#x1F4E9;</span>
-                <div style={{ flex: 1 }}>
-                  <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: COLORS.navy, margin: '0 0 6px' }}>Asked for comment</p>
-                  <p style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: COLORS.navy, margin: '0 0 4px' }}>The Canary</p>
-                  <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, margin: '0 0 10px' }}>
-                    No response received.
-                  </p>
-                  <span style={{ display: 'inline-block', fontFamily: B, fontSize: 13, fontWeight: 700, color: '#fff', background: COLORS.claimRed, padding: '6px 14px', borderRadius: 20, marginBottom: 14 }}>No response</span>
-                  <p style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: COLORS.navy, margin: '0 0 4px' }}>Richard Murphy (via Instagram, 26 Feb 2026)</p>
-                  <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, margin: '0 0 10px' }}>
-                    No response received.
-                  </p>
-                  <span style={{ display: 'inline-block', fontFamily: B, fontSize: 13, fontWeight: 700, color: '#fff', background: COLORS.claimRed, padding: '6px 14px', borderRadius: 20 }}>No response</span>
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
-        </section>
+        {/* ─── SECTION 4: FEATURED INVESTIGATIONS (Vertical Snap Scroll) ─── */}
+        <FeaturedInvestigations />
 
         {/* ─── SECTION 5: CARELESS WHISPERS ─── */}
         <section
+          id="careless-whispers"
           className="snap-section"
           data-nav-theme="dark"
           style={{
@@ -720,11 +470,11 @@ export default function Home() {
         >
           <div style={{ maxWidth: 900, margin: '0 auto', width: '100%' }}>
             <ScrollReveal anim="fadeUp">
-              <h2 style={{ fontFamily: H, fontSize: 22, fontWeight: 700, color: '#fff', margin: '0 0 4px' }}>
+              <h2 style={{ fontFamily: H, fontSize: 26, fontWeight: 700, color: '#fff', margin: '0 0 6px' }}>
                 Careless whispers
               </h2>
-              <p style={{ fontFamily: B, fontSize: 16, color: 'rgba(255,255,255,0.4)', margin: '0 0 40px' }}>
-                How &pound;500m became &lsquo;established fact&rsquo; in 7 months
+              <p style={{ fontFamily: B, fontSize: 17, color: 'rgba(255,255,255,0.7)', margin: '0 0 40px' }}>
+                How &pound;500m became &lsquo;established fact&rsquo; in 7&nbsp;months
               </p>
             </ScrollReveal>
 
@@ -732,57 +482,57 @@ export default function Home() {
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0 }}>
               {/* Origin node */}
               <ScrollReveal anim="scaleReveal">
-                <div style={{ background: COLORS.chainBlueLight, borderRadius: 10, padding: '14px 28px', textAlign: 'center' }}>
-                  <p style={{ fontFamily: B, fontSize: 15, fontWeight: 600, color: COLORS.ink, margin: 0 }}>Clive Lewis MP</p>
-                  <p style={{ fontFamily: B, fontSize: 12, color: COLORS.muted, margin: '2px 0 0' }}>clivelewis.org &middot; Dec 2024 &middot; origin</p>
+                <div style={{ background: COLORS.chainBlueLight, borderRadius: 12, padding: '16px 32px', textAlign: 'center' }}>
+                  <p style={{ fontFamily: B, fontSize: 16, fontWeight: 600, color: COLORS.ink, margin: 0 }}>Clive Lewis MP</p>
+                  <p style={{ fontFamily: B, fontSize: 13, color: COLORS.muted, margin: '4px 0 0' }}>clivelewis.org &middot; Dec 2024 &middot; origin</p>
                 </div>
               </ScrollReveal>
 
               {/* Connector down */}
-              <svg width="2" height="28" viewBox="0 0 2 28"><line x1="1" y1="0" x2="1" y2="28" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" /></svg>
+              <svg width="2" height="32" viewBox="0 0 2 32"><line x1="1" y1="0" x2="1" y2="32" stroke="rgba(255,255,255,0.3)" strokeWidth="2" /></svg>
 
               {/* Two branches */}
               <ScrollReveal anim="fadeUp" delay={0.15}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, width: '100%', maxWidth: 700 }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32, width: '100%', maxWidth: 700 }}>
                   {/* Left branch */}
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0 }}>
-                    <div style={{ background: '#fff', borderRadius: 10, padding: '12px 20px', textAlign: 'center', width: '100%' }}>
-                      <p style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: COLORS.ink, margin: 0 }}>We Own It + Univ. Greenwich</p>
-                      <p style={{ fontFamily: B, fontSize: 12, color: COLORS.lightMuted, margin: '2px 0 0' }}>Apr 2025 &middot; Prof. David Hall</p>
+                    <div style={{ background: '#fff', borderRadius: 12, padding: '14px 22px', textAlign: 'center', width: '100%' }}>
+                      <p style={{ fontFamily: B, fontSize: 15, fontWeight: 600, color: COLORS.ink, margin: 0 }}>We Own It + Univ.&nbsp;Greenwich</p>
+                      <p style={{ fontFamily: B, fontSize: 13, color: COLORS.muted, margin: '4px 0 0' }}>Apr 2025 &middot; Prof. David Hall</p>
                     </div>
-                    <svg width="2" height="20" viewBox="0 0 2 20"><line x1="1" y1="0" x2="1" y2="20" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" /></svg>
-                    <p style={{ fontFamily: B, fontSize: 12, color: COLORS.amber, margin: '0 0 4px', textAlign: 'center' }}>&pound;7.1bn debt omitted</p>
-                    <svg width="2" height="12" viewBox="0 0 2 12"><line x1="1" y1="0" x2="1" y2="12" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" /></svg>
-                    <div style={{ background: '#fff', borderRadius: 10, padding: '12px 20px', textAlign: 'center', width: '100%' }}>
-                      <p style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: COLORS.ink, margin: 0 }}>Left Foot Forward</p>
-                      <p style={{ fontFamily: B, fontSize: 12, color: COLORS.lightMuted, margin: '2px 0 0' }}>Apr 2025 &middot; article</p>
+                    <svg width="2" height="24" viewBox="0 0 2 24"><line x1="1" y1="0" x2="1" y2="24" stroke="rgba(255,255,255,0.3)" strokeWidth="2" /></svg>
+                    <p style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: '#fac75a', margin: '0 0 6px', textAlign: 'center' }}>&pound;7.1bn debt omitted</p>
+                    <svg width="2" height="16" viewBox="0 0 2 16"><line x1="1" y1="0" x2="1" y2="16" stroke="rgba(255,255,255,0.3)" strokeWidth="2" /></svg>
+                    <div style={{ background: '#fff', borderRadius: 12, padding: '14px 22px', textAlign: 'center', width: '100%' }}>
+                      <p style={{ fontFamily: B, fontSize: 15, fontWeight: 600, color: COLORS.ink, margin: 0 }}>Left Foot Forward</p>
+                      <p style={{ fontFamily: B, fontSize: 13, color: COLORS.muted, margin: '4px 0 0' }}>Apr 2025 &middot; article</p>
                     </div>
                   </div>
 
                   {/* Right branch */}
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0 }}>
-                    <div style={{ background: '#fff', borderRadius: 10, padding: '12px 20px', textAlign: 'center', width: '100%' }}>
-                      <p style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: COLORS.ink, margin: 0 }}>Common Wealth</p>
-                      <p style={{ fontFamily: B, fontSize: 12, color: COLORS.lightMuted, margin: '2px 0 0' }}>Jun 2025 &middot; Ewan McGaughey</p>
+                    <div style={{ background: '#fff', borderRadius: 12, padding: '14px 22px', textAlign: 'center', width: '100%' }}>
+                      <p style={{ fontFamily: B, fontSize: 15, fontWeight: 600, color: COLORS.ink, margin: 0 }}>Common Wealth</p>
+                      <p style={{ fontFamily: B, fontSize: 13, color: COLORS.muted, margin: '4px 0 0' }}>Jun 2025 &middot; Ewan McGaughey</p>
                     </div>
-                    <svg width="2" height="20" viewBox="0 0 2 20"><line x1="1" y1="0" x2="1" y2="20" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" /></svg>
-                    <p style={{ fontFamily: B, fontSize: 12, color: COLORS.amber, margin: '0 0 4px', textAlign: 'center' }}>Still no debt mentioned</p>
-                    <svg width="2" height="12" viewBox="0 0 2 12"><line x1="1" y1="0" x2="1" y2="12" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" /></svg>
-                    <div style={{ background: '#fff', borderRadius: 10, padding: '12px 20px', textAlign: 'center', width: '100%' }}>
-                      <p style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: COLORS.ink, margin: 0 }}>NEB Digest</p>
-                      <p style={{ fontFamily: B, fontSize: 12, color: COLORS.lightMuted, margin: '2px 0 0' }}>Jul 2025 &middot; briefing</p>
+                    <svg width="2" height="24" viewBox="0 0 2 24"><line x1="1" y1="0" x2="1" y2="24" stroke="rgba(255,255,255,0.3)" strokeWidth="2" /></svg>
+                    <p style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: '#fac75a', margin: '0 0 6px', textAlign: 'center' }}>Still no debt mentioned</p>
+                    <svg width="2" height="16" viewBox="0 0 2 16"><line x1="1" y1="0" x2="1" y2="16" stroke="rgba(255,255,255,0.3)" strokeWidth="2" /></svg>
+                    <div style={{ background: '#fff', borderRadius: 12, padding: '14px 22px', textAlign: 'center', width: '100%' }}>
+                      <p style={{ fontFamily: B, fontSize: 15, fontWeight: 600, color: COLORS.ink, margin: 0 }}>NEB Digest</p>
+                      <p style={{ fontFamily: B, fontSize: 13, color: COLORS.muted, margin: '4px 0 0' }}>Jul 2025 &middot; briefing</p>
                     </div>
                   </div>
                 </div>
               </ScrollReveal>
 
               {/* Converge */}
-              <svg width="2" height="24" viewBox="0 0 2 24"><line x1="1" y1="0" x2="1" y2="24" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" /></svg>
+              <svg width="2" height="28" viewBox="0 0 2 28"><line x1="1" y1="0" x2="1" y2="28" stroke="rgba(255,255,255,0.3)" strokeWidth="2" /></svg>
 
               {/* Final node */}
               <ScrollReveal anim="scaleReveal" delay={0.3}>
-                <div style={{ background: COLORS.claimRedLight, borderRadius: 10, padding: '14px 28px', textAlign: 'center' }}>
-                  <p style={{ fontFamily: H, fontSize: 16, fontWeight: 700, color: COLORS.claimRed, margin: 0 }}>
+                <div style={{ background: COLORS.claimRedLight, borderRadius: 12, padding: '16px 32px', textAlign: 'center' }}>
+                  <p style={{ fontFamily: H, fontSize: 18, fontWeight: 700, color: COLORS.claimRed, margin: 0 }}>
                     &ldquo;Established fact&rdquo; &#10007;
                   </p>
                 </div>
@@ -791,221 +541,105 @@ export default function Home() {
 
             {/* What each version omits */}
             <ScrollReveal anim="fadeUp" delay={0.4}>
-              <div style={{ background: 'rgba(196,138,10,0.1)', border: '1px solid rgba(196,138,10,0.15)', borderRadius: 10, padding: '16px 20px', marginTop: 28 }}>
-                <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.amber, margin: '0 0 6px' }}>What each version omits</p>
-                <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: 'rgba(255,255,255,0.7)', margin: '0 0 4px' }}>&pound;7bn+ debt absorbed by Network Rail</p>
-                <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: 'rgba(255,255,255,0.7)', margin: 0 }}>Courts rejected a misfeasance claim</p>
+              <div style={{ background: 'rgba(196,138,10,0.15)', border: '1px solid rgba(196,138,10,0.25)', borderRadius: 12, padding: '20px 24px', marginTop: 32 }}>
+                <p style={{ fontFamily: B, fontSize: 14, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#fac75a', margin: '0 0 8px' }}>What each version omits</p>
+                <p style={{ fontFamily: B, fontSize: 16, lineHeight: 1.6, color: 'rgba(255,255,255,0.9)', margin: '0 0 4px' }}>&pound;7bn+ debt absorbed by Network Rail</p>
+                <p style={{ fontFamily: B, fontSize: 16, lineHeight: 1.6, color: 'rgba(255,255,255,0.9)', margin: 0 }}>Courts rejected a misfeasance claim</p>
               </div>
             </ScrollReveal>
 
             {/* Why this matters */}
             <ScrollReveal anim="fadeUp" delay={0.5}>
-              <div style={{ background: 'rgba(181,48,42,0.1)', border: '1px solid rgba(181,48,42,0.15)', borderRadius: 10, padding: '16px 20px', marginTop: 16 }}>
-                <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.claimRed, margin: '0 0 6px' }}>Why this matters</p>
-                <p style={{ fontFamily: B, fontSize: 15, lineHeight: 1.6, color: 'rgba(255,255,255,0.85)', margin: 0 }}>
+              <div style={{ background: 'rgba(181,48,42,0.15)', border: '1px solid rgba(181,48,42,0.25)', borderRadius: 12, padding: '20px 24px', marginTop: 16 }}>
+                <p style={{ fontFamily: B, fontSize: 14, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#e8645f', margin: '0 0 8px' }}>Why this matters</p>
+                <p style={{ fontFamily: B, fontSize: 16, lineHeight: 1.7, color: 'rgba(255,255,255,0.95)', margin: 0 }}>
                   This claim is now being quoted by political parties to justify water nationalisation at minimal cost. Zack Polanski (Green Party) used the same equity-only argument on BBC Politics North in November 2025. The wrong number isn&apos;t historical. It&apos;s actively informing live policy debate.
                 </p>
               </div>
             </ScrollReveal>
 
             <ScrollReveal anim="fadeUp" delay={0.6}>
-              <div style={{ marginTop: 20, textAlign: 'center' }}>
-                <Link href="/careless-whispers" className="nav-link" style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: COLORS.chainBlue, textDecoration: 'none' }}>
-                  See the full 6-step trail &rarr;
+              <div style={{ marginTop: 28, textAlign: 'center' }}>
+                <Link
+                  href="/careless-whispers"
+                  style={{
+                    display: 'inline-block',
+                    fontFamily: B,
+                    fontSize: 15,
+                    fontWeight: 700,
+                    color: '#fff',
+                    background: COLORS.chainBlue,
+                    padding: '14px 32px',
+                    borderRadius: 8,
+                    textDecoration: 'none',
+                    transition: 'opacity 0.2s ease',
+                  }}
+                >
+                  See our careless whispers: how claims degrade through citation chains &rarr;
                 </Link>
               </div>
             </ScrollReveal>
           </div>
         </section>
 
-        {/* ─── SECTION 6: MORE INVESTIGATIONS ─── */}
+        {/* ─── SECTION 6: BANNER + SEE ALL ─── */}
         <section
           className="snap-section"
           data-nav-theme="light"
           style={{
-            minHeight: '100vh',
+            minHeight: '60vh',
             background: COLORS.paper,
             display: 'flex',
             alignItems: 'center',
-            padding: '60px 8vw',
+            justifyContent: 'center',
+            padding: '80px 8vw',
           }}
         >
-          <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%' }}>
+          <div style={{ maxWidth: 800, margin: '0 auto', width: '100%', textAlign: 'center' }}>
             <ScrollReveal anim="fadeUp">
-              <h2
+              <div
                 style={{
-                  fontFamily: H,
-                  fontSize: 22,
-                  fontWeight: 700,
-                  letterSpacing: '-0.01em',
-                  color: COLORS.navy,
+                  background: '#fff',
+                  border: '2px solid rgba(27,42,74,0.10)',
+                  borderRadius: 16,
+                  padding: '48px 40px',
                   marginBottom: 32,
+                  boxShadow: '0 4px 20px rgba(27,42,74,0.06)',
                 }}
               >
-                More investigations
-              </h2>
-            </ScrollReveal>
-
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-                gap: 16,
-              }}
-            >
-              {[
-                {
-                  multiplier: '\u221212%',
-                  label: 'actual trend',
-                  claim: 'The number of billionaires has increased since 2022',
-                  oneLiner: 'Their source shows 177 \u2192 156. That\u2019s a decrease.',
-                  slug: 'billionaire-numbers',
-                  correction: true,
-                },
-                {
-                  multiplier: 'False',
-                  label: 'US starts at 0%',
-                  claim: 'UK Capital Gains Tax rates are currently the lowest in the G7',
-                  oneLiner: 'US long-term rate starts at 0%. UK basic rate: 18%.',
-                  slug: 'cgt-lowest-g7',
-                  correction: true,
-                },
-                {
-                  multiplier: '\u00a313.6k',
-                  label: 'above max possible',
-                  claim: 'I left university in 2019 with \u00a349,600 of debt',
-                  oneLiner: 'Max possible for 2 years at Nottingham: ~\u00a336,000. Claimed: \u00a349,600.',
-                  slug: 'student-debt-claim',
-                  correction: false,
-                },
-                {
-                  multiplier: '=',
-                  label: 'same saving',
-                  claim: 'Reform\u2019s tax cuts help the richest people more than the poorest',
-                  oneLiner: '\u00a330K earner saves \u00a31,486. \u00a360K earner saves \u00a31,486. The same.',
-                  slug: 'reform-tax-canary',
-                  correction: false,
-                },
-                {
-                  multiplier: '\u00a329k',
-                  label: 'less than borrowed',
-                  claim: 'I\u2019ll pay back more than I originally took out',
-                  oneLiner: 'Borrowed ~\u00a379k. Will repay ~\u00a350k. That\u2019s \u00a329k less.',
-                  slug: 'student-debt-97k',
-                  correction: 'partial',
-                },
-              ].map((inv, i) => (
-                <ScrollReveal key={inv.slug} anim="fadeUp" delay={i * 0.12}>
-                  <Link
-                    href={`/investigations/${inv.slug}`}
-                    className="hover-card"
-                    style={{
-                      textDecoration: 'none',
-                      display: 'block',
-                      background: '#fff',
-                      border: '1px solid rgba(27,42,74,0.10)',
-                      borderRadius: 14,
-                      padding: 24,
-                      boxShadow: '0 2px 8px rgba(27,42,74,0.04)',
-                      height: '100%',
-                    }}
-                  >
-                    <p
-                      style={{
-                        fontFamily: H,
-                        fontSize: 48,
-                        fontWeight: 700,
-                        color: COLORS.claimRed,
-                        margin: '0 0 4px',
-                        letterSpacing: '-0.03em',
-                        lineHeight: 1,
-                      }}
-                    >
-                      {inv.multiplier}
-                    </p>
-                    <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: COLORS.lightMuted, margin: '0 0 14px' }}>
-                      {inv.label}
-                    </p>
-                    <p style={{ fontFamily: B, fontSize: 15, lineHeight: 1.4, color: COLORS.ink, margin: '0 0 10px' }}>
-                      &ldquo;{inv.claim}&rdquo;
-                    </p>
-                    <p style={{ fontFamily: B, fontSize: 13, lineHeight: 1.5, fontWeight: 600, margin: '0 0 12px' }}>
-                      <span className="highlight-green">{inv.oneLiner}</span>
-                    </p>
-                    {inv.correction === true && (
-                      <span style={{ display: 'inline-block', fontFamily: B, fontSize: 12, fontWeight: 700, color: '#fff', background: COLORS.sourceGreen, padding: '5px 12px', borderRadius: 20, margin: '0 0 12px' }}>
-                        &#10003; Corrected Dec 2025
-                      </span>
-                    )}
-                    {inv.correction === 'partial' && (
-                      <span style={{ display: 'inline-block', fontFamily: B, fontSize: 12, fontWeight: 700, color: '#fff', background: COLORS.amber, padding: '5px 12px', borderRadius: 20, margin: '0 0 12px' }}>
-                        &#9888; Partial correction
-                      </span>
-                    )}
-                    <span
-                      style={{
-                        display: 'inline-block',
-                        fontFamily: B,
-                        fontSize: 13,
-                        fontWeight: 600,
-                        color: '#fff',
-                        background: COLORS.navy,
-                        padding: '8px 18px',
-                        borderRadius: 8,
-                      }}
-                    >
-                      Read more &rarr;
-                    </span>
-                  </Link>
-                </ScrollReveal>
-              ))}
-            </div>
-
-            <ScrollReveal anim="fadeUp" delay={0.5}>
-              <p style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, margin: '24px 0 20px', textAlign: 'center' }}>
-                We welcome parties who recognise errors and correct them, as the Green Party have done above. Other parties have declined to comment. We will continue to chase for answers.
-              </p>
-            </ScrollReveal>
-
-            <ScrollReveal anim="fadeUp" delay={0.55}>
-              <Link
-                href="/careless-whispers"
-                className="nav-link"
-                style={{
-                  fontFamily: B,
-                  fontSize: 14,
-                  fontWeight: 600,
-                  color: COLORS.chainBlue,
-                  textDecoration: 'none',
-                  display: 'block',
-                  textAlign: 'center',
-                }}
-              >
-                See our careless whispers: how claims degrade through citation chains &rarr;
-              </Link>
-            </ScrollReveal>
-
-            <ScrollReveal anim="fadeUp" delay={0.6}>
-              <div style={{ textAlign: 'center', marginTop: 28 }}>
-                <Link
-                  href="/campaigns"
+                <p
                   style={{
-                    display: 'inline-block',
-                    fontFamily: B,
-                    fontSize: 16,
-                    fontWeight: 700,
-                    color: '#fff',
-                    background: COLORS.navy,
-                    padding: '16px 40px',
-                    borderRadius: 8,
-                    textDecoration: 'none',
-                    maxWidth: 400,
-                    transition: 'opacity 0.2s ease',
+                    fontFamily: H,
+                    fontSize: 'clamp(20px, 2.5vw, 26px)',
+                    fontWeight: 600,
+                    color: COLORS.navy,
+                    lineHeight: 1.5,
+                    margin: 0,
                   }}
                 >
-                  View All Investigations &rarr;
-                </Link>
+                  We welcome parties who recognise errors and correct them, as the Green Party have done above. Other parties have declined to comment. We will continue to chase for&nbsp;answers.
+                </p>
               </div>
+            </ScrollReveal>
+
+            <ScrollReveal anim="fadeUp" delay={0.15}>
+              <Link
+                href="/campaigns"
+                style={{
+                  display: 'inline-block',
+                  fontFamily: B,
+                  fontSize: 18,
+                  fontWeight: 700,
+                  color: '#fff',
+                  background: COLORS.navy,
+                  padding: '18px 48px',
+                  borderRadius: 10,
+                  textDecoration: 'none',
+                  transition: 'opacity 0.2s ease',
+                }}
+              >
+                See all investigations &rarr;
+              </Link>
             </ScrollReveal>
           </div>
         </section>
@@ -1269,6 +903,192 @@ export default function Home() {
       <FloatingNarrative />
       <ReturnToTop />
     </>
+  );
+}
+
+function FeaturedInvestigations() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeIdx, setActiveIdx] = useState(0);
+  const isScrollingRef = useRef(false);
+  const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
+
+  const goTo = (idx: number) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    isScrollingRef.current = true;
+    setActiveIdx(idx);
+    el.scrollTo({ top: idx * el.clientHeight, behavior: 'smooth' });
+    clearTimeout(scrollTimeoutRef.current);
+    scrollTimeoutRef.current = setTimeout(() => { isScrollingRef.current = false; }, 600);
+  };
+
+  const handleScroll = useCallback(() => {
+    if (isScrollingRef.current) return;
+    const el = scrollRef.current;
+    if (!el) return;
+    const idx = Math.round(el.scrollTop / el.clientHeight);
+    if (idx >= 0 && idx < 3) setActiveIdx(idx);
+  }, []);
+
+  return (
+    <section
+      id="investigations"
+      className="snap-section"
+      data-nav-theme="light"
+      style={{ height: '100vh', background: COLORS.paper, position: 'relative' }}
+    >
+      {/* Section title */}
+      <div style={{ position: 'absolute', top: 72, left: 0, right: 0, zIndex: 2, padding: '20px 8vw 0' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <h2 style={{ fontFamily: H, fontSize: 22, fontWeight: 700, letterSpacing: '-0.01em', color: COLORS.navy, margin: 0 }}>
+            Featured Investigations
+          </h2>
+        </div>
+      </div>
+
+      {/* Dot indicators on right side */}
+      <div style={{ position: 'absolute', right: 24, top: '50%', transform: 'translateY(-50%)', zIndex: 3, display: 'flex', flexDirection: 'column', gap: 10 }}>
+        {[0, 1, 2].map((i) => (
+          <button
+            key={i}
+            onClick={() => goTo(i)}
+            aria-label={`Investigation ${i + 1}`}
+            style={{
+              width: 10,
+              height: 10,
+              borderRadius: '50%',
+              border: 'none',
+              background: i === activeIdx ? COLORS.navy : 'rgba(27,42,74,0.2)',
+              cursor: 'pointer',
+              padding: 0,
+              transition: 'background 0.3s ease',
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Vertical scroll container */}
+      <div
+        ref={scrollRef}
+        onScroll={handleScroll}
+        style={{
+          height: '100%',
+          overflowY: 'auto',
+          scrollSnapType: 'y mandatory',
+          scrollbarWidth: 'none',
+        }}
+      >
+        <style>{`.fi-scroll::-webkit-scrollbar { display: none; }`}</style>
+
+        {/* Investigation 1: Railtrack */}
+        <div className="fi-scroll" style={{ height: '100%', scrollSnapAlign: 'start', display: 'flex', alignItems: 'center', padding: '60px 8vw', boxSizing: 'border-box' }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%', paddingTop: 40 }}>
+            <div style={{ background: '#fae9b0', borderRadius: 8, padding: '12px 18px', marginBottom: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+              <span style={{ fontSize: 16, flexShrink: 0 }}>&#x1F4E2;</span>
+              <p style={{ fontFamily: B, fontSize: 14, color: COLORS.navy, margin: 0 }}>We support public accountability for nationalisation costs. We disagree with incorrect figures, regardless of political alignment.</p>
+            </div>
+            <p style={{ fontFamily: H, fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 400, color: COLORS.ink, lineHeight: 1.4, margin: '0 0 6px' }}>
+              &ldquo;Labour nationalised Railtrack, paying just <span className="highlight-red">&pound;500 million</span>&rdquo;
+            </p>
+            <p style={{ fontFamily: B, fontSize: 13, color: COLORS.lightMuted, margin: '0 0 32px' }}>Clive Lewis MP, Dec 2024</p>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 16, alignItems: 'center', marginBottom: 32 }}>
+              <div style={{ background: COLORS.claimRedLight, borderRadius: 14, padding: '32px 24px', textAlign: 'center' }}>
+                <p style={{ fontFamily: H, fontSize: 'clamp(40px, 5vw, 64px)', fontWeight: 700, color: COLORS.claimRed, margin: '0 0 8px', letterSpacing: '-0.03em', lineHeight: 1 }}>&pound;500m</p>
+                <p style={{ fontFamily: B, fontSize: 14, color: COLORS.claimRedDark, margin: 0 }}>What they said it cost</p>
+              </div>
+              <div style={{ width: 56, height: 56, borderRadius: '50%', background: COLORS.navy, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <span style={{ fontFamily: H, fontSize: 18, fontWeight: 700, color: '#fff' }}>15&times;</span>
+              </div>
+              <div style={{ background: COLORS.sourceGreenLight, borderRadius: 14, padding: '32px 24px', textAlign: 'center' }}>
+                <p style={{ fontFamily: H, fontSize: 'clamp(40px, 5vw, 64px)', fontWeight: 700, color: COLORS.sourceGreen, margin: '0 0 8px', letterSpacing: '-0.03em', lineHeight: 1 }}>&pound;7.6bn</p>
+                <p style={{ fontFamily: B, fontSize: 14, color: COLORS.sourceGreenDark, margin: 0 }}>What it actually cost</p>
+              </div>
+            </div>
+
+            <div style={{ background: '#fff', border: '1px solid rgba(27,42,74,0.06)', borderRadius: 14, padding: '20px 24px', marginBottom: 16 }}>
+              <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.amber, margin: '0 0 8px' }}>Why this matters</p>
+              <p style={{ fontFamily: B, fontSize: 16, lineHeight: 1.6, color: COLORS.ink, margin: 0 }}>
+                We need to know what it will cost to nationalise. Plain and simple. Maths errors of this size aren&apos;t acceptable when billions of pounds of public money are at stake.
+              </p>
+            </div>
+            <Link href="/investigations/railtrack-500m" style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: COLORS.chainBlue, textDecoration: 'none' }}>See the full trail &rarr;</Link>
+          </div>
+        </div>
+
+        {/* Investigation 2: Whittome Student Debt */}
+        <div className="fi-scroll" style={{ height: '100%', scrollSnapAlign: 'start', display: 'flex', alignItems: 'center', padding: '60px 8vw', boxSizing: 'border-box' }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%', paddingTop: 40 }}>
+            <div style={{ background: '#fae9b0', borderRadius: 8, padding: '12px 18px', marginBottom: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+              <span style={{ fontSize: 16, flexShrink: 0 }}>&#x1F4E2;</span>
+              <p style={{ fontFamily: B, fontSize: 14, color: COLORS.navy, margin: 0 }}>We support fair access to higher education and reform of student debt. We disagree with incorrect figures, regardless of political alignment.</p>
+            </div>
+            <p style={{ fontFamily: H, fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 400, color: COLORS.ink, lineHeight: 1.4, margin: '0 0 6px' }}>
+              &ldquo;I left university in 2019 with <span className="highlight-red">&pound;49,600</span> of debt&rdquo;
+            </p>
+            <p style={{ fontFamily: B, fontSize: 13, color: COLORS.lightMuted, margin: '0 0 32px' }}>Nadia Whittome MP, 2025</p>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 16, alignItems: 'center', marginBottom: 32 }}>
+              <div style={{ background: COLORS.claimRedLight, borderRadius: 14, padding: '32px 24px', textAlign: 'center' }}>
+                <p style={{ fontFamily: H, fontSize: 'clamp(40px, 5vw, 64px)', fontWeight: 700, color: COLORS.claimRed, margin: '0 0 8px', letterSpacing: '-0.03em', lineHeight: 1 }}>&pound;49,600</p>
+                <p style={{ fontFamily: B, fontSize: 14, color: COLORS.claimRedDark, margin: 0 }}>Claimed debt</p>
+              </div>
+              <div style={{ width: 56, height: 56, borderRadius: '50%', background: COLORS.navy, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <span style={{ fontFamily: H, fontSize: 14, fontWeight: 700, color: '#fff' }}>&pound;13.6k</span>
+              </div>
+              <div style={{ background: COLORS.sourceGreenLight, borderRadius: 14, padding: '32px 24px', textAlign: 'center' }}>
+                <p style={{ fontFamily: H, fontSize: 'clamp(40px, 5vw, 64px)', fontWeight: 700, color: COLORS.sourceGreen, margin: '0 0 8px', letterSpacing: '-0.03em', lineHeight: 1 }}>~&pound;36k</p>
+                <p style={{ fontFamily: B, fontSize: 14, color: COLORS.sourceGreenDark, margin: 0 }}>Max possible for 2 years</p>
+              </div>
+            </div>
+
+            <div style={{ background: '#fff', border: '2px solid rgba(196,138,10,0.18)', borderRadius: 14, padding: '24px 28px', marginBottom: 16 }}>
+              <p style={{ fontFamily: B, fontSize: 16, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.amber, margin: '0 0 10px' }}>Why this matters</p>
+              <p style={{ fontFamily: B, fontSize: 18, lineHeight: 1.6, color: COLORS.ink, margin: 0 }}>
+                This figure is being used to argue for tuition fee reform. If the stated debt is &pound;13,600 higher than what&apos;s possible for the study period, the personal story underpinning the policy doesn&apos;t add up.
+              </p>
+            </div>
+            <Link href="/investigations/student-debt-claim" style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: COLORS.chainBlue, textDecoration: 'none' }}>See the full trail &rarr;</Link>
+          </div>
+        </div>
+
+        {/* Investigation 3: Canary/Reform Tax */}
+        <div className="fi-scroll" style={{ height: '100%', scrollSnapAlign: 'start', display: 'flex', alignItems: 'center', padding: '60px 8vw', boxSizing: 'border-box' }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%', paddingTop: 40 }}>
+            <div style={{ background: '#fae9b0', borderRadius: 8, padding: '12px 18px', marginBottom: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+              <span style={{ fontSize: 16, flexShrink: 0 }}>&#x1F4E2;</span>
+              <p style={{ fontFamily: B, fontSize: 14, color: COLORS.navy, margin: 0 }}>We support taxes on those who can afford it. We disagree with incorrect figures, regardless of political alignment.</p>
+            </div>
+            <p style={{ fontFamily: H, fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 400, color: COLORS.ink, lineHeight: 1.4, margin: '0 0 6px' }}>
+              &ldquo;Reform&apos;s tax cuts help the <span className="highlight-red">richest people</span> more than the poorest&rdquo;
+            </p>
+            <p style={{ fontFamily: B, fontSize: 13, color: COLORS.lightMuted, margin: '0 0 32px' }}>The Canary UK, Feb 2026</p>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 16, alignItems: 'center', marginBottom: 32 }}>
+              <div style={{ background: COLORS.claimRedLight, borderRadius: 14, padding: '32px 24px', textAlign: 'center' }}>
+                <p style={{ fontFamily: H, fontSize: 'clamp(20px, 2.5vw, 28px)', fontWeight: 700, color: COLORS.claimRed, margin: '0 0 8px', lineHeight: 1.2 }}>&pound;1,500 vs &pound;3,000</p>
+                <p style={{ fontFamily: B, fontSize: 14, color: COLORS.claimRedDark, margin: 0 }}>What they claimed</p>
+              </div>
+              <div style={{ width: 72, height: 72, borderRadius: '50%', background: COLORS.amber, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <span style={{ fontFamily: H, fontSize: 36, fontWeight: 700, color: '#fff' }}>=</span>
+              </div>
+              <div style={{ background: COLORS.sourceGreenLight, borderRadius: 14, padding: '32px 24px', textAlign: 'center' }}>
+                <p style={{ fontFamily: H, fontSize: 'clamp(24px, 3vw, 32px)', fontWeight: 700, color: COLORS.sourceGreen, margin: '0 0 8px', lineHeight: 1.2 }}>&pound;1,486 = &pound;1,486</p>
+                <p style={{ fontFamily: B, fontSize: 14, color: COLORS.sourceGreenDark, margin: 0 }}>Both earners save the same</p>
+              </div>
+            </div>
+
+            <div style={{ background: '#fff', border: '2px solid rgba(196,138,10,0.18)', borderRadius: 14, padding: '24px 28px', marginBottom: 16 }}>
+              <p style={{ fontFamily: B, fontSize: 16, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.amber, margin: '0 0 10px' }}>Why this matters</p>
+              <p style={{ fontFamily: B, fontSize: 18, lineHeight: 1.6, color: COLORS.ink, margin: 0 }}>
+                Getting tax band maths wrong misleads people about who benefits from a policy. Both earners save exactly the same amount.
+              </p>
+            </div>
+            <Link href="/investigations/reform-tax-canary" style={{ fontFamily: B, fontSize: 14, fontWeight: 600, color: COLORS.chainBlue, textDecoration: 'none' }}>See the full trail &rarr;</Link>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 

@@ -174,19 +174,29 @@ const steps = [
 export default function CarelessWhispersPage() {
   const [step, setStep] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const isScrollingRef = useRef(false);
+  const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
-  // Sync scroll position when step changes via buttons
-  useEffect(() => {
+  // Navigate to a step via button click
+  const goToStep = (idx: number) => {
     const el = scrollRef.current;
     if (!el) return;
-    el.scrollTo({ left: step * el.clientWidth, behavior: 'smooth' });
-  }, [step]);
+    isScrollingRef.current = true;
+    setStep(idx);
+    el.scrollTo({ left: idx * el.clientWidth, behavior: 'smooth' });
+    // Clear the flag after the smooth scroll completes
+    clearTimeout(scrollTimeoutRef.current);
+    scrollTimeoutRef.current = setTimeout(() => {
+      isScrollingRef.current = false;
+    }, 600);
+  };
 
-  // Track scroll position to update step indicator
+  // Track scroll position to update step indicator (swipe only)
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
     const onScroll = () => {
+      if (isScrollingRef.current) return;
       const idx = Math.round(el.scrollLeft / el.clientWidth);
       if (idx >= 0 && idx < steps.length && idx !== step) {
         setStep(idx);
@@ -233,7 +243,7 @@ export default function CarelessWhispersPage() {
             {steps.map((_, i) => (
               <div
                 key={i}
-                onClick={() => setStep(i)}
+                onClick={() => goToStep(i)}
                 style={{
                   flex: 1,
                   height: 4,
@@ -296,7 +306,7 @@ export default function CarelessWhispersPage() {
                 {/* Navigation buttons */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12 }}>
                   <button
-                    onClick={() => setStep(Math.max(0, i - 1))}
+                    onClick={() => goToStep(Math.max(0, i - 1))}
                     disabled={i === 0}
                     style={{
                       fontFamily: B, fontSize: 14, fontWeight: 600,
@@ -311,7 +321,7 @@ export default function CarelessWhispersPage() {
                   </button>
                   {i < steps.length - 1 ? (
                     <button
-                      onClick={() => setStep(i + 1)}
+                      onClick={() => goToStep(i + 1)}
                       style={{
                         fontFamily: B, fontSize: 14, fontWeight: 600, color: '#fff',
                         background: COLORS.navy, border: 'none', borderRadius: 8,
