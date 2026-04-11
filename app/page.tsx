@@ -471,7 +471,7 @@ export default function Home() {
               {/* Origin node */}
               <ScrollReveal anim="scaleReveal">
                 <div style={{ background: COLORS.chainBlueLight, borderRadius: 12, padding: '16px 32px', textAlign: 'center' }}>
-                  <p style={{ fontFamily: B, fontSize: 16, fontWeight: 600, color: COLORS.ink, margin: 0 }}>Clive Lewis MP</p>
+                  <p style={{ fontFamily: B, fontSize: 16, fontWeight: 600, color: COLORS.ink, margin: 0 }}>Clive Lewis, Labour MP</p>
                   <p style={{ fontFamily: B, fontSize: 13, color: COLORS.muted, margin: '4px 0 0' }}>clivelewis.org &middot; Dec 2024 &middot; origin</p>
                 </div>
               </ScrollReveal>
@@ -878,7 +878,7 @@ function FeaturedInvestigations() {
             <p style={{ fontFamily: H, fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 400, color: COLORS.ink, lineHeight: 1.4, margin: '0 0 6px' }}>
               &ldquo;Labour nationalised Railtrack, paying just <span className="highlight-red">&pound;500 million</span>&rdquo;
             </p>
-            <p style={{ fontFamily: B, fontSize: 13, color: COLORS.lightMuted, margin: '0 0 32px' }}>Clive Lewis MP, Dec 2024</p>
+            <p style={{ fontFamily: B, fontSize: 13, color: COLORS.lightMuted, margin: '0 0 32px' }}>Clive Lewis, Labour MP, Dec 2024</p>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 16, alignItems: 'center', marginBottom: 32 }}>
               <div style={{ background: COLORS.claimRedLight, borderRadius: 14, padding: '32px 24px', textAlign: 'center' }}>

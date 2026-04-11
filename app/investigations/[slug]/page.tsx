@@ -162,6 +162,19 @@ export default async function InvestigationPage({ params }: PageProps) {
         <ScrollReveal>
           {/* Header */}
           <div style={{ marginBottom: 32 }}>
+            {/* Person name - prominent */}
+            <p
+              style={{
+                fontFamily: 'var(--font-heading), sans-serif',
+                fontSize: 'clamp(24px, 3.5vw, 32px)',
+                fontWeight: 700,
+                color: COLORS.navy,
+                margin: '0 0 8px',
+                letterSpacing: '-0.02em',
+              }}
+            >
+              {inv.who} <span style={{ fontFamily: 'var(--font-sans), sans-serif', fontSize: '0.5em', fontWeight: 500, color: COLORS.muted }}>&middot; {inv.date}</span>
+            </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16, flexWrap: 'wrap' }}>
               <MultiplierBadge multiplier={inv.multiplier} label={inv.multiplierLabel} />
               {inv.rebuttalStatus && (
@@ -173,21 +186,12 @@ export default async function InvestigationPage({ params }: PageProps) {
                   responseText={inv.rebuttalStatus.responseText}
                 />
               )}
-              <span
-                style={{
-                  fontFamily: 'var(--font-sans), sans-serif',
-                  fontSize: 'var(--inv-badge, 16px)',
-                  color: COLORS.muted,
-                }}
-              >
-                {inv.who} &middot; {inv.date}
-              </span>
               <WatchButton investigationSlug={inv.slug} investigationTitle={inv.claim} />
             </div>
             <h1
               style={{
                 fontFamily: 'var(--font-serif), serif',
-                fontSize: 'var(--inv-title, 36px)',
+                fontSize: 'clamp(24px, 4vw, 32px)',
                 fontWeight: 400,
                 letterSpacing: '-0.02em',
                 color: COLORS.ink,

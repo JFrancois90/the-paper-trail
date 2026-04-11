@@ -46,7 +46,7 @@ export const investigations: Investigation[] = [
   {
     id: 1,
     slug: 'railtrack-500m',
-    who: 'Clive Lewis MP',
+    who: 'Clive Lewis, Labour MP',
     party: 'Labour',
     date: 'Dec 2024',
     claim: 'Labour nationalised Railtrack, paying just £500 million for the entire UK rail network',
@@ -81,7 +81,7 @@ export const investigations: Investigation[] = [
     multiplierLabel: 'cost understated',
     subject: 'Nationalisation',
     sourceUrl: 'https://www.clivelewis.org/uncategorised/news-and-updates/2024/12/26/analysis-is-the-supposed-90bn-cost-of-compensation-really-a-barrier-to-restoring-water-companies-to-public-ownership/',
-    rebuttalStatus: { invited: 'Clive Lewis MP', dateInvited: 'Jan 2026', status: 'no-response' },
+    rebuttalStatus: { invited: 'Clive Lewis, Labour MP', dateInvited: 'Jan 2026', status: 'no-response' },
   },
   {
     id: 2,
@@ -195,7 +195,7 @@ export const investigations: Investigation[] = [
   {
     id: 5,
     slug: 'student-debt-claim',
-    who: 'Nadia Whittome MP',
+    who: 'Nadia Whittome, Labour MP',
     party: 'Labour',
     date: '2025',
     claim: 'I left university in 2019 with £49,600 of debt',
@@ -223,7 +223,7 @@ export const investigations: Investigation[] = [
     multiplierLabel: 'above max possible',
     subject: 'Student loans',
     sourceUrl: null,
-    rebuttalStatus: { invited: 'Nadia Whittome MP', dateInvited: 'Jan 2026', status: 'no-response' },
+    rebuttalStatus: { invited: 'Nadia Whittome, Labour MP', dateInvited: 'Jan 2026', status: 'no-response' },
   },
   {
     id: 6,

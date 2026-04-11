@@ -6,18 +6,18 @@ export const railtrackChain = {
   subtitle: "Railtrack nationalisation cost. From one MP's blog to live TV.",
   endNote: "A claim by an MP became an 'established fact' used on live television to argue for cheap nationalisation. The £7.1bn debt was never mentioned. Not once.",
   steps: [
-    { title: 'The origin claim', who: 'Clive Lewis MP', label: 'Origin', date: 'Dec 2024', detail: '£500m was the shareholder payout only. The £7.1bn debt absorbed by government was not mentioned. The court\'s rejection of the misfeasance claim was not mentioned.' },
+    { title: 'The origin claim', who: 'Clive Lewis, Labour MP', label: 'Origin', date: 'Dec 2024', detail: '£500m was the shareholder payout only. The £7.1bn debt absorbed by government was not mentioned. The court\'s rejection of the misfeasance claim was not mentioned.' },
     { title: 'The report picks it up', who: 'We Own It + Univ. Greenwich', label: '£7.1bn debt omitted', date: 'Apr 2025', detail: 'The claim was cited in a report co-authored with Prof. David Hall, April 2025. The £7.1bn debt was omitted. The court ruling was not mentioned.' },
     { title: 'A think tank repeats it', who: 'Common Wealth', label: 'Still no debt mentioned', date: 'Jun 2025', detail: 'Same equity-only framing repeated by Ewan McGaughey, June 2025. Still no mention of the debt.' },
     { title: 'Media amplifies it', who: 'Left Foot Forward', label: 'Debt still missing', date: 'Apr 2025', detail: 'Left Foot Forward cited the earlier sources, April 2025. The £500m figure now treated as the total cost. No debt. No court ruling.' },
-    { title: 'Used on live TV to justify policy', who: 'Zack Polanski, BBC', label: '"Established fact" on live TV', date: 'Nov 2025', detail: 'Green Party\'s Zack Polanski used the same equity-only argument on BBC Politics North, November 2025, to argue water nationalisation would be cheap. The wrong number isn\'t historical. It\'s actively informing live policy debate.' },
+    { title: 'Used on live TV to justify policy', who: 'Zack Polanski, Green Party', label: '"Established fact" on live TV', date: 'Nov 2025', detail: 'Green Party\'s Zack Polanski used the same equity-only argument on BBC Politics North, November 2025, to argue water nationalisation would be cheap. The wrong number isn\'t historical. It\'s actively informing live policy debate.' },
   ] as ChainStep[],
   nodes: [
-    { label: 'Clive Lewis MP', sub: '£500m claim', color: COLORS.chainBlue },
+    { label: 'Clive Lewis, Labour', sub: '£500m claim', color: COLORS.chainBlue },
     { label: 'We Own It', sub: 'Debt omitted', color: COLORS.navy },
     { label: 'Common Wealth', sub: 'Still no debt', color: COLORS.navy },
     { label: 'Left Foot Forward', sub: 'Debt missing', color: COLORS.claimRed },
-    { label: 'BBC Politics North', sub: 'Used as fact on TV', color: COLORS.claimRed },
+    { label: 'Zack Polanski, Green', sub: 'Used as fact on TV', color: COLORS.claimRed },
   ] as ChainNode[],
   disappeared: [
     'The £7.1bn debt absorbed by Network Rail',
