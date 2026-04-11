@@ -54,7 +54,7 @@ export const investigations: Investigation[] = [
     source: 'Shareholder payout: £500m. Debt taken on by government: £7.1bn. Total cost to taxpayer: £7.6bn. They said: £500m. Actual cost: 15x higher. £500m was equity only. They ignored the debt.',
     sourceImage: null,
     sourceOneLiner: 'Equity: £0.5bn. Debt absorbed: £7.1bn. True cost: £7.6bn.',
-    impact: 'Quoted: £500m. Actual: £7.6bn. Out by a factor of 15.',
+    impact: 'We need to know the real cost to nationalise. Maths errors of this size are not acceptable. Billions of pounds of public money are at stake.',
     analogy: 'Think of it like buying a house for £100k when it has a £400k mortgage. The £100k is the equity the seller had, but you\'ve just taken on all the debt too. The real price is £500k (otherwise Rightmove has some explaining to do!)',
     barData: [
       { label: 'Quoted', sublabel: 'Equity only', value: 0.5, color: '#b5302a', fmt: '£0.5bn' },
@@ -200,7 +200,7 @@ export const investigations: Investigation[] = [
     sourceImage: null,
     sourceOneLiner: 'Max possible debt for 2 years at Nottingham: ~£36,000. Claimed: £49,600.',
     sourceLabel: 'What the maths actually shows',
-    impact: 'Claimed: £49,600. Max possible: ~£36,000. Gap: £13,600 above the maximum.',
+    impact: 'This figure drives tuition fee reform arguments. The stated debt is £13,600 higher than possible. The personal story underpinning the policy does not add up.',
     analogy: 'It\'s like claiming your shopping bill was £150 when you only bought £100 worth of stuff. The receipt doesn\'t support the story.',
     barData: [
       { label: 'Max possible', sublabel: '2 years, living at home', value: 36, color: '#1a6b42', fmt: '~£36,000' },
