@@ -4,6 +4,7 @@ const B = 'var(--font-sans), sans-serif';
 
 export default function RailtrackExtras() {
   return (
+    <>
     <div
       style={{
         background: '#fff',
@@ -81,5 +82,27 @@ export default function RailtrackExtras() {
         This framing has been amplified by outlets including The Canary (November 2025) without questioning the underlying numbers.
       </p>
     </div>
+
+    {/* Water company iceberg illustration */}
+    <div style={{ background: '#fff', borderRadius: 14, border: '1px solid rgba(27,42,74,0.06)', padding: '24px 28px', marginBottom: 28 }}>
+      <p style={{ fontFamily: B, fontSize: 14, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.navy, margin: '0 0 16px' }}>
+        This isn&apos;t just about Railtrack
+      </p>
+      <img
+        src="/images/water-company-iceberg.png"
+        alt="Water company nationalisation iceberg — debt below the waterline"
+        style={{
+          width: '100%',
+          maxWidth: 900,
+          display: 'block',
+          margin: '0 auto 16px',
+          borderRadius: 8,
+        }}
+      />
+      <p style={{ fontFamily: B, fontSize: 15, lineHeight: 1.6, color: COLORS.muted, margin: 0 }}>
+        The same pattern applies to water company nationalisation. Everyone argues about the value above the waterline. Nobody mentions the &pound;20 billion in debt underneath.
+      </p>
+    </div>
+    </>
   );
 }

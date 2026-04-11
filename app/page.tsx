@@ -249,6 +249,20 @@ export default function Home() {
               </p>
             </ScrollReveal>
 
+            <ScrollReveal anim="fadeUp" delay={0.1}>
+              <img
+                src="/images/forest-illustration.png"
+                alt="When the base number is wrong, everything built on it falls apart."
+                style={{
+                  width: '100%',
+                  maxWidth: 800,
+                  display: 'block',
+                  margin: '0 auto 32px',
+                  borderRadius: 8,
+                }}
+              />
+            </ScrollReveal>
+
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
               {[
                 {

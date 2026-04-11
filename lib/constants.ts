@@ -33,6 +33,13 @@ export const COLORS = {
   ink20: '#c4c6cc',
 } as const;
 
+export const TOPIC_COLORS: Record<string, { bg: string; text: string }> = {
+  Nationalisation: { bg: '#1B2A4A', text: '#fff' },
+  Taxation: { bg: '#1A5632', text: '#fff' },
+  'Wealth inequality': { bg: '#8B6914', text: '#fff' },
+  'Student loans': { bg: '#8B1A1A', text: '#fff' },
+};
+
 export const PARTY_COLORS: Record<string, { bg: string; text: string; border: string }> = {
   Labour: { bg: '#d32f2f14', text: '#b71c1c', border: '#d32f2f22' },
   Conservative: { bg: '#1565c014', text: '#0d47a1', border: '#1565c022' },

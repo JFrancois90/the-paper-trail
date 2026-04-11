@@ -17,17 +17,17 @@ interface Line {
   pauseAfter: number;
 }
 
-// "read them" starts at index 3 in "We read them."
+// "check the data" starts at index 3 in "We check the data."
 const DESKTOP_LINES: Line[] = [
-  { text: 'Public figures cite reports you\'ll never read.', color: '#ffffff', fontSize: '28px', fontWeight: 400, speed: 45, pauseAfter: 400 },
-  { text: 'We read them.', color: '#fac75a', fontSize: '28px', fontWeight: 700, speed: 45, pauseAfter: 400, highlightRange: [3, 12], highlightColor: 'rgba(196,138,10,0.35)' },
-  { text: 'Sometimes they don\'t say what they claim.', color: '#fff', fontSize: '36px', fontWeight: 700, speed: 60, pauseAfter: 1000 },
+  { text: 'Public figures back their claims with data.', color: '#ffffff', fontSize: '28px', fontWeight: 400, speed: 45, pauseAfter: 400 },
+  { text: 'We check the data.', color: '#fac75a', fontSize: '28px', fontWeight: 700, speed: 45, pauseAfter: 400, highlightRange: [3, 17], highlightColor: 'rgba(196,138,10,0.35)' },
+  { text: 'Sometimes it says the opposite.', color: '#fff', fontSize: '36px', fontWeight: 700, speed: 60, pauseAfter: 1000 },
 ];
 
 const MOBILE_LINES: Line[] = [
-  { text: 'Public figures cite reports you\'ll never read.', color: '#ffffff', fontSize: '22px', fontWeight: 400, speed: 40, pauseAfter: 500 },
-  { text: 'We read them.', color: '#fac75a', fontSize: '22px', fontWeight: 700, speed: 40, pauseAfter: 500, highlightRange: [3, 12], highlightColor: 'rgba(196,138,10,0.35)' },
-  { text: 'Sometimes they don\'t say what they claim.', color: '#fff', fontSize: '26px', fontWeight: 700, speed: 60, pauseAfter: 1000 },
+  { text: 'Public figures back their claims with data.', color: '#ffffff', fontSize: '22px', fontWeight: 400, speed: 40, pauseAfter: 500 },
+  { text: 'We check the data.', color: '#fac75a', fontSize: '22px', fontWeight: 700, speed: 40, pauseAfter: 500, highlightRange: [3, 17], highlightColor: 'rgba(196,138,10,0.35)' },
+  { text: 'Sometimes it says the opposite.', color: '#fff', fontSize: '26px', fontWeight: 700, speed: 60, pauseAfter: 1000 },
 ];
 
 export default function HeroSubtitle({ isMobile = false }: HeroSubtitleProps) {

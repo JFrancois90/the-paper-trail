@@ -35,7 +35,7 @@ export interface Investigation {
   rebuttalStatus: {
     invited: string;
     dateInvited?: string;
-    status: 'invited' | 'no-response' | 'responded';
+    status: 'invited' | 'no-response' | 'responded' | 'declined';
     responseText?: string;
     responseDate?: string;
   } | null;

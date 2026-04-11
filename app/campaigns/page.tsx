@@ -8,7 +8,7 @@ import MultiplierBadge from '@/components/MultiplierBadge';
 import StatusBadge from '@/components/StatusBadge';
 import ScrollReveal from '@/components/ScrollReveal';
 import SourceDocsNotice from '@/components/SourceDocsNotice';
-import { COLORS } from '@/lib/constants';
+import { COLORS, TOPIC_COLORS } from '@/lib/constants';
 import { investigations } from '@/data/investigations';
 
 const B = 'var(--font-sans), sans-serif';
@@ -86,6 +86,7 @@ export default function CampaignsPage() {
             {ALL_SUBJECTS.map((subject) => {
               const count = investigations.filter((inv) => inv.subject === subject).length;
               const isActive = activeFilter === subject;
+              const topicColor = TOPIC_COLORS[subject];
               return (
                 <button
                   key={subject}
@@ -98,8 +99,8 @@ export default function CampaignsPage() {
                     borderRadius: 20,
                     border: 'none',
                     cursor: 'pointer',
-                    background: isActive ? COLORS.amber : 'rgba(27,42,74,0.06)',
-                    color: isActive ? '#fff' : COLORS.navy,
+                    background: isActive ? (topicColor?.bg || COLORS.amber) : 'rgba(27,42,74,0.06)',
+                    color: isActive ? (topicColor?.text || '#fff') : COLORS.navy,
                     transition: 'all 0.2s ease',
                   }}
                 >
@@ -144,8 +145,8 @@ export default function CampaignsPage() {
                       fontWeight: 600,
                       textTransform: 'uppercase',
                       letterSpacing: '0.08em',
-                      color: COLORS.amber,
-                      background: COLORS.amberLight,
+                      color: TOPIC_COLORS[inv.subject]?.text || '#fff',
+                      background: TOPIC_COLORS[inv.subject]?.bg || COLORS.amber,
                       padding: '4px 10px',
                       borderRadius: 12,
                     }}

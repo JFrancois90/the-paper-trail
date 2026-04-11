@@ -6,7 +6,7 @@ import { COLORS } from '@/lib/constants';
 const B = 'var(--font-sans), sans-serif';
 
 interface StatusBadgeProps {
-  status: 'invited' | 'no-response' | 'responded';
+  status: 'invited' | 'no-response' | 'responded' | 'declined';
   correction: string | null;
   invited: string;
   dateInvited?: string;
@@ -16,15 +16,17 @@ interface StatusBadgeProps {
 }
 
 function getLabel(status: string, correction: string | null) {
-  if (correction) return 'Corrected';
+  if (correction) return 'Corrected \uD83D\uDC4F';
   if (status === 'responded') return 'Responded';
-  if (status === 'no-response') return 'No response';
+  if (status === 'declined') return 'Declined \u274C';
+  if (status === 'no-response') return 'No response \u23F3';
   return 'Invited';
 }
 
 function getColor(status: string, correction: string | null) {
   if (correction) return COLORS.sourceGreen;
   if (status === 'responded') return '#2358a3';
+  if (status === 'declined') return COLORS.claimRed;
   if (status === 'no-response') return COLORS.claimRed;
   return COLORS.amber;
 }
@@ -32,6 +34,7 @@ function getColor(status: string, correction: string | null) {
 function getBg(status: string, correction: string | null) {
   if (correction) return COLORS.sourceGreenLight;
   if (status === 'responded') return 'rgba(35,88,163,0.08)';
+  if (status === 'declined') return COLORS.claimRedLight;
   if (status === 'no-response') return COLORS.claimRedLight;
   return COLORS.amberLight;
 }
@@ -51,12 +54,14 @@ export default function StatusBadge({
   const bg = getBg(status, correction);
 
   const tooltipText = correction
-    ? `${invited} issued a correction. ${correction}`
+    ? `Kudos to ${invited} for adjusting their script!`
     : status === 'responded' && responseText
     ? `${invited} responded. ${responseText}`
+    : status === 'declined'
+    ? 'Declined to investigate.'
     : status === 'no-response'
-    ? `We invited ${invited} to provide a factual rebuttal${dateInvited ? ` (${dateInvited})` : ''}. No response has been received.`
-    : `We have invited ${invited} to respond${dateInvited ? ` (${dateInvited})` : ''}.`;
+    ? 'We asked for comment. Still waiting.'
+    : `Invited to respond${dateInvited ? ` (${dateInvited})` : ''}.`;
 
   return (
     <span
@@ -88,7 +93,7 @@ export default function StatusBadge({
         }}
       >
         <span style={{ fontSize: compact ? 10 : 12 }}>
-          {correction ? '\u2713' : status === 'responded' ? '\u2709' : status === 'no-response' ? '\u2014' : '\u2709'}
+          {correction ? '\u2713' : status === 'responded' ? '\u2709' : status === 'declined' ? '\u2717' : status === 'no-response' ? '\u2014' : '\u2709'}
         </span>
         {label}
       </span>

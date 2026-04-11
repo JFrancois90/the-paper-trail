@@ -5,7 +5,7 @@ const B = 'var(--font-sans), sans-serif';
 interface RebuttalBoxProps {
   invited: string;
   dateInvited?: string;
-  status: 'invited' | 'no-response' | 'responded';
+  status: 'invited' | 'no-response' | 'responded' | 'declined';
   responseText?: string;
 }
 

@@ -54,9 +54,8 @@ export default function HowItWorksPage() {
           >
             Three steps, every time
           </h1>
-          <p style={bodyStyle}>
-            Every investigation follows the same process. No editorialising, no opinion pieces.
-            We start with a claim, find the source, and lay the numbers side by side.
+          <p style={{ ...bodyStyle, fontSize: 22, fontWeight: 600, color: COLORS.navy }}>
+            Three steps. No opinion. Just numbers.
           </p>
         </ScrollReveal>
 
@@ -65,22 +64,12 @@ export default function HowItWorksPage() {
           <div style={stepContainer}>
             <span style={stepNumber}>01</span>
             <h2 style={h2Style}>Find the source</h2>
-            <p style={bodyStyle}>
-              When a politician quotes a number, we don&apos;t take it at face value. We track
-              down the exact report, dataset, or study they say it comes from. Not a newspaper
-              summary. Not a press release. The actual document.
-            </p>
-            <p style={bodyStyle}>
-              For example, when Clive Lewis MP claimed Railtrack was nationalised for &pound;500
-              million, we went to the original financial records and court documents. When the
-              Green Party cited the Equality Trust on billionaire numbers, we downloaded the report
-              and read the table they were referring to.
-            </p>
-            <p style={bodyStyle}>
-              This step is where most fact-checking falls down. People check whether a claim
-              &ldquo;sounds right&rdquo; or whether it matches other reporting. We skip all of
-              that and go straight to the cited source.
-            </p>
+            <ul style={bulletList}>
+              <li style={bulletItem}>A public figure quotes a number</li>
+              <li style={bulletItem}>We find the exact report they say it came from</li>
+              <li style={bulletItem}>Not a summary. Not a press release.</li>
+              <li style={bulletItem}><strong style={{ color: COLORS.amber }}>The actual document.</strong></li>
+            </ul>
           </div>
         </ScrollReveal>
 
@@ -89,24 +78,12 @@ export default function HowItWorksPage() {
           <div style={stepContainer}>
             <span style={stepNumber}>02</span>
             <h2 style={h2Style}>Compare the numbers</h2>
-            <p style={bodyStyle}>
-              Once we have the source, we put the politician&apos;s claim next to what the source
-              actually says. Red on the left (what they said), green on the right (what the
-              source shows). You can see both versions at the same time and judge the gap for
-              yourself.
-            </p>
-            <p style={bodyStyle}>
-              We also translate the comparison into plain language. Our &ldquo;in plain
-              english&rdquo; boxes use everyday analogies so you don&apos;t need a background in
-              finance or policy to understand what&apos;s going on. If Railtrack&apos;s true cost
-              was 15 times higher than claimed, we explain that it&apos;s like buying a house
-              for &pound;1 when it has a &pound;500,000 mortgage.
-            </p>
-            <p style={bodyStyle}>
-              The bar charts make the scale of the discrepancy visible at a glance. Numbers in a
-              paragraph can blur together. A bar that&apos;s fifteen times longer than the one
-              next to it doesn&apos;t.
-            </p>
+            <ul style={bulletList}>
+              <li style={bulletItem}>What they said goes on the left (red)</li>
+              <li style={bulletItem}>What the source says goes on the right (green)</li>
+              <li style={bulletItem}>You see both. You judge the gap.</li>
+              <li style={bulletItem}>We add a <strong style={{ color: COLORS.amber }}>&ldquo;plain English&rdquo;</strong> box so anyone can understand it</li>
+            </ul>
           </div>
         </ScrollReveal>
 
@@ -115,26 +92,12 @@ export default function HowItWorksPage() {
           <div style={stepContainer}>
             <span style={stepNumber}>03</span>
             <h2 style={h2Style}>Trace the chain</h2>
-            <p style={bodyStyle}>
-              Some claims don&apos;t start inaccurate. They get distorted as they pass from one
-              outlet to the next. A nuanced figure with caveats becomes a clean headline number.
-              Context drops away. Definitions shift while the number stays the same.
-            </p>
-            <p style={bodyStyle}>
-              Our citation chains map this process. We show every step from the original source to
-              the final claim, with dates and names, so you can see exactly where things changed.
-              The &pound;350 billion tax evasion figure, for instance, started as an HMRC estimate
-              of &pound;5.5 billion for actual tax evasion. By the time it had been cited and
-              re-cited through parliamentary groups and think tanks, &ldquo;economic crime and
-              financial opacity&rdquo; had become &ldquo;tax evasion&rdquo; and the number had
-              grown 48 times.
-            </p>
-            <p style={bodyStyle}>
-              Not every investigation has a citation chain. Some claims are simply wrong at the
-              source. But when one does exist, tracing it reveals something that a simple
-              true-or-false verdict never could: how misinformation spreads, step by step, through
-              people who probably think they&apos;re being rigorous.
-            </p>
+            <ul style={bulletList}>
+              <li style={bulletItem}>Some claims start accurate but get distorted as they spread</li>
+              <li style={bulletItem}>Each outlet changes it slightly. Context drops. Definitions shift.</li>
+              <li style={bulletItem}>We map every step from original source to final claim</li>
+              <li style={bulletItem}>You see <strong style={{ color: COLORS.claimRed }}>exactly where it went wrong</strong></li>
+            </ul>
           </div>
         </ScrollReveal>
       </main>
@@ -166,6 +129,20 @@ const stepNumber: React.CSSProperties = {
   color: COLORS.navy,
   opacity: 0.15,
   letterSpacing: '-0.02em',
+};
+
+const bulletList: React.CSSProperties = {
+  margin: 0,
+  padding: '0 0 0 20px',
+  listStyleType: 'disc',
+};
+
+const bulletItem: React.CSSProperties = {
+  fontFamily: 'var(--font-sans), sans-serif',
+  fontSize: 18,
+  lineHeight: 1.7,
+  color: COLORS.ink60,
+  marginBottom: 8,
 };
 
 const stepContainer: React.CSSProperties = {
