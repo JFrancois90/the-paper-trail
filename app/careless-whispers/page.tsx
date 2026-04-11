@@ -28,13 +28,13 @@ const railtrackSteps: ChainStep[] = [
     title: 'The origin claim',
     who: 'Clive Lewis MP',
     label: 'Origin',
-    detail: '\£500m was the shareholder payout only. The \£7.1bn debt absorbed by government was not mentioned. The court\'s rejection of the misfeasance claim was not mentioned.',
+    detail: '£500m was the shareholder payout only. The £7.1bn debt absorbed by government was not mentioned. The court\'s rejection of the misfeasance claim was not mentioned.',
   },
   {
     title: 'The report picks it up',
     who: 'We Own It + University of Greenwich',
-    label: '\£7.1bn debt omitted',
-    detail: 'The claim was cited in a report co-authored with Prof. David Hall, April 2025. The \£7.1bn debt was omitted. The court ruling was not mentioned.',
+    label: '£7.1bn debt omitted',
+    detail: 'The claim was cited in a report co-authored with Prof. David Hall, April 2025. The £7.1bn debt was omitted. The court ruling was not mentioned.',
   },
   {
     title: 'A think tank repeats it',
@@ -46,7 +46,7 @@ const railtrackSteps: ChainStep[] = [
     title: 'Media amplifies it',
     who: 'Left Foot Forward',
     label: 'Debt still missing',
-    detail: 'Left Foot Forward cited the earlier sources, April 2025. The \£500m figure now treated as the total cost. No debt. No court ruling.',
+    detail: 'Left Foot Forward cited the earlier sources, April 2025. The £500m figure now treated as the total cost. No debt. No court ruling.',
   },
   {
     title: 'Used on live TV to justify policy',
@@ -57,7 +57,7 @@ const railtrackSteps: ChainStep[] = [
 ];
 
 const railtrackNodes: ChainNode[] = [
-  { label: 'Clive Lewis MP', sub: '\£500m claim', color: COLORS.chainBlue },
+  { label: 'Clive Lewis MP', sub: '£500m claim', color: COLORS.chainBlue },
   { label: 'We Own It', sub: 'Debt omitted', color: COLORS.navy },
   { label: 'Common Wealth', sub: 'Still no debt', color: COLORS.navy },
   { label: 'Left Foot Forward', sub: 'Debt missing', color: COLORS.claimRed },
@@ -65,7 +65,7 @@ const railtrackNodes: ChainNode[] = [
 ];
 
 const railtrackDisappeared = [
-  'The \£7.1bn debt absorbed by Network Rail',
+  'The £7.1bn debt absorbed by Network Rail',
   'The court\'s rejection of the misfeasance claim',
   'The distinction between shareholder payout and total cost to taxpayer',
 ];
@@ -76,27 +76,27 @@ const hmrcSteps: ChainStep[] = [
   {
     title: 'The official number',
     who: 'HMRC',
-    detail: 'HMRC publishes its annual tax gap. Tax evasion: \£5.5bn. Tax avoidance: \£1.8bn. Total: \£7.3bn.',
+    detail: 'HMRC publishes its annual tax gap. Tax evasion: £5.5bn. Tax avoidance: £1.8bn. Total: £7.3bn.',
   },
   {
     title: 'The NCA broadens the scope',
     who: 'National Crime Agency',
-    detail: 'NCA estimates over \£100bn laundered through the UK. This covers drugs, fraud, trafficking, criminal funds. This is not tax evasion. It is all economic crime.',
+    detail: 'NCA estimates over £100bn laundered through the UK. This covers drugs, fraud, trafficking, criminal funds. This is not tax evasion. It is all economic crime.',
   },
   {
     title: 'The APPG inflates further',
     who: 'All-Party Parliamentary Group',
-    detail: 'NCA said \£100bn. APPG said \£290bn. Then offered \£350bn as an upper end. APPG claimed \£350bn equals the health and education budget. Actual figure: \£423bn.',
+    detail: 'NCA said £100bn. APPG said £290bn. Then offered £350bn as an upper end. APPG claimed £350bn equals the health and education budget. Actual figure: £423bn.',
   },
   {
     title: 'The CIOT gives it authority',
     who: 'Chartered Institute of Taxation',
-    detail: 'CIOT quoted the APPG\'s \£350bn figure. Still called "economic crime and financial opacity." But now has the authority of a chartered tax body behind it.',
+    detail: 'CIOT quoted the APPG\'s £350bn figure. Still called "economic crime and financial opacity." But now has the authority of a chartered tax body behind it.',
   },
   {
     title: 'The final form',
     who: 'Public debate',
-    detail: '"Economic crime" became "tax evasion." The number stayed at \£350bn. The definition shrank 48 times. HMRC official: \£5.5bn. Claimed: \£350bn.',
+    detail: '"Economic crime" became "tax evasion." The number stayed at £350bn. The definition shrank 48 times. HMRC official: £5.5bn. Claimed: £350bn.',
   },
   {
     title: 'Why this matters',
@@ -106,12 +106,12 @@ const hmrcSteps: ChainStep[] = [
 ];
 
 const hmrcNodes: ChainNode[] = [
-  { label: 'HMRC', sub: '\£5.5bn', color: COLORS.sourceGreen },
-  { label: 'NCA', sub: '\£100bn', color: COLORS.navy },
-  { label: 'APPG', sub: '\£350bn', color: COLORS.claimRed },
-  { label: 'CIOT', sub: '\£350bn', color: COLORS.claimRed },
-  { label: 'Public debate', sub: '\£350bn "tax evasion"', color: COLORS.claimRed },
-  { label: 'Reality check', sub: '\£5.5bn vs \£350bn', color: COLORS.navy },
+  { label: 'HMRC', sub: '£5.5bn', color: COLORS.sourceGreen },
+  { label: 'NCA', sub: '£100bn', color: COLORS.navy },
+  { label: 'APPG', sub: '£350bn', color: COLORS.claimRed },
+  { label: 'CIOT', sub: '£350bn', color: COLORS.claimRed },
+  { label: 'Public debate', sub: '£350bn "tax evasion"', color: COLORS.claimRed },
+  { label: 'Reality check', sub: '£5.5bn vs £350bn', color: COLORS.navy },
 ];
 
 /* ── Scrollytelling section component ── */
@@ -280,12 +280,12 @@ export default function CarelessWhispersPage() {
         {/* Chain 1: Railtrack */}
         <ChainSection
           id="railtrack-chain"
-          title="How \£500m became 'established fact' in 7 months"
+          title="How £500m became 'established fact' in 7 months"
           subtitle="Railtrack nationalisation cost. From one MP's blog to live TV."
           steps={railtrackSteps}
           nodes={railtrackNodes}
           disappeared={railtrackDisappeared}
-          endNote="A claim by an MP became an 'established fact' used on live television to argue for cheap nationalisation. The \£7.1bn debt was never mentioned. Not once."
+          endNote="A claim by an MP became an 'established fact' used on live television to argue for cheap nationalisation. The £7.1bn debt was never mentioned. Not once."
         />
 
         {/* Divider */}
@@ -296,7 +296,7 @@ export default function CarelessWhispersPage() {
         {/* Chain 2: HMRC Tax Evasion */}
         <ChainSection
           id="hmrc-chain"
-          title="How \£5.5bn became \£350bn"
+          title="How £5.5bn became £350bn"
           subtitle="Tax evasion figures. From HMRC data to political talking point."
           steps={hmrcSteps}
           nodes={hmrcNodes}
