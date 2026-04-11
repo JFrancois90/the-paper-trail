@@ -185,6 +185,11 @@ export default function RootLayout({
                 box-sizing: border-box;
                 overflow-y: auto;
               }
+              .inv-snap-section.has-sticky {
+                overflow-y: visible;
+                align-items: flex-start;
+                min-height: auto;
+              }
               .inv-inner {
                 max-width: 900px;
                 width: 100%;

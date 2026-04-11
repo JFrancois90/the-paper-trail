@@ -286,7 +286,7 @@ export default async function InvestigationPage({ params }: PageProps) {
 
         {/* ─── SECTION 4: WHERE THIS ARGUMENT LEADS (extras) ─── */}
         {(inv.slug === 'railtrack-500m' || inv.slug === 'student-debt-claim' || inv.slug === 'reform-tax-canary' || inv.slug === 'student-debt-97k' || inv.slug === 'times-student-debt-37' || inv.slug === 'reform-prolific-offenders' || inv.slug === 'reform-stop-search' || inv.slug === 'reform-234bn-immigration') && (
-          <section className="inv-snap-section">
+          <section className={`inv-snap-section${['railtrack-500m', 'reform-234bn-immigration'].includes(inv.slug) ? ' has-sticky' : ''}`}>
             <div className="inv-inner">
               <h2 className="inv-section-title">What happened</h2>
               {inv.slug === 'railtrack-500m' && <RailtrackExtras />}
