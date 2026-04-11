@@ -352,7 +352,7 @@ export const investigations: Investigation[] = [
     sourceImage: null,
     sourceOneLiner: '',
     impact: 'Policy should be built on current evidence, not data from a decade ago. Within the source itself, the trend was declining. The MoJ publishes up-to-date reoffending data quarterly, and it is publicly available. If the current numbers tell a different story, the policy response could be targeting the wrong problem. We\'re not questioning the policy. We\'re questioning the evidence behind it.',
-    analogy: 'Your house was burgled in 2005. You tell your insurance company your street is dangerous in 2025. They\'d ask for something more recent. A stat from as far back as 2000 is being used to describe Britain right now.',
+    analogy: 'Your insurance company tells you your street is dangerous. Their evidence? A burglary reported in 2005. Crime stats are updated quarterly. They ignored all of them. They\'re pricing your premium on data from 2000-2016.',
     barData: [
       { label: 'What they said', sublabel: '"50% of all crime"', value: 50, color: '#b5302a', fmt: '50%' },
       { label: 'What the source actually says', sublabel: '52% of convictions, 2000-2016', value: 52, color: '#1b2a4a', fmt: '52%' },
