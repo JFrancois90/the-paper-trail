@@ -56,7 +56,7 @@ export const investigations: Investigation[] = [
     sourceImage: null,
     sourceOneLiner: '',
     impact: 'The \u00a3500m claim is being used right now to argue water nationalisation would be cheap. If the real cost is 15x higher, the public is being misled on what nationalisation would actually cost them. Policy built on the wrong number risks billions of pounds of public money.',
-    analogy: 'Think of it like buying a house for £100k. But it also has a £400k mortgage. The £100k is the equity the seller had, but you\'ve also just taken on all the debt too. The real price is £500k (otherwise Rightmove has some explaining to do!)',
+    analogy: 'Think of it like buying a house for £100k. It also has a £400k mortgage. The £100k is the equity the seller had. You\'ve just taken on all the debt too. The real price is £500k.',
     barData: [
       { label: 'Quoted', sublabel: 'Equity only', value: 0.5, color: '#b5302a', fmt: '£0.5bn' },
       { label: 'Omitted', sublabel: 'Debt absorbed', value: 7.1, color: '#1b2a4a', fmt: '£7.1bn' },
@@ -96,7 +96,7 @@ export const investigations: Investigation[] = [
     sourceImage: null,
     sourceOneLiner: 'Their source shows 177 → 156. That\'s a decrease.',
     impact: 'Their source: 177 down to 156. They said it was rising. Their own cited report contradicts the claim.',
-    analogy: 'It\'s like citing a weather report that says 15°C and then telling everyone there\'s a heatwave.',
+    analogy: 'A weather report says 15°C. You tell everyone there\'s a heatwave. Your own source says the opposite of your claim.',
     barData: [
       { label: '2022', sublabel: 'Their source', value: 177, color: '#1b2a4a', fmt: '177' },
       { label: '2025', sublabel: 'Their source', value: 156, color: '#b5302a', fmt: '156' },
@@ -129,7 +129,7 @@ export const investigations: Investigation[] = [
     sourceImage: null,
     sourceOneLiner: '',
     impact: 'Using a statement that UK CGT is the lowest in the G7 as a way to argue for higher rates means decision-making is being driven by false information.',
-    analogy: 'It\'s a bit like saying your car is the slowest on the motorway while you\'re overtaking someone.',
+    analogy: 'You\'re on the motorway overtaking someone. You tell your passenger your car is the slowest one here. They can see it isn\'t.',
     barData: [
       { label: 'US (low)', sublabel: '0% band', value: 0, color: '#1a6b42', fmt: '0%' },
       { label: 'US (mid)', sublabel: '15% band', value: 15, color: '#1a6b42', fmt: '15%' },
@@ -165,7 +165,7 @@ export const investigations: Investigation[] = [
     sourceImage: null,
     sourceOneLiner: 'HMRC official figure: £5.5bn. Not £350bn.',
     impact: 'The \u00a3350bn figure is being used to justify enforcement spending 48 times larger than the actual problem. If HMRC says the real number is \u00a35.5bn, any policy built on \u00a3350bn is budgeting for a different universe. Taxpayers pay for the gap.',
-    analogy: 'It\'s like quoting the entire NHS budget when someone asks how much we spend on plasters.',
+    analogy: 'Someone asks how much we spend on plasters. You quote the entire NHS budget. The label changed but the number didn\'t.',
     barData: [
       { label: 'HMRC actual', sublabel: 'Tax evasion', value: 5.5, color: '#1a6b42', fmt: '£5.5bn' },
       { label: 'Claimed', sublabel: '\u201cTax evasion\u201d', value: 350, color: '#b5302a', fmt: '£350bn' },
@@ -206,7 +206,7 @@ export const investigations: Investigation[] = [
     sourceOneLiner: 'Max possible debt for 2 years at Nottingham: ~£36,000. Claimed: £49,600.',
     sourceLabel: 'What the maths actually shows',
     impact: 'This figure is being used to argue for tuition fee reform. If the claimed debt is \u00a313,600 higher than what is actually possible for the study period, the personal story driving the policy case does not stand up to basic checks.',
-    analogy: 'It\'s like claiming your shopping bill was £150 when you only bought £100 worth of stuff. The receipt doesn\'t support the story.',
+    analogy: 'You bought £100 worth of shopping. You claim the bill was £150. The receipt says otherwise. The numbers don\'t support the story.',
     barData: [
       { label: 'Max possible', sublabel: '2 years, living at home', value: 36, color: '#1a6b42', fmt: '~£36,000' },
       { label: 'Claimed', sublabel: 'Stated publicly', value: 49.6, color: '#b5302a', fmt: '£49,600' },
@@ -239,7 +239,7 @@ export const investigations: Investigation[] = [
     sourceOneLiner: '£30K earner saves £1,486. £60K earner saves £1,486. The same amount.',
     sourceLabel: 'What the maths actually shows',
     impact: 'The claim that this policy helps the rich more is being used to argue against it. If both earners save the same amount, the criticism is built on false information. People deserve accurate information to form their own view on tax policy.',
-    analogy: 'It\'s like saying a 10% off voucher at Tesco, but only on the first £20 of your shop, benefits rich shoppers more. It doesn\'t. Whether you spend £30 or £60, you save the same £2. The discount stops at £20. The rest of your bill is untouched.',
+    analogy: 'A 10% off voucher at Tesco only applies to the first £20 of your shop. Whether you spend £30 or £60, you save the same £2. The discount stops at £20. The rest of your bill is untouched. Rich shoppers don\'t benefit more.',
     barData: [
       { label: '£15K earner', sublabel: 'He said: £500', value: 486, color: '#1b2a4a', fmt: '£486' },
       { label: '£30K earner', sublabel: 'He said: £1,500', value: 1486, color: '#1a6b42', fmt: '£1,486' },
@@ -273,7 +273,7 @@ export const investigations: Investigation[] = [
     sourceOneLiner: 'Borrowed ~£79,000. Will repay ~£50,000. That\'s £29,000 less, not more.',
     sourceLabel: 'What the maths actually shows',
     impact: 'Borrowed: ~\u00a379,000. Will repay: ~\u00a350,000. That is \u00a329,000 less than she borrowed. Policy claims graduates overpay. This shows the opposite. Wrong numbers risk targeting the wrong people. We take no position on the policy. We are pointing out the input is wrong.',
-    analogy: 'It\'s like saying your phone contract cost you more than the phone. You got a £1,000 phone. You\'ll pay £700 over the contract. The rest gets written off. That\'s not paying more. That\'s paying less.',
+    analogy: 'You got a £1,000 phone. You\'ll pay £700 over the contract. The rest gets written off. That\'s not paying more. That\'s paying less.',
     barData: [
       { label: 'Total borrowed', sublabel: 'Tuition + maintenance + hardship + interest', value: 97, color: '#1b2a4a', fmt: '~£97,000 (current balance)' },
       { label: 'Core borrowing', sublabel: 'Tuition + maintenance + hardship (pre-interest)', value: 79, color: '#2358a3', fmt: '~£79,000' },
@@ -314,7 +314,7 @@ export const investigations: Investigation[] = [
     sourceOneLiner: 'She borrowed £49k + £11k = £60k total. Balance is £67k. That\'s 11.6% higher, not 37%.',
     sourceLabel: 'What the maths actually shows',
     impact: 'A Times-branded video reaching prospective students claims a 37% debt increase. The actual figure is 11.6%. Students watching this may make life decisions based on a number that is 3.2 times too high.',
-    analogy: 'It\'s like buying a car for £20,000, adding £5,000 of upgrades, then telling everyone the dealer charged you 25% more because you\'re comparing the final price to just the base model. You spent £25,000. The final bill being £27,000 is an 8% increase, not 25%.',
+    analogy: 'Buy a car for £20,000. Add £5,000 of upgrades. Total spent: £25,000. With interest, the bill is £27,000. Compare that to just the base car and it looks like a 35% increase. Compare it to what you actually spent and it\'s 8%. You just forgot to include the extras.',
     barData: [
       { label: 'Undergrad borrowing', sublabel: 'What she said she borrowed first', value: 49, color: '#1b2a4a', fmt: '£49,000' },
       { label: 'Master\'s borrowing', sublabel: 'Added \'an extra £11,000\'', value: 11, color: '#2358a3', fmt: '£11,000' },
@@ -352,7 +352,7 @@ export const investigations: Investigation[] = [
     sourceImage: null,
     sourceOneLiner: '',
     impact: 'Policy should be built on current evidence, not data from a decade ago. Within the source itself, the trend was declining. The MoJ publishes up-to-date reoffending data quarterly, and it is publicly available. If the current numbers tell a different story, the policy response could be targeting the wrong problem. We\'re not questioning the policy. We\'re questioning the evidence behind it.',
-    analogy: 'Imagine telling your insurance company your house was burgled in 2005, and using that to claim your street is dangerous in 2025. They\'d ask for something more recent. That\'s what\'s happening here. A stat from as far back as 2000 is being used to describe Britain right now.',
+    analogy: 'Your house was burgled in 2005. You tell your insurance company your street is dangerous in 2025. They\'d ask for something more recent. A stat from as far back as 2000 is being used to describe Britain right now.',
     barData: [
       { label: 'What they said', sublabel: '"50% of all crime"', value: 50, color: '#b5302a', fmt: '50%' },
       { label: 'What the source actually says', sublabel: '52% of convictions, 2000-2016', value: 52, color: '#1b2a4a', fmt: '52%' },
@@ -386,7 +386,7 @@ export const investigations: Investigation[] = [
     sourceImage: null,
     sourceOneLiner: '',
     impact: 'Stop and search is one of the most sensitive policing powers in the UK, and a policy on it should cite the strongest possible evidence. Official Home Office stop and search data is published every year and is publicly available. Using an opinion article as the source raises questions about the quality of the evidence base. We\'re not questioning the policy. We\'re questioning why official data wasn\'t used.',
-    analogy: 'Imagine submitting a CV for a senior job, and instead of qualifications you attach a friend\'s LinkedIn post from 2017. That\'s the level of source behind the first bullet of a national policing policy.',
+    analogy: 'You\'re applying for a senior job. Instead of qualifications, you attach a friend\'s LinkedIn post from 2017. That\'s the level of source behind the first bullet of a national policing policy.',
     barData: [],
     whisperChain: null,
     whisperNote: null,
@@ -416,7 +416,7 @@ export const investigations: Investigation[] = [
     sourceImage: null,
     sourceOneLiner: '',
     impact: 'This figure is being used to justify abolishing Indefinite Leave to Remain. The source has formally withdrawn it. The OBR\'s independent analysis points in the opposite direction. Voters deserve accurate numbers to form their own view.',
-    analogy: 'Imagine your surveyor calls to say their valuation was wrong. Then a second surveyor gives you a completely different number. You ignore both and keep quoting the original.',
+    analogy: 'Your surveyor calls to say their valuation was wrong. A second surveyor gives you a completely different number. You ignore both and keep quoting the original.',
     barData: [],
     whisperChain: null,
     whisperNote: null,

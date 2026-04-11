@@ -7,6 +7,11 @@ interface PlainEnglishBoxProps {
 }
 
 export default function PlainEnglishBox({ analogy }: PlainEnglishBoxProps) {
+  const bullets = analogy
+    .split(/(?<=\.)\s+/)
+    .map((s) => s.trim().replace(/\.$/, ''))
+    .filter((s) => s.length > 0);
+
   return (
     <div
       style={{
@@ -23,22 +28,33 @@ export default function PlainEnglishBox({ analogy }: PlainEnglishBoxProps) {
           textTransform: 'uppercase',
           letterSpacing: '0.1em',
           color: 'rgba(255,255,255,0.5)',
-          marginBottom: 10,
+          marginBottom: 14,
         }}
       >
         In plain english
       </div>
-      <p
+      <ul
         style={{
-          fontFamily: B,
-          fontSize: 'var(--inv-body, 18px)',
-          lineHeight: 1.7,
-          color: 'rgba(255,255,255,0.92)',
           margin: 0,
+          padding: '0 0 0 20px',
+          listStyleType: 'disc',
         }}
       >
-        {analogy}
-      </p>
+        {bullets.map((bullet, i) => (
+          <li
+            key={i}
+            style={{
+              fontFamily: B,
+              fontSize: 'var(--inv-body, 18px)',
+              lineHeight: 1.6,
+              color: 'rgba(255,255,255,0.92)',
+              marginBottom: i < bullets.length - 1 ? 6 : 0,
+            }}
+          >
+            {bullet}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
