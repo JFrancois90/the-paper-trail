@@ -370,7 +370,7 @@ export const investigations: Investigation[] = [
     multiplier: '\u23F3',
     multiplierLabel: 'data 10-26 years old',
     subject: 'Criminal justice',
-    sourceUrl: 'https://assets.publishing.service.gov.uk/media/5bec4af8e5274a0838df55c9/prolific-offenders-experimental-statistics.pdf',
+    sourceUrl: 'https://www.reformparty.uk/view-pdf/britain-is-lawless',
     rebuttalStatus: { invited: 'Reform UK', dateInvited: 'Jul 2025', status: 'no-response' },
   },
   {
@@ -400,7 +400,7 @@ export const investigations: Investigation[] = [
     multiplier: '\u26A0\uFE0F',
     multiplierLabel: 'source: blog post',
     subject: 'Criminal justice',
-    sourceUrl: 'https://www.conservativewoman.co.uk/simon-marcus-stop-search-works-glasgow-not-london/',
+    sourceUrl: 'https://www.reformparty.uk/view-pdf/britain-is-lawless',
     rebuttalStatus: { invited: 'Reform UK', dateInvited: 'Jul 2025', status: 'no-response' },
   },
 ];

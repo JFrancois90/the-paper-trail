@@ -6,6 +6,7 @@ import Nav from '@/components/Nav';
 import ScrollReveal from '@/components/ScrollReveal';
 import IntroSequence from '@/components/IntroSequence';
 import MobileHomepage from '@/components/mobile/MobileHomepage';
+import BrandSlogan from '@/components/BrandSlogan';
 import FloatingNarrative from '@/components/FloatingNarrative';
 import useIsMobile from '@/lib/useIsMobile';
 import { COLORS } from '@/lib/constants';
@@ -64,20 +65,15 @@ export default function Home() {
           }}
         >
           <div style={{ maxWidth: 900, margin: '0 auto', width: '100%' }}>
-            <p
+            <div
               style={{
-                fontFamily: B,
-                fontSize: 'clamp(14px, 1.8vw, 18px)',
-                fontWeight: 400,
-                color: 'rgba(255,255,255,0.5)',
-                letterSpacing: '0.02em',
-                margin: '0 0 16px',
+                margin: '0 0 32px',
                 animation: 'fadeUp 0.8s ease forwards',
                 opacity: 0,
               }}
             >
-              Taking the politics out of politics
-            </p>
+              <BrandSlogan size="lg" theme="dark" />
+            </div>
             <h1
               style={{
                 fontFamily: H,
@@ -782,6 +778,7 @@ export default function Home() {
             <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
               <Link href="/campaigns" style={{ fontFamily: B, fontSize: 12, color: COLORS.muted, textDecoration: 'none' }}>Investigations</Link>
               <Link href="/about" style={{ fontFamily: B, fontSize: 12, color: COLORS.muted, textDecoration: 'none' }}>About</Link>
+              <Link href="/gallery" style={{ fontFamily: B, fontSize: 12, color: COLORS.muted, textDecoration: 'none' }}>Gallery</Link>
               <Link href="/fighting-for-change" style={{ fontFamily: B, fontSize: 12, color: COLORS.muted, textDecoration: 'none' }}>Join</Link>
             </div>
           </div>
@@ -869,7 +866,7 @@ function FeaturedInvestigations() {
 
         {/* Investigation 1: Railtrack */}
         <div className="fi-scroll" style={{ height: '100%', scrollSnapAlign: 'start', display: 'flex', alignItems: 'center', padding: '60px 8vw', boxSizing: 'border-box' }}>
-          <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%', paddingTop: 40 }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%', paddingTop: 60 }}>
             <div style={{ background: '#fae9b0', borderRadius: 8, padding: '12px 18px', marginBottom: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
               <span style={{ fontSize: 16, flexShrink: 0 }}>&#x1F4E2;</span>
               <p style={{ fontFamily: B, fontSize: 14, color: COLORS.navy, margin: 0 }}>We support public accountability for nationalisation costs. We disagree with incorrect figures, regardless of political alignment.</p>
@@ -905,7 +902,7 @@ function FeaturedInvestigations() {
 
         {/* Investigation 2: Reform Prolific Offenders */}
         <div className="fi-scroll" style={{ height: '100%', scrollSnapAlign: 'start', display: 'flex', alignItems: 'center', padding: '60px 8vw', boxSizing: 'border-box' }}>
-          <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%', paddingTop: 40 }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%', paddingTop: 60 }}>
             <div style={{ background: '#fae9b0', borderRadius: 8, padding: '12px 18px', marginBottom: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
               <span style={{ fontSize: 16, flexShrink: 0 }}>&#x1F4E2;</span>
               <p style={{ fontFamily: B, fontSize: 14, color: COLORS.navy, margin: 0 }}>We take no position on criminal justice policy. We take a position on the quality of evidence used to drive it.</p>
@@ -941,7 +938,7 @@ function FeaturedInvestigations() {
 
         {/* Investigation 3: Canary/Reform Tax */}
         <div className="fi-scroll" style={{ height: '100%', scrollSnapAlign: 'start', display: 'flex', alignItems: 'center', padding: '60px 8vw', boxSizing: 'border-box' }}>
-          <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%', paddingTop: 40 }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%', paddingTop: 60 }}>
             <div style={{ background: '#fae9b0', borderRadius: 8, padding: '12px 18px', marginBottom: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
               <span style={{ fontSize: 16, flexShrink: 0 }}>&#x1F4E2;</span>
               <p style={{ fontFamily: B, fontSize: 14, color: COLORS.navy, margin: 0 }}>We support taxes on those who can afford it. We disagree with incorrect figures, regardless of political alignment.</p>
