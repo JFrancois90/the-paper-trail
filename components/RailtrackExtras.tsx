@@ -1,10 +1,26 @@
 import { COLORS } from '@/lib/constants';
+import ChainStepThrough from '@/components/ChainStepThrough';
+import { railtrackChain } from '@/data/chains';
 
 const B = 'var(--font-sans), sans-serif';
 
 export default function RailtrackExtras() {
   return (
     <>
+    {/* Step-through chain */}
+    <div style={{ marginBottom: 28 }}>
+      <ChainStepThrough
+        id="railtrack-chain-inv"
+        title={railtrackChain.title}
+        subtitle={railtrackChain.subtitle}
+        steps={railtrackChain.steps}
+        nodes={railtrackChain.nodes}
+        disappeared={railtrackChain.disappeared}
+        endNote={railtrackChain.endNote}
+        showCWLink
+      />
+    </div>
+
     <div
       style={{
         background: '#fff',
