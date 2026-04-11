@@ -6,7 +6,6 @@ import { COLORS } from '@/lib/constants';
 import { investigations } from '@/data/investigations';
 import MobileNav from '@/components/MobileNav';
 import BrandSlogan from '@/components/BrandSlogan';
-import HeroSubtitle from '@/components/HeroSubtitle';
 import InvestigationStory from './InvestigationStory';
 import type { Investigation } from '@/data/investigations';
 
@@ -166,10 +165,55 @@ export default function MobileHomepage() {
       >
         {/* ═══ SECTION 1: HERO ═══ */}
         <SnapSection bg={COLORS.navy}>
-          <h1 style={{ margin: '0 0 28px' }}>
-            <BrandSlogan size="md" theme="dark" />
-          </h1>
-          <HeroSubtitle isMobile />
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ margin: '0 0 24px' }}>
+              <BrandSlogan size="md" theme="dark" />
+            </div>
+            <p
+              style={{
+                fontFamily: H,
+                fontSize: 'clamp(22px, 5vw, 32px)',
+                fontWeight: 700,
+                color: '#fff',
+                lineHeight: 1.2,
+                letterSpacing: '-0.03em',
+                textAlign: 'center',
+                margin: '0 0 16px',
+              }}
+            >
+              These aren&apos;t opinions. They&apos;re numbers. And they&apos;re wrong.
+            </p>
+            <p
+              style={{
+                fontFamily: B,
+                fontSize: 14,
+                fontWeight: 600,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                textAlign: 'center',
+                color: COLORS.amber,
+                margin: '0 0 28px',
+              }}
+            >
+              Integrity, not ideology.
+            </p>
+            <Link
+              href="/campaigns"
+              style={{
+                display: 'inline-block',
+                fontFamily: B,
+                fontSize: 15,
+                fontWeight: 700,
+                color: COLORS.navy,
+                background: '#fff',
+                padding: '14px 28px',
+                borderRadius: 8,
+                textDecoration: 'none',
+              }}
+            >
+              See our investigations &rarr;
+            </Link>
+          </div>
         </SnapSection>
 
         {/* ═══ SECTION 2: THE PROBLEM - Equations ═══ */}

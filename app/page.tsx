@@ -64,10 +64,11 @@ export default function Home() {
             textAlign: 'center',
           }}
         >
-          <div style={{ maxWidth: 900, margin: '0 auto', width: '100%' }}>
+          <div style={{ maxWidth: 900, margin: '0 auto', width: '100%', textAlign: 'center' }}>
             <div
               style={{
                 margin: '0 0 32px',
+                textAlign: 'center',
                 animation: 'fadeUp 0.8s ease forwards',
                 opacity: 0,
               }}
@@ -82,6 +83,7 @@ export default function Home() {
                 color: '#fff',
                 lineHeight: 1.2,
                 letterSpacing: '-0.03em',
+                textAlign: 'center',
                 margin: '0 0 24px',
                 animation: 'fadeUp 0.8s ease 0.15s forwards',
                 opacity: 0,
