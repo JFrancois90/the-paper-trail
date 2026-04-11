@@ -779,6 +779,26 @@ export default function Home() {
             <p style={{ fontFamily: B, fontSize: 12, color: COLORS.lightMuted, margin: '0 0 16px' }}>
               thepapertrail.uk &middot; &copy; {new Date().getFullYear()}
             </p>
+
+            {/* Social icons */}
+            <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginBottom: 16 }}>
+              <a href="https://www.instagram.com/papertrail.uk" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{ color: COLORS.muted, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 44, height: 44 }}>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><circle cx="12" cy="12" r="5" /><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
+                </svg>
+              </a>
+              <a href="https://www.tiktok.com/@papertrail.uk" target="_blank" rel="noopener noreferrer" aria-label="TikTok" style={{ color: COLORS.muted, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 44, height: 44 }}>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                </svg>
+              </a>
+              <a href="https://x.com/PaperTrailFacts" target="_blank" rel="noopener noreferrer" aria-label="X" style={{ color: COLORS.muted, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 44, height: 44 }}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+              </a>
+            </div>
+
             <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
               <Link href="/campaigns" style={{ fontFamily: B, fontSize: 12, color: COLORS.muted, textDecoration: 'none' }}>Campaigns</Link>
               <Link href="/about" style={{ fontFamily: B, fontSize: 12, color: COLORS.muted, textDecoration: 'none' }}>About</Link>
