@@ -23,6 +23,7 @@ import StudentDebt97kExtras from '@/components/StudentDebt97kExtras';
 import TimesStudentDebtExtras from '@/components/TimesStudentDebtExtras';
 import ReformProlificExtras from '@/components/ReformProlificExtras';
 import ReformStopSearchExtras from '@/components/ReformStopSearchExtras';
+import ReformImmigrationExtras from '@/components/ReformImmigrationExtras';
 import { HIGHLIGHT_PHRASES } from '@/lib/highlights';
 import InvestigationPageBars from './InvestigationPageBars';
 import InvestigationPageChain from './InvestigationPageChain';
@@ -60,7 +61,7 @@ export default async function InvestigationPage({ params }: PageProps) {
 
   const isCorrected = !!inv.correction && inv.slug !== 'student-debt-97k';
 
-  const hasExtras = ['railtrack-500m', 'student-debt-claim', 'reform-tax-canary', 'student-debt-97k', 'times-student-debt-37', 'reform-prolific-offenders', 'reform-stop-search'].includes(slug);
+  const hasExtras = ['railtrack-500m', 'student-debt-claim', 'reform-tax-canary', 'student-debt-97k', 'times-student-debt-37', 'reform-prolific-offenders', 'reform-stop-search', 'reform-234bn-immigration'].includes(slug);
   const sectionNames = [
     'The Claim',
     'Plain English',
@@ -154,6 +155,7 @@ export default async function InvestigationPage({ params }: PageProps) {
             {inv.slug === 'times-student-debt-37' && 'We support transparency in student finance and reform of the loan system. We disagree with incorrect figures, regardless of who publishes them. Integrity, not ideology.'}
             {inv.slug === 'reform-prolific-offenders' && 'We take no position on criminal justice policy. We take a position on the quality of evidence used to drive it. Integrity, not ideology.'}
             {inv.slug === 'reform-stop-search' && 'We take no position on stop and search policy. We take a position on the quality of sources used to justify it. Integrity, not ideology.'}
+            {inv.slug === 'reform-234bn-immigration' && 'We take no position on immigration policy. We take a position on the quality of evidence used to drive it. Integrity, not ideology.'}
           </p>
         </div>
 
@@ -283,7 +285,7 @@ export default async function InvestigationPage({ params }: PageProps) {
         </section>
 
         {/* ─── SECTION 4: WHERE THIS ARGUMENT LEADS (extras) ─── */}
-        {(inv.slug === 'railtrack-500m' || inv.slug === 'student-debt-claim' || inv.slug === 'reform-tax-canary' || inv.slug === 'student-debt-97k' || inv.slug === 'times-student-debt-37' || inv.slug === 'reform-prolific-offenders' || inv.slug === 'reform-stop-search') && (
+        {(inv.slug === 'railtrack-500m' || inv.slug === 'student-debt-claim' || inv.slug === 'reform-tax-canary' || inv.slug === 'student-debt-97k' || inv.slug === 'times-student-debt-37' || inv.slug === 'reform-prolific-offenders' || inv.slug === 'reform-stop-search' || inv.slug === 'reform-234bn-immigration') && (
           <section className="inv-snap-section">
             <div className="inv-inner">
               <h2 className="inv-section-title">Deep Dive</h2>
@@ -294,6 +296,7 @@ export default async function InvestigationPage({ params }: PageProps) {
               {inv.slug === 'times-student-debt-37' && <TimesStudentDebtExtras />}
               {inv.slug === 'reform-prolific-offenders' && <ReformProlificExtras />}
               {inv.slug === 'reform-stop-search' && <ReformStopSearchExtras />}
+              {inv.slug === 'reform-234bn-immigration' && <ReformImmigrationExtras />}
             </div>
           </section>
         )}
