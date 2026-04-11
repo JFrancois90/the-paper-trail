@@ -74,6 +74,26 @@ export default function Footer() {
               <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
             </svg>
           </a>
+          <a
+            href="https://www.tiktok.com/@papertrail.uk"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Follow us on TikTok"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: 44,
+              height: 44,
+              borderRadius: '50%',
+              color: COLORS.ink40,
+              transition: 'color 0.2s ease',
+            }}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+            </svg>
+          </a>
         </div>
       </div>
     </footer>
