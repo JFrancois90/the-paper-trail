@@ -13,7 +13,7 @@ import { investigations } from '@/data/investigations';
 const B = 'var(--font-sans), sans-serif';
 const H = 'var(--font-heading), sans-serif';
 
-const ALL_SUBJECTS = Array.from(new Set(investigations.map((inv) => inv.subject)));
+const ALL_SUBJECTS = Array.from(new Set(investigations.map((inv) => inv.subject))).sort();
 
 export default function CampaignsPage() {
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
