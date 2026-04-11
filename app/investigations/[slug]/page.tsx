@@ -266,8 +266,8 @@ export default async function InvestigationPage({ params }: PageProps) {
         {/* ─── SECTION 3: CARELESS WHISPERS + WHY THIS MATTERS ─── */}
         <section className="inv-snap-section">
           <div className="inv-inner">
-            <h2 className="inv-section-title">{inv.whisperChain ? 'Careless Whispers' : 'Why This Matters'}</h2>
-            {inv.whisperChain && (
+            <h2 className="inv-section-title">{inv.whisperChain && inv.slug !== 'railtrack-500m' ? 'Careless Whispers' : 'Why This Matters'}</h2>
+            {inv.whisperChain && inv.slug !== 'railtrack-500m' && (
               <div
                 style={{
                   background: '#fff',
