@@ -354,8 +354,7 @@ export default async function InvestigationPage({ params }: PageProps) {
 }
 
 function SourceBullets({ text, phrases }: { text: string; phrases: string[] }) {
-  const bullets = text
-    .split(/(?<=\.)\s+/)
+  const bullets = (text.includes('\n') ? text.split('\n') : text.split(/(?<=\.)\s+/))
     .map((s) => s.trim())
     .filter((s) => s.length > 0);
 

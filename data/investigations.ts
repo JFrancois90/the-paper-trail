@@ -234,7 +234,7 @@ export const investigations: Investigation[] = [
     claim: 'Reform\'s tax cuts help the richest people more than the poorest',
     saidQuote: '£30,000 earner saves £1,500. £60,000 earner saves £3,000. The more you earn, the more you get from Reform.',
     said: 'Published as analysis of Reform\'s proposed tax changes, arguing higher earners benefit more',
-    source: 'Personal allowance rises: £12,570 to £20,000. Extra £7,430 is taxed at 20%, not 40%. Saving: £7,430 x 20% = £1,486. Same for everyone above £20K. The 40% band starts at £50,271 and is completely untouched. He said £1,500. It is £1,486. He said £3,000. It is £1,486. Same amount. Same saving.',
+    source: 'Personal allowance rises: £12,570 to £20,000.\nExtra £7,430 is taxed at 20%, not 40%.\nSaving: £7,430 x 20% = £1,486. Same for everyone above £20K.\nThe 40% band starts at £50,271 and is completely untouched.\nHe said £1,500. It is £1,486.\nHe said £3,000. It is £1,486.\nSame amount. Same saving.',
     sourceImage: null,
     sourceOneLiner: '£30K earner saves £1,486. £60K earner saves £1,486. The same amount.',
     sourceLabel: 'What the maths actually shows',
@@ -256,7 +256,7 @@ export const investigations: Investigation[] = [
     multiplier: '=',
     multiplierLabel: 'same saving',
     subject: 'Taxation',
-    sourceUrl: 'https://www.thecanary.co/uk/analysis/2026/02/18/reform-uk-tax-cuts/',
+    sourceUrl: 'https://www.instagram.com/p/DVN7bPzDDKl/',
     rebuttalStatus: { invited: 'The Canary (no response) and Richard Murphy (via Instagram, 26 Feb 2026, no response)', dateInvited: 'Feb 2026', status: 'no-response' },
   },
   {
