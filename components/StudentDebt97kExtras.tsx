@@ -17,10 +17,10 @@ export default function StudentDebt97kExtras() {
           The short version
         </p>
         <p style={{ fontFamily: B, fontSize: 'var(--inv-body, 18px)', lineHeight: 1.7, color: COLORS.muted, margin: '0 0 16px' }}>
-          She borrowed ~&pound;79,000 over 4 years (tuition, maintenance, hardship). She will repay ~&pound;50,000. The rest gets written off after 30 years. That is &pound;29,000 less than she borrowed. The video says the opposite.
+          Sarah borrowed ~&pound;79,000 over 4 years (tuition, maintenance, hardship). She will repay ~&pound;50,000. The rest gets written off after 30 years. That is &pound;29,000 less than she borrowed. The video says the opposite.
         </p>
         <p style={{ fontFamily: H, fontSize: 20, fontWeight: 700, color: COLORS.navy, margin: '0 0 20px' }}>
-          &pound;79k borrowed. &pound;50k repaid. &pound;29k written off. She pays back less, not more.
+          &pound;79k borrowed. &pound;50k repaid. &pound;29k written off. Sarah pays back less, not more.
         </p>
 
         <button
@@ -50,7 +50,7 @@ export default function StudentDebt97kExtras() {
               The breakdown
             </p>
             <p style={{ fontFamily: B, fontSize: 13, fontWeight: 600, color: COLORS.navy, margin: '0 0 12px' }}>
-              What she borrowed (4 years, 2016-2020):
+              What Sarah borrowed (4 years, 2016-2020):
             </p>
             <div style={{ overflowX: 'auto', marginBottom: 20 }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 400 }}>
@@ -85,10 +85,10 @@ export default function StudentDebt97kExtras() {
             <p style={{ fontFamily: B, fontSize: 13, fontWeight: 600, color: COLORS.claimRed, margin: '0 0 8px' }}>The problem:</p>
             <ul style={{ margin: '0 0 20px', padding: '0 0 0 20px', listStyleType: 'disc' }}>
               <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.muted, marginBottom: 4 }}>&pound;97k balance includes ~&pound;18k of interest</li>
-              <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.muted, marginBottom: 4 }}>What she took out was ~&pound;79,000</li>
-              <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.muted, marginBottom: 4 }}>She will repay ~&pound;50,000</li>
+              <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.muted, marginBottom: 4 }}>What Sarah took out was ~&pound;79,000</li>
+              <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.muted, marginBottom: 4 }}>Sarah will repay ~&pound;50,000</li>
               <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.muted, marginBottom: 4 }}>&pound;79k minus &pound;50k = &pound;29k written off</li>
-              <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.muted }}>She pays back <strong style={{ color: COLORS.sourceGreen }}>LESS</strong> than she borrowed</li>
+              <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.7, color: COLORS.muted }}>Sarah pays back <strong style={{ color: COLORS.sourceGreen }}>LESS</strong> than she borrowed</li>
             </ul>
           </div>
 
