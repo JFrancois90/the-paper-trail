@@ -8,4 +8,5 @@ export const HIGHLIGHT_PHRASES: Record<string, string[]> = {
   'reform-tax-canary': ['£1,486', '£7,430', '20%'],
   'student-debt-97k': ['£79,000', '£50,000', '£29,000', '£97,000'],
   'times-student-debt-37': ['37%', '11.6%', '£49,000', '£60,000', '£67,000', '£11,000', '3.2'],
+  'jones-500bn-tax-gap': ['£500.7bn', '£500bn', '£232.4bn', '£25.3bn', '46.4%', '5.0%', '60%', '5%'],
 };
