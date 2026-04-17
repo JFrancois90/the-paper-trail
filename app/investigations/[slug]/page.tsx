@@ -29,6 +29,7 @@ import InvestigationPageBars from './InvestigationPageBars';
 import InvestigationPageChain from './InvestigationPageChain';
 import WatchButton from '@/components/WatchButton';
 import InvestigationProgress from '@/components/InvestigationProgress';
+import SourceArrow from '@/components/SourceArrow';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -184,6 +185,8 @@ export default async function InvestigationPage({ params }: PageProps) {
                   invited={inv.rebuttalStatus.invited}
                   dateInvited={inv.rebuttalStatus.dateInvited}
                   responseText={inv.rebuttalStatus.responseText}
+                  labelOverride={inv.statusOverride?.label}
+                  tooltipOverride={inv.statusOverride?.tooltip}
                 />
               )}
               <WatchButton investigationSlug={inv.slug} investigationTitle={inv.claim} />
@@ -203,31 +206,48 @@ export default async function InvestigationPage({ params }: PageProps) {
                 part === 'IS' ? <span key={i} className="emphasis-red">IS</span> : part
               )}&rdquo;
             </h1>
-            {inv.sourceUrl && (
-              <a
-                href={inv.sourceUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+            {inv.campaignFraming && (
+              <p
                 style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 5,
                   fontFamily: 'var(--font-sans), sans-serif',
-                  fontSize: 'var(--inv-source-link, 14px)',
-                  fontWeight: 600,
-                  color: COLORS.chainBlue,
-                  textDecoration: 'none',
-                  background: 'rgba(35,88,163,0.06)',
-                  padding: '5px 12px',
-                  borderRadius: 6,
+                  fontSize: 14,
+                  fontStyle: 'italic',
+                  color: COLORS.muted,
+                  margin: '0 0 16px',
+                  lineHeight: 1.55,
                 }}
               >
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                  <path d="M5 1h6v6M11 1L5.5 6.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M9 7v3.5a.5.5 0 01-.5.5h-7a.5.5 0 01-.5-.5v-7a.5.5 0 01.5-.5H5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
-                </svg>
-                View original source
-              </a>
+                {inv.campaignFraming}
+              </p>
+            )}
+            {inv.sourceUrl && (
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+                <SourceArrow />
+                <a
+                  href={inv.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 5,
+                    fontFamily: 'var(--font-sans), sans-serif',
+                    fontSize: 'var(--inv-source-link, 14px)',
+                    fontWeight: 600,
+                    color: COLORS.chainBlue,
+                    textDecoration: 'none',
+                    background: 'rgba(35,88,163,0.06)',
+                    padding: '5px 12px',
+                    borderRadius: 6,
+                  }}
+                >
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M5 1h6v6M11 1L5.5 6.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M9 7v3.5a.5.5 0 01-.5.5h-7a.5.5 0 01-.5-.5v-7a.5.5 0 01.5-.5H5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+                  </svg>
+                  View original source
+                </a>
+              </span>
             )}
           </div>
         </ScrollReveal>
@@ -332,6 +352,19 @@ export default async function InvestigationPage({ params }: PageProps) {
                   responseText={inv.rebuttalStatus.responseText}
                 />
               )}
+            </div>
+          </section>
+        )}
+
+        {/* Editorial note (optional, rendered as callout) */}
+        {inv.editorialNote && (
+          <section className="inv-snap-section">
+            <div className="inv-inner">
+              <CorrectionBox
+                text={inv.editorialNote.text}
+                variant={inv.editorialNote.variant ?? 'disclaimer'}
+                labelOverride={inv.editorialNote.label}
+              />
             </div>
           </section>
         )}

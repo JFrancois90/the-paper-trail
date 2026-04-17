@@ -13,6 +13,10 @@ interface StatusBadgeProps {
   responseText?: string;
   /** compact mode for investigation cards */
   compact?: boolean;
+  /** optional override for the badge label (e.g. "Partially corrected") */
+  labelOverride?: string;
+  /** optional override for the tooltip text */
+  tooltipOverride?: string;
 }
 
 function getLabel(status: string, correction: string | null) {
@@ -46,14 +50,16 @@ export default function StatusBadge({
   dateInvited,
   responseText,
   compact = false,
+  labelOverride,
+  tooltipOverride,
 }: StatusBadgeProps) {
   const [showTooltip, setShowTooltip] = useState(false);
 
-  const label = getLabel(status, correction);
+  const label = labelOverride ?? getLabel(status, correction);
   const color = getColor(status, correction);
   const bg = getBg(status, correction);
 
-  const tooltipText = correction
+  const tooltipText = tooltipOverride ?? (correction
     ? `Kudos to ${invited} for adjusting their script!`
     : status === 'responded' && responseText
     ? `${invited} responded. ${responseText}`
@@ -61,7 +67,7 @@ export default function StatusBadge({
     ? 'Declined to investigate.'
     : status === 'no-response'
     ? 'We asked for comment. Still waiting.'
-    : `Invited to respond${dateInvited ? ` (${dateInvited})` : ''}.`;
+    : `Invited to respond${dateInvited ? ` (${dateInvited})` : ''}.`);
 
   return (
     <span

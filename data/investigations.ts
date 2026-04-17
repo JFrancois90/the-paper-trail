@@ -40,6 +40,19 @@ export interface Investigation {
     responseText?: string;
     responseDate?: string;
   } | null;
+  /** Optional overrides for the status badge (label shown, tooltip copy). */
+  statusOverride?: {
+    label?: string;
+    tooltip?: string;
+  };
+  /** Optional framing line shown under the claim headline (e.g. "current campaign"). */
+  campaignFraming?: string;
+  /** Optional editorial note rendered as a callout on the page. */
+  editorialNote?: {
+    label: string;
+    text: string;
+    variant?: 'correction' | 'disclaimer';
+  };
 }
 
 export const investigations: Investigation[] = [
@@ -96,7 +109,7 @@ export const investigations: Investigation[] = [
     sourceImage: null,
     sourceOneLiner: 'Their source shows 177 → 156. That\'s a decrease.',
     impact: 'Their source: 177 down to 156. They said it was rising. Their own cited report contradicts the claim.',
-    analogy: 'A weather report says 15°C. You tell everyone there\'s a heatwave. Your own source says the opposite of your claim.',
+    analogy: 'A weather report says the temperature is decreasing each year by 1%. You tell everyone it is increasing each year. Your own source says the opposite.',
     barData: [
       { label: '2022', sublabel: 'Their source', value: 177, color: '#1b2a4a', fmt: '177' },
       { label: '2025', sublabel: 'Their source', value: 156, color: '#b5302a', fmt: '156' },
@@ -113,8 +126,11 @@ export const investigations: Investigation[] = [
     multiplier: '−12%',
     multiplierLabel: 'actual trend',
     subject: 'Wealth inequality',
-    sourceUrl: null,
+    sourceUrl: 'https://greenparty.org.uk/app/uploads/2025/11/Green-Party-letter-to-Rachel-Reeves_Budget-2025.pdf',
     rebuttalStatus: { invited: 'Green Party leadership', dateInvited: 'Dec 2025', status: 'no-response' },
+    statusOverride: {
+      tooltip: 'Green Party apologised and issued a correction. Note: the original letter still sits on the Green Party website without amendment.',
+    },
   },
   {
     id: 3,
@@ -201,7 +217,7 @@ export const investigations: Investigation[] = [
     claim: 'I left university in 2019 with £49,600 of debt',
     saidQuote: 'I left university in 2019 with £49,600 of debt. 6 years on, the repayments from my salary have brought this total down to £48,600. Just £1,000 less.',
     said: 'Used to argue for tuition fee reduction, citing personal financial burden from student debt',
-    source: 'Two years of study. Living at home. Tuition loan: ~£18,500. Maintenance loan: ~£15,000. Interest: ~£2,500. Max possible: ~£36,000. She claimed: £49,600. Gap: ~£13,600 above maximum.',
+    source: 'Two years of study. Living at home. Tuition loan: ~£18,500. Maintenance loan: ~£15,000. Interest: ~£2,500. Max possible: ~£36,000. The MP claimed: £49,600. Gap: ~£13,600 above maximum.',
     sourceImage: null,
     sourceOneLiner: 'Max possible debt for 2 years at Nottingham: ~£36,000. Claimed: £49,600.',
     sourceLabel: 'What the maths actually shows',
@@ -299,6 +315,10 @@ export const investigations: Investigation[] = [
       responseText: 'Sarah described it as a \'language issue\' and added a caption disclaimer. The video itself remains unchanged.',
       responseDate: 'Feb 2026',
     },
+    statusOverride: {
+      label: 'Partially corrected',
+      tooltip: 'Recognised a disclaimer was needed, but did not change the narrative of the post.',
+    },
   },
   {
     id: 8,
@@ -372,6 +392,7 @@ export const investigations: Investigation[] = [
     subject: 'Criminal justice',
     sourceUrl: 'https://www.reformparty.uk/view-pdf/britain-is-lawless',
     rebuttalStatus: { invited: 'Reform UK', dateInvited: 'Jul 2025', status: 'no-response' },
+    campaignFraming: 'This is from Reform UK\u2019s current \u201CBritain is Lawless\u201D campaign (policy document dated 21 July 2025).',
   },
   {
     id: 10,
@@ -402,13 +423,14 @@ export const investigations: Investigation[] = [
     subject: 'Criminal justice',
     sourceUrl: 'https://www.reformparty.uk/view-pdf/britain-is-lawless',
     rebuttalStatus: { invited: 'Reform UK', dateInvited: 'Jul 2025', status: 'no-response' },
+    campaignFraming: 'This is from Reform UK\u2019s current \u201CBritain is Lawless\u201D campaign (policy document dated 21 July 2025).',
   },
   {
     id: 11,
     slug: 'reform-234bn-immigration',
     who: 'Reform UK',
     party: 'Reform',
-    date: '2025',
+    date: 'Apr 2026',
     claim: 'Costing the UK taxpayer a minimum of \u00a3234 billion',
     saidQuote: '800,000 of these migrants are expected to receive Indefinite Leave to Remain (ILR), giving them access to benefits, ultimately costing the UK taxpayer a minimum of \u00a3234 billion',
     said: 'Used on Reform UK immigration policy page to justify abolishing Indefinite Leave to Remain',
@@ -430,7 +452,12 @@ export const investigations: Investigation[] = [
     multiplier: '\u26A0\uFE0F',
     multiplierLabel: 'source pulled',
     subject: 'Immigration',
-    sourceUrl: 'https://www.reformparty.uk/immigration',
+    sourceUrl: 'https://reformuk.scot/policies/',
     rebuttalStatus: { invited: 'Reform UK', dateInvited: 'Jul 2025', status: 'no-response' },
+    editorialNote: {
+      label: 'Editor\u2019s note \u2014 source withdrawn',
+      text: 'The Centre for Policy Studies, whose research Reform cited to arrive at the \u00a3234bn figure, has since withdrawn that figure after the Office for Budget Responsibility revised relevant fiscal data. Reform continues to use the number in current campaign materials. Source: https://cps.org.uk/media/post/2025/recent-migration-wave-may-cost-country-billions-warns-cps/',
+      variant: 'disclaimer',
+    },
   },
 ];

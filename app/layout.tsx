@@ -258,6 +258,17 @@ export default function RootLayout({
                 0%, 100% { transform: scale(1); }
                 50% { transform: scale(1.05); }
               }
+              /* Source arrow flash cue */
+              @keyframes sourceArrowFlash {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.3; }
+              }
+              .source-arrow {
+                animation: sourceArrowFlash 1.4s ease-in-out infinite;
+              }
+              @media (prefers-reduced-motion: reduce) {
+                .source-arrow { animation: none !important; opacity: 1 !important; }
+              }
               @media (prefers-reduced-motion: reduce) {
                 *, *::before, *::after {
                   animation-duration: 0.01ms !important;
