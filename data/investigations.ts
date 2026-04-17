@@ -289,7 +289,7 @@ export const investigations: Investigation[] = [
     sourceOneLiner: 'Borrowed ~£79,000. Will repay ~£50,000. That\'s £29,000 less, not more.',
     sourceLabel: 'What the maths actually shows',
     impact: 'Borrowed: ~\u00a379,000. Will repay: ~\u00a350,000. That is \u00a329,000 less than she borrowed. Policy claims graduates overpay. This shows the opposite. Wrong numbers risk targeting the wrong people. We take no position on the policy. We are pointing out the input is wrong.',
-    analogy: 'You borrow £800 for a phone. You\'ll actually pay back £500 over the contract. The other £290 gets written off. That\'s £300 **less** than the phone cost you. But you go around telling everyone you owe nearly £1,000.',
+    analogy: 'You borrow £800 for a phone. You\'ll actually pay back £500 over the contract. The other £300 gets written off. That\'s £300 **less** than the phone cost you. But you go around telling everyone you owe nearly\u00A0£1,000, and will repay **more** than the\u00A0£800 you borrowed.',
     barData: [
       { label: 'Total borrowed', sublabel: 'Tuition + maintenance + hardship + interest', value: 97, color: '#1b2a4a', fmt: '~£97,000 (current balance)' },
       { label: 'Core borrowing', sublabel: 'Tuition + maintenance + hardship (pre-interest)', value: 79, color: '#2358a3', fmt: '~£79,000' },
