@@ -51,7 +51,13 @@ export default function PlainEnglishBox({ analogy }: PlainEnglishBoxProps) {
               marginBottom: i < bullets.length - 1 ? 6 : 0,
             }}
           >
-            {bullet}
+            {bullet.split(/(\*\*[^*]+\*\*)/g).map((part, j) =>
+              part.startsWith('**') && part.endsWith('**') ? (
+                <strong key={j} style={{ fontWeight: 700, color: '#fff' }}>{part.slice(2, -2)}</strong>
+              ) : (
+                <span key={j}>{part}</span>
+              )
+            )}
           </li>
         ))}
       </ul>
