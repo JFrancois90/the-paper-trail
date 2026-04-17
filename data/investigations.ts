@@ -307,7 +307,7 @@ export const investigations: Investigation[] = [
     multiplier: '£29k',
     multiplierLabel: 'less than borrowed',
     subject: 'Student loans',
-    sourceUrl: null,
+    sourceUrl: 'https://www.instagram.com/p/DT3YXbqjA2v/',
     rebuttalStatus: {
       invited: '@yourmoneymatesarah',
       dateInvited: 'Jan 2026',
