@@ -381,7 +381,7 @@ export const investigations: Investigation[] = [
     whisperChain: null,
     whisperNote: null,
     sourceLabel: 'What the numbers actually show',
-    correction: null,
+    correction: 'Policy withdrawn from Reform website mid April 2026.',
     questions: [
       'Why was data from 2000-2016 used when the MoJ publishes quarterly reoffending statistics up to 2024?',
       'The source shows the 50% figure was declining by 2016. What is the current figure?',
@@ -390,9 +390,13 @@ export const investigations: Investigation[] = [
     multiplier: '\u23F3',
     multiplierLabel: 'data 10-26 years old',
     subject: 'Criminal justice',
-    sourceUrl: 'https://www.reformparty.uk/view-pdf/britain-is-lawless',
+    sourceUrl: null,
     rebuttalStatus: { invited: 'Reform UK', dateInvited: 'Jul 2025', status: 'no-response' },
     campaignFraming: 'This is from Reform UK\u2019s current \u201CBritain is Lawless\u201D campaign (policy document dated 21 July 2025).',
+    statusOverride: {
+      label: 'Policy withdrawn',
+      tooltip: 'Policy withdrawn from Reform website mid April 2026.',
+    },
   },
   {
     id: 10,
