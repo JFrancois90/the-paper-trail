@@ -18,17 +18,17 @@ const SOURCES: SourceCard[] = [
     note: 'Verbatim quote under examination: \u201CSince 2010, HMRC has not collected \u00a3500 billion worth of tax. And that\u2019s mostly from the richest people in society.\u201D',
   },
   {
-    label: 'HMRC \u2014 Measuring Tax Gaps 2025 (landing page)',
+    label: 'HMRC: Measuring Tax Gaps 2025 (landing page)',
     url: 'https://www.gov.uk/government/statistics/measuring-tax-gaps',
     note: 'Published 19 June 2025. Contains the full online data tables used to derive the cumulative 2010-11 to 2023-24 figures.',
   },
   {
-    label: 'HMRC \u2014 Tax Gaps: Summary chapter',
+    label: 'HMRC, Tax Gaps: Summary chapter',
     url: 'https://www.gov.uk/government/statistics/measuring-tax-gaps/1-tax-gaps-summary',
     note: 'HMRC\u2019s own summary states the small business tax gap is the largest component at 60% share in 2023-24, and the wealthy tax gap is the lowest at 5%.',
   },
   {
-    label: 'HMRC press release \u2014 \u201CTax gap estimated at 5.3%\u201D',
+    label: 'HMRC press release: \u201CTax gap estimated at 5.3%\u201D',
     url: 'https://www.gov.uk/government/news/tax-gap-estimated-at-53',
     note: 'States \u201CThe largest share of the gap is from small business non-compliance\u201D.',
   },
@@ -38,7 +38,7 @@ const SOURCES: SourceCard[] = [
     note: 'Letter dated 17 April 2026.',
   },
   {
-    label: 'Chartered Institute of Taxation commentary \u2014 Tax gap revised up',
+    label: 'Chartered Institute of Taxation commentary: Tax gap revised up',
     url: 'https://www.tax.org.uk/tax-gap-2025',
     note: 'Independent professional body noting \u201Clarge businesses and wealthy individuals... total share of the tax gap is not much more than a quarter of that of small businesses\u201D.',
   },
@@ -70,7 +70,7 @@ export default function JonesTaxGapExtras() {
           The short version
         </p>
         <p style={{ fontFamily: B, fontSize: 'var(--inv-body, 18px)', lineHeight: 1.7, color: COLORS.muted, margin: '0 0 16px' }}>
-          Baroness Jenny Jones said in a televised interview that since 2010 HMRC has not collected &pound;500 billion of tax, and that this is &ldquo;mostly from the richest people in society&rdquo;. The &pound;500bn figure is broadly accurate &mdash; it comes from HMRC&rsquo;s Measuring Tax Gaps 2025 cumulative totals from 2010-11 to 2023-24. But the same HMRC publication attributes around 5% of that cumulative gap to the wealthy (&pound;25.3bn) and 46% to small businesses (&pound;232.4bn). In 2023-24 alone, small businesses account for 60% of the tax gap; the wealthy account for 5%. HMRC&rsquo;s own summary states it plainly: &ldquo;the tax gap from small businesses is the largest component of the tax gap by customer group at a 60% share in 2023 to 2024; the tax gap from wealthy makes up the lowest proportion of the tax gap at 5%&rdquo;.
+          Baroness Jenny Jones said in a televised interview that since 2010 HMRC has not collected &pound;500 billion of tax, and that this is &ldquo;mostly from the richest people in society&rdquo;. The &pound;500bn figure is broadly accurate. It comes from HMRC&rsquo;s Measuring Tax Gaps 2025 cumulative totals from 2010-11 to 2023-24. But the same HMRC publication attributes around 5% of that cumulative gap to the wealthy (&pound;25.3bn) and 46% to small businesses (&pound;232.4bn). In 2023-24 alone, small businesses account for 60% of the tax gap; the wealthy account for 5%. HMRC&rsquo;s own summary states it plainly: &ldquo;the tax gap from small businesses is the largest component of the tax gap by customer group at a 60% share in 2023 to 2024; the tax gap from wealthy makes up the lowest proportion of the tax gap at 5%&rdquo;.
         </p>
         <p style={{ fontFamily: H, fontSize: 18, fontWeight: 700, color: COLORS.navy, margin: 0 }}>
           &pound;500bn total tax gap. Wealthy contribute ~5%. Small businesses contribute ~46%. The source says the opposite of the statement.

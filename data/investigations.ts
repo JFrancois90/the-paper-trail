@@ -459,7 +459,7 @@ export const investigations: Investigation[] = [
     sourceUrl: 'https://reformuk.scot/policies/',
     rebuttalStatus: { invited: 'Reform UK', dateInvited: 'Jul 2025', status: 'no-response' },
     editorialNote: {
-      label: 'Editor\u2019s note \u2014 source withdrawn',
+      label: 'Editor\u2019s note: source withdrawn',
       text: 'The Centre for Policy Studies, whose research Reform cited to arrive at the \u00a3234bn figure, has since withdrawn that figure after the Office for Budget Responsibility revised relevant fiscal data. Reform continues to use the number in current campaign materials. Source: https://cps.org.uk/media/post/2025/recent-migration-wave-may-cost-country-billions-warns-cps/',
       variant: 'disclaimer',
     },
@@ -473,12 +473,12 @@ export const investigations: Investigation[] = [
     claim: 'Since 2010, HMRC has not collected £500 billion of tax, mostly from the richest people in society',
     saidQuote: 'Since 2010, HMRC has not collected \u00a3500 billion worth of tax. And that\u2019s mostly from the richest people in society.',
     said: 'Said in a televised interview, later reposted on the Green Party\u2019s own Instagram',
-    source: 'HMRC cumulative tax gap 2010-11 to 2023-24: \u00a3500.7bn \u2014 the headline figure matches. Wealthy: \u00a325.3bn, 5.0% of the cumulative total. Small businesses: \u00a3232.4bn, 46.4% of the cumulative total. In 2023-24 alone: wealthy 4.5%, small businesses 59.7%. The wealthy share has been 4-6% in every year of the series. __The source says the opposite of the attribution.__',
+    source: 'HMRC cumulative tax gap 2010-11 to 2023-24: \u00a3500.7bn. The headline figure matches. Wealthy: \u00a325.3bn, 5.0% of the cumulative total. Small businesses: \u00a3232.4bn, 46.4% of the cumulative total. In 2023-24 alone: wealthy 4.5%, small businesses 59.7%. The wealthy share has been 4-6% in every year of the series. __The source says the opposite of the attribution.__',
     sourceImage: null,
     sourceOneLiner: 'Wealthy: 5% of the £500bn. Small businesses: 46%. The number is right. The attribution isn\u2019t.',
     sourceLabel: 'What HMRC actually attributes',
     impact: 'The headline figure is real. The attribution is not what the source says. Public debate on tax compliance rests on knowing who is actually missing tax - and HMRC\u2019s own breakdown points to small businesses, not the wealthy. Attribution that does not match the source misleads the debate regardless of political direction.',
-    analogy: 'A till-receipt shows a shop lost \u00a3100 of stock over the year. \u00a346 of it was from small everyday items walking out the door. \u00a35 of it was from high-value items. The shop owner stands up and says "we\u2019ve lost \u00a3100 \u2014 and it\u2019s **mostly** the people taking the high-value items". The receipt in her hand says the opposite.',
+    analogy: 'A till-receipt shows a shop lost \u00a3100 of stock over the year. \u00a346 of it was from small everyday items walking out the door. \u00a35 of it was from high-value items. The shop owner stands up and says "we\u2019ve lost \u00a3100, and it\u2019s **mostly** the people taking the high-value items". The receipt in her hand says the opposite.',
     barData: [
       { label: 'Small businesses', sublabel: 'Cumulative share', value: 46.4, color: '#b5302a', fmt: '46.4%' },
       { label: 'Large businesses', sublabel: 'Cumulative share', value: 15.5, color: '#1b2a4a', fmt: '15.5%' },
