@@ -40,6 +40,7 @@ export const TOPIC_COLORS: Record<string, { bg: string; text: string }> = {
   'Student loans': { bg: '#8B1A1A', text: '#fff' },
   'Criminal justice': { bg: '#4A1B6B', text: '#fff' },
   'Immigration': { bg: '#1B4A3A', text: '#fff' },
+  'NHS / Health': { bg: '#1B4A6B', text: '#fff' },
 };
 
 export const PARTY_COLORS: Record<string, { bg: string; text: string; border: string }> = {

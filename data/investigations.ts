@@ -53,6 +53,19 @@ export interface Investigation {
     text: string;
     variant?: 'correction' | 'disclaimer';
   };
+  /**
+   * Optional image of the original claim (e.g. Instagram graphic). When present,
+   * the "They Said" box becomes image + metadata, replacing the text quote.
+   * The maths bullets render in their own box below.
+   */
+  claimImage?: {
+    src: string;
+    alt: string;
+    /** Attribution line, e.g. "Official @uklabour Instagram, 21 April 2026" */
+    postedOn: string;
+    /** Optional imprint line, e.g. "Promoted by Hollie Ridley on behalf of the Labour Party" */
+    imprint?: string;
+  };
 }
 
 export const investigations: Investigation[] = [
@@ -509,5 +522,53 @@ export const investigations: Investigation[] = [
       tooltip: 'Letter sent to Baroness Jones and Green Party leadership on 17 April 2026. No response yet.',
     },
     campaignFraming: 'This is the second investigation involving the Green Party. The first (billionaire-numbers) was corrected by the Party following correspondence in December 2025. This investigation concerns a separate statement.',
+  },
+  {
+    id: 13,
+    slug: 'labour-nhs-us-costs',
+    who: 'Labour Party (official @uklabour)',
+    party: 'Labour',
+    date: 'Apr 2026',
+    claim: 'Average cost of medical treatment in the UK',
+    saidQuote: 'Labour government: Free. Reform government: £129 GP, £1,368 A&E, £23,400 hip replacement, £1,045 ambulance, £71,997 coronary bypass.',
+    said: 'A side-by-side graphic posted to the official @uklabour Instagram, headed "Average cost of medical treatment in the UK". Carries the standard Labour Party imprint, confirming it as official party material.',
+    source: 'Labour labelled these prices UK. They are US insurer charges.\nGP £129 and A&E £1,368: US UnitedHealthcare median charges, 2023.\nHip replacement £23,400 and coronary bypass £71,997: 2022 US figures from the International Federation of Health Plans.\nAmbulance £1,045: no published source.\nReform\u2019s 2024 manifesto pledged NHS services "free at the point of use". They dropped it in October 2025; the new policy in development pledges NHS "free at the point of delivery".\nThe post is dated April 2026. No Reform document exists from which any of these prices could be derived.\n__The header says UK. The prices are American. None come from Reform.__',
+    sourceImage: null,
+    sourceOneLiner: 'Prices labelled UK. Sourced from US insurers. None from Reform.',
+    sourceLabel: 'What the maths actually shows',
+    impact: 'The figures are presented as "the cost of medical treatment in the UK". They are US insurer charges, converted to pounds. None come from Reform, whose 2024 manifesto and replacement policy both commit to an NHS free at the point of use. A post about Reform healthcare policy without a single Reform source risks shaping the public debate on false input.',
+    analogy: 'Imagine a supermarket leaflet headed "average food prices in the UK", but every figure is lifted from a New York bodega. The number on the shelf edge is real; the label above it is not.',
+    barData: [
+      { label: 'Labour labelled "UK"', sublabel: 'GP visit price in post', value: 129, color: '#b5302a', fmt: '£129' },
+      { label: 'Actual source', sublabel: 'US UnitedHealthcare median, 2023', value: 129, color: '#1b2a4a', fmt: '£129' },
+      { label: 'France (patient-paid)', sublabel: "Farage's stated model, after 70% reimbursement", value: 8, color: '#1a6b42', fmt: '~£8' },
+    ],
+    whisperChain: null,
+    whisperNote: null,
+    correction: null,
+    questions: [
+      'The post\u2019s header reads "in the UK", but the £129 GP and £1,368 A&E figures are US UnitedHealthcare median charges. Why was a US source presented as a UK price?',
+      'None of the figures come from Reform. Their 2024 manifesto and their replacement policy both commit to an NHS free at the point of use. On what basis is the graphic labelled "Reform government"?',
+      'If the intention was to model a Reform-style system, Farage has publicly named France as his preferred comparator. Why use the most expensive country on earth (US) instead?',
+    ],
+    multiplier: 'US',
+    multiplierLabel: 'prices labelled UK',
+    subject: 'NHS / Health',
+    sourceUrl: 'https://www.instagram.com/p/DXT4_kngNPm/',
+    rebuttalStatus: {
+      invited: 'Labour Party press office and @uklabour',
+      dateInvited: 'Apr 2026',
+      status: 'invited',
+    },
+    statusOverride: {
+      label: 'Awaiting response',
+      tooltip: 'Awaiting response from Labour Party',
+    },
+    claimImage: {
+      src: '/investigations/labour-nhs-prices-claim.png',
+      alt: 'Labour Party Instagram graphic headed "Average cost of medical treatment in the UK", listing Labour government as "Free" against Reform government prices of \u00a3129 GP, \u00a31,368 A&E, \u00a323,400 hip replacement, \u00a31,045 ambulance, \u00a371,997 coronary bypass.',
+      postedOn: 'Official @uklabour Instagram, 21 April 2026',
+      imprint: 'Promoted by Hollie Ridley on behalf of the Labour Party',
+    },
   },
 ];

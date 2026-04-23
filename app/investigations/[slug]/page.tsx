@@ -7,6 +7,8 @@ import Nav from '@/components/Nav';
 import BackButton from '@/components/BackButton';
 import MultiplierBadge from '@/components/MultiplierBadge';
 import SaidVsSource from '@/components/SaidVsSource';
+import ClaimImageBox from '@/components/ClaimImageBox';
+import MathsBox from '@/components/MathsBox';
 import PlainEnglishBox from '@/components/PlainEnglishBox';
 import ImpactBox from '@/components/ImpactBox';
 import QuestionsBlock from '@/components/QuestionsBlock';
@@ -25,6 +27,7 @@ import ReformProlificExtras from '@/components/ReformProlificExtras';
 import ReformStopSearchExtras from '@/components/ReformStopSearchExtras';
 import ReformImmigrationExtras from '@/components/ReformImmigrationExtras';
 import JonesTaxGapExtras from '@/components/JonesTaxGapExtras';
+import LabourNhsExtras from '@/components/LabourNhsExtras';
 import { HIGHLIGHT_PHRASES } from '@/lib/highlights';
 import InvestigationPageBars from './InvestigationPageBars';
 import InvestigationPageChain from './InvestigationPageChain';
@@ -63,7 +66,7 @@ export default async function InvestigationPage({ params }: PageProps) {
 
   const isCorrected = !!inv.correction && inv.slug !== 'student-debt-97k';
 
-  const hasExtras = ['railtrack-500m', 'student-debt-claim', 'reform-tax-canary', 'student-debt-97k', 'times-student-debt-37', 'reform-prolific-offenders', 'reform-stop-search', 'reform-234bn-immigration', 'jones-500bn-tax-gap'].includes(slug);
+  const hasExtras = ['railtrack-500m', 'student-debt-claim', 'reform-tax-canary', 'student-debt-97k', 'times-student-debt-37', 'reform-prolific-offenders', 'reform-stop-search', 'reform-234bn-immigration', 'jones-500bn-tax-gap', 'labour-nhs-us-costs'].includes(slug);
   const sectionNames = [
     'The Claim',
     'Plain English',
@@ -159,6 +162,7 @@ export default async function InvestigationPage({ params }: PageProps) {
             {inv.slug === 'reform-stop-search' && 'We take no position on stop and search policy. We take a position on the quality of sources used to justify it. Integrity before ideology.'}
             {inv.slug === 'reform-234bn-immigration' && 'We take no position on immigration policy. We take a position on the quality of evidence used to drive it. Integrity before ideology.'}
             {inv.slug === 'jones-500bn-tax-gap' && 'We support a grown-up debate on tax compliance. We disagree with attributions that don\u2019t match the source, regardless of political alignment. Integrity before ideology.'}
+            {inv.slug === 'labour-nhs-us-costs' && 'We support protecting the NHS. We disagree with incorrect figures and mislabelled sources, regardless of political alignment. Integrity before ideology.'}
           </p>
         </div>
 
@@ -254,19 +258,35 @@ export default async function InvestigationPage({ params }: PageProps) {
           </div>
         </ScrollReveal>
 
-        {/* Said vs Source */}
-            <SaidVsSource
-              saidQuote={inv.saidQuote}
-              sourceLabel={inv.sourceLabel}
-              sourceImage={inv.sourceImage}
-              sourceOneLiner={inv.sourceOneLiner}
-              sourceFallback={
-                <SourceBullets
-                  text={inv.source}
-                  phrases={HIGHLIGHT_PHRASES[inv.slug] || []}
+        {/* Said vs Source (image-led if a claim image exists, otherwise the text-quote layout) */}
+            {inv.claimImage ? (
+              <>
+                <ClaimImageBox image={inv.claimImage} sourceUrl={inv.sourceUrl} />
+                <MathsBox
+                  label={inv.sourceLabel}
+                  oneLiner={inv.sourceOneLiner}
+                  bullets={
+                    <SourceBullets
+                      text={inv.source}
+                      phrases={HIGHLIGHT_PHRASES[inv.slug] || []}
+                    />
+                  }
                 />
-              }
-            />
+              </>
+            ) : (
+              <SaidVsSource
+                saidQuote={inv.saidQuote}
+                sourceLabel={inv.sourceLabel}
+                sourceImage={inv.sourceImage}
+                sourceOneLiner={inv.sourceOneLiner}
+                sourceFallback={
+                  <SourceBullets
+                    text={inv.source}
+                    phrases={HIGHLIGHT_PHRASES[inv.slug] || []}
+                  />
+                }
+              />
+            )}
           </div>
         </section>
 
@@ -313,7 +333,7 @@ export default async function InvestigationPage({ params }: PageProps) {
         </section>
 
         {/* ─── SECTION 4: WHERE THIS ARGUMENT LEADS (extras) ─── */}
-        {(inv.slug === 'railtrack-500m' || inv.slug === 'student-debt-claim' || inv.slug === 'reform-tax-canary' || inv.slug === 'student-debt-97k' || inv.slug === 'times-student-debt-37' || inv.slug === 'reform-prolific-offenders' || inv.slug === 'reform-stop-search' || inv.slug === 'reform-234bn-immigration' || inv.slug === 'jones-500bn-tax-gap') && (
+        {(inv.slug === 'railtrack-500m' || inv.slug === 'student-debt-claim' || inv.slug === 'reform-tax-canary' || inv.slug === 'student-debt-97k' || inv.slug === 'times-student-debt-37' || inv.slug === 'reform-prolific-offenders' || inv.slug === 'reform-stop-search' || inv.slug === 'reform-234bn-immigration' || inv.slug === 'jones-500bn-tax-gap' || inv.slug === 'labour-nhs-us-costs') && (
           <section className={`inv-snap-section${['railtrack-500m', 'reform-234bn-immigration'].includes(inv.slug) ? ' has-sticky' : ''}`}>
             <div className="inv-inner">
               <h2 className="inv-section-title">What happened</h2>
@@ -326,6 +346,7 @@ export default async function InvestigationPage({ params }: PageProps) {
               {inv.slug === 'reform-stop-search' && <ReformStopSearchExtras />}
               {inv.slug === 'reform-234bn-immigration' && <ReformImmigrationExtras />}
               {inv.slug === 'jones-500bn-tax-gap' && <JonesTaxGapExtras />}
+              {inv.slug === 'labour-nhs-us-costs' && <LabourNhsExtras />}
             </div>
           </section>
         )}
