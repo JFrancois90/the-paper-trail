@@ -122,6 +122,10 @@ export default function RootLayout({
                 --body-text: 18px;
                 --body-line-height: 1.6;
                 --body-max-width: 680px;
+                --header-height: 72px;
+              }
+              @media (max-width: 768px) {
+                :root { --header-height: 48px; }
               }
               /* ── Investigation page type scale ── */
               :root {

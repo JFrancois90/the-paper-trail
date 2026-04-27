@@ -883,10 +883,14 @@ function FeaturedInvestigations() {
           flex: 1,
           overflowY: 'auto',
           scrollSnapType: 'y mandatory',
+          scrollPaddingTop: 'calc(var(--header-height) + 16px)',
           scrollbarWidth: 'none',
         }}
       >
-        <style>{`.fi-scroll::-webkit-scrollbar { display: none; }`}</style>
+        <style>{`
+          .fi-scroll::-webkit-scrollbar { display: none; }
+          .fi-scroll { scroll-margin-top: calc(var(--header-height) + 16px); }
+        `}</style>
 
         {/* Investigation 1: Railtrack */}
         <div className="fi-scroll" style={{ height: '100%', scrollSnapAlign: 'start', display: 'flex', alignItems: 'center', padding: '60px 8vw', boxSizing: 'border-box' }}>
@@ -898,7 +902,7 @@ function FeaturedInvestigations() {
             <p style={{ fontFamily: H, fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 400, color: COLORS.ink, lineHeight: 1.4, margin: '0 0 6px' }}>
               &ldquo;Labour nationalised Railtrack, paying just <span className="highlight-red">&pound;500 million</span>&rdquo;
             </p>
-            <p style={{ fontFamily: B, fontSize: 18, color: COLORS.navy, margin: '0 0 32px', borderBottom: '2px solid #b5302a', paddingBottom: 6, display: 'inline-block' }}><strong>Clive Lewis, Labour MP</strong> <span style={{ fontWeight: 400, color: '#5a5d66' }}>00b7 Dec 2024</span></p>
+            <p style={{ fontFamily: B, fontSize: 18, color: COLORS.navy, margin: '0 0 32px', borderBottom: '2px solid #b5302a', paddingBottom: 6, display: 'inline-block' }}><strong>Clive Lewis, Labour MP</strong> <span style={{ fontWeight: 400, color: '#5a5d66' }}>&middot; Dec 2024</span></p>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 16, alignItems: 'center', marginBottom: 32 }}>
               <div style={{ background: COLORS.claimRedLight, borderRadius: 14, padding: '32px 24px', textAlign: 'center' }}>
@@ -934,7 +938,7 @@ function FeaturedInvestigations() {
             <p style={{ fontFamily: H, fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 400, color: COLORS.ink, lineHeight: 1.4, margin: '0 0 6px' }}>
               Britain <span className="emphasis-red">IS</span> lawless: &ldquo;<span className="highlight-red">10% of criminals</span> commit 50% of all the crime&rdquo;
             </p>
-            <p style={{ fontFamily: B, fontSize: 18, color: COLORS.navy, margin: '0 0 32px', borderBottom: '2px solid #b5302a', paddingBottom: 6, display: 'inline-block' }}><strong>Reform UK</strong> <span style={{ fontWeight: 400, color: '#5a5d66' }}>00b7 Jul 2025</span></p>
+            <p style={{ fontFamily: B, fontSize: 18, color: COLORS.navy, margin: '0 0 32px', borderBottom: '2px solid #b5302a', paddingBottom: 6, display: 'inline-block' }}><strong>Reform UK</strong> <span style={{ fontWeight: 400, color: '#5a5d66' }}>&middot; Jul 2025</span></p>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 16, alignItems: 'center', marginBottom: 32 }}>
               <div style={{ background: COLORS.claimRedLight, borderRadius: 14, padding: '32px 24px', textAlign: 'center' }}>
@@ -970,7 +974,7 @@ function FeaturedInvestigations() {
             <p style={{ fontFamily: H, fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 400, color: COLORS.ink, lineHeight: 1.4, margin: '0 0 6px' }}>
               &ldquo;Reform&apos;s tax cuts help the <span className="highlight-red">richest people</span> more than the poorest&rdquo;
             </p>
-            <p style={{ fontFamily: B, fontSize: 18, color: COLORS.navy, margin: '0 0 32px', borderBottom: '2px solid #b5302a', paddingBottom: 6, display: 'inline-block' }}><strong>The Canary UK</strong> <span style={{ fontWeight: 400, color: '#5a5d66' }}>00b7 Feb 2026</span></p>
+            <p style={{ fontFamily: B, fontSize: 18, color: COLORS.navy, margin: '0 0 32px', borderBottom: '2px solid #b5302a', paddingBottom: 6, display: 'inline-block' }}><strong>The Canary UK</strong> <span style={{ fontWeight: 400, color: '#5a5d66' }}>&middot; Feb 2026</span></p>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 16, alignItems: 'center', marginBottom: 32 }}>
               <div style={{ background: COLORS.claimRedLight, borderRadius: 14, padding: '32px 24px', textAlign: 'center' }}>
