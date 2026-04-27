@@ -15,6 +15,52 @@ const H = 'var(--font-heading), sans-serif';
 
 const ALL_SUBJECTS = Array.from(new Set(investigations.map((inv) => inv.subject))).sort();
 
+interface TopicGroup {
+  id: string;
+  heading: string;
+  description: string;
+  slugs: string[];
+}
+
+const TOPIC_GROUPS: TopicGroup[] = [
+  {
+    id: 'tax-and-economy',
+    heading: 'Tax and economy',
+    description: 'Claims about tax gaps, who pays what, and how the wider economy is presented.',
+    slugs: ['350bn-tax-evasion', 'jones-500bn-tax-gap', 'cgt-lowest-g7', 'billionaire-numbers', 'reform-tax-canary'],
+  },
+  {
+    id: 'student-debt',
+    heading: 'Student debt cluster',
+    description: 'Three different stories about how big a student loan really gets, told over the same year. (Related investigations link to each other.)',
+    slugs: ['student-debt-claim', 'student-debt-97k', 'times-student-debt-37'],
+  },
+  {
+    id: 'public-spending',
+    heading: 'Public spending',
+    description: 'What does it actually cost the public purse when the state buys something back?',
+    slugs: ['railtrack-500m'],
+  },
+  {
+    id: 'criminal-justice',
+    heading: 'Criminal justice',
+    description: 'Crime statistics being used to drive enforcement and sentencing policy.',
+    slugs: ['reform-prolific-offenders', 'reform-stop-search'],
+  },
+  {
+    id: 'immigration',
+    heading: 'Immigration',
+    description: 'Fiscal numbers used to argue for immigration policy changes.',
+    slugs: ['reform-234bn-immigration'],
+  },
+  {
+    id: 'health',
+    heading: 'NHS and health',
+    description: 'How public health spending is costed, compared, and characterised.',
+    slugs: ['labour-nhs-us-costs'],
+  },
+];
+
 export default function CampaignsPage() {
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
 
@@ -26,10 +72,15 @@ export default function CampaignsPage() {
     return 0;
   };
 
+  const investigationBySlug = new Map(investigations.map((inv) => [inv.slug, inv]));
+
   const filtered = (activeFilter
     ? investigations.filter((inv) => inv.subject === activeFilter)
     : investigations
   ).sort((a, b) => parseDate(b.date) - parseDate(a.date));
+
+  const groupedSlugs = new Set(TOPIC_GROUPS.flatMap((g) => g.slugs));
+  const ungrouped = investigations.filter((inv) => !groupedSlugs.has(inv.slug));
 
   return (
     <>
@@ -42,6 +93,7 @@ export default function CampaignsPage() {
           padding: '100px 28px 48px',
         }}
       >
+        <span id="campaigns-top" style={{ position: 'absolute', height: 0, width: 0, overflow: 'hidden' }} aria-hidden="true" />
 
         <ScrollReveal>
           <h1
@@ -118,116 +170,113 @@ export default function CampaignsPage() {
           </div>
         </ScrollReveal>
 
-        {/* Investigation cards */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: 16,
-          }}
-        >
-          {filtered.map((inv, i) => (
-            <ScrollReveal key={inv.slug} anim="fadeUp" delay={i * 0.08}>
-              <Link
-                href={`/investigations/${inv.slug}`}
-                className="hover-card"
-                style={{
-                  textDecoration: 'none',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  background: '#fff',
-                  border: '1px solid rgba(27,42,74,0.10)',
-                  borderRadius: 14,
-                  padding: 24,
-                  boxShadow: '0 2px 8px rgba(27,42,74,0.04)',
-                  height: '100%',
-                }}
-              >
-                {/* Subject tag + status badge */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', marginBottom: 12 }}>
-                  <span
+        {/* When a topic filter is active, fall back to a flat date-sorted grid. */}
+        {activeFilter ? (
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: 16,
+            }}
+          >
+            {filtered.map((inv, i) => (
+              <ScrollReveal key={inv.slug} anim="fadeUp" delay={i * 0.05}>
+                <CampaignCard inv={inv} />
+              </ScrollReveal>
+            ))}
+          </div>
+        ) : (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 56 }}>
+            {TOPIC_GROUPS.map((group) => {
+              const cards = group.slugs
+                .map((slug) => investigationBySlug.get(slug))
+                .filter((inv): inv is NonNullable<typeof inv> => Boolean(inv));
+              if (cards.length === 0) return null;
+              return (
+                <section key={group.id} id={group.id} aria-labelledby={`${group.id}-heading`}>
+                  <ScrollReveal anim="fadeUp">
+                    <h2
+                      id={`${group.id}-heading`}
+                      style={{
+                        fontFamily: H,
+                        fontSize: 26,
+                        fontWeight: 700,
+                        color: COLORS.navy,
+                        letterSpacing: '-0.02em',
+                        margin: '0 0 6px',
+                      }}
+                    >
+                      {group.heading}
+                    </h2>
+                    <p
+                      style={{
+                        fontFamily: B,
+                        fontSize: 16,
+                        lineHeight: 1.55,
+                        color: COLORS.muted,
+                        margin: '0 0 20px',
+                      }}
+                    >
+                      {group.description}
+                    </p>
+                  </ScrollReveal>
+
+                  <div
                     style={{
-                      display: 'inline-block',
-                      fontFamily: B,
-                      fontSize: 12,
-                      fontWeight: 600,
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.08em',
-                      color: TOPIC_COLORS[inv.subject]?.text || '#fff',
-                      background: TOPIC_COLORS[inv.subject]?.bg || COLORS.amber,
-                      padding: '4px 10px',
-                      borderRadius: 12,
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                      gap: 16,
                     }}
                   >
-                    {inv.subject}
-                  </span>
-                  {inv.rebuttalStatus && (
-                    <StatusBadge
-                      status={inv.rebuttalStatus.status}
-                      correction={inv.correction}
-                      invited={inv.rebuttalStatus.invited}
-                      dateInvited={inv.rebuttalStatus.dateInvited}
-                      responseText={inv.rebuttalStatus.responseText}
-                      compact
-                    />
-                  )}
+                    {cards.map((inv, i) => (
+                      <ScrollReveal key={inv.slug} anim="fadeUp" delay={i * 0.05}>
+                        <CampaignCard inv={inv} />
+                      </ScrollReveal>
+                    ))}
+                  </div>
+
+                  <div style={{ marginTop: 16 }}>
+                    <Link
+                      href="#campaigns-top"
+                      style={{
+                        display: 'inline-block',
+                        fontFamily: B,
+                        fontSize: 14,
+                        fontWeight: 600,
+                        color: COLORS.chainBlue,
+                        textDecoration: 'none',
+                      }}
+                    >
+                      View all investigations &rarr;
+                    </Link>
+                  </div>
+                </section>
+              );
+            })}
+
+            {ungrouped.length > 0 && (
+              <section aria-label="Other investigations">
+                <ScrollReveal anim="fadeUp">
+                  <h2 style={{ fontFamily: H, fontSize: 26, fontWeight: 700, color: COLORS.navy, letterSpacing: '-0.02em', margin: '0 0 6px' }}>
+                    Other investigations
+                  </h2>
+                  <p style={{ fontFamily: B, fontSize: 16, lineHeight: 1.55, color: COLORS.muted, margin: '0 0 20px' }}>
+                    Stories that do not yet sit inside a wider topic cluster.
+                  </p>
+                </ScrollReveal>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
+                  {ungrouped.map((inv, i) => (
+                    <ScrollReveal key={inv.slug} anim="fadeUp" delay={i * 0.05}>
+                      <CampaignCard inv={inv} />
+                    </ScrollReveal>
+                  ))}
                 </div>
+              </section>
+            )}
+          </div>
+        )}
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-                  <MultiplierBadge multiplier={inv.multiplier} label={inv.multiplierLabel} />
-                </div>
-
-                <p
-                  style={{
-                    fontFamily: H,
-                    fontSize: 15,
-                    lineHeight: 1.4,
-                    color: COLORS.ink,
-                    margin: '0 0 8px',
-                  }}
-                >
-                  &ldquo;{inv.claim.split(/(IS)/).map((part, i) =>
-                    part === 'IS' ? <span key={i} className="emphasis-red">IS</span> : part
-                  )}&rdquo;
-                </p>
-
-                {/* Spacer pushes attribution + button to bottom */}
-                <div style={{ flex: 1 }} />
-
-                <p
-                  style={{
-                    fontFamily: B,
-                    fontSize: 18,
-                    color: COLORS.navy,
-                    margin: '0 0 12px',
-                    borderBottom: `2px solid ${COLORS.claimRed}`,
-                    paddingBottom: 6,
-                    display: 'inline-block',
-                  }}
-                >
-                  <strong>{inv.who}</strong> <span style={{ fontWeight: 400, color: COLORS.muted }}>&middot; {inv.date}</span>
-                </p>
-
-                <span
-                  style={{
-                    display: 'inline-block',
-                    fontFamily: B,
-                    fontSize: 12,
-                    fontWeight: 600,
-                    color: '#fff',
-                    background: COLORS.navy,
-                    padding: '6px 14px',
-                    borderRadius: 8,
-                  }}
-                >
-                  Read more &rarr;
-                </span>
-              </Link>
-            </ScrollReveal>
-          ))}
-        </div>
-
-        {filtered.length === 0 && (
+        {activeFilter && filtered.length === 0 && (
           <p style={{ fontFamily: B, fontSize: 16, color: COLORS.muted, textAlign: 'center', padding: '40px 0' }}>
             No investigations found for this filter.
           </p>
@@ -235,5 +284,108 @@ export default function CampaignsPage() {
       </main>
       <Footer />
     </>
+  );
+}
+
+interface CampaignCardProps {
+  inv: (typeof investigations)[number];
+}
+
+function CampaignCard({ inv }: CampaignCardProps) {
+  return (
+    <Link
+      href={`/investigations/${inv.slug}`}
+      className="hover-card"
+      style={{
+        textDecoration: 'none',
+        display: 'flex',
+        flexDirection: 'column',
+        background: '#fff',
+        border: '1px solid rgba(27,42,74,0.10)',
+        borderRadius: 14,
+        padding: 24,
+        boxShadow: '0 2px 8px rgba(27,42,74,0.04)',
+        height: '100%',
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', marginBottom: 12 }}>
+        <span
+          style={{
+            display: 'inline-block',
+            fontFamily: B,
+            fontSize: 12,
+            fontWeight: 600,
+            textTransform: 'uppercase',
+            letterSpacing: '0.08em',
+            color: TOPIC_COLORS[inv.subject]?.text || '#fff',
+            background: TOPIC_COLORS[inv.subject]?.bg || COLORS.amber,
+            padding: '4px 10px',
+            borderRadius: 12,
+          }}
+        >
+          {inv.subject}
+        </span>
+        {inv.rebuttalStatus && (
+          <StatusBadge
+            status={inv.rebuttalStatus.status}
+            correction={inv.correction}
+            invited={inv.rebuttalStatus.invited}
+            dateInvited={inv.rebuttalStatus.dateInvited}
+            responseText={inv.rebuttalStatus.responseText}
+            compact
+          />
+        )}
+      </div>
+
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+        <MultiplierBadge multiplier={inv.multiplier} label={inv.multiplierLabel} />
+      </div>
+
+      <p
+        style={{
+          fontFamily: H,
+          fontSize: 15,
+          lineHeight: 1.4,
+          color: COLORS.ink,
+          margin: '0 0 8px',
+        }}
+      >
+        &ldquo;{inv.claim.split(/(IS)/).map((part, i) =>
+          part === 'IS' ? <span key={i} className="emphasis-red">IS</span> : part
+        )}&rdquo;
+      </p>
+
+      <div style={{ flex: 1 }} />
+
+      <p
+        style={{
+          fontFamily: B,
+          fontSize: 18,
+          color: COLORS.navy,
+          margin: '0 0 12px',
+          borderBottom: `2px solid ${COLORS.claimRed}`,
+          paddingBottom: 6,
+          display: 'inline-block',
+        }}
+      >
+        <strong>{inv.who}</strong>{' '}
+        <span style={{ fontWeight: 400, color: COLORS.muted }}>&middot; {inv.date}</span>
+      </p>
+
+      <span
+        style={{
+          display: 'inline-block',
+          fontFamily: B,
+          fontSize: 12,
+          fontWeight: 600,
+          color: '#fff',
+          background: COLORS.navy,
+          padding: '6px 14px',
+          borderRadius: 8,
+        }}
+      >
+        Read more &rarr;
+      </span>
+    </Link>
   );
 }
