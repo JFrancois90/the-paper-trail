@@ -133,34 +133,6 @@ export default function StudentDebtExtras() {
         </div>
       </div>
 
-      {/* Standards Commissioner */}
-      <div
-        style={{
-          background: '#fff',
-          borderRadius: 14,
-          border: '1px solid rgba(27,42,74,0.06)',
-          padding: '24px 28px',
-          marginBottom: 28,
-        }}
-      >
-        <p style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: '0 0 12px' }}>
-          Parliamentary Standards Commissioner
-        </p>
-        <ul style={{ margin: 0, padding: '0 0 0 20px', listStyleType: 'disc' }}>
-          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, marginBottom: 6 }}>
-            Raised with the Commissioner in January 2026
-          </li>
-          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, marginBottom: 6 }}>
-            No formal investigation opened at this time
-          </li>
-          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, marginBottom: 6 }}>
-            Commissioner noted concern about &ldquo;choices of language and tone&rdquo;
-          </li>
-          <li style={{ fontFamily: B, fontSize: 14, lineHeight: 1.6, color: COLORS.muted, marginBottom: 0 }}>
-            Complaint will be considered in &ldquo;wider work&rdquo;
-          </li>
-        </ul>
-      </div>
     </>
   );
 }
