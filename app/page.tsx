@@ -889,7 +889,10 @@ function FeaturedInvestigations() {
       >
         <style>{`
           .fi-scroll::-webkit-scrollbar { display: none; }
-          .fi-scroll { scroll-margin-top: calc(var(--header-height) + 16px); }
+          .fi-scroll {
+            scroll-margin-top: calc(var(--header-height) + 16px);
+            scroll-snap-stop: always;
+          }
         `}</style>
 
         {/* Investigation 1: Railtrack */}
