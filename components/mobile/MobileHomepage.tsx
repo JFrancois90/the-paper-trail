@@ -59,6 +59,7 @@ function FullWidthCarousel({
             style={{
               flex: '0 0 100%',
               scrollSnapAlign: 'center',
+              scrollSnapStop: 'always',
               padding: '0 20px',
               boxSizing: 'border-box',
             }}
@@ -809,6 +810,7 @@ function InvestigationCarousel({
             style={{
               flex: '0 0 100%',
               scrollSnapAlign: 'center',
+              scrollSnapStop: 'always',
               padding: '0 4px',
               boxSizing: 'border-box',
             }}
