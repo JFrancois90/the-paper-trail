@@ -60,7 +60,18 @@ export const hmrcChain = {
     { title: 'The NCA broadens the scope', who: 'National Crime Agency', date: '2024', detail: 'NCA estimates over £100bn laundered through the UK. This covers drugs, fraud, trafficking, criminal funds. This is not tax evasion. It is all economic crime.' },
     { title: 'The APPG inflates further', who: 'All-Party Parliamentary Group', date: '2025', detail: 'NCA said £100bn. APPG said £290bn. Then offered £350bn as an upper end. APPG claimed £350bn equals the health and education budget. Actual figure: £423bn.' },
     { title: 'The CIOT gives it authority', who: 'Chartered Institute of Taxation', date: '2025', detail: 'CIOT quoted the APPG\'s £350bn figure. Still called "economic crime and financial opacity." But now has the authority of a chartered tax body behind it.' },
-    { title: 'The final form', who: 'Public debate', date: '2025', detail: '"Economic crime" became "tax evasion." The number stayed at £350bn. The definition shrank 48 times. HMRC official: £5.5bn. Claimed: £350bn.' },
+    {
+      title: 'The final form',
+      who: 'Public debate',
+      date: '2025',
+      detail: '"Economic crime" became "tax evasion." The number stayed at £350bn. The definition shrank 48 times. HMRC official: £5.5bn. Claimed: £350bn.',
+      mathsBox: {
+        label: 'The mechanic',
+        formula: '2 + 1 = 2',
+        explanation: 'The input was redefined ("economic crime" → "tax evasion") but the answer (£350bn) stayed put. The maths looks consistent, so nobody checks whether the starting point still means the same thing.',
+        oneLiner: 'Twist the input, leave the output untouched, and the wrong number keeps moving.',
+      },
+    },
     { title: 'Why this matters', who: '', detail: 'Any enforcement policy built on this number is budgeting for a problem 48 times larger than it is. That is not a rounding error. That is a completely different conversation.' },
   ] as ChainStep[],
   nodes: [

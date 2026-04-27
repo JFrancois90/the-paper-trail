@@ -13,6 +13,12 @@ export interface ChainStep {
   detail: string;
   label?: string;
   date?: string;
+  mathsBox?: {
+    label: string;
+    formula: string;
+    explanation: string;
+    oneLiner?: string;
+  };
 }
 
 export interface ChainNode {
@@ -63,6 +69,13 @@ export default function ChainStepThrough({
     return () => observer.disconnect();
   }, [handleIntersect]);
 
+  const goTo = useCallback((idx: number) => {
+    const el = triggerRefs.current[idx];
+    if (!el) return;
+    setActiveStep(idx);
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, []);
+
   return (
     <div id={id} style={{ marginBottom: 40 }}>
       {/* Header */}
@@ -78,9 +91,55 @@ export default function ChainStepThrough({
             <div key={i} style={{ flex: 1, height: 4, borderRadius: 2, background: i <= activeStep ? COLORS.navy : 'rgba(27,42,74,0.1)', transition: 'background 0.3s ease' }} />
           ))}
         </div>
-        <p style={{ fontFamily: B, fontSize: 14, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: 0 }}>
-          Step {activeStep + 1} of {steps.length}{steps[activeStep].who ? ` \u00b7 ${steps[activeStep].who}` : ''}{steps[activeStep].date ? ` \u00b7 ${steps[activeStep].date}` : ''}
-        </p>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+          <p style={{ fontFamily: B, fontSize: 14, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.lightMuted, margin: 0 }}>
+            Step {activeStep + 1} of {steps.length}{steps[activeStep].who ? ` \u00b7 ${steps[activeStep].who}` : ''}{steps[activeStep].date ? ` \u00b7 ${steps[activeStep].date}` : ''}
+          </p>
+          <div style={{ display: 'flex', gap: 8, marginLeft: 'auto' }}>
+            <button
+              type="button"
+              onClick={() => goTo(activeStep - 1)}
+              disabled={activeStep === 0}
+              aria-label="Previous step"
+              style={{
+                fontFamily: B,
+                fontSize: 13,
+                fontWeight: 600,
+                color: activeStep === 0 ? COLORS.lightMuted : COLORS.navy,
+                background: '#fff',
+                border: `1px solid ${activeStep === 0 ? 'rgba(27,42,74,0.1)' : 'rgba(27,42,74,0.2)'}`,
+                borderRadius: 6,
+                padding: '8px 14px',
+                cursor: activeStep === 0 ? 'not-allowed' : 'pointer',
+                opacity: activeStep === 0 ? 0.5 : 1,
+                minHeight: 36,
+              }}
+            >
+              &larr; Back
+            </button>
+            <button
+              type="button"
+              onClick={() => goTo(activeStep + 1)}
+              disabled={activeStep === steps.length - 1}
+              aria-label="Next step"
+              style={{
+                fontFamily: B,
+                fontSize: 13,
+                fontWeight: 600,
+                color: '#fff',
+                background: activeStep === steps.length - 1 ? 'rgba(27,42,74,0.3)' : COLORS.navy,
+                border: 'none',
+                borderRadius: 6,
+                padding: '8px 14px',
+                cursor: activeStep === steps.length - 1 ? 'not-allowed' : 'pointer',
+                opacity: activeStep === steps.length - 1 ? 0.6 : 1,
+                minHeight: 36,
+              }}
+            >
+              Next &rarr;
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* Body */}
@@ -142,6 +201,35 @@ export default function ChainStepThrough({
                 )}
                 <h3 style={{ fontFamily: H, fontSize: 20, fontWeight: 700, color: COLORS.navy, margin: '0 0 10px' }}>{step.title}</h3>
                 <p style={{ fontFamily: B, fontSize: 16, lineHeight: 1.7, color: COLORS.muted, margin: 0 }}>{step.detail}</p>
+                {step.mathsBox && (
+                  <div
+                    style={{
+                      background: COLORS.claimRedLight,
+                      borderRadius: 10,
+                      border: '1px solid rgba(181,48,42,0.18)',
+                      padding: '18px 20px',
+                      marginTop: 16,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: 10,
+                    }}
+                  >
+                    <div style={{ fontFamily: B, fontSize: 12, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: COLORS.claimRed }}>
+                      {step.mathsBox.label}
+                    </div>
+                    <div style={{ fontFamily: H, fontSize: 'clamp(28px, 4vw, 36px)', fontWeight: 700, color: COLORS.claimRedDark, letterSpacing: '-0.02em', lineHeight: 1.1 }}>
+                      {step.mathsBox.formula}
+                    </div>
+                    <p style={{ fontFamily: B, fontSize: 15, lineHeight: 1.5, color: COLORS.claimRedDark, margin: 0 }}>
+                      {step.mathsBox.explanation}
+                    </p>
+                    {step.mathsBox.oneLiner && (
+                      <p style={{ fontFamily: B, fontSize: 15, fontWeight: 700, lineHeight: 1.5, color: COLORS.claimRedDark, margin: 0 }}>
+                        {step.mathsBox.oneLiner}
+                      </p>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           ))}
