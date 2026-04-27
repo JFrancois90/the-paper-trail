@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { COLORS } from '@/lib/constants';
 
 const B = 'var(--font-sans), sans-serif';
@@ -54,6 +54,7 @@ export default function StatusBadge({
   tooltipOverride,
 }: StatusBadgeProps) {
   const [showTooltip, setShowTooltip] = useState(false);
+  const wrapperRef = useRef<HTMLSpanElement>(null);
 
   const label = labelOverride ?? getLabel(status, correction);
   const color = getColor(status, correction);
@@ -64,21 +65,40 @@ export default function StatusBadge({
     : status === 'responded' && responseText
     ? `${invited} responded. ${responseText}`
     : status === 'declined'
-    ? 'Declined to investigate.'
+    ? 'Declined to engage.'
     : status === 'no-response'
-    ? 'We asked for comment. Still waiting.'
+    ? 'No reply.'
     : `Invited to respond${dateInvited ? ` (${dateInvited})` : ''}.`);
+
+  useEffect(() => {
+    if (!showTooltip) return;
+    function onPointerDown(e: PointerEvent) {
+      const node = wrapperRef.current;
+      if (node && !node.contains(e.target as Node)) {
+        setShowTooltip(false);
+      }
+    }
+    document.addEventListener('pointerdown', onPointerDown);
+    return () => document.removeEventListener('pointerdown', onPointerDown);
+  }, [showTooltip]);
 
   return (
     <span
+      ref={wrapperRef}
       style={{ position: 'relative', display: 'inline-block' }}
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
       onFocus={() => setShowTooltip(true)}
       onBlur={() => setShowTooltip(false)}
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setShowTooltip((v) => !v);
+      }}
       tabIndex={0}
-      role="note"
+      role="button"
       aria-label={tooltipText}
+      aria-expanded={showTooltip}
     >
       <span
         style={{
